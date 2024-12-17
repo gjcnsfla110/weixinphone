@@ -1,0 +1,83 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "商城",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/simCard/simCard",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/myPage/myPage",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/heyueji/heyueji",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/menu/menu",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#bfbfbf",
+		"selectedColor": "#1296db",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabBar/main.png",
+				"selectedIconPath": "static/tabBar/main1.png",
+				"text": "商城"
+			},
+			{
+				"pagePath": "pages/menu/menu",
+				"iconPath": "static/tabBar/menu.png",
+				"selectedIconPath": "static/tabBar/menu1.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/simCard/simCard",
+				"iconPath": "static/tabBar/simCard.png",
+				"selectedIconPath": "static/tabBar/simCard1.png",
+				"text": "手机卡"
+			},
+			{
+				"pagePath": "pages/heyueji/heyueji",
+				"iconPath": "static/tabBar/phone.png",
+				"selectedIconPath": "static/tabBar/phone1.png",
+				"text": "合约机"
+			},
+			{
+				"pagePath": "pages/myPage/myPage",
+				"iconPath": "static/tabBar/me.png",
+				"selectedIconPath": "static/tabBar/me1.png",
+				"text": "我的"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}
+

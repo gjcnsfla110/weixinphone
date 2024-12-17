@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "grid-item1": "../../gridItem/gridItem1"
+  }
+}
