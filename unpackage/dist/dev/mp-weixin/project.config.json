@@ -15,11 +15,10 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    },
-    "condition": false
+    }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.31.1",
+  "libVersion": "3.7.2",
   "appid": "touristappid",
   "projectname": "xhphone",
   "condition": {},

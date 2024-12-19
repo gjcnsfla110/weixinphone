@@ -15,12 +15,14 @@
 					</swiper-item>
 				</swiper>
 			</view>
-			<view class="listItem2" v-for="item in 6">
+			<view class="listItem2" v-for="item in list2">
 				<view class="item2Text">
-					{{item}}
+					<view class="item2Title">{{item.items.title}}</view>
+					<view class="item2Content">{{item.items.content}}</view>
+					<view class="item2Price">{{item.items.price}}</view>
 				</view>
 				<view class="item2Phone">
-					<image class="phone2Img"></image>
+					<image class="phone2Img" :src="item.src"></image>
 				</view>
 			</view>
 		</view>
@@ -72,7 +74,54 @@
 		}
 	]);
 	const list2 = ref([
-		 
+		 {
+			items:{
+				title:"아이폰16프로맥스",
+				content:"256G 특가",
+				price:"Y 256만원"
+			},
+			 src:"/static/subMenu/iphone.png",
+		 },
+		 {
+			items:{
+				title:"아이폰16프로맥스",
+				content:"256G 특가",
+				price:"Y 256만원"
+			},
+			 src:"/static/subMenu/iphone.png", 
+		 },
+		 {
+		 	items:{
+		 		title:"아이폰16프로맥스",
+		 		content:"256G 특가",
+				price:"Y 256만원"
+		 	},
+		 	 src:"/static/subMenu/iphone.png",		 
+		 },
+		 {
+		 	items:{
+		 		title:"아이폰16프로맥스",
+		 		content:"256G 특가",
+				price:"Y 256만원"
+		 	},
+		 	 src:"/static/subMenu/iphone.png",		 
+		 },
+		 {
+		 	items:{
+		 		title:"아이폰16프로맥스",
+		 		content:"256G 특가",
+				price:"Y 256만원"
+		 	},
+		 	 src:"/static/subMenu/iphone.png",		 
+		 },
+		 {
+		 	items:{
+		 		title:"아이폰16프로맥스",
+		 		content:"256G 특가",
+				price:"Y 256만원"
+		 	},
+		 	 src:"/static/subMenu/iphone.png",		 
+		 },
 	]);
 </script>
 
@@ -125,13 +174,44 @@
 			}
 			.listItem2{
 				width: 100%;	
-				height: 300rpx;
+				height: 280rpx;
 				background-color: white;
 				border-radius: 15rpx;
+				padding: 10rpx 15rpx;
+				display: flex;
+				direction: cloum;
+				justify-content: space-between;
+				.item2Text{
+					width: 55%;
+					height: 100%;
+					padding-left: 10rpx;
+					.item2Title{
+						margin-top: 38rpx;
+						width: 100%;
+						height: 88rpx;
+						font-size: 28rpx;
+					}
+					.item2Content{
+						width: 100%;
+						height: 45rpx;
+						font-size: 23rpx;
+					}
+					.item2Price{
+						width: 100%;
+						height: 50rpx;
+						font-size: 30rpx;
+					}
+				}
 				.item2Phone{
-					width: 100%;
+					width: 45%;
+					height:100%;
+					position: relative;
 					.phone2Img{
-						width: 60%;
+						width: 100%;
+						height: 60%;
+						position: absolute;
+						left: 0;
+						bottom: 15rpx;
 					}
 				}
 			}

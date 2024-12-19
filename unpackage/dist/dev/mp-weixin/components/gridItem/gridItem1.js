@@ -45,7 +45,56 @@ const _sfc_main = {
         src: "https://www.apple.com/newsroom/images/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/article/geo/Apple-iPhone-16-hero-geo-240909_inline.jpg.large.jpg"
       }
     ]);
-    common_vendor.ref([]);
+    const list2 = common_vendor.ref([
+      {
+        items: {
+          title: "아이폰16프로맥스",
+          content: "256G 특가",
+          price: "Y 256만원"
+        },
+        src: "/static/subMenu/iphone.png"
+      },
+      {
+        items: {
+          title: "아이폰16프로맥스",
+          content: "256G 특가",
+          price: "Y 256만원"
+        },
+        src: "/static/subMenu/iphone.png"
+      },
+      {
+        items: {
+          title: "아이폰16프로맥스",
+          content: "256G 특가",
+          price: "Y 256만원"
+        },
+        src: "/static/subMenu/iphone.png"
+      },
+      {
+        items: {
+          title: "아이폰16프로맥스",
+          content: "256G 특가",
+          price: "Y 256만원"
+        },
+        src: "/static/subMenu/iphone.png"
+      },
+      {
+        items: {
+          title: "아이폰16프로맥스",
+          content: "256G 특가",
+          price: "Y 256만원"
+        },
+        src: "/static/subMenu/iphone.png"
+      },
+      {
+        items: {
+          title: "아이폰16프로맥스",
+          content: "256G 특가",
+          price: "Y 256만원"
+        },
+        src: "/static/subMenu/iphone.png"
+      }
+    ]);
     return (_ctx, _cache) => {
       return {
         a: common_vendor.f(list1.value, (item, k0, i0) => {
@@ -56,9 +105,12 @@ const _sfc_main = {
             d: item.src
           };
         }),
-        b: common_vendor.f(6, (item, k0, i0) => {
+        b: common_vendor.f(list2.value, (item, k0, i0) => {
           return {
-            a: common_vendor.t(item)
+            a: common_vendor.t(item.items.title),
+            b: common_vendor.t(item.items.content),
+            c: common_vendor.t(item.items.price),
+            d: item.src
           };
         })
       };

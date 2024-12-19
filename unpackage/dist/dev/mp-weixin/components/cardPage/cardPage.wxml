@@ -1,0 +1,1 @@
+<view class="cardItme"><view class="cardItme_pd"><slot></slot></view></view>
