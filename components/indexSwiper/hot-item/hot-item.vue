@@ -22,8 +22,11 @@
 			<view class="hotPeijian">
 				<HotPeijian></HotPeijian>
 			</view>
-			<view v-for="item in 10">
-				 {{item}}
+			<view class="hotNew">
+				<HotNew></HotNew>
+			</view>
+			<view class="hotUsed">
+				<slot name="HotUsed"></slot>
 			</view>
 		</view>
 </template>
@@ -32,6 +35,7 @@
 	import { ref } from 'vue';
 	import HotItem from '@/components/gridItem/gridItem1.vue';
 	import HotPeijian from "@/components/gridItem/gridItem2.vue";
+	import HotNew from "@/components/gridItem/gridItem3.vue";
 	const banners = ref([
 		{
 			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"

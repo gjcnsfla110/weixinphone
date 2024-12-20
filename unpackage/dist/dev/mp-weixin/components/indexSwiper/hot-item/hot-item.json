@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "hot-item": "../../gridItem/gridItem1",
-    "hot-peijian": "../../gridItem/gridItem2"
+    "hot-peijian": "../../gridItem/gridItem2",
+    "hot-new": "../../gridItem/gridItem3"
   }
 }

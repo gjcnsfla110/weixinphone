@@ -2,7 +2,7 @@
 	<view class="content">
 	 <customNavBar>
 		 <block v-slot:index>
-			 <scroll-view class="hotSubmenu" scroll-x="true" scroll-into-view="scrollInto" :scroll-with-animation="true">
+			 <scroll-view class="hotSubmenu" scroll-x scroll-into-view="scrollInto" :scroll-with-animation="true">
 			 	<view class="hotSubmenuTitle"  :id="'menu'+index" v-for="(item,index) in munu" :key="index" @click="changeMenu(index)">
 			 		{{item.title}}
 			 		<view :class="{'hotBottomBorder animate__heartBeat' : tabIndex == index}"></view>
@@ -13,21 +13,23 @@
 	</view>
 	<swiper class="main" :style="{ height: swiperHeight + 'px' }" @change="changeSwiper" :current="tabIndex" duration="800">
 		<swiper-item class="swiper-item" ref="item33" id="hot">
-			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true">
-			<hotItem :height = "swiperHeight">
-				
-			</hotItem>
+			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="hotScrolltolower">
+				<hotItem :height = "swiperHeight">
+						<template #HotUsed>
+							<LodingItem></LodingItem>
+						</template>
+				</hotItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item1" id="iphone">
-			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true">
+			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="iphoneScrolltolower">
 			<iphoneItem :height = "swiperHeight">
 				
 			</iphoneItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item2" id="samsung">
-			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true">
+			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="samsungScrolltolower">
 			<samsungItem :height = "swiperHeight">
 				
 			</samsungItem>
@@ -43,6 +45,20 @@ import customNavBar from "@/components/custom-nav-bar/custom-nav-bar.vue";
 import hotItem from "@/components/indexSwiper/hot-item/hot-item.vue";
 import samsungItem from "@/components/indexSwiper/samsung-item/samsung-item.vue";
 import iphoneItem from "@/components/indexSwiper/iphone-item/iphone-item.vue";
+import LodingItem from "@/components/gridItem/gridItem4.vue";
+
+//推荐 -》 下拉后 加载
+const hotScrolltolower=()=>{
+	console.log("11");
+}
+//苹果 -》 下拉 加载
+const iphoneScrolltolower = ()=>{
+	console.log("22");
+}
+//三星 -》 下拉 加载
+const samsungScrolltolower = ()=>{
+	console.log("33");
+}
 
 const swiperHeightf = ()=>{
 	let {screenHeight} = uni.getSystemInfoSync();
@@ -60,7 +76,9 @@ const munu = [
 			title : "SamSeng"
 		}
 	]
+// 현재 서뷰메뉴 속한 swiper-item index숫자
 const tabIndex = ref(0);
+//서브메뉴버튼과 내용swiper-item번호를 맞게하기위하여 index번호+스명으로 이루어짐
 const scrollInto = ref("");
 function changeSwiper(e){
 	changeMenu(e.detail.current);

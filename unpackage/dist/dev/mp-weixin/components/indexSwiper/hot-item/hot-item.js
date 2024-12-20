@@ -1,10 +1,11 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
 if (!Math) {
-  (HotItem + HotPeijian)();
+  (HotItem + HotPeijian + HotNew)();
 }
 const HotItem = () => "../../gridItem/gridItem1.js";
 const HotPeijian = () => "../../gridItem/gridItem2.js";
+const HotNew = () => "../../gridItem/gridItem3.js";
 const _sfc_main = {
   __name: "hot-item",
   setup(__props) {
@@ -78,11 +79,6 @@ const _sfc_main = {
           return {
             a: item.src,
             b: common_vendor.t(item.text)
-          };
-        }),
-        c: common_vendor.f(10, (item, k0, i0) => {
-          return {
-            a: common_vendor.t(item)
           };
         })
       };

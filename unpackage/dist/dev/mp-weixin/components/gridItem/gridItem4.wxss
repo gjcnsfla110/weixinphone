@@ -23,47 +23,18 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.scrollX.data-v-b61b9705 {
-  height: 380rpx;
-  width: 700rpx;
-  white-space: nowrap;
+.gr4content.data-v-ef5b2a84 {
+  width: 100vw;
 }
-.scrollX .scrollXlist.data-v-b61b9705 {
-  display: inline-block;
-  width: 200rpx;
-  height: 390rpx;
-  margin-right: 15rpx;
-  background-color: white;
-  border-radius: 15rpx;
-  position: relative;
+.gr4content .gr4list.data-v-ef5b2a84 {
+  padding: 0 25rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15rpx;
 }
-.scrollX .scrollXlist .gr2title.data-v-b61b9705 {
+.gr4content .gr4list .gr4Item.data-v-ef5b2a84 {
   width: 100%;
-  margin-top: 53rpx;
-  height: 38rpx;
-  line-height: 38rpx;
-  text-align: center;
-  font-size: 28rpx;
-}
-.scrollX .scrollXlist .gr2price.data-v-b61b9705 {
-  margin-top: 8rpx;
-  height: 38rpx;
-  font-size: 25rpx;
-  text-align: center;
-  line-height: 38rpx;
-}
-.scrollX .scrollXlist .gr2hot.data-v-b61b9705 {
-  position: absolute;
-  top: 0;
-  right: 10rpx;
-  font-size: 33rpx;
-  color: blue;
-}
-.scrollX .scrollXlist .gr2img.data-v-b61b9705 {
-  width: 80%;
-  height: 60%;
-  margin-left: 10%;
-}
-.scrollX .scrollXlist.data-v-b61b9705:last-child {
-  margin-right: 30rpx;
+  height: 530rpx;
+  background-color: rosybrown;
+  border-radius: 15rpx;
 }
