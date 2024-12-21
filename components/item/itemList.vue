@@ -1,7 +1,7 @@
 <template>
 	<view class="gr4content">
 			<view class="gr4list">
-				<view class="gr4Item" v-for="item in 20">
+				<view class="gr4Item" v-for="item in 6">
 					
 				</view>
 			</view>

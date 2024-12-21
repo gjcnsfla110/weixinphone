@@ -1,23 +1,33 @@
 <template>
-	<view class="cardItme">
-		<view class="cardItme_pd">
+	<view class="cardItme" :style="{padding:pading}">
+		<view class="cardItme_pd" :style="{backgroundColor:color,marginTop:marginTop}">
 		<slot></slot>
 		</view>
 	</view>
 </template>
 
 <script setup>
-
+	import {defineProps} from "vue";
+	const props = defineProps(
+	  {
+		  color:{
+			  default:"#F6FCFF"
+		  },
+		  marginTop:{
+			  default:"30rpx"
+		  },
+		  pading :{
+			  default:"0 25rpx"
+		  }
+	  }
+	)
 </script>
 
 <style lang="scss">
    .cardItme{
-	  margin-top: 30rpx;
-	  padding: 0 25rpx;
 	  width: 100vw;  
 	  .cardItme_pd{
-		  background-color: #F6FCFF;
-		  padding: 20rpx 10rpx;
+		  padding: 15rpx 10rpx;
 		  border-radius: 20rpx;
 	  }
    }

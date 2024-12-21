@@ -45,7 +45,7 @@ import customNavBar from "@/components/custom-nav-bar/custom-nav-bar.vue";
 import hotItem from "@/components/indexSwiper/hot-item/hot-item.vue";
 import samsungItem from "@/components/indexSwiper/samsung-item/samsung-item.vue";
 import iphoneItem from "@/components/indexSwiper/iphone-item/iphone-item.vue";
-import LodingItem from "@/components/gridItem/gridItem4.vue";
+import LodingItem from "@/components/item/itemList.vue";
 
 //推荐 -》 下拉后 加载
 const hotScrolltolower=()=>{
