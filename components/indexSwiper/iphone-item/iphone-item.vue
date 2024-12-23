@@ -1,8 +1,6 @@
 <template>
 	<view class="iphoneContent">
-		<view class="ipBanner">
-			<image class="ipBannerImg" src="https://byline.network/wp-content/uploads/2024/09/iphone-16-event-94.jpg" mode="aspectFill"></image>
-		</view>
+		<BannerImg src="https://byline.network/wp-content/uploads/2024/09/iphone-16-event-94.jpg"></BannerImg>
 		<Title left="新品上市" />
 		<TitleContent />
 		<Title left="特们推荐" />
@@ -21,11 +19,12 @@
 <script setup>
  import Title from "@/components/item/itemTitle.vue";
  import TitleContent from "@/components/item/itemContentTitle.vue"
- import SwiperImg from "@/components/swiperImg/swiperImg.vue"
+ import SwiperImg from "@/components/Img/swiperImg.vue"
  import TcontentTwo from "@/components/item/itemContentTwo.vue"
  import TcontentOne from "@/components/item/itemContentOne.vue"
  import ContentList from "@/components/item/itemContentList.vue"
  import ItemList from "@/components/item/itemList.vue"
+ import BannerImg from "@/components/Img/imgBanner.vue"
  const ershou = [
 	 {
 		 src:"/testimg/er1.jpg"
@@ -52,13 +51,6 @@
 <style lang="scss">
 	.iphoneContent{
 		width: 100vw;
-		.ipBanner{
-			width: 100%;
-			height: 330rpx;
-			.ipBannerImg{
-				width: 100%;
-				height: 100%;
-			}
-		}
+
 	}
 </style>

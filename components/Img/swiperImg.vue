@@ -16,6 +16,7 @@
 	.imgSwiper{
 		width: 100%;
 		height:240rpx;
+		margin-top: 25rpx;
 		.imgSwiperItem{
 			width: 100%;
 			height: 240rpx;

@@ -24,6 +24,7 @@
 	  color:{
 		  default:"#F6FCFF"
 	  },
+	  
   })
 </script>
 <style lang="scss" scoped>
