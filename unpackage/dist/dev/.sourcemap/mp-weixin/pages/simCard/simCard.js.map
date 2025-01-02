@@ -1,0 +1,1 @@
+{"version":3,"file":"simCard.js","sources":["pages/simCard/simCard.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/Coding/uniapp/weixinphone/pages/simCard/simCard.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;AACA,GAAG,WAAW,eAAe;"}

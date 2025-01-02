@@ -118,3 +118,4 @@ const _sfc_main = {
   }
 };
 wx.createComponent(_sfc_main);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/components/gridItem/gridItem1.js.map

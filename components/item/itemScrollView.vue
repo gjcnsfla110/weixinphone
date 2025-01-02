@@ -3,7 +3,7 @@
 		<scroll-view class="scrollX" scroll-x enableFlex>
 			<view v-for="item in datelist" class="scrollXlist">				
 					<view class="gr2title">{{item.title}}</view>
-					<view class="gr2price"><view>{{item.price}}</view> 韩元</view>
+					<view class="gr2price"><view class="gr2priceNumber">{{item.price}}</view> 韩元</view>
 					<image class="gr2img" :src="item.src"></image>
 					<view v-if="item.status == 0" class="gr2top" style="background-color: #CE1212;">热卖</view>
 					<view v-if="item.status == 1" class="gr2top" style="background-color: #0073B6;">推荐</view>
@@ -105,7 +105,7 @@ const datelist = ref([
 				padding-left:10rpx;
 				height: 35rpx;
 				font-size: 24rpx;
-				overflow: hidden; /* 초과 내용을 숨김 */
+				overflow: hidden;
 			}
 			.gr2price{
 					margin-top: 5rpx;
@@ -113,7 +113,7 @@ const datelist = ref([
 					height: 38rpx;
 					font-size: 18rpx;
 					color: rgb(80, 80, 80);
-					>:first-child{
+					.gr2priceNumber{
 						display: inline-block;
 						color: black;
 						font-size: 23rpx;

@@ -1,7 +1,7 @@
 <template>
 		<view class="ctTwoContent">
 			<view class="ctTwoTop">
-				<image src="/testImg/ipad.jpg" mode="aspectFill"></image>
+				<image src="/images/testImg/ipad.jpg" mode="aspectFill"></image>
 			</view>
 			<view class="ctTwoBottom">
 				<view class="bottomCt">

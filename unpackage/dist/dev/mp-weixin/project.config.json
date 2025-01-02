@@ -18,8 +18,8 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "3.7.1",
-  "appid": "touristappid",
+  "libVersion": "3.7.3",
+  "appid": "wx211df55aa27541af",
   "projectname": "xhphone",
   "condition": {},
   "editorSetting": {

@@ -11,10 +11,19 @@ function getNaviBar() {
     return titleHeight;
   };
   const fillHeight = () => statuBarHeight() + titleBarheight() + 50;
+  const custumHeiht = () => statuBarHeight() + titleBarheight();
+  const screen = () => {
+    let { screenHeight } = common_vendor.index.getSystemInfoSync();
+    let topHeight = custumHeiht();
+    return screenHeight - topHeight - 82;
+  };
   return {
     statuBarHeight,
     titleBarheight,
-    fillHeight
+    custumHeiht,
+    fillHeight,
+    screen
   };
 }
 exports.getNaviBar = getNaviBar;
+//# sourceMappingURL=../../.sourcemap/mp-weixin/utill/systemData.js.map

@@ -15,9 +15,6 @@
 		<swiper-item class="swiper-item" ref="item33" id="hot">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="hotScrolltolower">
 				<hotItem :height = "swiperHeight">
-						<template #HotUsed>
-							<LodingItem></LodingItem>
-						</template>
 				</hotItem>
 			</scroll-view>
 		</swiper-item>
@@ -42,9 +39,9 @@
 import {ref } from "vue";
 import { getNaviBar } from "@/utill/systemData.js";
 import customNavBar from "@/components/custom-nav-bar/custom-nav-bar.vue";
-import hotItem from "@/components/indexSwiper/hot-item/hot-item.vue";
-import samsungItem from "@/components/indexSwiper/samsung-item/samsung-item.vue";
-import iphoneItem from "@/components/indexSwiper/iphone-item/iphone-item.vue";
+import hotItem from "@/components/index/hot-item/hot-item.vue";
+import samsungItem from "@/components/index/samsung-item/samsung-item.vue";
+import iphoneItem from "@/components/index/iphone-item/iphone-item.vue";
 import LodingItem from "@/components/item/itemList.vue";
 
 //推荐 -》 下拉后 加载

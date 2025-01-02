@@ -24,12 +24,9 @@
 /* 透明度 */
 /* 文章场景相关 */
 .cardItme {
-  margin-top: 30rpx;
-  padding: 0 25rpx;
   width: 100vw;
 }
 .cardItme .cardItme_pd {
-  background-color: #F6FCFF;
-  padding: 20rpx 10rpx;
+  padding: 15rpx 10rpx;
   border-radius: 20rpx;
 }

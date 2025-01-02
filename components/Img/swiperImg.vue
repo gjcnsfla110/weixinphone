@@ -2,7 +2,7 @@
 	<Card color="white" margin-top="0">
 		<swiper class="imgSwiper" indicator-dots autoplay>
 			<swiper-item class="imgSwiperItem" v-for="item in 5">
-				<image src="/testImg/banner5.jpg" mode="aspectFill"></image>
+				<image src="/images/testImg/banner5.jpg" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 	</Card>

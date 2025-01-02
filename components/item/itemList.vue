@@ -1,7 +1,7 @@
 <template>
-	<view class="gr4content">
+	<view class="gr4content" :style="{padding:padding,backgroundColor:listColor}">
 			<view class="gr4list">
-				<view class="gr4Item"  :style="{backgroundColor:color}" v-for="item in data">
+				<view class="gr4Item"  :style="{backgroundColor:itemColor}" v-for="item in data">
 					<view class="gr4Top">
 						<image :src="item.src" mode="aspectFill"></image>
 					</view>
@@ -12,7 +12,7 @@
 							<view class="gr4BtContentTag" style="border: 1px solid red; color: red;">9成新</view>
 							<view class="gr4BtContentPrice">原价:  <view class="yuanjia">200万</view></view>
 						</view>
-						<view class="gr4BtPrice">现价: <view>860,600</view>韩元</view>
+						<view class="gr4BtPrice">现价: <view class="gr4BtPriceNumber">860,600</view>韩元</view>
 					</view>
 				</view>
 			</view>
@@ -22,18 +22,25 @@
 <script setup>
 import {defineProps} from "vue"
 const props = defineProps({
-	color:{
+	itemColor:{
 		default:"rgb(247,249,255,0.5)"
+	},
+	listColor:{
+		default:"rgb(255,255,255)"
 	},
 	data:{
 		default:[]
+	},
+	padding:{
+		type:String,
+		default :"0 0"
 	}
 })
 </script>
 
 <style lang="scss" scoped>
 	.gr4content{
-		width: 100vw;
+		width: 100%;
 			.gr4list{
 				padding: 0 25rpx;
 				display: grid;
@@ -105,7 +112,7 @@ const props = defineProps({
 							padding-left: 15rpx;
 							margin-top: 11rpx;
 							font-size: 21rpx;
-							> :first-child {
+							.gr4BtPriceNumber{
 							    display: inline-block;
 								margin-left: 15rpx;
 								margin-right: 5rpx;

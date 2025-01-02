@@ -1,1 +1,0 @@
-<view class="gr4content data-v-ef5b2a84"><view class="gr4list data-v-ef5b2a84"><view wx:for="{{a}}" wx:for-item="item" class="gr4Item data-v-ef5b2a84"></view></view></view>

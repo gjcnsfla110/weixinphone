@@ -1,1 +1,0 @@
-<card-page class="data-v-8cb13cd8" u-s="{{['d']}}" u-i="8cb13cd8-0" bind:__l="__l"><view class="gr3content data-v-8cb13cd8"><view wx:for="{{a}}" wx:for-item="item" class="gr3item data-v-8cb13cd8"></view></view></card-page>

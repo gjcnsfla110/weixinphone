@@ -3,9 +3,8 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "custom-nav-bar": "../../components/custom-nav-bar/custom-nav-bar",
-    "hot-item": "../../components/indexSwiper/hot-item/hot-item",
-    "samsung-item": "../../components/indexSwiper/samsung-item/samsung-item",
-    "iphone-item": "../../components/indexSwiper/iphone-item/iphone-item",
-    "loding-item": "../../components/gridItem/gridItem4"
+    "hot-item": "../../components/index/hot-item/hot-item",
+    "samsung-item": "../../components/index/samsung-item/samsung-item",
+    "iphone-item": "../../components/index/iphone-item/iphone-item"
   }
 }

@@ -11,7 +11,7 @@
 				</view>
 			</view>
 			<view class="itemTmid">
-				<image src="../../testImg/banner2.jpg" mode="aspectFill"></image>
+				<image src="/images/testImg/banner2.jpg" mode="aspectFill"></image>
 			</view>
 			<view class="itemTbottom">
 				<view class="TbottomItem" v-for="item in 4">
