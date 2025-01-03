@@ -1,0 +1,1 @@
+<view class="cardItme" style="{{'padding:' + c}}"><view class="cardItme_pd" style="{{'background-color:' + a + ';' + ('margin-top:' + b)}}"><slot></slot></view></view>

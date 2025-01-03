@@ -1,0 +1,1 @@
+<view class="topMenuText data-v-092b98d9" style="{{'color:' + a}}"><slot></slot></view>

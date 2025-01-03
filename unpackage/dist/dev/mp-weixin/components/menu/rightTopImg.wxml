@@ -1,0 +1,1 @@
+<width-card wx:if="{{b}}" class="data-v-9d521e1a" u-s="{{['d']}}" u-i="9d521e1a-0" bind:__l="__l" u-p="{{b}}"><navigator class="data-v-9d521e1a" url="/pages/oldList/oldList"><image src="{{a}}" class="topImg data-v-9d521e1a" mode="aspectFill"></image></navigator></width-card>

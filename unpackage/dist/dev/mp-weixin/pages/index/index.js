@@ -5,12 +5,21 @@ if (!Math) {
   (customNavBar + hotItem + iphoneItem + samsungItem)();
 }
 const customNavBar = () => "../../components/custom-nav-bar/custom-nav-bar.js";
-const hotItem = () => "../../components/indexSwiper/hot-item/hot-item.js";
-const samsungItem = () => "../../components/indexSwiper/samsung-item/samsung-item.js";
-const iphoneItem = () => "../../components/indexSwiper/iphone-item/iphone-item.js";
+const hotItem = () => "../../components/index/hot-item/hot-item.js";
+const samsungItem = () => "../../components/index/samsung-item/samsung-item.js";
+const iphoneItem = () => "../../components/index/iphone-item/iphone-item.js";
 const _sfc_main = {
   __name: "index",
   setup(__props) {
+    const hotScrolltolower = () => {
+      common_vendor.index.__f__("log", "at pages/index/index.vue:49", "11");
+    };
+    const iphoneScrolltolower = () => {
+      common_vendor.index.__f__("log", "at pages/index/index.vue:53", "22");
+    };
+    const samsungScrolltolower = () => {
+      common_vendor.index.__f__("log", "at pages/index/index.vue:57", "33");
+    };
     const swiperHeightf = () => {
       let { screenHeight } = common_vendor.index.getSystemInfoSync();
       return screenHeight - utill_systemData.getNaviBar().fillHeight() - 51;
@@ -54,20 +63,24 @@ const _sfc_main = {
           height: swiperHeight.value
         }),
         c: swiperHeight.value + "px",
-        d: common_vendor.p({
+        d: common_vendor.o(hotScrolltolower),
+        e: common_vendor.p({
           height: swiperHeight.value
         }),
-        e: swiperHeight.value + "px",
-        f: common_vendor.p({
+        f: swiperHeight.value + "px",
+        g: common_vendor.o(iphoneScrolltolower),
+        h: common_vendor.p({
           height: swiperHeight.value
         }),
-        g: swiperHeight.value + "px",
-        h: swiperHeight.value + "px",
-        i: common_vendor.o(changeSwiper),
-        j: tabIndex.value
+        i: swiperHeight.value + "px",
+        j: common_vendor.o(samsungScrolltolower),
+        k: swiperHeight.value + "px",
+        l: common_vendor.o(changeSwiper),
+        m: tabIndex.value
       };
     };
   }
 };
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"]]);
 wx.createPage(MiniProgramPage);
+//# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/index/index.js.map

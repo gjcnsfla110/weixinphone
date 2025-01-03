@@ -26,7 +26,13 @@
 	:global(.animate__heartBeat){
 	  animation-duration: 2s;
 	}
-
+	:global(.animate__slideInUp){
+	  animation-duration: 2s;
+	}
+	:global(.animate__pulse){
+	  animation-duration: 0.5s;
+	}
+	
 	/*hot인덱스 위에3개메뉴바를위한 css*/
 	 .hotSubmenu{
 			height: 50px;

@@ -3,8 +3,11 @@
     "pages/index/index",
     "pages/simCard/simCard",
     "pages/myPage/myPage",
-    "pages/heyueji/heyueji",
-    "pages/menu/menu"
+    "pages/shop/shop",
+    "pages/menu/menu",
+    "pages/list/list",
+    "pages/oldList/oldList",
+    "pages/shopDetail/shopDetail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -29,16 +32,16 @@
         "text": "分类"
       },
       {
+        "pagePath": "pages/shop/shop",
+        "iconPath": "static/tabBar/home.png",
+        "selectedIconPath": "static/tabBar/home1.png",
+        "text": "线下体验店"
+      },
+      {
         "pagePath": "pages/simCard/simCard",
         "iconPath": "static/tabBar/simCard.png",
         "selectedIconPath": "static/tabBar/simCard1.png",
         "text": "手机卡"
-      },
-      {
-        "pagePath": "pages/heyueji/heyueji",
-        "iconPath": "static/tabBar/phone.png",
-        "selectedIconPath": "static/tabBar/phone1.png",
-        "text": "合约机"
       },
       {
         "pagePath": "pages/myPage/myPage",
