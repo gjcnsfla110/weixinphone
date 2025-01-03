@@ -11,14 +11,16 @@
 			"path" : "pages/simCard/simCard",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path" : "pages/myPage/myPage",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -52,13 +54,6 @@
 			{
 				"navigationBarTitleText" : "",
 				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path" : "pages/shopDetail/shopDetail",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
 			}
 		}
 	],

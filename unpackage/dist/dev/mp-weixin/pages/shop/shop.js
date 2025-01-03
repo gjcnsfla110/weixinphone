@@ -16,22 +16,13 @@ const Custom = () => "../../components/custom-nav-bar/customNav.js";
 const _sfc_main = {
   __name: "shop",
   setup(__props) {
-    const screenHeight = common_vendor.ref(utill_systemData.getNaviBar().screen());
-    const call = (number) => {
-      common_vendor.index.__f__("log", "at pages/shop/shop.vue:39", number);
-      if (!number) {
-        return;
-      }
-      common_vendor.index.makePhoneCall({
-        phoneNumber: number,
-        success() {
-          common_vendor.index.__f__("log", "at pages/shop/shop.vue:46", "다이얼 화면 열기 성공" + i);
-        },
-        fail(err) {
-          common_vendor.index.__f__("error", "at pages/shop/shop.vue:49", "다이얼 화면 열기 실패", err);
-        }
-      });
+    const cutturn = common_vendor.ref(0);
+    const cutturnCity = common_vendor.ref(1);
+    const cityActive = (cutturnId, cutturnCityId) => {
+      cutturn.value = cutturnId;
+      cutturnCity.value = cutturnCityId;
     };
+    const screenHeight = common_vendor.ref(utill_systemData.getNaviBar().screen());
     const data = [
       {
         id: 6,
@@ -124,35 +115,56 @@ const _sfc_main = {
         ]
       }
     ];
+    const callNumber = (number) => {
+      common_vendor.index.showModal({
+        title: "商店电话",
+        content: "确认直接拨通电话",
+        success: function(res) {
+          if (res.confirm) {
+            if (!number) {
+              return false;
+            }
+            common_vendor.index.makePhoneCall({
+              phoneNumber: number
+            });
+          } else if (res.cancel)
+            ;
+        }
+      });
+    };
     return (_ctx, _cache) => {
       return {
         a: common_vendor.f(data, (item, k0, i0) => {
           return {
-            a: common_vendor.f(item.child, (zone, k1, i1) => {
+            a: common_vendor.t(item.title),
+            b: item.id == cutturn.value ? 1 : "",
+            c: common_vendor.f(item.child, (zone, k1, i1) => {
               return {
-                a: common_vendor.t(zone.title)
+                a: common_vendor.t(zone.title),
+                b: item.id === cutturn.value && zone.id === cutturnCity.value ? 1 : "",
+                c: item.id === cutturn.value && zone.id === cutturnCity.value ? 1 : "",
+                d: common_vendor.o(($event) => cityActive(item.id, zone.id))
               };
             }),
-            b: "2a6aaf81-2-" + i0 + ",2a6aaf81-1",
-            c: common_vendor.p({
+            d: "2a6aaf81-2-" + i0 + ",2a6aaf81-1",
+            e: common_vendor.p({
               ["show-arrow"]: false,
               border: "false",
               ["show-animation"]: true,
-              title: item.title,
-              open: item.id == 6
+              open: item.id == cutturn.value
             })
           };
         }),
         b: common_vendor.p({
           accordion: true
         }),
-        c: common_vendor.f(10, (i2, k0, i0) => {
+        c: common_vendor.f(10, (i, k0, i0) => {
           return {};
         }),
         d: common_assets._imports_0,
         e: common_assets._imports_1,
         f: common_assets._imports_2,
-        g: common_vendor.o(call),
+        g: common_vendor.o(($event) => callNumber("01056786555")),
         h: screenHeight.value + "px"
       };
     };

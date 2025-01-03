@@ -3,8 +3,14 @@
 	<view class="shopContainer" :style="{height:screenHeight+'px'}">
 		<view class="shopLeft">
 			<uni-collapse accordion>
-				<uni-collapse-item :show-arrow="false" border="false" show-animation :title="item.title" v-for="item in data" :open="item.id == 6">
-					<view class="shopBt" v-for="zone in item.child">{{zone.title}}</view>
+				<uni-collapse-item :show-arrow="false" border="false" show-animation v-for="item in data" :open="item.id == cutturn">
+					<template v-slot:title>
+					        <view class="custom-title" :class="{'custom-title-active animate__pulse': item.id == cutturn}">{{item.title}}</view>
+					</template>
+					<view @click="cityActive(item.id,zone.id)" class="shopBt" v-for="zone in item.child">
+						<view class="shopBtText" :class="{'activeShopBt animate__pulse': item.id === cutturn && zone.id === cutturnCity }">{{zone.title}}</view>
+						<view :class="{'shopBtShow animate__slideInUp': item.id === cutturn && zone.id === cutturnCity}"></view>
+					</view>
 				</uni-collapse-item>
 			</uni-collapse>
 		</view>
@@ -20,7 +26,7 @@
 						 <text class="address">서울시 구로구 가리봉동123-3 3楼 301号 서울시 구로구 가리봉동123-3 </text>
 						 <view class="shopfooter">
 							<view class="bottomLeft"><image src='/static/weixin.png'></image><view class="weixin">xcl1224</view></view>
-							<view class="bottomRight" @click="call("5678")" ><image src='/static/phone_06.png'></image><view class="shopPhone">010-5678-6555</view></view>
+							<view hover-class="hoverPhone" class="bottomRight" @click="callNumber('01056786555')"><image src='/static/phone_06.png'></image><view class="shopPhone">010-5678-6555</view></view>
 						 </view>
 					 </view>					 
 				 </view>
@@ -33,23 +39,17 @@
 	import Custom from '@/components/custom-nav-bar/customNav.vue'
 	import {getNaviBar} from '@/utill/systemData.js'
 	import {ref} from 'vue'
-	const screenHeight = ref(getNaviBar().screen());
-	//가계번호 클릭하면 폰다이어리에 나타나기
-	const call = phoneNumber=>{
-		console.log(phoneNumber)
-		if (!phoneNumber) {	
-			return;
-		};
-		uni.makePhoneCall({
-			phoneNumber,
-			success() {
-			  console.log("다이얼 화면 열기 성공"+i);
-			},
-			fail(err) {
-			  console.error("다이얼 화면 열기 실패", err);
-			},
-		});
+	//클릭된 지역카테고리
+	const cutturn = ref(0)
+	//클릭된 도시
+	const cutturnCity = ref(1)
+	//도시를 클릭시 이벤트부분
+	const cityActive = (cutturnId,cutturnCityId)=>{
+		cutturn.value = cutturnId;
+		cutturnCity.value = cutturnCityId;
 	}
+	//아래부분 높이
+	const screenHeight = ref(getNaviBar().screen());
 	const data = [
 		{
 			id:6,
@@ -145,9 +145,51 @@
 			]
 		}
 	]
+	
+	//가계번호 클릭하면 폰다이어리에 나타나기
+	const callNumber = (number)=>{
+		uni.showModal({
+			title:"商店电话",
+			content:"确认直接拨通电话",
+			success:function(res){
+				if(res.confirm){
+					if(!number){
+						return false;
+					}
+					uni.makePhoneCall({
+					        phoneNumber : number,
+					});
+				}else if(res.cancel){
+					
+				}
+			}
+		})
+		
+	}
 </script>
 
 <style lang="scss" scoped>
+	.uni-collapse-item__title-box{
+		font-weight: bold;
+		color: #DA8C05;
+	}
+	.hoverPhone{
+		color: royalblue;
+		font-weight: bold;
+	}
+	.custom-title{
+		width: 100%;
+		height: 85rpx;
+		font-size: 26rpx;
+		font-weight: bold;
+		color: rgb(100,100,100);
+		padding-left: 20rpx;
+		line-height: 85rpx;
+	}
+	.custom-title-active{
+		color:rgb(199, 126, 0);
+		font-size: 29rpx;
+	}
 	.shopContainer{
 		width: 100%;
 		padding-top: 20rpx;
@@ -158,10 +200,31 @@
 			height: 100%;
 			.shopBt{
 				width: 100%;
-				height: 60rpx;
-				line-height: 60rpx;
-				text-align: center;
-				font-size: 26rpx;
+				height: 75rpx;
+				position: relative;			
+				.shopBtText{
+					width: 100%;
+					height: 75rpx;
+					line-height: 75rpx;
+					font-size: 23rpx;
+					text-align: center;
+					color: rgb(150, 150, 150);
+				}
+				.activeShopBt{
+					font-size: 26rpx;
+					font-weight: bold;
+					background-color: rgb(246, 246, 246);
+					color:rgb(199, 126, 0);
+				}
+				.shopBtShow{
+					width: 60%;
+					height: 5rpx; /* 굵은 줄의 두께 */
+					position: absolute;
+					bottom: 0; /* 텍스트 아래로 5px 간격 */
+					left: 20%;
+					background-color: #1296db; /* 줄의 기본 색상 */
+					border-radius: 10rpx;
+				}
 			}
 		}
 		.shopRight{
@@ -173,7 +236,7 @@
 				background-color: rgb(246, 246, 246);
 				display: grid;
 				grid-template-columns: repeat(1,1fr);
-				gap:20rpx;
+				gap:30rpx;
 				color: rgb(150, 150, 150);
 				.shopContent{
 					width: 100%;
@@ -215,7 +278,8 @@
 							.ShopDate{
 								display: inline-block;
 								font-size: 26rpx;
-								color: #DA8C05;
+								font-weight: bold;
+								color:rgb(218, 0, 109);;
 							}
 						}
 						.address{
