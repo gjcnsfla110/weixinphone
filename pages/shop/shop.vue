@@ -13,12 +13,16 @@
 				 <view class="shopContent" v-for="i in 10"> 
 					 <view class="shopImg">
 						 <image src="/images/testImg/shop.jpg" mode="aspectFill"></image>
+						 <view class="shopTitle">首尔-南九老店</view>
 					 </view>
 					 <view class="shopDetil">
-						 <view class="shopTitle">万达手机(九老店)</view>
-						 <view class="address">서울시구로구가리봉동123-3 3楼 301号</view>
 						 <view class="explanation"><view class="ShopDate">营业时间：</view>10:00-20:00</view>
-					 </view>
+						 <text class="address">서울시 구로구 가리봉동123-3 3楼 301号 서울시 구로구 가리봉동123-3 </text>
+						 <view class="shopfooter">
+							<view class="bottomLeft"><image src='/static/weixin.png'></image><view class="weixin">xcl1224</view></view>
+							<view class="bottomRight" @click="call("5678")" ><image src='/static/phone_06.png'></image><view class="shopPhone">010-5678-6555</view></view>
+						 </view>
+					 </view>					 
 				 </view>
 			 </view>
 		</scroll-view>
@@ -30,7 +34,22 @@
 	import {getNaviBar} from '@/utill/systemData.js'
 	import {ref} from 'vue'
 	const screenHeight = ref(getNaviBar().screen());
-	console.log(screenHeight.value)
+	//가계번호 클릭하면 폰다이어리에 나타나기
+	const call = phoneNumber=>{
+		console.log(phoneNumber)
+		if (!phoneNumber) {	
+			return;
+		};
+		uni.makePhoneCall({
+			phoneNumber,
+			success() {
+			  console.log("다이얼 화면 열기 성공"+i);
+			},
+			fail(err) {
+			  console.error("다이얼 화면 열기 실패", err);
+			},
+		});
+	}
 	const data = [
 		{
 			id:6,
@@ -155,50 +174,99 @@
 				display: grid;
 				grid-template-columns: repeat(1,1fr);
 				gap:20rpx;
+				color: rgb(150, 150, 150);
 				.shopContent{
 					width: 100%;
-					height: 460rpx;
+					height: 500rpx;
 					background-color: white;
 					border-radius: 15rpx;
 					.shopImg{
 						width: 100%;
+						position: relative;
 						image{
 							width: 100%;
-							height: 180rpx;
+							height: 220rpx;
 							border-top-right-radius: 15rpx;
 							border-top-left-radius: 15rpx;
+						}
+						.shopTitle{
+							position: absolute;
+							left: 20rpx;
+							top: 25rpx;
+							color: white;
+							background-color: rgb(0, 0, 0,0.7);
+							padding: 0 10rpx;
+							height: 45rpx;
+							font-size: 25rpx;
+							line-height: 45rpx;
+							border-radius: 15rpx;
 						}
 					}
 					.shopDetil{
 						padding:0 15rpx;
 						width: 100%;
-						.shopTitle{
-							width: 100%;
-							height: 60rpx;
-							margin-top: 5rpx;
-							text-align: center;
-							line-height: 80rpx;
-							font-size: 26rpx;
-							
-						}
+						height: 230rpx;
 						.explanation{
 							width: 100%;
-							height:50rpx ;
-							font-size: 26rpx;
-							line-height: 50rpx;
-							color: rgb(150,150, 150);
+							height:45rpx ;
+							font-size: 28rpx;
+							line-height: 45rpx;
+							margin-top: 15rpx;
 							.ShopDate{
 								display: inline-block;
-								font-size: 21rpx;
+								font-size: 26rpx;
 								color: #DA8C05;
 							}
 						}
 						.address{
-							height: 60rpx;
+							height: 50rpx;
 							width: 100%;
-							font-size: 22rpx;	
-							margin-top: 10rpx;
-							color: rgb(150, 150, 150);
+							font-size: 26rpx;	
+							margin-top: 15rpx;
+						}
+						.shopfooter{
+							width: 100%;
+							height: 120rpx;
+							margin-top: 15rpx;
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							justify-content: space-between;
+							border-top: 2rpx solid rgb(240, 240, 240);
+							.bottomLeft{
+								width: 50%;
+								height: 80rpx;
+								display: flex;
+								flex-direction: row;
+								image{
+									width: 70rpx;
+									height: 70rpx;
+									margin-top: 5rpx;
+								}
+								.weixin{
+									height: 80rpx;
+									line-height: 80rpx;
+									padding-left: 10rpx;
+									font-size: 26rpx;								
+								}
+							}
+							.bottomRight{
+								width: 50%;
+								height: 80rpx;
+								display: flex;
+								flex-direction: row;
+								image{
+									width: 60rpx;
+									height: 60rpx;
+									margin-top: 10rpx;
+								}
+								.shopPhone{
+									height: 80rpx;
+									line-height: 80rpx;
+									padding-left: 10rpx;
+									font-size: 26rpx;
+								}
+							}
 						}
 					}
 				}

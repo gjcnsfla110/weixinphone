@@ -17,7 +17,21 @@ const _sfc_main = {
   __name: "shop",
   setup(__props) {
     const screenHeight = common_vendor.ref(utill_systemData.getNaviBar().screen());
-    common_vendor.index.__f__("log", "at pages/shop/shop.vue:33", screenHeight.value);
+    const call = (number) => {
+      common_vendor.index.__f__("log", "at pages/shop/shop.vue:39", number);
+      if (!number) {
+        return;
+      }
+      common_vendor.index.makePhoneCall({
+        phoneNumber: number,
+        success() {
+          common_vendor.index.__f__("log", "at pages/shop/shop.vue:46", "다이얼 화면 열기 성공" + i);
+        },
+        fail(err) {
+          common_vendor.index.__f__("error", "at pages/shop/shop.vue:49", "다이얼 화면 열기 실패", err);
+        }
+      });
+    };
     const data = [
       {
         id: 6,
@@ -121,6 +135,7 @@ const _sfc_main = {
             }),
             b: "2a6aaf81-2-" + i0 + ",2a6aaf81-1",
             c: common_vendor.p({
+              ["show-arrow"]: false,
               border: "false",
               ["show-animation"]: true,
               title: item.title,
@@ -131,11 +146,14 @@ const _sfc_main = {
         b: common_vendor.p({
           accordion: true
         }),
-        c: common_vendor.f(10, (i, k0, i0) => {
+        c: common_vendor.f(10, (i2, k0, i0) => {
           return {};
         }),
         d: common_assets._imports_0,
-        e: screenHeight.value + "px"
+        e: common_assets._imports_1,
+        f: common_assets._imports_2,
+        g: common_vendor.o(call),
+        h: screenHeight.value + "px"
       };
     };
   }

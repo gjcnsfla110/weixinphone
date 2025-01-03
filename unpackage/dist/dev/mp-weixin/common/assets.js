@@ -1,5 +1,7 @@
 "use strict";
 const _imports_0$5 = "/assets/shop.9c40536b.jpg";
+const _imports_1$1 = "/static/weixin.png";
+const _imports_2$1 = "/static/phone_06.png";
 const _imports_0$4 = "/static/subMenu/iphoneT.png";
 const _imports_0$3 = "/static/subMenu/watch.jpg";
 const _imports_1 = "/assets/banner2.6cffe6da.jpg";
@@ -13,6 +15,8 @@ exports._imports_0$2 = _imports_0$3;
 exports._imports_0$3 = _imports_0$2;
 exports._imports_0$4 = _imports_0$1;
 exports._imports_0$5 = _imports_0;
-exports._imports_1 = _imports_1;
-exports._imports_2 = _imports_2;
+exports._imports_1 = _imports_1$1;
+exports._imports_1$1 = _imports_1;
+exports._imports_2 = _imports_2$1;
+exports._imports_2$1 = _imports_2;
 //# sourceMappingURL=../../.sourcemap/mp-weixin/common/assets.js.map
