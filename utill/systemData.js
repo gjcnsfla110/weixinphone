@@ -43,12 +43,19 @@ export function getNaviBar(){
 		else
 		return screenHeight - topHeight - 51
 	}
+	//커스텀네이비바에서 밑부분탭바가없을때 스크린 높이값
+	const noTabScreen = ()=>{
+		let {screenHeight} = uni.getSystemInfoSync();
+		let topHeight = custumHeiht();
+		return screenHeight - topHeight;
+	}
 	return{
 		statuBarHeight,
 		titleBarheight,
 		custumHeiht,
 		fillHeight,
-		screen
+		screen,
+		noTabScreen
 	};
 
 };

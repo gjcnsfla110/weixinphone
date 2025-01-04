@@ -6,7 +6,8 @@
     "pages/shop/shop",
     "pages/menu/menu",
     "pages/list/list",
-    "pages/oldList/oldList"
+    "pages/oldList/oldList",
+    "pages/detailPage/detailPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

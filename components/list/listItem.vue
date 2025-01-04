@@ -1,26 +1,30 @@
 <template>
-	<scroll-view  scroll-y>
-		<view class="listItem">
-			<view class="itemContent" v-for="i in 8">
-				<view class="itemTop">
-					<image src="/static/subMenu/watch.jpg" mode="scaleToFill"></image>
-				</view>
-				<view class="itemBottom">
-					<view class="itemBottomTitle"> 공간을 넘어가더라도 한줄로 표현하게 된다. 공백들을 하나로 합치며, 줄 바꿈은 <br>요소에서만 일어나게 된다. </view>
-					<view class="itemBottomPrice"></view>
-				</view>
-			</view>
+	<scroll-view  scroll-y :style="{height:screenHeight+'px'}" style="background-color: rgb(247, 247, 247);">
+		<view class="listItem">	
+				<view class="itemContent" v-for="i in 10">
+					<navigator url="/pages/detailPage/detailPage">
+						<view class="itemTop">
+							<image src="/static/subMenu/watch.jpg" mode="scaleToFill"></image>
+						</view>
+						<view class="itemBottom">
+							<view class="itemBottomTitle"> 공간을 넘어가더라도 한줄로 표현하게 된다. 공백들을 하나로 합치며, 줄 바꿈은 <br>요소에서만 일어나게 된다. </view>
+							<view class="itemBottomPrice"></view>
+						</view>
+					</navigator>
+				</view>	
 		</view>
 	</scroll-view>
 </template>
 
 <script setup>
+	import {getNaviBar} from '@/utill/systemData.js'
+	import {ref} from 'vue'
+	const screenHeight = getNaviBar().noTabScreen()-100;
 </script>
 
 <style lang="scss" scoped>
 	.listItem{
 		width: 100%;
-		background-color: rgb(247, 247, 247);
 		padding:25rpx 25rpx;
 		display:grid;
 		grid-template-columns: repeat(2,1fr);

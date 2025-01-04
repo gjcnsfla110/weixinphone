@@ -1,6 +1,6 @@
 <template>
 	<view class="layout">
-		<view class="navBar" :style="{height:custumH+'px'}">
+		<view class="navBar" :style="{height:custumH + 'px', backgroundColor:bgColor}">
 			<view class="statuBar" :style="{height:statuBarHeight()+'px'}"></view>
 			<view class="titleBar" :style="{height:titleBarheight()+'px'}">
 				<view @click="goBack" v-if="back" class="back"><uni-icons type="arrow-left" size="25"></uni-icons></view>
@@ -11,7 +11,7 @@
 			</view>
 			<slot></slot>
 		</view>
-		<view class="fill" :style="{height:custumH+'px'}"></view>
+		<view v-if="customFill" class="fill" :style="{height:custumH+'px'}"></view>
 	</view>
 </template>
 
@@ -35,6 +35,14 @@
 		topHeight:{
 			type:Number,
 			default:0
+		},
+		bgColor:{
+			type:String,
+			default:"white"
+		},
+		customFill:{
+			type:Boolean,
+			default:true,
 		}
 	})
 	const custumH = ref(custumHeiht()+props.topHeight);
@@ -53,7 +61,6 @@
 .layout{
 	.navBar{
 		position: fixed;
-		background-color: white;
 		top:0;
 		left:0;
 		width: 100vw;

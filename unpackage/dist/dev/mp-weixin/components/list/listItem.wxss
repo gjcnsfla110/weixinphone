@@ -25,7 +25,6 @@
 /* 文章场景相关 */
 .listItem.data-v-7e459c72 {
   width: 100%;
-  background-color: #f7f7f7;
   padding: 25rpx 25rpx;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

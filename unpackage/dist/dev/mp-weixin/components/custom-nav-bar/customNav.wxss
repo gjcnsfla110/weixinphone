@@ -25,7 +25,6 @@
 /* 文章场景相关 */
 .layout .navBar {
   position: fixed;
-  background-color: white;
   top: 0;
   left: 0;
   width: 100vw;

@@ -23,6 +23,14 @@ const _sfc_main = {
     topHeight: {
       type: Number,
       default: 0
+    },
+    bgColor: {
+      type: String,
+      default: "white"
+    },
+    customFill: {
+      type: Boolean,
+      default: true
     }
   },
   setup(__props) {
@@ -55,8 +63,11 @@ const _sfc_main = {
         e: common_vendor.t(__props.title),
         f: common_vendor.unref(titleBarheight)() + "px",
         g: custumH.value + "px",
-        h: custumH.value + "px"
-      });
+        h: __props.bgColor,
+        i: __props.customFill
+      }, __props.customFill ? {
+        j: custumH.value + "px"
+      } : {});
     };
   }
 };

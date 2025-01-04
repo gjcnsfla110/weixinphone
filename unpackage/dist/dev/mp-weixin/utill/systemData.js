@@ -17,12 +17,18 @@ function getNaviBar() {
     let topHeight = custumHeiht();
     return screenHeight - topHeight - 82;
   };
+  const noTabScreen = () => {
+    let { screenHeight } = common_vendor.index.getSystemInfoSync();
+    let topHeight = custumHeiht();
+    return screenHeight - topHeight;
+  };
   return {
     statuBarHeight,
     titleBarheight,
     custumHeiht,
     fillHeight,
-    screen
+    screen,
+    noTabScreen
   };
 }
 exports.getNaviBar = getNaviBar;
