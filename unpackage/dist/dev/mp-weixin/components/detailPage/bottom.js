@@ -1,13 +1,22 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 if (!Array) {
-  const _component_uni_goods_nav = common_vendor.resolveComponent("uni-goods-nav");
-  _component_uni_goods_nav();
+  const _easycom_uni_goods_nav2 = common_vendor.resolveComponent("uni-goods-nav");
+  const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
+  const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
+  (_easycom_uni_goods_nav2 + _easycom_uni_icons2 + _easycom_uni_popup2)();
+}
+const _easycom_uni_goods_nav = () => "../../uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav.js";
+const _easycom_uni_icons = () => "../../uni_modules/uni-icons/components/uni-icons/uni-icons.js";
+const _easycom_uni_popup = () => "../../uni_modules/uni-popup/components/uni-popup/uni-popup.js";
+if (!Math) {
+  (_easycom_uni_goods_nav + _easycom_uni_icons + _easycom_uni_popup)();
 }
 const _sfc_main = {
   __name: "bottom",
   setup(__props) {
-    const popup = common_vendor.ref(null);
+    const popupCart = common_vendor.ref(null);
+    const popupBuy = common_vendor.ref(null);
     const options = common_vendor.ref([{
       icon: "headphones",
       text: "客服"
@@ -31,11 +40,23 @@ const _sfc_main = {
         color: "#fff"
       }
     ];
-    const optionClick = () => {
+    const popupClose = (i) => {
+      common_vendor.index.__f__("log", "at components/detailPage/bottom.vue:53", i);
+      if (i === 1) {
+        popupCart.value.close();
+      } else if (i === 2) {
+        popupBuy.value.close();
+      }
+    };
+    const optionClick = (e) => {
       options.value[1].icon = "heart-filled";
     };
-    const buttonGroupClick = () => {
-      popup.value.open();
+    const buttonGroupClick = (e) => {
+      if (e.index === 0) {
+        popupCart.value.open();
+      } else {
+        popupBuy.value.open();
+      }
     };
     return (_ctx, _cache) => {
       return {
@@ -45,6 +66,28 @@ const _sfc_main = {
           options: options.value,
           fill: true,
           ["button-group"]: buttonGroup
+        }),
+        d: common_vendor.p({
+          type: "closeempty",
+          size: "25"
+        }),
+        e: common_vendor.o(($event) => popupClose(1)),
+        f: common_vendor.sr(popupCart, "af0ac201-1", {
+          "k": "popupCart"
+        }),
+        g: common_vendor.p({
+          type: "bottom"
+        }),
+        h: common_vendor.p({
+          type: "closeempty",
+          size: "25"
+        }),
+        i: common_vendor.o(($event) => popupClose(2)),
+        j: common_vendor.sr(popupBuy, "af0ac201-3", {
+          "k": "popupBuy"
+        }),
+        k: common_vendor.p({
+          type: "bottom"
         })
       };
     };

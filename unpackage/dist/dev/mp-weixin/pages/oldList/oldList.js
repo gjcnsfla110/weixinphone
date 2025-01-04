@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const utill_systemData = require("../../utill/systemData.js");
 if (!Math) {
   (TopNav + OldList)();
 }
@@ -8,6 +9,7 @@ const OldList = () => "../../components/item/itemList.js";
 const _sfc_main = {
   __name: "oldList",
   setup(__props) {
+    const screenHeight = utill_systemData.getNaviBar().noTabScreen() - 100;
     const data = common_vendor.ref([
       {
         src: "/images/testImg/ss1.jpg"
@@ -41,7 +43,8 @@ const _sfc_main = {
           listColor: "rgb(248, 248, 248)",
           itemColor: "white",
           padding: "35rpx 0"
-        })
+        }),
+        b: screenHeight + "px"
       };
     };
   }

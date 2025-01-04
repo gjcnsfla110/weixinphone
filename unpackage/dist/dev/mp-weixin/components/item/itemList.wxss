@@ -25,6 +25,7 @@
 /* 文章场景相关 */
 .gr4content.data-v-dcdb0659 {
   width: 100%;
+  height: 100%;
 }
 .gr4content .gr4list.data-v-dcdb0659 {
   padding: 0 25rpx;

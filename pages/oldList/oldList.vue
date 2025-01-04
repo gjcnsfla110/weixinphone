@@ -1,7 +1,7 @@
 <template>
 	<view class="oldListContainer">
 		<TopNav></TopNav>
-		<scroll-view scroll-y class="OldlistContainer">
+		<scroll-view scroll-y class="ershouList" :style="{height:screenHeight+'px'}">
 			<OldList :data="data" listColor="rgb(248, 248, 248)" itemColor="white" padding="35rpx 0"></OldList>
 		</scroll-view>	
 	</view>
@@ -11,6 +11,8 @@
 import TopNav from '@/components/list/listTopNeb.vue'
 import OldList from '@/components/item/itemList.vue'
 import {ref} from 'vue'
+import {getNaviBar} from '@/utill/systemData.js'
+const screenHeight = getNaviBar().noTabScreen()-100;
 const data = ref([
 	{
 		src:"/images/testImg/ss1.jpg"
@@ -42,7 +44,7 @@ const data = ref([
 <style lang="scss" scoped>
 	.oldListContainer{
 		width: 100%;
-		.OldlistContainer{
+		.ershouList{
 			width: 100%;
 		}
 	}

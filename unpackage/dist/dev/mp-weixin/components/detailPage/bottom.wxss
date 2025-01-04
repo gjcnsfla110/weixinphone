@@ -35,5 +35,11 @@
   height: 1150rpx;
   border-top-right-radius: 55rpx;
   border-top-left-radius: 55rpx;
-  background-color: #eee;
+  background-color: white;
+  position: relative;
+}
+.popupView .popupCloseIcon.data-v-af0ac201 {
+  position: absolute;
+  top: 35rpx;
+  right: 35rpx;
 }

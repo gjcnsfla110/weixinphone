@@ -7,8 +7,8 @@
 </template>
 <script setup>
 import CustomNav from '@/components/custom-nav-bar/customNav.vue'
-import SwiperImg from '@/components/detailPage/swiperImg.vue'
-import Buttom from '@/components/detailPage/bottom.vue'
+import SwiperImg from '@/components/listDetail/swiperImg.vue'
+import Buttom from '@/components/listDetail/bottom.vue'
 </script>
 
 <style lang="scss">

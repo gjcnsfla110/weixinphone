@@ -2,7 +2,7 @@
 	<scroll-view  scroll-y :style="{height:screenHeight+'px'}" style="background-color: rgb(247, 247, 247);">
 		<view class="listItem">	
 				<view class="itemContent" v-for="i in 10">
-					<navigator url="/pages/detailPage/detailPage">
+					<navigator url="/pages/listDetail/listDetail" hover-class="none">
 						<view class="itemTop">
 							<image src="/static/subMenu/watch.jpg" mode="scaleToFill"></image>
 						</view>

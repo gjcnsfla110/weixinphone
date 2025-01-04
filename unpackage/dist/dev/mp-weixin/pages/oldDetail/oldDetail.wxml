@@ -1,0 +1,1 @@
+<view class="content"><custom-nav wx:if="{{a}}" u-i="65daaa72-0" bind:__l="__l" u-p="{{a}}"></custom-nav><swiper-img u-i="65daaa72-1" bind:__l="__l"></swiper-img></view>

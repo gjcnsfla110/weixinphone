@@ -57,7 +57,15 @@
 			}
 		},
 		{
-			"path" : "pages/detailPage/detailPage",
+			"path" : "pages/listDetail/listDetail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/oldDetail/oldDetail",
 			"style" : 
 			{
 				"navigationBarTitleText" : "",

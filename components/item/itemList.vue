@@ -2,6 +2,7 @@
 	<view class="gr4content" :style="{padding:padding,backgroundColor:listColor}">
 			<view class="gr4list">
 				<view class="gr4Item"  :style="{backgroundColor:itemColor}" v-for="item in data">
+					<navigator url="/pages/oldDetail/oldDetail" hover-class="none">
 					<view class="gr4Top">
 						<image :src="item.src" mode="aspectFill"></image>
 					</view>
@@ -14,6 +15,7 @@
 						</view>
 						<view class="gr4BtPrice">现价: <view class="gr4BtPriceNumber">860,600</view>韩元</view>
 					</view>
+					</navigator>
 				</view>
 			</view>
 	</view>
@@ -41,6 +43,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 	.gr4content{
 		width: 100%;
+		height: 100%;
 			.gr4list{
 				padding: 0 25rpx;
 				display: grid;

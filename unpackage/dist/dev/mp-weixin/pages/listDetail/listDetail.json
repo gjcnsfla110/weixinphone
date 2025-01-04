@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "custom-nav": "../../components/custom-nav-bar/customNav",
+    "swiper-img": "../../components/detailPage/swiperImg",
+    "buttom": "../../components/detailPage/bottom"
+  }
+}
