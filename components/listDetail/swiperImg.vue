@@ -1,6 +1,6 @@
 <template>
-	<swiper class="pageSwiper">
-		<swiper-item class="swiperItem" v-for="i in 10"> 
+	<swiper class="pageSwiper" :circular="true">
+		<swiper-item class="swiperItem" v-for="i in 10" > 
 			<view>
 				{{i}}
 			</view>
