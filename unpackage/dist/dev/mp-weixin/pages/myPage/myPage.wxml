@@ -1,1 +1,1 @@
-<view></view>
+<view class="myPageContent"><custom-nav u-i="7e4825a0-0" bind:__l="__l"></custom-nav><top u-i="7e4825a0-1" bind:__l="__l"></top><shopping u-i="7e4825a0-2" bind:__l="__l"></shopping><other u-i="7e4825a0-3" bind:__l="__l"></other></view>

@@ -4,8 +4,8 @@ if (!Math) {
   (CustomNav + SwiperImg + Buttom)();
 }
 const CustomNav = () => "../../components/custom-nav-bar/customNav.js";
-const SwiperImg = () => "../../components/detailPage/swiperImg.js";
-const Buttom = () => "../../components/detailPage/bottom.js";
+const SwiperImg = () => "../../components/listDetail/swiperImg.js";
+const Buttom = () => "../../components/listDetail/bottom.js";
 const _sfc_main = {
   __name: "listDetail",
   setup(__props) {

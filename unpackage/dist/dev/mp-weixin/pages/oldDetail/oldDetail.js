@@ -1,10 +1,11 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 if (!Math) {
-  (CustomNav + SwiperImg)();
+  (CustomNav + SwiperImg + OldBottom)();
 }
 const CustomNav = () => "../../components/custom-nav-bar/customNav.js";
-const SwiperImg = () => "../../components/detailPage/swiperImg.js";
+const SwiperImg = () => "../../components/listDetail/swiperImg.js";
+const OldBottom = () => "../../components/oldDetail/bottom.js";
 const _sfc_main = {
   __name: "oldDetail",
   setup(__props) {

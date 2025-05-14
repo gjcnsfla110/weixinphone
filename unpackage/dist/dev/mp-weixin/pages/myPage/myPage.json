@@ -1,5 +1,10 @@
 {
   "navigationBarTitleText": "",
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-nav": "../../components/custom-nav-bar/customNav",
+    "top": "../../components/myPage/top",
+    "shopping": "../../components/myPage/shoppingHistory",
+    "other": "../../components/myPage/other"
+  }
 }

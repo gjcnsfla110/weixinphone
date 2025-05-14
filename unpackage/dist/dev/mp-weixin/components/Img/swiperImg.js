@@ -13,7 +13,7 @@ const _sfc_main = {
         a: common_vendor.f(5, (item, k0, i0) => {
           return {};
         }),
-        b: common_assets._imports_0$3,
+        b: common_assets._imports_0$5,
         c: common_vendor.p({
           color: "white",
           ["margin-top"]: "0"

@@ -17,10 +17,10 @@
 				</view>
 			</view>
 			<view class="hotItem">
-				<HotItem></HotItem>
+				<itemNew :margin="5" left="新品发布" right="热销商品"></itemNew>
 			</view>
 			<view class="hotPeijian">
-				<HotPeijian></HotPeijian>
+				<HotPeijian left="手机配件" right="爆款商品"></HotPeijian>
 			</view>
 			<view class="hotNew">
 				<HotNew></HotNew>
@@ -33,9 +33,10 @@
 
 <script setup>
 	import { ref } from 'vue';
-	import HotItem from '@/components/gridItem/gridItem1.vue';
+	import itemNew from '@/components/item/itemNew.vue';
 	import HotPeijian from "@/components/item/itemScrollView.vue";
 	import HotNew from "@/components/item/itemContentList.vue";
+	import ItemTitle from '../../item/itemTitle.vue';
 	const banners = ref([ 
 		{
 			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
@@ -129,7 +130,7 @@
 	/*小菜单css*/
 	.subMenu{
 		display: grid;
-		grid-template-columns: repeat(5,1fr);
+		grid-template-columns: repeat(4,1fr);
 		gap: 10rpx;
 		width: 100vw;
 		margin-top:30rpx;

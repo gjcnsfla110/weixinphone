@@ -18,7 +18,7 @@ const _sfc_main = {
         a: common_vendor.f(4, (item, k0, i0) => {
           return {};
         }),
-        b: common_assets._imports_0$1,
+        b: common_assets._imports_0$3,
         c: common_vendor.p({
           color: __props.color
         })

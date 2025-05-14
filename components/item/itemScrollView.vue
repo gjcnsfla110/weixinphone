@@ -1,5 +1,6 @@
 <template>
-	<CardPage>
+	<itemTitle :left="left" :right="right" :more="more"></itemTitle>
+	<CardPage :marginTop="margin">
 		<scroll-view class="scrollX" scroll-x enableFlex>
 			<view v-for="item in datelist" class="scrollXlist">				
 					<view class="gr2title">{{item.title}}</view>
@@ -15,7 +16,28 @@
 
 <script setup>
 import CardPage from "@/components/cardPage/cardPage.vue"
+import itemTitle from "./itemTitle.vue";
 import {ref} from 'vue'
+import { defineProps } from "vue";
+const props = defineProps({
+	margin:{
+		type:String,
+		default:'0rpx'
+	},
+	left:{
+		type:String,
+		default:""
+	},
+	right:{
+		type:String,
+		default:""
+	},
+	more:{
+		type:Boolean,
+		default:false
+	}
+})
+
 const datelist = ref([
 	{
 		title : "아이폰손목시계 아이폰손목시계 아이폰손목시계 아이폰손목시계",

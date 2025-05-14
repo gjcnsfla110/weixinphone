@@ -1,0 +1,1 @@
+<view class="goods-carts data-v-7826bcef"><uni-goods-nav wx:if="{{c}}" class="data-v-7826bcef" bindclick="{{a}}" bindbuttonClick="{{b}}" u-i="7826bcef-0" bind:__l="__l" u-p="{{c}}"/></view><uni-popup wx:if="{{e}}" class="r data-v-7826bcef" u-s="{{['d']}}" u-r="popup" u-i="7826bcef-1" bind:__l="__l" u-p="{{e}}"><view class="popupBuy data-v-7826bcef"></view></uni-popup>

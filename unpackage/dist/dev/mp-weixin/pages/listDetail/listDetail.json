@@ -3,7 +3,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "custom-nav": "../../components/custom-nav-bar/customNav",
-    "swiper-img": "../../components/detailPage/swiperImg",
-    "buttom": "../../components/detailPage/bottom"
+    "swiper-img": "../../components/listDetail/swiperImg",
+    "buttom": "../../components/listDetail/bottom"
   }
 }

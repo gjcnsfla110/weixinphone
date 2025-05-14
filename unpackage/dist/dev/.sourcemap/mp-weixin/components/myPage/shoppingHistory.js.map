@@ -1,0 +1,1 @@
+{"version":3,"file":"shoppingHistory.js","sources":["/Users/Coding/uniapp/weixinphone/components/myPage/shoppingHistory.vue?type=component"],"sourcesContent":["import Component from '/Users/Coding/uniapp/weixinphone/components/myPage/shoppingHistory.vue'\nwx.createComponent(Component)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;AACA,GAAG,gBAAgB,SAAS;"}
