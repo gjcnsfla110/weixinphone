@@ -97,9 +97,9 @@
 			},
 			{
 				"pagePath": "pages/shop/shop",
-				"iconPath": "static/tabBar/home.png",
-				"selectedIconPath": "static/tabBar/home1.png",
-				"text": "线下体验店"
+				"iconPath": "/static/tabBar/phone.png",
+				"selectedIconPath": "/static/tabBar/phone1.png",
+				"text": "合约手机"
 			},
 			{
 				"pagePath": "pages/simCard/simCard",
