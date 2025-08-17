@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@dcloudio/uni-ui": "^1.5.7",
-    "pinia": "^2.3.0"
+    "pinia": "^2.3.0",
+    "uni-ajax": "^2.6.0"
   }
 }

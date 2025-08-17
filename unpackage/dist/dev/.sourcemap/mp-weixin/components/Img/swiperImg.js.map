@@ -1,1 +1,0 @@
-{"version":3,"file":"swiperImg.js","sources":["/Users/Coding/uniapp/weixinphone/components/Img/swiperImg.vue?type=component"],"sourcesContent":["import Component from '/Users/Coding/uniapp/weixinphone/components/Img/swiperImg.vue'\nwx.createComponent(Component)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,gBAAgB,SAAS;"}

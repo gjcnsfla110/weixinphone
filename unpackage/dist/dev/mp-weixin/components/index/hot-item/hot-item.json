@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "hot-item": "../../gridItem/gridItem1",
-    "hot-peijian": "../../item/itemScrollView",
-    "hot-new": "../../item/itemContentList"
-  }
-}

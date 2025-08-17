@@ -1,1 +1,0 @@
-{"version":3,"file":"shopDetail.js","sources":["pages/shopDetail/shopDetail.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/Coding/uniapp/weixinphone/pages/shopDetail/shopDetail.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;AACA,GAAG,WAAW,eAAe;"}

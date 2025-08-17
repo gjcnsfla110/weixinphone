@@ -1,1 +1,0 @@
-{"version":3,"file":"listDetail.js","sources":["pages/listDetail/listDetail.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/Coding/uniapp/weixinphone/pages/listDetail/listDetail.vue'\nwx.createPage(MiniProgramPage)"],"names":["MiniProgramPage"],"mappings":";;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAWA,SAAe;"}

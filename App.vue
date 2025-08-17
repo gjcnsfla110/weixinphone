@@ -1,7 +1,13 @@
 <script>
+	import { useMainStores } from './stores/mainData';
 	export default {
-		onLaunch: function() {
-			console.log('App Launch')
+		async onLaunch(){
+			 const mainStores = useMainStores();
+			 try{
+				 await mainStores.lodingMain();
+			 }catch(error){
+				 console.error('Error in onLaunch:', error);
+			 }	 
 		},
 		onShow: function() {
 			console.log('App Show')

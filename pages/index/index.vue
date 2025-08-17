@@ -20,16 +20,16 @@
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item1" id="iphone">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="iphoneScrolltolower">
-			<iphoneItem :height = "swiperHeight">
-				
-			</iphoneItem>
+				<iphoneItem :height = "swiperHeight">
+					
+				</iphoneItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item2" id="samsung">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="samsungScrolltolower">
-			<samsungItem :height = "swiperHeight">
-				
-			</samsungItem>
+				<samsungItem :height = "swiperHeight">
+					
+				</samsungItem>
 			</scroll-view>
 		</swiper-item>
 	</swiper>
@@ -37,6 +37,7 @@
 
 <script setup>
 import {ref } from "vue";
+import { serviceGet } from "@/utill/request";
 import { getNaviBar } from "@/utill/systemData.js";
 import customNavBar from "@/components/custom-nav-bar/custom-nav-bar.vue";
 import hotItem from "@/components/index/hot-item/hot-item.vue";

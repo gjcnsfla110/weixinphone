@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sources":["pages/index/index.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/Coding/uniapp/weixinphone/pages/index/index.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}

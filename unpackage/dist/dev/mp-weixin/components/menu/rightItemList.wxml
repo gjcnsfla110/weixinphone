@@ -1,1 +1,0 @@
-<navigator class="data-v-5f145c39" url="/pages/list/list"><view class="itemListContainer data-v-5f145c39"><view wx:for="{{a}}" wx:for-item="i" class="item data-v-5f145c39"><view class="itemImg data-v-5f145c39"><image class="data-v-5f145c39" src="{{b}}" mode="scaleToFill"></image></view><view class="itemBttom data-v-5f145c39"> 苹果15pro Max </view></view></view></navigator>

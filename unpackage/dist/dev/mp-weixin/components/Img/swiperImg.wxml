@@ -1,1 +1,0 @@
-<card wx:if="{{c}}" class="data-v-026b385a" u-s="{{['d']}}" u-i="026b385a-0" bind:__l="__l" u-p="{{c}}"><swiper class="imgSwiper data-v-026b385a" indicator-dots autoplay><swiper-item wx:for="{{a}}" wx:for-item="item" class="imgSwiperItem data-v-026b385a"><image class="data-v-026b385a" src="{{b}}" mode="aspectFill"></image></swiper-item></swiper></card>

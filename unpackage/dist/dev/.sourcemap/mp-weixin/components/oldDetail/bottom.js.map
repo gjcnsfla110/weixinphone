@@ -1,1 +1,0 @@
-{"version":3,"file":"bottom.js","sources":["/Users/Coding/uniapp/weixinphone/components/oldDetail/bottom.vue?type=component"],"sourcesContent":["import Component from '/Users/Coding/uniapp/weixinphone/components/oldDetail/bottom.vue'\nwx.createComponent(Component)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,gBAAgB,SAAS;"}

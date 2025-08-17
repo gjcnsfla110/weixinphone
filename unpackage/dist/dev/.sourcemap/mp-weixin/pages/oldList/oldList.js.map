@@ -1,1 +1,0 @@
-{"version":3,"file":"oldList.js","sources":["pages/oldList/oldList.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/Coding/uniapp/weixinphone/pages/oldList/oldList.vue'\nwx.createPage(MiniProgramPage)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAW,eAAe;"}

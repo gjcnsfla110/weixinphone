@@ -1,1 +1,0 @@
-{"version":3,"file":"rightTopImg.js","sources":["/Users/Coding/uniapp/weixinphone/components/menu/rightTopImg.vue?type=component"],"sourcesContent":["import Component from '/Users/Coding/uniapp/weixinphone/components/menu/rightTopImg.vue'\nwx.createComponent(Component)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,gBAAgB,SAAS;"}

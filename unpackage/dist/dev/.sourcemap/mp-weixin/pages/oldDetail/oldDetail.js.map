@@ -1,1 +1,0 @@
-{"version":3,"file":"oldDetail.js","sources":["pages/oldDetail/oldDetail.vue?type=page"],"sourcesContent":["import MiniProgramPage from '/Users/Coding/uniapp/weixinphone/pages/oldDetail/oldDetail.vue'\nwx.createPage(MiniProgramPage)"],"names":["MiniProgramPage"],"mappings":";;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,WAAWA,SAAe;"}

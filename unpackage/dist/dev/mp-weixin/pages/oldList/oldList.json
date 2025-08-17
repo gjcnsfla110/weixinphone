@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "top-nav": "../../components/list/listTopNeb",
-    "old-list": "../../components/item/itemList"
-  }
-}
