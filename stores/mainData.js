@@ -13,7 +13,6 @@ export const useMainStores = defineStore('mainData',{
 	actions:{
 		async lodingMain(){
 			const res = await serviceGet('app/index/main');
-			console.log(res);
 			//this.main = res.main;
 			//this.iphone =res.iphone;
 			//this.samsung =res.samsung;

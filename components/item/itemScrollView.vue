@@ -1,5 +1,4 @@
 <template>
-	<itemTitle :left="left" :right="right" :more="more"></itemTitle>
 	<CardPage :marginTop="margin">
 		<scroll-view class="scrollX" scroll-x enableFlex>
 			<view v-for="item in datelist" class="scrollXlist">				

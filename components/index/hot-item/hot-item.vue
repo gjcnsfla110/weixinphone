@@ -1,15 +1,8 @@
 <template>	
 		<view class="swiper-content">
-			<view class="hotBanner">
-				<swiper class="hotBannerSwiper" indicator-dots  catchtouchmove="true"  interval="5000" duration="2000"
-				 autoplay circular indicator-color="rgba(0, 0, 0, 0.2)" indicator-active-color="#ffffff">
-					<swiper-item v-for="item in banners" class="hotBannerSwiperitem">
-						<view class="hotBannerSwiperitemImg">
-								<image class="bannerImg" :src="item.src" mode="aspectFill"></image>
-						</view>
-					</swiper-item>
-				</swiper>
-			</view>
+			<view>
+				<swiperBanner></swiperBanner>
+			</view>		
 			<view class="subMenu">
 				<view v-for="item in subMenu" class="subMenuItem">
 					<image class="subMenuImg" :src="item.src"></image>
@@ -25,9 +18,6 @@
 			<view class="hotNew">
 				<HotNew></HotNew>
 			</view>
-			<view class="hotUsed">
-
-			</view>
 		</view>
 </template>
 
@@ -37,23 +27,7 @@
 	import HotPeijian from "@/components/item/itemScrollView.vue";
 	import HotNew from "@/components/item/itemContentList.vue";
 	import ItemTitle from '../../item/itemTitle.vue';
-	const banners = ref([ 
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-	]);
+	import swiperBanner from '@/components/Img/swiperBanner.vue';
 	const subMenu = ref([
 		{
 			src:"/static/subMenu/hotMenu.png",
@@ -104,28 +78,6 @@
 	.swiper-content{
 		margin-top: 3rpx;
 		width: 100vw;
-		.hotBanner{
-			width: 100vw;
-			height: 300rpx;
-			.hotBannerSwiper{
-				width: 100vw;
-				height: 300rpx;
-				.hotBannerSwiperitem{
-					height: 100%;
-					width: 100%;
-					padding: 0 25rpx;
-					.hotBannerSwiperitemImg{
-						height: 300rpx;
-						width: 100%;					
-						.bannerImg{
-							height: 300rpx;
-							width: 100%;
-							border-radius: 18rpx;
-						}
-					}
-				}
-			}
-		}
 	}
 	/*小菜单css*/
 	.subMenu{

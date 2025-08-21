@@ -11,7 +11,7 @@
 			"path" : "pages/simCard/simCard",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "手机卡",
 				"navigationStyle": "custom"
 			}
 		},
@@ -19,7 +19,7 @@
 			"path" : "pages/myPage/myPage",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "我的页面",
 				"navigationStyle": "custom"
 			}
 		},

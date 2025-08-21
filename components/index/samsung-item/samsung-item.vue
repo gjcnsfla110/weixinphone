@@ -11,7 +11,7 @@
 	<Title left="S24系列" right="晓龙8gn3芯片"></Title>
 	<ContentTwo></ContentTwo>
 	<ContentList color="rgb(247,247,247)"></ContentList>
-	<OneImg src="/images/testImg/bn3.jpg"></OneImg>
+	<OneImg src="https://cdn.seoulfn.com/news/photo/202507/600386_400223_1018.jpeg"></OneImg>
 	<Title left="A系列" right="待机神器"></Title>
 	<ContentOne></ContentOne>
 	<ContentList color="black"></ContentList>
