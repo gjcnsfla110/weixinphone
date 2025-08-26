@@ -2,74 +2,39 @@
 		<view class="swiper-content">
 			<view>
 				<swiperBanner></swiperBanner>
-			</view>		
-			<view class="subMenu">
-				<view v-for="item in subMenu" class="subMenuItem">
-					<image class="subMenuImg" :src="item.src"></image>
-					<view class="subMenuText">{{item.text}}</view>
+			</view>	
+			<LoadingView>
+				<view class="subMenu">
+					<view v-for="item in subMenu" class="subMenuItem">
+						<image class="subMenuImg" :src="item.img"></image>
+						<view class="subMenuText">{{item.name}}</view>
+					</view>
 				</view>
-			</view>
-			<view class="hotItem">
-				<itemNew :margin="5" left="新品发布" right="热销商品"></itemNew>
-			</view>
-			<view class="hotPeijian">
-				<HotPeijian left="手机配件" right="爆款商品"></HotPeijian>
-			</view>
-			<view class="hotNew">
-				<HotNew></HotNew>
-			</view>
+				<view class="hotItem">
+					<itemNew :margin="5" left="新品发布" right="热销商品"></itemNew>
+				</view>
+				<view class="hotPeijian">
+					<HotPeijian left="手机配件" right="爆款商品"></HotPeijian>
+				</view>
+				<view class="hotNew">
+					<HotNew></HotNew>
+				</view>
+			</LoadingView>
 		</view>
 </template>
 
 <script setup>
 	import { ref } from 'vue';
+	import LoadingView from '@/utill/LoadingView.vue'
 	import itemNew from '@/components/item/itemNew.vue';
 	import HotPeijian from "@/components/item/itemScrollView.vue";
 	import HotNew from "@/components/item/itemContentList.vue";
 	import ItemTitle from '../../item/itemTitle.vue';
 	import swiperBanner from '@/components/Img/swiperBanner.vue';
-	const subMenu = ref([
-		{
-			src:"/static/subMenu/hotMenu.png",
-			text:"热门机型"
-		},
-		{
-			src:"/static/subMenu/iphone.png",
-			text:"苹果手机"
-		},
-		{
-			src:"/static/subMenu/samsung.png",
-			text:"三星手机"
-		},
-		{
-			src:"/static/subMenu/iphone.png",
-			text:"二手"
-		},
-		{
-			src:"/static/subMenu/samsung.png",
-			text:"二手"
-		},
-		{
-			src:"/static/subMenu/heyue.jpg",
-			text:"合约机"
-		},
-		{
-			src:"/static/subMenu/usim.png",
-			text:"电话卡"
-		},
-		{
-			src:"/static/subMenu/watch.jpg",
-			text:"手机配件"
-		},
-		{
-			src:"/static/subMenu/ipad.jpg",
-			text:"苹果Ipad"
-		},
-		{
-			src:"/static/subMenu/sPad.jpg",
-			text:"三星Pad"
-		}
-	]);
+	import {useMainStores} from '../../../stores/mainData';
+	const mainStores = useMainStores();
+	const subMenu = mainStores.subMenu;
+	console.log(mainStores.subMenu);
 	
 </script>
 

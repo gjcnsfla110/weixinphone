@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/simCard/simCard",
+    "pages/myPage/myPage",
+    "pages/shop/shop",
+    "pages/menu/menu",
+    "pages/list/list",
+    "pages/oldList/oldList",
+    "pages/listDetail/listDetail",
+    "pages/oldDetail/oldDetail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabBar/main.png",
+        "selectedIconPath": "static/tabBar/main1.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/menu/menu",
+        "iconPath": "static/tabBar/menu.png",
+        "selectedIconPath": "static/tabBar/menu1.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "iconPath": "/static/tabBar/phone.png",
+        "selectedIconPath": "/static/tabBar/phone1.png",
+        "text": "合约手机"
+      },
+      {
+        "pagePath": "pages/simCard/simCard",
+        "iconPath": "static/tabBar/simCard.png",
+        "selectedIconPath": "static/tabBar/simCard1.png",
+        "text": "手机卡"
+      },
+      {
+        "pagePath": "pages/myPage/myPage",
+        "iconPath": "static/tabBar/me.png",
+        "selectedIconPath": "static/tabBar/me1.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

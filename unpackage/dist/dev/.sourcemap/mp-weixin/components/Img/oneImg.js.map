@@ -1,0 +1,1 @@
+{"version":3,"file":"oneImg.js","sources":["/Users/Coding/uniapp/weixinphone/components/Img/oneImg.vue?type=component"],"sourcesContent":["import Component from '/Users/Coding/uniapp/weixinphone/components/Img/oneImg.vue'\nwx.createComponent(Component)"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;AACA,GAAG,gBAAgB,SAAS;"}

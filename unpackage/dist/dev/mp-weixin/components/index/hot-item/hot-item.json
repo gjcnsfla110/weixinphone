@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "loading-view": "../../../utill/LoadingView",
+    "item-new": "../../item/itemNew",
+    "hot-peijian": "../../item/itemScrollView",
+    "hot-new": "../../item/itemContentList",
+    "swiper-banner": "../../Img/swiperBanner"
+  }
+}

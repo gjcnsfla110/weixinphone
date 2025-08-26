@@ -21,14 +21,12 @@
 		<swiper-item class="swiper-item" ref="item1" id="iphone">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="iphoneScrolltolower">
 				<iphoneItem :height = "swiperHeight">
-					
 				</iphoneItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item2" id="samsung">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="samsungScrolltolower">
 				<samsungItem :height = "swiperHeight">
-					
 				</samsungItem>
 			</scroll-view>
 		</swiper-item>
@@ -37,6 +35,7 @@
 
 <script setup>
 import {ref } from "vue";
+import { useMainStores } from "../../stores/mainData";
 import { serviceGet } from "@/utill/request";
 import { getNaviBar } from "@/utill/systemData.js";
 import customNavBar from "@/components/custom-nav-bar/custom-nav-bar.vue";
@@ -44,6 +43,32 @@ import hotItem from "@/components/index/hot-item/hot-item.vue";
 import samsungItem from "@/components/index/samsung-item/samsung-item.vue";
 import iphoneItem from "@/components/index/iphone-item/iphone-item.vue";
 import LodingItem from "@/components/item/itemList.vue";
+
+
+export default{
+
+	component:{
+		customNavBar,
+		hotItem,
+		samsungItem,
+		iphoneItem,
+		LodingItem
+	},
+	setup(props, context) {
+		
+	},
+	methods:{
+		
+	},
+	loadData(){
+		
+	},
+	onPullDownRefresh(){
+		
+	}
+}
+
+const mainStores = useMainStores();
 
 //推荐 -》 下拉后 加载
 const hotScrolltolower=()=>{
@@ -88,6 +113,40 @@ const changeMenu =(i)=>{
 	scrollInto.value = "tab"+i;
 	tabIndex.value = i;
 }
+
+// pinia 데이터를 받는 설정 부분
+		const loadData = async () => {
+            if (!mainStores.isDataReady) {
+                try {
+                    await mainStores.lodingMain();
+                } catch (error) {
+                    console.error('Error reloading data:', error);
+                }
+            }
+        };
+		
+		// 플랫폼별 분기 처리
+		if (uni.getSystemInfoSync().platform === 'h5') {
+			// H5: onMounted 사용
+			onMounted(loadData);
+		} else {
+			// WeChat Mini Program, 안드로이드: uni.onLoad 사용
+			uni.onLoad(loadData);
+		}
+
+        // 새로고침 시
+        uni.onPullDownRefresh(async () => {
+            try {
+                mainStores.clearCache(); // 캐시 삭제
+                await mainStores.lodingMain();
+                console.log('Data reloaded on pull down:', mainStores.subMenu);
+                uni.stopPullDownRefresh();
+            } catch (error) {
+                console.error('Error on pull down refresh:', error);
+                uni.stopPullDownRefresh();
+            }
+        });
+
 </script>
 
 <style leng="scss" scoped>

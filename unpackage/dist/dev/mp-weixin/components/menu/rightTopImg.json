@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "width-card": "../cardPage/widthCard"
+  }
+}

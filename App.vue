@@ -9,11 +9,27 @@
 				 console.error('Error in onLaunch:', error);
 			 }	 
 		},
-		onShow: function() {
-			console.log('App Show')
+		async onShow() {
+			const mainStores = useMainStores();
+			if (!mainStores.isDataReady) {
+				try {
+					await mainStores.lodingMain();
+				} catch (error) {
+					console.error('Error in onShow:', error);
+				}
+			}
+			// 타이머 초기화
+			if (this.cacheClearTimer) {
+				clearTimeout(this.cacheClearTimer);
+				this.cacheClearTimer = null;
+			}
 		},
 		onHide: function() {
-			console.log('App Hide')
+			const mainStores = useMainStores();
+			// 백그라운드 진입 후 5분 뒤 캐시 삭제
+			this.cacheClearTimer = setTimeout(() => {
+				mainStores.clearCache();
+			}, 30 * 60 * 1000); // 30분
 		}
 	}
 </script>

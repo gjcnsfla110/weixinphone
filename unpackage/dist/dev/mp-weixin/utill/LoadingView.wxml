@@ -1,0 +1,1 @@
+<view><view wx:if="{{a}}">加载中...</view><slot wx:elif="{{b}}"/><view wx:else>数据未加载</view></view>
