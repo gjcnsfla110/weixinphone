@@ -4,7 +4,8 @@
 		async onLaunch(){
 			 const mainStores = useMainStores();
 			 try{
-				 await mainStores.lodingMain();
+				 await mainStores.fetchFromServer();
+
 			 }catch(error){
 				 console.error('Error in onLaunch:', error);
 			 }	 

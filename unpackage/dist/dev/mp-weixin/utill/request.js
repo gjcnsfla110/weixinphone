@@ -1,9 +1,15 @@
 "use strict";
 const common_vendor = require("../common/vendor.js");
-const BASE_URL = "/api/";
+const { platform } = common_vendor.index.getSystemInfoSync();
+let BASE_URL = "/api/";
+if (platform === "devtools") {
+  BASE_URL = "http://localhost/";
+} else if (platform === "h5") {
+  BASE_URL = "/api/";
+} else
+  ;
 function request(options) {
   return new Promise((resolve, reject) => {
-    common_vendor.index.showLoading({ title: "加载中...", mask: true });
     common_vendor.index.request({
       url: BASE_URL + options.url,
       method: options.method || "GET",
@@ -25,7 +31,6 @@ function request(options) {
         reject(err);
       },
       complete: () => {
-        common_vendor.index.hideLoading();
       }
     });
   });

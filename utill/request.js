@@ -1,12 +1,20 @@
 // api/request.ts
-const BASE_URL = '/api/'
-
+  const { platform } = uni.getSystemInfoSync();
+  let BASE_URL = "/api/"
+	if (platform === "devtools") {
+	  // 위쳇 미니 프로그램 환경
+		BASE_URL = 'http://localhost/'
+	} else if (platform === 'h5') {
+	  // H5 환경
+		BASE_URL = '/api/' 
+	} else {
+		
+	}
 // 공용 request 함수
 function request(options){
+
   return new Promise((resolve, reject) => {
     // 로딩 표시 (옵션에 따라 끄고 켤 수도 있음)
-    uni.showLoading({ title: '加载中...', mask: true })
-
     uni.request({
       url: BASE_URL + options.url,
       method: options.method || 'GET',
@@ -29,7 +37,7 @@ function request(options){
         reject(err)
       },
       complete: () => {
-        uni.hideLoading()
+		  
       }
     })
   })

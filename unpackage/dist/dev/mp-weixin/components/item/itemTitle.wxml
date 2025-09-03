@@ -1,1 +1,1 @@
-<view class="titleContent data-v-9898c4a4"><view wx:if="{{a}}" class="tleft data-v-9898c4a4">{{b}}</view><view wx:if="{{c}}" class="tright data-v-9898c4a4">{{d}}</view><view wx:if="{{e}}" class="more data-v-9898c4a4">更多 &gt;</view></view>
+<view class="titleContent data-v-9898c4a4"><view wx:if="{{a}}" class="tleft data-v-9898c4a4">{{b}}</view><view wx:if="{{c}}" class="tright data-v-9898c4a4">{{d}}</view><view wx:if="{{e}}" class="more data-v-9898c4a4" style="color:rgb(50,50,50)"> 更多+ </view></view>

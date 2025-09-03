@@ -65,7 +65,7 @@
 			}
 		},
 		{
-			"path" : "pages/oldDetail/oldDetail",
+			"path" : "pages/itemPage/oldItemPage",
 			"style" : 
 			{
 				"navigationBarTitleText" : "",

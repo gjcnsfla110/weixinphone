@@ -1,0 +1,1 @@
+<view class="content"><custom-nav wx:if="{{a}}" u-i="6026a1bb-0" bind:__l="__l" u-p="{{a}}"></custom-nav><swiper-img u-i="6026a1bb-1" bind:__l="__l"></swiper-img><button open-type="contact" session-from="user123">고객 서비스 채팅</button><bottom u-i="6026a1bb-2" bind:__l="__l"></bottom></view>

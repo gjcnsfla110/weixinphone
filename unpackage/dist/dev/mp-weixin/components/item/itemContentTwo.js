@@ -4,7 +4,7 @@ const common_assets = require("../../common/assets.js");
 const _sfc_main = {};
 function _sfc_render(_ctx, _cache) {
   return {
-    a: common_assets._imports_0$7,
+    a: common_assets._imports_0$6,
     b: common_vendor.f(2, (item, k0, i0) => {
       return {};
     })

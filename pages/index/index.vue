@@ -3,7 +3,7 @@
 	 <customNavBar>
 		 <block v-slot:index>
 			 <scroll-view class="hotSubmenu" scroll-x scroll-into-view="scrollInto" :scroll-with-animation="true">
-			 	<view class="hotSubmenuTitle"  :id="'menu'+index" v-for="(item,index) in munu" :key="index" @click="changeMenu(index)">
+			 	<view class="hotSubmenuTitle"  :id="'menu'+index" v-for="(item,index) in menu" :key="index" @click="changeMenu(index)">
 			 		{{item.title}}
 			 		<view :class="{'hotBottomBorder animate__heartBeat' : tabIndex == index}"></view>
 			 	</view>
@@ -14,26 +14,26 @@
 	<swiper class="main" :style="{ height: swiperHeight + 'px' }" @change="changeSwiper" :current="tabIndex" duration="800">
 		<swiper-item class="swiper-item" ref="item33" id="hot">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="hotScrolltolower">
-				<hotItem :height = "swiperHeight">
+				<hotItem :height = "swiperHeight" :mainData="main" :subMenu="subMenu">
 				</hotItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item1" id="iphone">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="iphoneScrolltolower">
-				<iphoneItem :height = "swiperHeight">
+				<iphoneItem :height = "swiperHeight" :iphoneData="iphone">
 				</iphoneItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item2" id="samsung">
 			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="samsungScrolltolower">
-				<samsungItem :height = "swiperHeight">
+				<samsungItem :height = "swiperHeight" :samsungData="samsung">
 				</samsungItem>
 			</scroll-view>
 		</swiper-item>
 	</swiper>
 </template>
 
-<script setup>
+<script>
 import {ref } from "vue";
 import { useMainStores } from "../../stores/mainData";
 import { serviceGet } from "@/utill/request";
@@ -47,7 +47,7 @@ import LodingItem from "@/components/item/itemList.vue";
 
 export default{
 
-	component:{
+	components:{
 		customNavBar,
 		hotItem,
 		samsungItem,
@@ -55,97 +55,85 @@ export default{
 		LodingItem
 	},
 	setup(props, context) {
-		
+		const mainStores = useMainStores();
+		// 현재 서뷰메뉴 속한 swiper-item index숫자
+		const tabIndex = ref(0);
+		//서브메뉴버튼과 내용swiper-item번호를 맞게하기위하여 index번호+스명으로 이루어짐
+		const scrollInto = ref("");
+		const swiperHeightf = ()=>{
+			let {screenHeight} = uni.getSystemInfoSync();
+			return screenHeight - getNaviBar().fillHeight()-51;	
+		}
+		const swiperHeight = ref(swiperHeightf());
+		const {main,iphone,samsung,subMenu} = mainStores;
+		const menu = ref([]);
+		return {
+			mainStores,
+			tabIndex,
+			scrollInto,
+			swiperHeight,
+			swiperHeightf,
+			menu,
+			main,
+			iphone,
+			subMenu,
+			samsung
+		}
 	},
 	methods:{
+		//推荐 -》 下拉后 加载
+		hotScrolltolower(){
+			console.log('11');
+		},
+		//苹果 -》 下拉 加载
+		iphoneScrolltolower(){
+			console.log("22");
+		},
+		//三星 -》 下拉 加载
+		samsungScrolltolower(){
+			console.log("33");
+		},
+		changeSwiper(e){
+			this.changeMenu(e.detail.current);
+		},
+		changeMenu(i){
+			if(i == this.tabIndex){
+				return
+			}
+			this.scrollInto = "tab"+i;
+			this.tabIndex = i;
+		},
+		// pinia 데이터를 받는 설정 부분
+		async loadData(){
+			if (!this.mainStores.isDataReady) {
+			    try {
+			        await this.mainStores.lodingMain();
+			    } catch (error) {
+			        console.error('Error reloading data:', error);
+			    }
+			}
+		},
 		
 	},
-	loadData(){
-		
-	},
-	onPullDownRefresh(){
-		
-	}
+	async onLoad() {
+        try {
+            await this.loadData();
+			this.menu = [
+							{
+								title : this.main[0].name,
+							},
+							{
+								title : this.iphone[0].name
+							},
+							{
+								title : this.samsung[0].name
+							}
+						];
+        } catch (error) {
+            console.error('Error in onLoad:', error);
+        }
+    }
 }
-
-const mainStores = useMainStores();
-
-//推荐 -》 下拉后 加载
-const hotScrolltolower=()=>{
-	console.log("11");
-}
-//苹果 -》 下拉 加载
-const iphoneScrolltolower = ()=>{
-	console.log("22");
-}
-//三星 -》 下拉 加载
-const samsungScrolltolower = ()=>{
-	console.log("33");
-}
-
-const swiperHeightf = ()=>{
-	let {screenHeight} = uni.getSystemInfoSync();
-	return screenHeight - getNaviBar().fillHeight()-51;	
-}
-const swiperHeight = ref(swiperHeightf());
-const munu = [
-		{
-			title : "推荐",
-		},
-		{
-			title : "Iphone"
-		},
-		{
-			title : "SamSeng"
-		}
-	]
-// 현재 서뷰메뉴 속한 swiper-item index숫자
-const tabIndex = ref(0);
-//서브메뉴버튼과 내용swiper-item번호를 맞게하기위하여 index번호+스명으로 이루어짐
-const scrollInto = ref("");
-function changeSwiper(e){
-	changeMenu(e.detail.current);
-}
-const changeMenu =(i)=>{
-	if(i == tabIndex.value){
-		return
-	}
-	scrollInto.value = "tab"+i;
-	tabIndex.value = i;
-}
-
-// pinia 데이터를 받는 설정 부분
-		const loadData = async () => {
-            if (!mainStores.isDataReady) {
-                try {
-                    await mainStores.lodingMain();
-                } catch (error) {
-                    console.error('Error reloading data:', error);
-                }
-            }
-        };
-		
-		// 플랫폼별 분기 처리
-		if (uni.getSystemInfoSync().platform === 'h5') {
-			// H5: onMounted 사용
-			onMounted(loadData);
-		} else {
-			// WeChat Mini Program, 안드로이드: uni.onLoad 사용
-			uni.onLoad(loadData);
-		}
-
-        // 새로고침 시
-        uni.onPullDownRefresh(async () => {
-            try {
-                mainStores.clearCache(); // 캐시 삭제
-                await mainStores.lodingMain();
-                console.log('Data reloaded on pull down:', mainStores.subMenu);
-                uni.stopPullDownRefresh();
-            } catch (error) {
-                console.error('Error on pull down refresh:', error);
-                uni.stopPullDownRefresh();
-            }
-        });
 
 </script>
 

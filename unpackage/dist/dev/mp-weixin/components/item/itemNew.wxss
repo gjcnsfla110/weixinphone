@@ -58,6 +58,25 @@
   flex-direction: column;
   justify-content: center;
 }
+.griditem1 .content .listItem1 .listItem1Swiper .listItem1SwiperItem .item1Text .item1Name {
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* 2줄로 제한 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.griditem1 .content .listItem1 .listItem1Swiper .listItem1SwiperItem .item1Text .item1Storage {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+  color: #ffb266;
+}
+.griditem1 .content .listItem1 .listItem1Swiper .listItem1SwiperItem .item1Text .item1Price {
+  font-size: 27rpx;
+}
 .griditem1 .content .listItem1 .listItem1Swiper .listItem1SwiperItem .item1Phone {
   width: 100%;
   height: 70%;
@@ -66,7 +85,7 @@
 .griditem1 .content .listItem1 .listItem1Swiper .listItem1SwiperItem .item1Phone .phone1Img {
   width: 200rpx;
   height: 300rpx;
-  padding: 30rpx;
+  border-radius: 10rpx;
 }
 .griditem1 .content .listItem2 {
   width: 100%;
@@ -74,40 +93,58 @@
   background-color: white;
   border-radius: 15rpx;
   padding: 10rpx 15rpx;
-  display: flex;
-  direction: cloum;
-  justify-content: space-between;
 }
-.griditem1 .content .listItem2 .item2Text {
+.griditem1 .content .listItem2 .item2Title {
+  width: 100%;
+  height: 75rpx;
+  font-size: 26rpx;
+  padding: 8rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* 2줄로 제한 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.griditem1 .content .listItem2 .item2 {
+  width: 100%;
+  height: 185rpx;
+  display: flex;
+}
+.griditem1 .content .listItem2 .item2 .item2Text {
   width: 55%;
   height: 100%;
   padding-left: 10rpx;
 }
-.griditem1 .content .listItem2 .item2Text .item2Title {
-  margin-top: 38rpx;
-  width: 100%;
-  height: 88rpx;
-  font-size: 28rpx;
-}
-.griditem1 .content .listItem2 .item2Text .item2Content {
-  width: 100%;
-  height: 45rpx;
-  font-size: 23rpx;
-}
-.griditem1 .content .listItem2 .item2Text .item2Price {
+.griditem1 .content .listItem2 .item2 .item2Text .item2storage {
   width: 100%;
   height: 50rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  color: #ffb266;
 }
-.griditem1 .content .listItem2 .item2Phone {
+.griditem1 .content .listItem2 .item2 .item2Text .item2color {
+  width: 100%;
+  height: 50rpx;
+  font-size: 26rpx;
+  line-height: 50rpx;
+}
+.griditem1 .content .listItem2 .item2 .item2Text .item2Price {
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+}
+.griditem1 .content .listItem2 .item2 .item2Phone {
   width: 45%;
   height: 100%;
   position: relative;
 }
-.griditem1 .content .listItem2 .item2Phone .phone2Img {
+.griditem1 .content .listItem2 .item2 .item2Phone .phone2Img {
   width: 100%;
-  height: 60%;
+  height: 90%;
   position: absolute;
   left: 0;
   bottom: 15rpx;
+  border-radius: 10rpx;
 }

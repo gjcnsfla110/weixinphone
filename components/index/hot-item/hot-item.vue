@@ -1,7 +1,7 @@
 <template>	
 		<view class="swiper-content">
 			<view>
-				<swiperBanner></swiperBanner>
+				<swiperBanner :componentData="banner"></swiperBanner>
 			</view>	
 			<LoadingView>
 				<view class="subMenu">
@@ -10,32 +10,111 @@
 						<view class="subMenuText">{{item.name}}</view>
 					</view>
 				</view>
-				<view class="hotItem">
-					<itemNew :margin="5" left="新品发布" right="热销商品"></itemNew>
-				</view>
-				<view class="hotPeijian">
-					<HotPeijian left="手机配件" right="爆款商品"></HotPeijian>
-				</view>
-				<view class="hotNew">
-					<HotNew></HotNew>
+				<view>
+					<template v-for="item in componentData">
+						<view v-if="item.title">
+							<ItemTitle :left="item.title" :right="item.title1" :more="item.more==1"></ItemTitle>
+						</view>
+						<view v-if="item.component =='ItemNew'">
+							<ItemNew :itemData="item"></ItemNew>
+						</view>
+						<view v-else-if="item.component =='ItemScrollView'">
+							<ItemScrollView :itemData="item"></ItemScrollView>
+						</view>
+						<view v-else-if="item.component =='ItemContentList'">
+							<ItemContentList :itemData="item"></ItemContentList>
+						</view>
+						<view v-else-if="item.component =='SwiperImg'">
+							<SwiperImg :itemData="item"></SwiperImg>
+						</view>
+						<view v-else-if="item.component =='ItemContentOne'">
+							<ItemContentOne :itemData="item"></ItemContentOne>
+						</view>
+						<view v-else-if="item.component =='ItemContentTitle'">
+							<ItemContentTitle :itemData="item"></ItemContentTitle>
+						</view>
+						<view v-else-if="item.component =='ItemContentTwo'">
+							<ItemContentTwo :itemData="item"></ItemContentTwo>
+						</view>
+						<view v-else-if="item.component =='ItemList'">
+							<ItemList :itemData="item"></ItemList>
+						</view>
+						<view v-else-if="item.component =='OneImg'">
+							<OneImg :itemData="item"></OneImg>
+						</view>
+						<view v-else-if="item.component =='ImgBanner'">
+							<ImgBanner :itemData="item"></ImgBanner>
+						</view>
+					</template>
 				</view>
 			</LoadingView>
 		</view>
 </template>
 
-<script setup>
+<script>
 	import { ref } from 'vue';
 	import LoadingView from '@/utill/LoadingView.vue'
-	import itemNew from '@/components/item/itemNew.vue';
-	import HotPeijian from "@/components/item/itemScrollView.vue";
-	import HotNew from "@/components/item/itemContentList.vue";
-	import ItemTitle from '../../item/itemTitle.vue';
-	import swiperBanner from '@/components/Img/swiperBanner.vue';
-	import {useMainStores} from '../../../stores/mainData';
-	const mainStores = useMainStores();
-	const subMenu = mainStores.subMenu;
-	console.log(mainStores.subMenu);
+	import SwiperBanner from '@/components/Img/swiperBanner.vue';
+	import ItemContentList from '@/components/item/itemContentList.vue';
+	import ItemContentOne from '@/components/item/itemContentOne.vue';
+	import ItemContentTitle from '@/components/item/itemContentTitle.vue';
+	import ItemContentTwo from '@/components/item/itemContentTwo.vue';
+	import ItemList from '@/components/item/itemList.vue';
+	import ItemNew from '@/components/item/itemNew.vue';
+	import ItemScrollView from "@/components/item/itemScrollView.vue";
+	import ItemTitle from '@/components/item/itemTitle.vue';
+	import ImgBanner from '@/components/Img/imgBanner.vue';
+	import OneImg from '@/components/Img/oneImg.vue';
+	import SwiperImg from '@/components/Img/swiperImg.vue';
 	
+	export default{
+		components:{
+			LoadingView,
+			ItemScrollView,
+			ItemContentList,
+			SwiperBanner,
+			ItemTitle,
+			ItemNew,
+			ItemList,
+			ImgBanner,
+			OneImg,
+			SwiperImg,
+			ItemContentOne,
+			ItemContentTitle,
+			ItemContentTwo
+			
+		},
+		props:{
+			mainData:{
+				type:Array,
+				default:[]
+			},
+			height:{
+				type:Number,
+				default:0
+			},
+			subMenu:{
+				type:Array,
+				default:[]
+			}
+			
+		},
+		emits:[
+			
+		],
+		setup(props, context) {
+			const banner = ref({});
+			banner.value = props.mainData[0].components.filter(item=>item.component == 'SwiperBanner')[0] ? props.mainData[0].components.filter(item=>item.component == 'SwiperBanner')[0] : {id:0};
+			const componentData = ref(props.mainData[0].components.filter(item=>item.id !== banner.value.id))
+			return{
+				banner,
+				componentData
+			}	
+		},
+		methods:{
+			
+		},
+	}
 </script>
 
 <style lang="scss" scoped>

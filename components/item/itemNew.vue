@@ -1,149 +1,73 @@
 <template>
-	<ItemTitle :left="left" :right="right" :more="more"></ItemTitle>
-	<view class="griditem1" :style="{marginTop:margin+'px'}">
+	<view class="griditem1">
 		<view class="content">
 			<view class="listItem1">
 				<swiper class="listItem1Swiper" autoplay indicator-dots circular="true">
-					<swiper-item v-for="item in list1" class="listItem1SwiperItem">
+					<swiper-item v-for="item in list1" class="listItem1SwiperItem" @click="itemDetail(item.id)">
 						<view class="item1Text">
-							<view class="item1Name">{{item.description.name}}</view>
-							<view class="item1Storage">{{item.description.storage}}</view>
-							<view class="item1Price">韩币{{item.description.price}}万</view>
+							<view class="item1Name">{{item.title}}</view>
+							<view class="item1Storage">{{item.storage}}</view>
+							<view class="item1Price">{{changePrice(item.price1)}} <span style="font-size: 20rpx;color: red;">韩元</span></view>
 						</view>
 						<view class="item1Phone">
-							 <image class="phone1Img" :src="item.src"></image>
+							 <image class="phone1Img" :src="item.img"></image>
 						</view>
 					</swiper-item>
 				</swiper>
 			</view>
-			<view class="listItem2" v-for="item in list2">
-				<view class="item2Text">
-					<view class="item2Title">{{item.items.title}}</view>
-					<view class="item2Content">{{item.items.content}}</view>
-					<view class="item2Price">{{item.items.price}}</view>
-				</view>
-				<view class="item2Phone">
-					<image class="phone2Img" :src="item.src"></image>
+			<view class="listItem2" v-for="item in list2" @click="itemDetail(item.id)">
+				<view class="item2Title">{{item.title}}</view>
+				<view class="item2">
+					<view class="item2Text">
+						<view class="item2storage">{{item.storage}}</view>
+						<view class="item2color">검정색</view>
+						<view class="item2Price">{{changePrice(item.price1)}}<span style="color: red;font-size: 15rpx;margin-left: 3rpx;">韩元</span></view>
+					</view>
+					<view class="item2Phone">
+						<image class="phone2Img" :src="item.img"></image>
+					</view>
 				</view>
 			</view>
 		</view>
 	</view>
 </template>
 
-<script setup>
+<script>
 	import {ref} from 'vue'
-	import {defineProps } from "vue";
-	import ItemTitle from './itemTitle.vue';
-	const props = defineProps({
-		 margin:{
-			type:String,
-			default: 0
-		 },
-		left:{
-			type:String,
-			default:""
+	import { formattedPrice } from '../../utill/common';
+	export default{
+		comments:{
+			
 		},
-		right:{
-			type:String,
-			default:""
+		props:{
+			itemData:{
+						 type:Object,
+						 default:{items:[]}
+			}
 		},
-		more:{
-			type:Boolean,
-			default:false
+		setup(props, context) {
+			const items = props.itemData.items;
+			const list1 = ref([]);
+			const list2 = ref([]);
+			list1.value = items.filter(item=>item.listType == 0);
+			list2.value = items.filter(item=>item.listType == 1);
+			return {
+				list1,
+				list2
+			}
+		},
+		methods:{
+			changePrice(price){
+				return formattedPrice(price);
+			},
+			itemDetail(id){
+				uni.navigateTo({
+				        url: `/pages/itemPage/oldItemPage?id=${id}` // 이동할 페이지 경로
+				});
+			}
 		}
-	})
-	const list1 = ref([
-		{
-		  description :{
-			  name:"苹果16proMax",
-			  storage : "256GB",
-			  price : 180
-		  },
-		  src:"https://www.apple.com/newsroom/images/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/article/geo/Apple-iPhone-16-hero-geo-240909_inline.jpg.large.jpg",
-		},
-		{
-			description :{
-						  name:"苹果16pro",
-						  storage : "256GB",
-						  price : 160
-			},
-			src:"https://www.apple.com/newsroom/images/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/article/geo/Apple-iPhone-16-hero-geo-240909_inline.jpg.large.jpg",
-		},
-		{
-			description :{
-						  name:"苹果16proPlus",
-						  storage : "128GB",
-						  price : 120
-			},
-			src:"https://www.apple.com/newsroom/images/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/article/geo/Apple-iPhone-16-hero-geo-240909_inline.jpg.large.jpg",
-		},
-		{
-			description :{
-						  name:"苹果16proMax",
-						  storage : "512GB",
-						  price : 200
-			},
-			src:"https://www.apple.com/newsroom/images/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/article/geo/Apple-iPhone-16-hero-geo-240909_inline.jpg.large.jpg",
-		},
-		{
-			description :{
-						  name:"苹果16pro",
-						  storage : "256GB",
-						  price : 180
-			},
-			src:"https://www.apple.com/newsroom/images/2024/09/apple-introduces-iphone-16-and-iphone-16-plus/article/geo/Apple-iPhone-16-hero-geo-240909_inline.jpg.large.jpg",
-		}
-	]);
-	const list2 = ref([
-		 {
-			items:{
-				title:"아이폰16프로맥스",
-				content:"256G 특가",
-				price:"Y 256만원"
-			},
-			 src:"/static/subMenu/iphone.png",
-		 },
-		 {
-			items:{
-				title:"아이폰16프로맥스",
-				content:"256G 특가",
-				price:"Y 256만원"
-			},
-			 src:"/static/subMenu/iphone.png", 
-		 },
-		 {
-		 	items:{
-		 		title:"아이폰16프로맥스",
-		 		content:"256G 특가",
-				price:"Y 256만원"
-		 	},
-		 	 src:"/static/subMenu/iphone.png",		 
-		 },
-		 {
-		 	items:{
-		 		title:"아이폰16프로맥스",
-		 		content:"256G 특가",
-				price:"Y 256만원"
-		 	},
-		 	 src:"/static/subMenu/iphone.png",		 
-		 },
-		 {
-		 	items:{
-		 		title:"아이폰16프로맥스",
-		 		content:"256G 특가",
-				price:"Y 256만원"
-		 	},
-		 	 src:"/static/subMenu/iphone.png",		 
-		 },
-		 {
-		 	items:{
-		 		title:"아이폰16프로맥스",
-		 		content:"256G 특가",
-				price:"Y 256만원"
-		 	},
-		 	 src:"/static/subMenu/iphone.png",		 
-		 },
-	]);
+	}
+	
 </script>
 
 <style lang="scss">
@@ -177,6 +101,24 @@
 							padding-left: 15rpx;
 							flex-direction: column;
 							justify-content: center;
+							.item1Name{
+							  font-size: 26rpx;
+							  margin-bottom: 10rpx;
+							  display: -webkit-box;
+							  -webkit-line-clamp: 2; /* 2줄로 제한 */
+							  -webkit-box-orient: vertical;
+							  overflow: hidden;
+							  text-overflow: ellipsis;
+							  max-width: 100%;
+							}
+							.item1Storage{
+								font-size: 28rpx;
+								margin-bottom: 10rpx;
+								color: rgb(255, 178, 102);
+							}
+							.item1Price{
+								font-size: 27rpx;
+							}
 						}
 						.item1Phone{
 							width: 100%;
@@ -185,7 +127,7 @@
 							.phone1Img{
 								width: 200rpx;
 								height: 300rpx;
-								padding: 30rpx;
+								border-radius: 10rpx;
 							}
 						}
 					}					
@@ -198,42 +140,59 @@
 				background-color: white;
 				border-radius: 15rpx;
 				padding: 10rpx 15rpx;
-				display: flex;
-				direction: cloum;
-				justify-content: space-between;
-				.item2Text{
-					width: 55%;
-					height: 100%;
-					padding-left: 10rpx;
-					.item2Title{
-						margin-top: 38rpx;
-						width: 100%;
-						height: 88rpx;
-						font-size: 28rpx;
-					}
-					.item2Content{
-						width: 100%;
-						height: 45rpx;
-						font-size: 23rpx;
-					}
-					.item2Price{
-						width: 100%;
-						height: 50rpx;
-						font-size: 30rpx;
-					}
+				.item2Title{
+					width: 100%;
+					height: 75rpx;
+					font-size: 26rpx;
+					padding: 8rpx;
+					display: -webkit-box;
+					-webkit-line-clamp: 2; /* 2줄로 제한 */
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					text-overflow: ellipsis;
 				}
-				.item2Phone{
-					width: 45%;
-					height:100%;
-					position: relative;
-					.phone2Img{
-						width: 100%;
-						height: 60%;
-						position: absolute;
-						left: 0;
-						bottom: 15rpx;
+				.item2{
+					width: 100%;
+					height: 185rpx;
+					display: flex;
+					.item2Text{
+						width: 55%;
+						height: 100%;
+						padding-left: 10rpx;
+						.item2storage{
+							width: 100%;
+							height: 50rpx;
+							font-size: 28rpx;
+							line-height: 50rpx;
+							color: rgb(255, 178, 102);
+						}
+						.item2color{
+							width: 100%;
+							height: 50rpx;
+							font-size: 26rpx;
+							line-height: 50rpx;
+						}
+						.item2Price{
+							width: 100%;
+							height: 50rpx;
+							line-height: 50rpx;
+							font-size: 26rpx;
+						}
 					}
-				}
+					.item2Phone{
+						width: 45%;
+						height:100%;
+						position: relative;
+						.phone2Img{
+							width: 100%;
+							height: 90%;
+							position: absolute;
+							left: 0;
+							bottom: 15rpx;
+							border-radius: 10rpx;
+						}
+					}
+				}	
 			}
 		}
 	}

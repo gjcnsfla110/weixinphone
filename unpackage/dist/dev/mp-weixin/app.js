@@ -10,23 +10,36 @@ if (!Math) {
   "./pages/menu/menu.js";
   "./pages/list/list.js";
   "./pages/oldList/oldList.js";
-  "./pages/listDetail/listDetail.js";
-  "./pages/oldDetail/oldDetail.js";
+  "./pages/itemPage/oldItemPage.js";
 }
 const _sfc_main = {
   async onLaunch() {
     const mainStores = stores_mainData.useMainStores();
     try {
-      await mainStores.lodingMain();
+      await mainStores.fetchFromServer();
     } catch (error) {
-      common_vendor.index.__f__("error", "at App.vue:9", "Error in onLaunch:", error);
+      common_vendor.index.__f__("error", "at App.vue:10", "Error in onLaunch:", error);
     }
   },
-  onShow: function() {
-    common_vendor.index.__f__("log", "at App.vue:13", "App Show");
+  async onShow() {
+    const mainStores = stores_mainData.useMainStores();
+    if (!mainStores.isDataReady) {
+      try {
+        await mainStores.lodingMain();
+      } catch (error) {
+        common_vendor.index.__f__("error", "at App.vue:19", "Error in onShow:", error);
+      }
+    }
+    if (this.cacheClearTimer) {
+      clearTimeout(this.cacheClearTimer);
+      this.cacheClearTimer = null;
+    }
   },
   onHide: function() {
-    common_vendor.index.__f__("log", "at App.vue:16", "App Hide");
+    const mainStores = stores_mainData.useMainStores();
+    this.cacheClearTimer = setTimeout(() => {
+      mainStores.clearCache();
+    }, 30 * 60 * 1e3);
   }
 };
 function createApp() {

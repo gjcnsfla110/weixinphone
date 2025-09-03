@@ -11,6 +11,7 @@
     "minified": false,
     "newFeature": true,
     "bigPackageSizeSupport": true,
+    "ignoreUploadUnusedFiles": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -19,7 +20,6 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.9.2",
-  "appid": "touristappid",
   "projectname": "xhphone",
   "condition": {},
   "editorSetting": {

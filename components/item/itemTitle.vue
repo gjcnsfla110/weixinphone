@@ -2,7 +2,7 @@
 	<view class="titleContent">
 		<view class="tleft" v-if="left">{{left}}</view>
 		<view class="tright" v-if="right">{{right}}</view>
-		<view class="more" v-if="more">更多 ></view>
+		<view class="more" v-if="more" style="color:rgb(50,50,50)"> 更多+ </view>
 	</view>
 </template>
 <script setup>

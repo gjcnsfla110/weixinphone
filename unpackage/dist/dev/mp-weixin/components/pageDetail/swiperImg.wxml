@@ -1,0 +1,1 @@
+<swiper class="pageSwiper data-v-bc138464" circular="{{true}}"><swiper-item wx:for="{{a}}" wx:for-item="i" class="swiperItem data-v-bc138464"><view class="data-v-bc138464">{{i.a}}</view></swiper-item></swiper>

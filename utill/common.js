@@ -7,11 +7,15 @@ export function resultPage(pages,components,componentItems,componentBanners){
 					if(item.banner){
 						item.items = componentBanners.filter(Citem => Citem.component_id == item.id);
 					}else{
-						item.items = componentItems.filter(Citem => Citem.component == item.id)
+						item.items = componentItems.filter(Citem => Citem.component_id == item.id)
 					}
 	 })
 	 pages.forEach(item=>{
 		 item.components = iComponents.filter(Fitem => Fitem.page_key == item.page_key);
 	 })
 	 return pages;
+}
+
+export function formattedPrice(price){
+      return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }

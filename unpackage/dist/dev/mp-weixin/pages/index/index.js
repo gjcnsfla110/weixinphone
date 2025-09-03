@@ -1,86 +1,140 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const stores_mainData = require("../../stores/mainData.js");
+require("../../utill/request.js");
 const utill_systemData = require("../../utill/systemData.js");
-if (!Math) {
-  (customNavBar + hotItem + iphoneItem + samsungItem)();
-}
 const customNavBar = () => "../../components/custom-nav-bar/custom-nav-bar.js";
 const hotItem = () => "../../components/index/hot-item/hot-item.js";
 const samsungItem = () => "../../components/index/samsung-item/samsung-item.js";
 const iphoneItem = () => "../../components/index/iphone-item/iphone-item.js";
+const LodingItem = () => "../../components/item/itemList.js";
 const _sfc_main = {
-  __name: "index",
-  setup(__props) {
-    const hotScrolltolower = () => {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:50", "11");
-    };
-    const iphoneScrolltolower = () => {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:54", "22");
-    };
-    const samsungScrolltolower = () => {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:58", "33");
-    };
+  components: {
+    customNavBar,
+    hotItem,
+    samsungItem,
+    iphoneItem,
+    LodingItem
+  },
+  setup(props, context) {
+    const mainStores = stores_mainData.useMainStores();
+    const tabIndex = common_vendor.ref(0);
+    const scrollInto = common_vendor.ref("");
     const swiperHeightf = () => {
       let { screenHeight } = common_vendor.index.getSystemInfoSync();
       return screenHeight - utill_systemData.getNaviBar().fillHeight() - 51;
     };
     const swiperHeight = common_vendor.ref(swiperHeightf());
-    const munu = [
-      {
-        title: "推荐"
-      },
-      {
-        title: "Iphone"
-      },
-      {
-        title: "SamSeng"
-      }
-    ];
-    const tabIndex = common_vendor.ref(0);
-    const scrollInto = common_vendor.ref("");
-    function changeSwiper(e) {
-      changeMenu(e.detail.current);
-    }
-    const changeMenu = (i) => {
-      if (i == tabIndex.value) {
+    const { main, iphone, samsung, subMenu } = mainStores;
+    const menu = common_vendor.ref([]);
+    return {
+      mainStores,
+      tabIndex,
+      scrollInto,
+      swiperHeight,
+      swiperHeightf,
+      menu,
+      main,
+      iphone,
+      subMenu,
+      samsung
+    };
+  },
+  methods: {
+    //推荐 -》 下拉后 加载
+    hotScrolltolower() {
+      common_vendor.index.__f__("log", "at pages/index/index.vue:86", "11");
+    },
+    //苹果 -》 下拉 加载
+    iphoneScrolltolower() {
+      common_vendor.index.__f__("log", "at pages/index/index.vue:90", "22");
+    },
+    //三星 -》 下拉 加载
+    samsungScrolltolower() {
+      common_vendor.index.__f__("log", "at pages/index/index.vue:94", "33");
+    },
+    changeSwiper(e) {
+      this.changeMenu(e.detail.current);
+    },
+    changeMenu(i) {
+      if (i == this.tabIndex) {
         return;
       }
-      scrollInto.value = "tab" + i;
-      tabIndex.value = i;
-    };
-    return (_ctx, _cache) => {
-      return {
-        a: common_vendor.f(munu, (item, index, i0) => {
-          return {
-            a: common_vendor.t(item.title),
-            b: tabIndex.value == index ? 1 : "",
-            c: "menu" + index,
-            d: index,
-            e: common_vendor.o(($event) => changeMenu(index), index)
-          };
-        }),
-        b: common_vendor.p({
-          height: swiperHeight.value
-        }),
-        c: swiperHeight.value + "px",
-        d: common_vendor.o(hotScrolltolower),
-        e: common_vendor.p({
-          height: swiperHeight.value
-        }),
-        f: swiperHeight.value + "px",
-        g: common_vendor.o(iphoneScrolltolower),
-        h: common_vendor.p({
-          height: swiperHeight.value
-        }),
-        i: swiperHeight.value + "px",
-        j: common_vendor.o(samsungScrolltolower),
-        k: swiperHeight.value + "px",
-        l: common_vendor.o(changeSwiper),
-        m: tabIndex.value
-      };
-    };
+      this.scrollInto = "tab" + i;
+      this.tabIndex = i;
+    },
+    // pinia 데이터를 받는 설정 부분
+    async loadData() {
+      if (!this.mainStores.isDataReady) {
+        try {
+          await this.mainStores.lodingMain();
+        } catch (error) {
+          common_vendor.index.__f__("error", "at pages/index/index.vue:112", "Error reloading data:", error);
+        }
+      }
+    }
+  },
+  async onLoad() {
+    try {
+      await this.loadData();
+      this.menu = [
+        {
+          title: this.main[0].name
+        },
+        {
+          title: this.iphone[0].name
+        },
+        {
+          title: this.samsung[0].name
+        }
+      ];
+    } catch (error) {
+      common_vendor.index.__f__("error", "at pages/index/index.vue:133", "Error in onLoad:", error);
+    }
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-1cf27b2a"]]);
+if (!Array) {
+  const _component_customNavBar = common_vendor.resolveComponent("customNavBar");
+  const _component_hotItem = common_vendor.resolveComponent("hotItem");
+  const _component_iphoneItem = common_vendor.resolveComponent("iphoneItem");
+  const _component_samsungItem = common_vendor.resolveComponent("samsungItem");
+  (_component_customNavBar + _component_hotItem + _component_iphoneItem + _component_samsungItem)();
+}
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {
+    a: common_vendor.f($setup.menu, (item, index, i0) => {
+      return {
+        a: common_vendor.t(item.title),
+        b: $setup.tabIndex == index ? 1 : "",
+        c: "menu" + index,
+        d: index,
+        e: common_vendor.o(($event) => $options.changeMenu(index), index)
+      };
+    }),
+    b: common_vendor.p({
+      height: $setup.swiperHeight,
+      mainData: $setup.main,
+      subMenu: $setup.subMenu
+    }),
+    c: $setup.swiperHeight + "px",
+    d: common_vendor.o((...args) => $options.hotScrolltolower && $options.hotScrolltolower(...args)),
+    e: common_vendor.p({
+      height: $setup.swiperHeight,
+      iphoneData: $setup.iphone
+    }),
+    f: $setup.swiperHeight + "px",
+    g: common_vendor.o((...args) => $options.iphoneScrolltolower && $options.iphoneScrolltolower(...args)),
+    h: common_vendor.p({
+      height: $setup.swiperHeight,
+      samsungData: $setup.samsung
+    }),
+    i: $setup.swiperHeight + "px",
+    j: common_vendor.o((...args) => $options.samsungScrolltolower && $options.samsungScrolltolower(...args)),
+    k: $setup.swiperHeight + "px",
+    l: common_vendor.o((...args) => $options.changeSwiper && $options.changeSwiper(...args)),
+    m: $setup.tabIndex
+  };
+}
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1cf27b2a"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/index/index.js.map

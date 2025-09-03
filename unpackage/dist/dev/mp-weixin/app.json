@@ -8,7 +8,7 @@
     "pages/list/list",
     "pages/oldList/oldList",
     "pages/listDetail/listDetail",
-    "pages/oldDetail/oldDetail"
+    "pages/itemPage/oldItemPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -2,34 +2,39 @@
 	<view class="hotBanner">
 		<swiper class="hotBannerSwiper" indicator-dots  catchtouchmove="true"  interval="5000" duration="2000"
 		 autoplay circular indicator-color="rgba(0, 0, 0, 0.2)" indicator-active-color="#ffffff">
-			<swiper-item v-for="item in banners" class="hotBannerSwiperitem">
+			<swiper-item v-for="item in componentData.items" class="hotBannerSwiperitem">
 				<view class="hotBannerSwiperitemImg">
-						<image class="bannerImg" :src="item.src" mode="aspectFill"></image>
+						<image class="bannerImg" :src="item.img" mode="aspectFill"></image>
 				</view>
 			</swiper-item>
 		</swiper>
 	</view>
 </template>
 
-<script setup>
+<script>
 	import { ref } from "vue";
-	const banners = ref([
-		{
-			src:"https://cdn.seoulfn.com/news/photo/202507/600386_400223_1018.jpeg"
+	export default{
+		components:{
+			
 		},
-		{
-			src:"https://cdn.seoulfn.com/news/photo/202507/600386_400223_1018.jpeg"
+		props:{
+			componentData:{
+				type:Object,
+				default:{
+					items:[]
+				}
+			}
 		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
+		emits:[],
+		setup(props, context) {
+
 		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-		{
-			src:"https://img.hankyung.com/photo/202404/01.36531376.1.jpg"
-		},
-	]);
+		methods:{
+			
+		}
+
+	}
+	
 </script>
 
 <style lang="scss" scoped>
