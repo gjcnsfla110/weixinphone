@@ -26,7 +26,7 @@ const _sfc_main = {
     },
     itemDetail(id) {
       common_vendor.index.navigateTo({
-        url: `/pages/itemPage/oldItemPage?id=${id}`
+        url: `/pages/itemPage/newItemPage?id=${id}`
         // 이동할 페이지 경로
       });
     }
@@ -40,7 +40,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: common_vendor.t(item.storage),
         c: common_vendor.t($options.changePrice(item.price1)),
         d: item.img,
-        e: common_vendor.o(($event) => $options.itemDetail(item.id))
+        e: common_vendor.o(($event) => $options.itemDetail(item.goods_id))
       };
     }),
     b: common_vendor.f($setup.list2, (item, k0, i0) => {
@@ -49,7 +49,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: common_vendor.t(item.storage),
         c: common_vendor.t($options.changePrice(item.price1)),
         d: item.img,
-        e: common_vendor.o(($event) => $options.itemDetail(item.id))
+        e: common_vendor.o(($event) => $options.itemDetail(item.goods_id))
       };
     })
   };

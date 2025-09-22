@@ -1,5 +1,5 @@
 <template>
-	<CustomNav :title="商品分类"></CustomNav>
+	<CustomNav title="商品分类"></CustomNav>
 	<view class="menuContent" :style="{height:swiperHeight+'px'}">
 		<scroll-view class="menuLeft" :style="{height:swiperHeight+'px'}">
 			<view class="menuList" v-for="item in menuData">

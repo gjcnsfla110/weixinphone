@@ -1,4 +1,18 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "loading-view": "../../../utill/LoadingView",
+    "swiper-banner": "../../Img/swiperBanner",
+    "item-content-list": "../../item/itemContentList",
+    "item-content-one": "../../item/itemContentOne",
+    "item-content-title": "../../item/itemContentTitle",
+    "item-content-two": "../../item/itemContentTwo",
+    "item-list": "../../item/itemList",
+    "item-new": "../../item/itemNew",
+    "item-scroll-view": "../../item/itemScrollView",
+    "item-title": "../../item/itemTitle",
+    "img-banner": "../../Img/imgBanner",
+    "one-img": "../../Img/oneImg",
+    "swiper-img": "../../Img/swiperImg"
+  }
 }

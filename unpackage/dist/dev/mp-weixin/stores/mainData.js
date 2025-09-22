@@ -8,6 +8,7 @@ const useMainStores = common_vendor.defineStore("mainData", {
     iphone: [],
     samsung: [],
     subMenu: [],
+    goodsSpecs: [],
     isLoading: false,
     isDataReady: false
   }),
@@ -22,6 +23,7 @@ const useMainStores = common_vendor.defineStore("mainData", {
         const res = await utill_request.serviceGet("app/index/main");
         const newData = {
           subMenu: res.subMenus || [],
+          goodsSpecs: res.goodsSpecs || [],
           main: [],
           iphone: [],
           samsung: []
@@ -38,6 +40,7 @@ const useMainStores = common_vendor.defineStore("mainData", {
         this.iphone = newData.iphone;
         this.samsung = newData.samsung;
         this.subMenu = newData.subMenu;
+        this.goodsSpecs = newData.goodsSpecs;
         this.isDataReady = true;
         const now = Date.now();
         const expiry = now + 24 * 60 * 60 * 1e3;
@@ -46,10 +49,11 @@ const useMainStores = common_vendor.defineStore("mainData", {
           iphone: this.iphone,
           samsung: this.samsung,
           subMenu: this.subMenu,
+          goodsSpecs: this.goodsSpecs,
           expiry
         });
       } catch (error) {
-        common_vendor.index.__f__("error", "at stores/mainData.js:58", "Error fetching server data:", error);
+        common_vendor.index.__f__("error", "at stores/mainData.js:62", "Error fetching server data:", error);
         const cachedData = common_vendor.index.getStorageSync("mainData");
         if (cachedData && cachedData.expiry > Date.now()) {
           this.main = cachedData.main || [];
@@ -74,6 +78,7 @@ const useMainStores = common_vendor.defineStore("mainData", {
           this.iphone = cachedData.iphone || [];
           this.samsung = cachedData.samsung || [];
           this.subMenu = cachedData.subMenu || [];
+          this.goodsSpecs = cachedData.goodsSpecs || [];
           this.isDataReady = true;
           this.isLoading = false;
           return;
@@ -83,7 +88,8 @@ const useMainStores = common_vendor.defineStore("mainData", {
           subMenu: res.subMenus || [],
           main: [],
           iphone: [],
-          samsung: []
+          samsung: [],
+          goodsSpecs: res.goodsSpecs || []
         };
         let pages = res.pages || [];
         let components = res.components || [];
@@ -97,6 +103,7 @@ const useMainStores = common_vendor.defineStore("mainData", {
         this.iphone = newData.iphone;
         this.samsung = newData.samsung;
         this.subMenu = newData.subMenu;
+        this.goodsSpecs = newData.goodsSpecs;
         this.isDataReady = true;
         const expiry = now + 24 * 60 * 60 * 1e3;
         common_vendor.index.setStorageSync("mainData", {
@@ -104,10 +111,11 @@ const useMainStores = common_vendor.defineStore("mainData", {
           iphone: this.iphone,
           samsung: this.samsung,
           subMenu: this.subMenu,
+          goodsSpecs: this.goodsSpecs,
           expiry
         });
       } catch (error) {
-        common_vendor.index.__f__("error", "at stores/mainData.js:127", "Error loading main data:", error);
+        common_vendor.index.__f__("error", "at stores/mainData.js:135", "Error loading main data:", error);
       } finally {
         this.isLoading = false;
       }

@@ -17,5 +17,5 @@ export function resultPage(pages,components,componentItems,componentBanners){
 }
 
 export function formattedPrice(price){
-      return price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }

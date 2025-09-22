@@ -23,23 +23,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.goodsCarts.data-v-23b2a3c9 {
-  width: 100%;
+.bottom.data-v-04715b51 {
   position: fixed;
-  left: 0;
-  right: 0;
   bottom: 0;
-}
-.popupView.data-v-23b2a3c9 {
-  width: 100%;
-  height: 1150rpx;
-  border-top-right-radius: 55rpx;
-  border-top-left-radius: 55rpx;
-  background-color: white;
-  position: relative;
-}
-.popupView .popupCloseIcon.data-v-23b2a3c9 {
-  position: absolute;
-  top: 25rpx;
-  right: 25rpx;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  height: 150rpx;
+  background-color: #323232;
 }

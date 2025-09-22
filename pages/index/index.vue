@@ -13,19 +13,19 @@
 	</view>
 	<swiper class="main" :style="{ height: swiperHeight + 'px' }" @change="changeSwiper" :current="tabIndex" duration="800">
 		<swiper-item class="swiper-item" ref="item33" id="hot">
-			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="hotScrolltolower">
+			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true">
 				<hotItem :height = "swiperHeight" :mainData="main" :subMenu="subMenu">
 				</hotItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item1" id="iphone">
-			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="iphoneScrolltolower">
+			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true">
 				<iphoneItem :height = "swiperHeight" :iphoneData="iphone">
 				</iphoneItem>
 			</scroll-view>
 		</swiper-item>
 		<swiper-item class="swiper-item" ref="item2" id="samsung">
-			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true" @scrolltolower="samsungScrolltolower">
+			<scroll-view :style="{ height: swiperHeight + 'px' }" scroll-y="true">
 				<samsungItem :height = "swiperHeight" :samsungData="samsung">
 				</samsungItem>
 			</scroll-view>
@@ -81,18 +81,6 @@ export default{
 		}
 	},
 	methods:{
-		//推荐 -》 下拉后 加载
-		hotScrolltolower(){
-			console.log('11');
-		},
-		//苹果 -》 下拉 加载
-		iphoneScrolltolower(){
-			console.log("22");
-		},
-		//三星 -》 下拉 加载
-		samsungScrolltolower(){
-			console.log("33");
-		},
 		changeSwiper(e){
 			this.changeMenu(e.detail.current);
 		},

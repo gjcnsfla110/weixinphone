@@ -1,43 +1,71 @@
 <template>
 	<view class="gr4content" :style="{padding:padding,backgroundColor:listColor}">
 			<view class="gr4list">
-				<view class="gr4Item"  :style="{backgroundColor:itemColor}" v-for="item in data">
-					<navigator url="/pages/oldDetail/oldDetail" hover-class="none">
+				<view class="gr4Item"  :style="{backgroundColor:itemColor}" v-for="item in items" @click="itemDetail(item.goods_id)">
 					<view class="gr4Top">
-						<image :src="item.src" mode="aspectFill"></image>
+						<image :src="item.img" mode="aspectFill"></image>
 					</view>
 					<view class="gr4Bottom">
-						<view class="gr4BtTitle">苹果16pro Max 绝对有性价比的手机 256G 8成以上新 需要速度联系</view>
+						<view class="gr4BtTitle">{{item.title}}</view>
 						<view class="gr4BtContent">
-							<view class="gr4BtContentTag">256G</view>
-							<view class="gr4BtContentTag" style="border: 1px solid red; color: red;">9成新</view>
-							<view class="gr4BtContentPrice">原价:  <view class="yuanjia">200万</view></view>
+							<view class="gr4BtContentTag" :style="{backgroundColor:item.label_color}">{{item.label}}</view>
+							<view class="gr4BtContentTag" style="border: 1px solid red; color: red;">{{item.storage}}</view>
 						</view>
-						<view class="gr4BtPrice">现价: <view class="gr4BtPriceNumber">860,600</view>韩元</view>
+						<view class="gr4BtPrice">
+							<view class="gr4BtContentPrice">原价  :  <text class="yuanjia">{{formattedPrice(item.price)}}</text><text style="font-size: 18rpx;">  韩元</text></view>
+							<view class="gr4BtPriceNumber"><text class="leftPrice">现价  :  </text>  <text>{{formattedPrice(item.price2)}}</text><text class="rightPrice">  韩元</text></view>
+						</view>
 					</view>
-					</navigator>
 				</view>
 			</view>
 	</view>
 </template>
 
-<script setup>
-import {defineProps} from "vue"
-const props = defineProps({
-	itemColor:{
-		default:"rgb(247,249,255,0.5)"
-	},
-	listColor:{
-		default:"rgb(255,255,255)"
-	},
-	data:{
-		default:[]
-	},
-	padding:{
-		type:String,
-		default :"0 0"
+<script>
+	import { ref ,watch } from "vue";
+	import { formattedPrice } from '@/utill/common';
+	export default{
+		comments:{
+			
+		},
+		props:{
+			itemColor:{
+				default:"rgb(247,249,255,0.5)"
+			},
+			listColor:{
+				default:"rgb(255,255,255)"
+			},
+			itemData:{
+				type:Object,
+				default:{items:[]}
+			},
+			padding:{
+				type:String,
+				default :"0 0"
+			}
+		},
+		setup(props, context) {
+			const items = ref(props.itemData.items);
+			watch(
+			  () => props.itemData.items,
+			  (newItems) => {
+				items.value = newItems;
+			  },
+			  { deep: true, immediate: true }
+			);
+			return{
+				items,
+				formattedPrice
+			}
+		},
+		methods:{
+			itemDetail(id){
+				uni.navigateTo({
+				        url: `/pages/itemPage/oldItemPage?id=${id}` // 이동할 페이지 경로
+				});
+			}
+		}
 	}
-})
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +80,7 @@ const props = defineProps({
 				.gr4Item{
 					box-shadow:3px 3px 3px 1px rgb(246, 246, 246);
 					width: 100%;
-					height:610rpx;
+					height:710rpx;
 					border-radius: 15rpx;
 					.gr4Top{
 						width: 100%;
@@ -66,7 +94,7 @@ const props = defineProps({
 					}
 					.gr4Bottom{
 						width: 100%;
-						height: 200rpx;
+						height: 300rpx;
 						.gr4BtTitle{
 							width: 100%;
 							padding:0 15rpx;
@@ -80,46 +108,62 @@ const props = defineProps({
 							word-break: break-word; /* 단어가 길 경우 자동 줄바꿈 */
 							max-height: 3em; /* 2줄 높이 제한 (line-height에 따라 조정) */
 							line-height: 1.5em; /* 한 줄의 높이 설정 */
+							letter-spacing: 2rpx; /* 글자 간격 넓게 */
+							text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 						}
 						.gr4BtContent{
 							width: 100%;
-							height: 38rpx;
+							height: 60rpx;
 							margin-top: 10rpx;
-							padding-left: 15rpx;
 							display: flex;
 							.gr4BtContentTag{
-								font-size: 20rpx;
-								margin-right: 10rpx;
-								border-radius: 5rpx;
-								border: 1px solid #1FA2FA;
-								color:#1FA2FA ;
+								width: 47%;
+								margin-left: 3%;
+								margin-right: 3%;
+								height: 60rpx;
+								font-size: 27rpx;
+								border-radius: 8rpx;
+								color:white;
 								text-align: center;
-								line-height: 36rpx;
-								width: 63rpx;
-							}
-							.gr4BtContentPrice{
-								padding-left: 10rpx;
-								font-size: 20rpx;
-								line-height: 40rpx;
-								color: #FF9B03;
-								.yuanjia{
-									display: inline-block;
-									font-size: 26rpx;
-									color: rgb(200, 200, 200);
-									text-decoration: line-through;
-								}
+								line-height: 60rpx;
+								
 							}
 						}
 						.gr4BtPrice{
 							width: 100%;
 							padding-left: 15rpx;
-							margin-top: 11rpx;
-							font-size: 21rpx;
+							margin-top: 20rpx;
+							font-size: 22rpx;
+							text-align: center;
+							.gr4BtContentPrice{
+								padding-left: 10rpx;
+								font-size: 26rpx;
+								line-height: 40rpx;
+								margin-top: 10rpx;
+								color: red;
+								letter-spacing: 2rpx; /* 글자 간격 넓게 */
+								text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
+								.yuanjia{
+									display: inline-block;
+									font-size: 24rpx;
+									color: rgb(100, 100, 100);
+									text-decoration: line-through;
+								}
+							}
 							.gr4BtPriceNumber{
 							    display: inline-block;
-								margin-left: 15rpx;
-								margin-right: 5rpx;
-								font-size: 26rpx;
+								margin-top: 10rpx;
+								font-size: 30rpx;
+								letter-spacing: 2rpx; /* 글자 간격 넓게 */
+								text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
+								.leftPrice{
+									font-size: 36rpx;
+									color: rgb(255, 128, 0);
+								}
+								.rightPrice{
+									font-size: 20rpx;
+									color: rgb(255, 128, 0);
+								}
 							}
 						}
 					}

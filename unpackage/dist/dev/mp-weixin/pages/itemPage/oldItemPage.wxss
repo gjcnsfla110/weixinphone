@@ -1,0 +1,334 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.oldItem.data-v-9572ed5d {
+  width: 100%;
+}
+.oldItem .content.data-v-9572ed5d {
+  width: 100%;
+  /**
+   * 중고폰 내용부분
+   */
+  /**
+   * 내용 타이틀 부분
+   */
+  /**
+   * 악세사리부분
+   */
+  /**
+  * 서비스 및 회사혹은개인 소유부분
+  */
+}
+.oldItem .content .itemContent.data-v-9572ed5d {
+  width: 720rpx;
+  height: 700rpx;
+  padding: 50rpx 20rpx 30rpx 35rpx;
+  background-color: #fff;
+  /* 종이 같은 배경 */
+  font-size: 30rpx;
+  /* 기본 글자 크기 */
+  line-height: 55rpx;
+  /* 줄 간격 (가독성) */
+  color: #323232;
+  /* 글자 색상 */
+  text-align: justify;
+  /* 양쪽 정렬 */
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 */
+}
+.oldItem .content .goodsTop.data-v-9572ed5d {
+  width: 720rpx;
+  height: 270rpx;
+  background-color: #f9f9f9;
+  margin-left: 15rpx;
+  margin-top: 26rpx;
+  border-radius: 10rpx;
+}
+.oldItem .content .goodsTop .price.data-v-9572ed5d {
+  width: 100%;
+  border-radius: 15rpx 15rpx 0 0;
+  height: 110rpx;
+  background-color: #323232;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.35);
+  /* 부드러운 그림자 */
+}
+.oldItem .content .goodsTop .price .priceLeft.data-v-9572ed5d {
+  text-decoration: line-through;
+  -webkit-text-decoration-color: #b4b4a0;
+          text-decoration-color: #b4b4a0;
+  /* 선 색상 */
+  -webkit-text-decoration-style: solid;
+          text-decoration-style: solid;
+  /* 선 스타일: solid, dashed, dotted 등 */
+  text-decoration-thickness: 2rpx;
+  /* 선 두께 */
+}
+.oldItem .content .goodsTop .price .priceLeft .priceT.data-v-9572ed5d {
+  font-size: 24rpx;
+  color: red;
+  margin-right: 10rpx;
+}
+.oldItem .content .goodsTop .price .priceRight .priceT.data-v-9572ed5d {
+  font-size: 24rpx;
+  color: red;
+  margin-right: 10rpx;
+}
+.oldItem .content .goodsTop .price .priceY.data-v-9572ed5d {
+  font-size: 18rpx;
+  color: #ffff33;
+  margin-left: 6rpx;
+}
+.oldItem .content .goodsTop .title.data-v-9572ed5d {
+  width: 100%;
+  height: 150rpx;
+  padding-top: 22rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  font-size: 36rpx;
+  color: #323232;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+  overflow: hidden;
+  /* 넘친 부분 숨김 */
+  text-overflow: ellipsis;
+  /* ... 표시 */
+}
+.oldItem .content .Accessories.data-v-9572ed5d {
+  background-color: #f9f9f9;
+  width: 720rpx;
+  height: 340rpx;
+  margin-left: 15rpx;
+  margin-top: 26rpx;
+  border-radius: 10rpx;
+  padding: 15rpx;
+}
+.oldItem .content .Accessories .AccessoriesContent.data-v-9572ed5d {
+  width: 100%;
+  height: 310rpx;
+  background-color: white;
+  border-radius: 8rpx;
+  padding-top: 15rpx;
+}
+.oldItem .content .Accessories .AccessoriesContent .AccessoriesTitle.data-v-9572ed5d {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ff9933;
+  font-size: 35rpx;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  /* 부드러운 그림자 */
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+}
+.oldItem .content .Accessories .AccessoriesContent .AccessoriesTitle .AccessoriesTitleLeft.data-v-9572ed5d {
+  font-size: 40rpx;
+  color: red;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+}
+.oldItem .content .Accessories .AccessoriesContent .AccessoriesText.data-v-9572ed5d {
+  width: 100%;
+  height: 70rpx;
+  font-size: 28rpx;
+  color: #323232;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  /* 부드러운 그림자 */
+  display: flex;
+  align-items: center;
+}
+.oldItem .content .Accessories .AccessoriesContent .AccessoriesText .AccessoriesImg.data-v-9572ed5d {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 26rpx;
+  margin-right: 20rpx;
+}
+.oldItem .content .itemService.data-v-9572ed5d {
+  background-color: #f9f9f9;
+  width: 720rpx;
+  height: 455rpx;
+  margin-left: 15rpx;
+  margin-top: 26rpx;
+  border-radius: 10rpx;
+  padding-top: 15rpx;
+}
+.oldItem .content .itemService .serviceLeft1.data-v-9572ed5d {
+  width: 680rpx;
+  height: 105rpx;
+  line-height: 105rpx;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
+  border-radius: 8rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background-color: white;
+  position: relative;
+}
+.oldItem .content .itemService .serviceLeft3.data-v-9572ed5d {
+  width: 680rpx;
+  height: 300rpx;
+  line-height: 100rpx;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
+  border-radius: 8rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background-color: white;
+}
+.oldItem .content .itemService .serviceLeft3 .serviceTitle.data-v-9572ed5d {
+  position: relative;
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+}
+.oldItem .content .itemService .serviceLeft3 .serviceTitle .topAll.data-v-9572ed5d {
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+}
+.oldItem .content .itemService .serviceLeft3 .serviceCotent.data-v-9572ed5d {
+  width: 100%;
+  height: 210rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  font-size: 28rpx;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  overflow: hidden;
+}
+.oldItem .content .itemService .serviceLeft3 .serviceCotent .serviceCotentItem.data-v-9572ed5d {
+  width: 100%;
+  height: 65rpx;
+  overflow: hidden;
+  /* 넘친 부분 숨김 */
+  white-space: nowrap;
+  /* 줄바꿈 방지 */
+  text-overflow: ellipsis;
+  /* ... 표시 */
+}
+.oldItem .content .itemService .serviceLeft3 .serviceCotent .serviceCotentItem .serviceText.data-v-9572ed5d {
+  color: #ff9933;
+  font-size: 35rpx;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+  margin-right: 10rpx;
+}
+
+/**
+ * 서비스 밑에서 올라오는 창 
+ */
+.popupBottom.data-v-9572ed5d {
+  height: 800rpx;
+  padding: 20rpx;
+  border-radius: 38rpx 38rpx 0 0;
+  z-index: 1000;
+  background-color: white;
+}
+.specPopupText.data-v-9572ed5d {
+  width: 100%;
+  height: 110rpx;
+  display: flex;
+  line-height: 110rpx;
+  font-size: 26rpx;
+  color: #787878;
+}
+.specPopupText .specText.data-v-9572ed5d {
+  width: 50%;
+}
+.specPopupText .specText .specPopupName.data-v-9572ed5d {
+  color: #ff9933;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.servicePopupTitle.data-v-9572ed5d {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 28rpx;
+  font-size: 39rpx;
+  color: red;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.servicePopupText.data-v-9572ed5d {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.servicePopupText .servicePopupTextL.data-v-9572ed5d {
+  height: 80rpx;
+  background-color: rgba(255, 229, 204, 0.3);
+  padding: 10rpx 20rpx 10rpx 20rpx;
+  color: #ff9933;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  /* 부드러운 그림자 */
+  margin-right: 30rpx;
+}
+.servicePopupText .servicePopupTextR.data-v-9572ed5d {
+  color: #323232;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  /* 부드러운 그림자 */
+}
+
+/**
+ * 밑에부분 높이를 커버
+ */
+.hiddenView.data-v-9572ed5d {
+  width: 100%;
+  height: 165rpx;
+}

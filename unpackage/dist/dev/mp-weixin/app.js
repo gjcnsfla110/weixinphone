@@ -11,6 +11,7 @@ if (!Math) {
   "./pages/list/list.js";
   "./pages/oldList/oldList.js";
   "./pages/itemPage/oldItemPage.js";
+  "./pages/itemPage/newItemPage.js";
 }
 const _sfc_main = {
   async onLaunch() {

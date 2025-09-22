@@ -3,7 +3,7 @@
 		<view class="content">
 			<view class="listItem1">
 				<swiper class="listItem1Swiper" autoplay indicator-dots circular="true">
-					<swiper-item v-for="item in list1" class="listItem1SwiperItem" @click="itemDetail(item.id)">
+					<swiper-item v-for="item in list1" class="listItem1SwiperItem" @click="itemDetail(item.goods_id)">
 						<view class="item1Text">
 							<view class="item1Name">{{item.title}}</view>
 							<view class="item1Storage">{{item.storage}}</view>
@@ -15,7 +15,7 @@
 					</swiper-item>
 				</swiper>
 			</view>
-			<view class="listItem2" v-for="item in list2" @click="itemDetail(item.id)">
+			<view class="listItem2" v-for="item in list2" @click="itemDetail(item.goods_id)">
 				<view class="item2Title">{{item.title}}</view>
 				<view class="item2">
 					<view class="item2Text">
@@ -62,7 +62,7 @@
 			},
 			itemDetail(id){
 				uni.navigateTo({
-				        url: `/pages/itemPage/oldItemPage?id=${id}` // 이동할 페이지 경로
+				        url: `/pages/itemPage/newItemPage?id=${id}` // 이동할 페이지 경로
 				});
 			}
 		}

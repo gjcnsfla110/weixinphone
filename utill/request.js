@@ -6,6 +6,7 @@
 		BASE_URL = 'http://localhost/'
 	} else if (platform === 'h5') {
 	  // H5 환경
+		console.log("이부분들어옴")
 		BASE_URL = '/api/' 
 	} else {
 		

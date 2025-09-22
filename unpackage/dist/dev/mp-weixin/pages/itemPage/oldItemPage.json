@@ -1,9 +1,10 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "二手商品",
   "navigationStyle": "custom",
   "usingComponents": {
     "custom-nav": "../../components/custom-nav-bar/customNav",
     "swiper-img": "../../components/pageDetail/swiperImg",
-    "bottom": "../../components/pageDetail/bottom"
+    "bottom": "../../components/pageDetail/itemBottom",
+    "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
   }
 }

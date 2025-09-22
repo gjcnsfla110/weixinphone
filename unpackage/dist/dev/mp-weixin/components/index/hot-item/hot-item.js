@@ -72,91 +72,104 @@ if (!Array) {
   (_component_swiperBanner + _component_ItemTitle + _component_ItemNew + _component_ItemScrollView + _component_ItemContentList + _component_SwiperImg + _component_ItemContentOne + _component_ItemContentTitle + _component_ItemContentTwo + _component_ItemList + _component_OneImg + _component_ImgBanner + _component_LoadingView)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
-    a: common_vendor.p({
+  return common_vendor.e({
+    a: $setup.banner.id
+  }, $setup.banner.id ? {
+    b: common_vendor.p({
       componentData: $setup.banner
     }),
-    b: common_vendor.f($props.subMenu, (item, k0, i0) => {
+    c: common_vendor.f($props.subMenu, (item, k0, i0) => {
       return {
         a: item.img,
         b: common_vendor.t(item.name)
       };
     }),
-    c: common_vendor.f($setup.componentData, (item, k0, i0) => {
+    d: common_vendor.f($setup.componentData, (item, index, i0) => {
       return common_vendor.e({
         a: item.title
       }, item.title ? {
-        b: "b080f363-2-" + i0 + ",b080f363-1",
-        c: common_vendor.p({
+        b: item.page_key + index,
+        c: "b080f363-2-" + i0 + ",b080f363-1",
+        d: common_vendor.p({
           left: item.title,
           right: item.title1,
           more: item.more == 1
         })
       } : {}, {
-        d: item.component == "ItemNew"
+        e: item.component == "ItemNew"
       }, item.component == "ItemNew" ? {
-        e: "b080f363-3-" + i0 + ",b080f363-1",
-        f: common_vendor.p({
+        f: item.page_key + index,
+        g: "b080f363-3-" + i0 + ",b080f363-1",
+        h: common_vendor.p({
           itemData: item
         })
       } : item.component == "ItemScrollView" ? {
-        h: "b080f363-4-" + i0 + ",b080f363-1",
-        i: common_vendor.p({
-          itemData: item
-        })
-      } : item.component == "ItemContentList" ? {
-        k: "b080f363-5-" + i0 + ",b080f363-1",
+        j: item.page_key + index,
+        k: "b080f363-4-" + i0 + ",b080f363-1",
         l: common_vendor.p({
           itemData: item
         })
+      } : item.component == "ItemContentList" ? {
+        n: item.page_key + index,
+        o: "b080f363-5-" + i0 + ",b080f363-1",
+        p: common_vendor.p({
+          itemData: item
+        })
       } : item.component == "SwiperImg" ? {
-        n: "b080f363-6-" + i0 + ",b080f363-1",
-        o: common_vendor.p({
+        r: item.page_key + index,
+        s: "b080f363-6-" + i0 + ",b080f363-1",
+        t: common_vendor.p({
           itemData: item
         })
       } : item.component == "ItemContentOne" ? {
-        q: "b080f363-7-" + i0 + ",b080f363-1",
-        r: common_vendor.p({
-          itemData: item
-        })
-      } : item.component == "ItemContentTitle" ? {
-        t: "b080f363-8-" + i0 + ",b080f363-1",
-        v: common_vendor.p({
-          itemData: item
-        })
-      } : item.component == "ItemContentTwo" ? {
-        x: "b080f363-9-" + i0 + ",b080f363-1",
+        w: item.page_key + index,
+        x: "b080f363-7-" + i0 + ",b080f363-1",
         y: common_vendor.p({
           itemData: item
         })
+      } : item.component == "ItemContentTitle" ? {
+        A: item.page_key + index,
+        B: "b080f363-8-" + i0 + ",b080f363-1",
+        C: common_vendor.p({
+          itemData: item
+        })
+      } : item.component == "ItemContentTwo" ? {
+        E: item.page_key + index,
+        F: "b080f363-9-" + i0 + ",b080f363-1",
+        G: common_vendor.p({
+          itemData: item
+        })
       } : item.component == "ItemList" ? {
-        A: "b080f363-10-" + i0 + ",b080f363-1",
-        B: common_vendor.p({
+        I: item.page_key + index,
+        J: "b080f363-10-" + i0 + ",b080f363-1",
+        K: common_vendor.p({
           itemData: item
         })
       } : item.component == "OneImg" ? {
-        D: "b080f363-11-" + i0 + ",b080f363-1",
-        E: common_vendor.p({
+        M: item.page_key + index,
+        N: "b080f363-11-" + i0 + ",b080f363-1",
+        O: common_vendor.p({
           itemData: item
         })
       } : item.component == "ImgBanner" ? {
-        G: "b080f363-12-" + i0 + ",b080f363-1",
-        H: common_vendor.p({
+        Q: item.page_key + index,
+        R: "b080f363-12-" + i0 + ",b080f363-1",
+        S: common_vendor.p({
           itemData: item
         })
       } : {}, {
-        g: item.component == "ItemScrollView",
-        j: item.component == "ItemContentList",
-        m: item.component == "SwiperImg",
-        p: item.component == "ItemContentOne",
-        s: item.component == "ItemContentTitle",
-        w: item.component == "ItemContentTwo",
-        z: item.component == "ItemList",
-        C: item.component == "OneImg",
-        F: item.component == "ImgBanner"
+        i: item.component == "ItemScrollView",
+        m: item.component == "ItemContentList",
+        q: item.component == "SwiperImg",
+        v: item.component == "ItemContentOne",
+        z: item.component == "ItemContentTitle",
+        D: item.component == "ItemContentTwo",
+        H: item.component == "ItemList",
+        L: item.component == "OneImg",
+        P: item.component == "ImgBanner"
       });
     })
-  };
+  } : {});
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b080f363"]]);
 wx.createComponent(Component);

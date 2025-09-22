@@ -1,31 +1,61 @@
 <template>
 	<cardPage :color="color">
 		<view class="gr3content">
-			<view class="gr3item" v-for="item in 4">
+			<view class="gr3item" v-for="item in items" @click="itemDetail(item.goods_id)">
 				<view class="gr3topImg">
-					<image src="/static/subMenu/iphoneT.png"></image>
+					<image :src="item.img"></image>
 				</view>
 				<view class="gr3bottom">
-					<view class="gr3bottomTitle">iphone16promax</view>
-					<view class="gr3bottomContent">256G内存</view>
+					<view class="gr3bottomTitle">{{item.title}}</view>
+					<view class="gr3bottomContent">{{item.storage}}</view>
 					<view class="gr3bottomPrice">
-							<view class="gr3pbtmleft">160万韩元</view>
-							<view class="gr3pbtmright">立即购买</view>
+							<view class="gr3pbtmleft">{{formattedPrice(item.price1)}}</view>
+							<view class="gr3pbtmright">韩元</view>
 					</view>
 				</view>
 			</view>
 		</view>
 	</cardPage>
 </template>
-<script setup>
+<script>
   import cardPage from '@/components/cardPage/cardPage.vue';
-  import {defineProps} from "vue"
-  const props = defineProps({
-	  color:{
-		  default:"#F6FCFF"
+  import {formattedPrice} from "@/utill/common.js";
+  import { ref,watch } from 'vue';
+  export default{
+	  comments:{
+		  cardPage
 	  },
-	  
-  })
+	  props:{
+	  	  color:{
+	  		  default:"#F6FCFF"
+	  	  },
+		  itemData:{
+		  	type:Object,
+		  	default:{items:[]}
+		  }
+	  },
+	  setup(props, context) {
+	  	const items = ref(props.itemData.items);
+		watch(
+		  () => props.itemData.items,
+		  (newItems) => {
+			items.value = newItems;
+		  },
+		  { deep: true, immediate: true }
+		);
+		return {
+			formattedPrice,
+			items
+		}
+	  },
+	  methods:{
+		  itemDetail(id){
+		  	uni.navigateTo({
+		  	        url: `/pages/itemPage/newItemPage?id=${id}` // 이동할 페이지 경로
+		  	});
+		  }
+	  }
+  }
 </script>
 <style lang="scss" scoped>
 	.gr3content{
@@ -35,7 +65,7 @@
 		gap: 20rpx;
 		.gr3item{
 			width: 100%;
-			height: 520rpx;
+			height: 550rpx;
 			background-color: white;
 			border-radius: 15rpx;
 			.gr3topImg{
@@ -45,9 +75,11 @@
 				justify-content: center;
 				align-items: center;
 				image{
-					width: 200rpx;
-					height: 250rpx;
+					width: 230rpx;
+					height: 280rpx;
 					text-align: center;
+					border-radius: 10rpx;
+					overflow: hidden;
 				}
 			}
 			.gr3bottom{
@@ -55,13 +87,17 @@
 				padding-left: 20rpx;
 				height: 200rpx;
 				.gr3bottomTitle{
-					margin-top: 20rpx;
+					margin-top: 10rpx;
 					margin-bottom: 5rpx;
-					font-size: 30rpx;
+					width: 100%;
+					height: 66rpx;
+					font-size: 28rpx;
+					overflow: hidden;
+					letter-spacing: 1rpx; /* 글자 간격 넓게 */
 				}
 				.gr3bottomContent{
-					font-size: 25rpx;
-					color: #B7B7B7;
+					font-size: 29rpx;
+					color: rgb(255, 128, 0);
 				}
 				.gr3bottomPrice{
 					display: flex;
@@ -74,19 +110,23 @@
 					border-radius: 60rpx;
 					overflow: hidden;
 					.gr3pbtmleft{
-						width: 50%;
+						width: 62%;
 						height: 56rpx;
 						line-height: 56rpx;
 						padding-left: 20rpx;
-						font-size: 25rpx;
+						font-size: 28rpx;
+						text-align: center;
+						letter-spacing: 1rpx; /* 글자 간격 넓게 */
+						text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 					}
 					.gr3pbtmright{
-						width: 50%;
+						width: 38%;
 						height: 56rpx;
 						line-height: 56rpx;
 						padding-right: 10rpx;
 						padding-left: 8rpx;
-						font-size: 29rpx;						
+						font-size: 28rpx;
+						text-align: center;						
 						background-color: black;
 						color: white;
 					}

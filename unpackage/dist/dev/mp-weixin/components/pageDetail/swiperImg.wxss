@@ -25,10 +25,13 @@
 /* 文章场景相关 */
 .pageSwiper.data-v-bc138464 {
   width: 100%;
-  height: 650rpx;
+  height: 500rpx;
 }
 .pageSwiper .swiperItem.data-v-bc138464 {
   width: 100%;
   height: 100%;
-  background-color: skyblue;
+}
+.pageSwiper .swiperItem .img.data-v-bc138464 {
+  width: 100%;
+  height: 100%;
 }

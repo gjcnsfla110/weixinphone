@@ -7,6 +7,7 @@ export const useMainStores = defineStore('mainData',{
 		iphone:[],
 		samsung:[],
 		subMenu:[],
+		goodsSpecs:[],
 		isLoading: false,
         isDataReady: false
 	}),
@@ -21,6 +22,7 @@ export const useMainStores = defineStore('mainData',{
 				const res = await serviceGet('app/index/main');
 				const newData = {
 				subMenu: res.subMenus || [],
+				goodsSpecs: res.goodsSpecs || [],
 				main: [],
 				iphone: [],
 				samsung: [],
@@ -42,6 +44,7 @@ export const useMainStores = defineStore('mainData',{
 				this.iphone = newData.iphone;
 				this.samsung = newData.samsung;
 				this.subMenu = newData.subMenu;
+				this.goodsSpecs = newData.goodsSpecs;
 				this.isDataReady = true;
 
 				// 캐시에 저장 (만료 시간: 24시간)
@@ -52,6 +55,7 @@ export const useMainStores = defineStore('mainData',{
 				iphone: this.iphone,
 				samsung: this.samsung,
 				subMenu: this.subMenu,
+				goodsSpecs: this.goodsSpecs,
 				expiry,
 				});
 			} catch (error) {
@@ -82,6 +86,7 @@ export const useMainStores = defineStore('mainData',{
                     this.iphone = cachedData.iphone || [];
                     this.samsung = cachedData.samsung || [];
                     this.subMenu = cachedData.subMenu || [];
+					this.goodsSpecs = cachedData.goodsSpecs || [];
                     this.isDataReady = true;
                     this.isLoading = false;
                     return;
@@ -93,6 +98,7 @@ export const useMainStores = defineStore('mainData',{
 				main: [],
 				iphone: [],
 				samsung: [],
+				goodsSpecs: res.goodsSpecs || [],
 				};
 
 				// 페이지 데이터 처리
@@ -110,6 +116,7 @@ export const useMainStores = defineStore('mainData',{
 				this.iphone = newData.iphone;
 				this.samsung = newData.samsung;
 				this.subMenu = newData.subMenu;
+				this.goodsSpecs = newData.goodsSpecs;
 				this.isDataReady = true;
 
                 // 캐시에 저장 (만료 시간: 24시간)
@@ -119,6 +126,7 @@ export const useMainStores = defineStore('mainData',{
                     iphone: this.iphone,
                     samsung: this.samsung,
                     subMenu: this.subMenu,
+					goodsSpecs: this.goodsSpecs,
                     expiry
                 });
 				

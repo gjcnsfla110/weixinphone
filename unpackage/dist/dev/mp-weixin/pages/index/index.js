@@ -41,17 +41,13 @@ const _sfc_main = {
     };
   },
   methods: {
-    //推荐 -》 下拉后 加载
-    hotScrolltolower() {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:86", "11");
-    },
     //苹果 -》 下拉 加载
     iphoneScrolltolower() {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:90", "22");
+      common_vendor.index.__f__("log", "at pages/index/index.vue:86", "22");
     },
     //三星 -》 下拉 加载
     samsungScrolltolower() {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:94", "33");
+      common_vendor.index.__f__("log", "at pages/index/index.vue:90", "33");
     },
     changeSwiper(e) {
       this.changeMenu(e.detail.current);
@@ -69,7 +65,7 @@ const _sfc_main = {
         try {
           await this.mainStores.lodingMain();
         } catch (error) {
-          common_vendor.index.__f__("error", "at pages/index/index.vue:112", "Error reloading data:", error);
+          common_vendor.index.__f__("error", "at pages/index/index.vue:108", "Error reloading data:", error);
         }
       }
     }
@@ -89,7 +85,7 @@ const _sfc_main = {
         }
       ];
     } catch (error) {
-      common_vendor.index.__f__("error", "at pages/index/index.vue:133", "Error in onLoad:", error);
+      common_vendor.index.__f__("error", "at pages/index/index.vue:129", "Error in onLoad:", error);
     }
   }
 };
@@ -117,22 +113,21 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       subMenu: $setup.subMenu
     }),
     c: $setup.swiperHeight + "px",
-    d: common_vendor.o((...args) => $options.hotScrolltolower && $options.hotScrolltolower(...args)),
-    e: common_vendor.p({
+    d: common_vendor.p({
       height: $setup.swiperHeight,
       iphoneData: $setup.iphone
     }),
-    f: $setup.swiperHeight + "px",
-    g: common_vendor.o((...args) => $options.iphoneScrolltolower && $options.iphoneScrolltolower(...args)),
-    h: common_vendor.p({
+    e: $setup.swiperHeight + "px",
+    f: common_vendor.o((...args) => $options.iphoneScrolltolower && $options.iphoneScrolltolower(...args)),
+    g: common_vendor.p({
       height: $setup.swiperHeight,
       samsungData: $setup.samsung
     }),
-    i: $setup.swiperHeight + "px",
-    j: common_vendor.o((...args) => $options.samsungScrolltolower && $options.samsungScrolltolower(...args)),
-    k: $setup.swiperHeight + "px",
-    l: common_vendor.o((...args) => $options.changeSwiper && $options.changeSwiper(...args)),
-    m: $setup.tabIndex
+    h: $setup.swiperHeight + "px",
+    i: common_vendor.o((...args) => $options.samsungScrolltolower && $options.samsungScrolltolower(...args)),
+    j: $setup.swiperHeight + "px",
+    k: common_vendor.o((...args) => $options.changeSwiper && $options.changeSwiper(...args)),
+    l: $setup.tabIndex
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1cf27b2a"]]);

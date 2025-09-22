@@ -1,23 +1,56 @@
 <template>
 		<view class="ctTwoContent">
 			<view class="ctTwoTop">
-				<image src="/images/testImg/banner1.jpg" mode="aspectFill"></image>
+				<image :src="itemData.img" mode="aspectFill"></image>
 			</view>
 			<view class="ctTwoBottom">
-				<view class="bottomCt" v-for="item in 2">
-					<view class="bTtitle">苹果16promax</view>
-					<view class="bTcontent">超强续航</view>
+				<view class="bottomCt" v-for="item in items" @click="itemDetail(item.goods_id)">
+					<view class="bTtitle">{{item.title}}</view>
+					<view class="bTcontent">{{item.storage}}</view>
 					<view class="bTbottom">
-						<view class="bTbottomleft">160万韩元</view>
-						<view class="bTbottomright">立即购买</view>
+						<view class="bTbottomleft"><text>{{formattedPrice(item.price1)}}</text></view>
+						<view class="bTbottomright">韩元</view>
 					</view>
 				</view>
 			</view>
 		</view>
 </template>
 
-<script setup>
-	
+<script>
+	import { ref,watch } from "vue";
+	import { formattedPrice } from '@/utill/common';
+	export default{
+		comments:{
+			
+		},
+		props:{
+			itemData:{
+						 type:Object,
+						 default:{items:[]}
+			}
+		},
+		setup(props, context) {
+			const items = props.itemData.items;
+			watch(
+			  () => props.itemData.items,
+			  (newItems) => {
+				items.value = newItems;
+			  },
+			  { deep: true, immediate: true }
+			);
+			return {
+				items,
+				formattedPrice
+			}
+		},
+		methods:{
+			itemDetail(id){
+				uni.navigateTo({
+				        url: `/pages/itemPage/newItemPage?id=${id}` // 이동할 페이지 경로
+				});
+			}
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -50,11 +83,16 @@
 				.bTtitle{
 					margin-top: 20rpx;
 					margin-bottom: 5rpx;
-					font-size: 30rpx;
+					font-size: 28rpx;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					letter-spacing: 1rpx; /* 글자 간격 넓게 */
 				}
 				.bTcontent{
-					font-size: 25rpx;
-					color: #B7B7B7;
+					font-size: 27rpx;
+					color: rgb(160, 160, 160);
+					letter-spacing: 3rpx; /* 글자 간격 넓게 */
+					text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
 				}
 				.bTbottom{
 					display: flex;
@@ -67,20 +105,24 @@
 					border-radius: 60rpx;
 					overflow: hidden;
 					.bTbottomleft{
-						width: 50%;
+						width: 60%;
 						height: 56rpx;
 						line-height: 56rpx;
 						padding-left: 20rpx;
-						font-size: 25rpx;
+						font-size: 28rpx;
+						text-align: center;
+						letter-spacing: 1rpx; /* 글자 간격 넓게 */
+						text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 					}
 					.bTbottomright{
-						width: 50%;
+						width: 40%;
 						height: 56rpx;
 						line-height: 56rpx;
 						padding-right: 10rpx;
 						padding-left: 8rpx;
-						font-size: 29rpx;						
+						font-size: 28rpx;						
 						background-color: black;
+						text-align: center;
 						color: white;
 					}
 				}

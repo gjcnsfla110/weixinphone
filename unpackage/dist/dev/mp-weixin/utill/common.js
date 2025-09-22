@@ -14,7 +14,7 @@ function resultPage(pages, components, componentItems, componentBanners) {
   return pages;
 }
 function formattedPrice(price) {
-  return price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 exports.formattedPrice = formattedPrice;
 exports.resultPage = resultPage;

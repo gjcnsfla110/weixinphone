@@ -1,6 +1,6 @@
 <template>	
 		<view class="swiper-content">
-			<view>
+			<view v-if="banner.id">
 				<swiperBanner :componentData="banner"></swiperBanner>
 			</view>	
 			<LoadingView>
@@ -11,39 +11,39 @@
 					</view>
 				</view>
 				<view>
-					<template v-for="item in componentData">
+					<template v-for="(item,index) in componentData">
 						<view v-if="item.title">
-							<ItemTitle :left="item.title" :right="item.title1" :more="item.more==1"></ItemTitle>
+							<ItemTitle :key="item.page_key+index" :left="item.title" :right="item.title1" :more="item.more==1"></ItemTitle>
 						</view>
 						<view v-if="item.component =='ItemNew'">
-							<ItemNew :itemData="item"></ItemNew>
+							<ItemNew :key="item.page_key+index" :itemData="item"></ItemNew>
 						</view>
 						<view v-else-if="item.component =='ItemScrollView'">
-							<ItemScrollView :itemData="item"></ItemScrollView>
+							<ItemScrollView :key="item.page_key+index" :itemData="item"></ItemScrollView>
 						</view>
 						<view v-else-if="item.component =='ItemContentList'">
-							<ItemContentList :itemData="item"></ItemContentList>
+							<ItemContentList :key="item.page_key+index" :itemData="item"></ItemContentList>
 						</view>
 						<view v-else-if="item.component =='SwiperImg'">
-							<SwiperImg :itemData="item"></SwiperImg>
+							<SwiperImg :key="item.page_key+index" :itemData="item"></SwiperImg>
 						</view>
 						<view v-else-if="item.component =='ItemContentOne'">
-							<ItemContentOne :itemData="item"></ItemContentOne>
+							<ItemContentOne :key="item.page_key+index" :itemData="item"></ItemContentOne>
 						</view>
 						<view v-else-if="item.component =='ItemContentTitle'">
-							<ItemContentTitle :itemData="item"></ItemContentTitle>
+							<ItemContentTitle :key="item.page_key+index" :itemData="item"></ItemContentTitle>
 						</view>
 						<view v-else-if="item.component =='ItemContentTwo'">
-							<ItemContentTwo :itemData="item"></ItemContentTwo>
+							<ItemContentTwo :key="item.page_key+index" :itemData="item"></ItemContentTwo>
 						</view>
 						<view v-else-if="item.component =='ItemList'">
-							<ItemList :itemData="item"></ItemList>
+							<ItemList :key="item.page_key+index" :itemData="item"></ItemList>
 						</view>
 						<view v-else-if="item.component =='OneImg'">
-							<OneImg :itemData="item"></OneImg>
+							<OneImg :key="item.page_key+index" :itemData="item"></OneImg>
 						</view>
 						<view v-else-if="item.component =='ImgBanner'">
-							<ImgBanner :itemData="item"></ImgBanner>
+							<ImgBanner :key="item.page_key+index" :itemData="item"></ImgBanner>
 						</view>
 					</template>
 				</view>

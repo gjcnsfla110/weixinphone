@@ -54,6 +54,8 @@
 }
 .itemTcontent .itemTtop .Ttopright image.data-v-fecb4b61 {
   position: absolute;
+  border-radius: 10rpx;
+  overflow: hidden;
   top: -10rpx;
   right: 80rpx;
   width: 140rpx;
@@ -77,7 +79,7 @@
 }
 .itemTcontent .itemTbottom .TbottomItem.data-v-fecb4b61 {
   width: 100%;
-  height: 180rpx;
+  height: 360rpx;
   background-color: white;
   border-radius: 10rpx;
   position: relative;
@@ -87,22 +89,48 @@
   padding-left: 18rpx;
 }
 .itemTcontent .itemTbottom .TbottomItem .tbleft .tbTitle.data-v-fecb4b61 {
+  height: 65rpx;
   margin-top: 25rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 */
 }
 .itemTcontent .itemTbottom .TbottomItem .tbleft .tbContent.data-v-fecb4b61 {
-  margin-top: 8rpx;
-  font-size: 25rpx;
-  color: royalblue;
+  height: 50rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #b4b4b4;
+  position: absolute;
+  bottom: 90rpx;
+  left: 20rpx;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
 }
 .itemTcontent .itemTbottom .TbottomItem .tbleft .tbPrice.data-v-fecb4b61 {
-  margin-top: 18rpx;
-  font-size: 24rpx;
+  position: absolute;
+  font-size: 22rpx;
+  color: #ffb266;
+  bottom: 20rpx;
+  left: 20rpx;
+}
+.itemTcontent .itemTbottom .TbottomItem .tbleft .tbPrice .tbpriceLeft.data-v-fecb4b61 {
+  font-size: 33rpx;
+  color: #323232;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
 }
 .itemTcontent .itemTbottom .TbottomItem .tbright image.data-v-fecb4b61 {
   position: absolute;
-  bottom: 2rpx;
-  right: 5rpx;
-  width: 80rpx;
-  height: 150rpx;
+  bottom: 70rpx;
+  right: 20rpx;
+  width: 140rpx;
+  height: 170rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
 }

@@ -14,7 +14,7 @@
 			  default:"#F6FCFF"
 		  },
 		  marginTop:{
-			  default:"30rpx"
+			  default:"0"
 		  },
 		  pading :{
 			  default:"0 25rpx"

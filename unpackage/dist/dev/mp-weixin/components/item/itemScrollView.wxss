@@ -42,8 +42,16 @@
   margin-top: 45rpx;
   padding-left: 10rpx;
   height: 35rpx;
-  font-size: 24rpx;
+  color: #323232;
+  letter-spacing: 1rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
   overflow: hidden;
+  /* 넘친 부분 숨김 */
+  text-overflow: ellipsis;
+  /* ... 표시 */
+  font-size: 24rpx;
 }
 .scrollX .scrollXlist .gr2price.data-v-e6f32a5d {
   margin-top: 5rpx;
@@ -51,19 +59,32 @@
   height: 38rpx;
   font-size: 18rpx;
   color: #505050;
+  text-align: right;
 }
 .scrollX .scrollXlist .gr2price .gr2priceNumber.data-v-e6f32a5d {
-  display: inline-block;
   color: black;
   font-size: 23rpx;
+  color: red;
+  letter-spacing: 1rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.scrollX .scrollXlist .gr2price .gr2priceH.data-v-e6f32a5d {
+  font-size: 15rpx;
+  color: #ff8000;
+  margin-right: 20rpx;
 }
 .scrollX .scrollXlist .gr2img.data-v-e6f32a5d {
   width: 180rpx;
   height: 260rpx;
   margin-left: 10rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
 }
 .scrollX .scrollXlist .gr2top.data-v-e6f32a5d {
-  width: 60rpx;
+  width: auto;
+  padding: 2rpx 10rpx 2rpx 10rpx;
   height: 30rpx;
   position: absolute;
   font-size: 18rpx;
@@ -73,6 +94,11 @@
   border-radius: 6rpx;
   top: 5rpx;
   right: 15rpx;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
 }
 .scrollX .scrollXlist.data-v-e6f32a5d:last-child {
   margin-right: 30rpx;

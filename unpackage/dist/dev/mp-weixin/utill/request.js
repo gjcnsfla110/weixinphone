@@ -5,6 +5,7 @@ let BASE_URL = "/api/";
 if (platform === "devtools") {
   BASE_URL = "http://localhost/";
 } else if (platform === "h5") {
+  common_vendor.index.__f__("log", "at utill/request.js:9", "이부분들어옴");
   BASE_URL = "/api/";
 } else
   ;
@@ -38,5 +39,9 @@ function request(options) {
 function serviceGet(url, data, header) {
   return request({ url, method: "GET", data, header });
 }
+function servicePost(url, data, header) {
+  return request({ url, method: "POST", data, header });
+}
 exports.serviceGet = serviceGet;
+exports.servicePost = servicePost;
 //# sourceMappingURL=../../.sourcemap/mp-weixin/utill/request.js.map

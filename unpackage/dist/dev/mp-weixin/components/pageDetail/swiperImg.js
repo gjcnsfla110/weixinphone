@@ -1,11 +1,22 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const _sfc_main = {};
-function _sfc_render(_ctx, _cache) {
+const _sfc_main = {
+  comments: {},
+  props: {
+    banner: {
+      type: Array,
+      default: []
+    }
+  },
+  setup(props, context) {
+  },
+  methods: {}
+};
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.f(10, (i, k0, i0) => {
+    a: common_vendor.f($props.banner, (item, k0, i0) => {
       return {
-        a: common_vendor.t(i)
+        a: item
       };
     })
   };

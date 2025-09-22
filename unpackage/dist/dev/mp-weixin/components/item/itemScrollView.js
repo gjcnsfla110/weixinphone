@@ -1,119 +1,62 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-if (!Math) {
-  CardPage();
-}
+const utill_common = require("../../utill/common.js");
 const CardPage = () => "../cardPage/cardPage.js";
+const itemTitle = () => "./itemTitle.js";
 const _sfc_main = {
-  __name: "itemScrollView",
+  components: {
+    CardPage,
+    itemTitle
+  },
   props: {
-    margin: {
-      type: String,
-      default: "0rpx"
-    },
-    left: {
-      type: String,
-      default: ""
-    },
-    right: {
-      type: String,
-      default: ""
-    },
-    more: {
-      type: Boolean,
-      default: false
+    itemData: {
+      type: Object,
+      default: { items: [] }
     }
   },
-  setup(__props) {
-    const datelist = common_vendor.ref([
-      {
-        title: "아이폰손목시계 아이폰손목시계 아이폰손목시계 아이폰손목시계",
-        price: "259,500",
-        status: 0,
-        src: "/static/subMenu/watch.jpg"
+  setup(props, context) {
+    const items = common_vendor.ref(props.itemData.items);
+    common_vendor.watch(
+      () => props.itemData.items,
+      (newItems) => {
+        items.value = newItems;
       },
-      {
-        title: "아이폰 이어폰 아이폰손목시계아이폰손목시계",
-        price: "259,500",
-        status: 2,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰 아이폰손목시계 아이폰손목시계",
-        price: "259,500",
-        status: 1,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰 아이폰손목시계 아이폰손목시계",
-        price: "259,500",
-        status: 2,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰 아이폰손목시계 아이폰손목시계",
-        price: "25,500",
-        status: 0,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰 아이폰손목시계 아이폰손목시계",
-        price: "259,500",
-        status: 1,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰",
-        price: "259,500",
-        status: 0,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰",
-        price: "259,500",
-        status: 0,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰",
-        price: "259,500",
-        status: 2,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰",
-        price: "259,500",
-        status: 0,
-        src: "/static/subMenu/watch.jpg"
-      },
-      {
-        title: "아이폰 이어폰",
-        price: "259,500",
-        status: 1,
-        src: "/static/subMenu/watch.jpg"
-      }
-    ]);
-    return (_ctx, _cache) => {
-      return {
-        a: common_vendor.f(datelist.value, (item, k0, i0) => {
-          return common_vendor.e({
-            a: common_vendor.t(item.title),
-            b: common_vendor.t(item.price),
-            c: item.src,
-            d: item.status == 0
-          }, item.status == 0 ? {} : {}, {
-            e: item.status == 1
-          }, item.status == 1 ? {} : {}, {
-            f: item.status == 2
-          }, item.status == 2 ? {} : {});
-        }),
-        b: common_vendor.p({
-          marginTop: __props.margin
-        })
-      };
+      { deep: true, immediate: true }
+    );
+    return {
+      items
     };
+  },
+  methods: {
+    changePrice(price) {
+      return utill_common.formattedPrice(price);
+    },
+    itemDetail(id) {
+      common_vendor.index.navigateTo({
+        url: `/pages/itemPage/newItemPage?id=${id}`
+        // 이동할 페이지 경로
+      });
+    }
   }
 };
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-e6f32a5d"]]);
+if (!Array) {
+  const _component_CardPage = common_vendor.resolveComponent("CardPage");
+  _component_CardPage();
+}
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {
+    a: common_vendor.f($setup.items, (item, k0, i0) => {
+      return {
+        a: common_vendor.t(item.title),
+        b: common_vendor.t($options.changePrice(item.price1)),
+        c: item.img,
+        d: common_vendor.t(item.label),
+        e: item.label_color,
+        f: common_vendor.o(($event) => $options.itemDetail(item.goods_id))
+      };
+    })
+  };
+}
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-e6f32a5d"]]);
 wx.createComponent(Component);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/components/item/itemScrollView.js.map

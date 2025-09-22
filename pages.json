@@ -57,18 +57,18 @@
 			}
 		},
 		{
-			"path" : "pages/listDetail/listDetail",
+			"path" : "pages/itemPage/oldItemPage",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "二手商品",
 				"navigationStyle": "custom"
 			}
 		},
 		{
-			"path" : "pages/itemPage/oldItemPage",
+			"path" : "pages/itemPage/newItemPage",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "商品",
 				"navigationStyle": "custom"
 			}
 		}

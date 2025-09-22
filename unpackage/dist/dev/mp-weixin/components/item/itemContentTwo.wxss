@@ -55,11 +55,19 @@
 .ctTwoContent .ctTwoBottom .bottomCt .bTtitle.data-v-cd814b23 {
   margin-top: 20rpx;
   margin-bottom: 5rpx;
-  font-size: 30rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 1rpx;
+  /* 글자 간격 넓게 */
 }
 .ctTwoContent .ctTwoBottom .bottomCt .bTcontent.data-v-cd814b23 {
-  font-size: 25rpx;
-  color: #B7B7B7;
+  font-size: 27rpx;
+  color: #a0a0a0;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 */
 }
 .ctTwoContent .ctTwoBottom .bottomCt .bTbottom.data-v-cd814b23 {
   display: flex;
@@ -73,19 +81,25 @@
   overflow: hidden;
 }
 .ctTwoContent .ctTwoBottom .bottomCt .bTbottom .bTbottomleft.data-v-cd814b23 {
-  width: 50%;
+  width: 60%;
   height: 56rpx;
   line-height: 56rpx;
   padding-left: 20rpx;
-  font-size: 25rpx;
+  font-size: 28rpx;
+  text-align: center;
+  letter-spacing: 1rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
 }
 .ctTwoContent .ctTwoBottom .bottomCt .bTbottom .bTbottomright.data-v-cd814b23 {
-  width: 50%;
+  width: 40%;
   height: 56rpx;
   line-height: 56rpx;
   padding-right: 10rpx;
   padding-left: 8rpx;
-  font-size: 29rpx;
+  font-size: 28rpx;
   background-color: black;
+  text-align: center;
   color: white;
 }

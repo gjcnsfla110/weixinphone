@@ -17,7 +17,7 @@ const _sfc_main = {
             b: activeMenu.value == index ? "black" : "rgb(180, 180, 180)"
           };
         }),
-        b: common_assets._imports_0$3,
+        b: common_assets._imports_0$4,
         c: common_vendor.p({
           back: "true",
           topHeight: 100

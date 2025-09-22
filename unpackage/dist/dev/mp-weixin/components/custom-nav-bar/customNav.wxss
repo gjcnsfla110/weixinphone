@@ -23,36 +23,36 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.layout .navBar {
+.layout .navBar.data-v-ca453c6d {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 100;
 }
-.layout .navBar .titleBar {
+.layout .navBar .titleBar.data-v-ca453c6d {
   display: flex;
   align-items: center;
 }
-.layout .navBar .titleBar .logo {
+.layout .navBar .titleBar .logo.data-v-ca453c6d {
   margin-left: 30rpx;
   font-size: 38rpx;
 }
-.layout .navBar .titleBar .back {
+.layout .navBar .titleBar .back.data-v-ca453c6d {
   margin-left: 30rpx;
 }
-.layout .navBar .titleBar .search {
-  width: 350rpx;
+.layout .navBar .titleBar .title.data-v-ca453c6d {
+  width: 80%;
   height: 50rpx;
-  margin-left: 39rpx;
   color: #999;
   font-size: 33rpx;
   text-align: center;
   line-height: 50rpx;
 }
-.layout .navBar .slotContent {
+.layout .navBar .slotContent.data-v-ca453c6d {
   background-color: red;
 }
-.layout .fill {
+.layout .fill.data-v-ca453c6d {
   width: 100%;
+  margin-top: 0;
 }

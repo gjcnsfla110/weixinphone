@@ -3,9 +3,9 @@
 		<view class="navBar" :style="{height:custumH + 'px', backgroundColor:bgColor}">
 			<view class="statuBar" :style="{height:statuBarHeight()+'px'}"></view>
 			<view class="titleBar" :style="{height:titleBarheight()+'px'}">
-				<view @click="goBack" v-if="back" class="back"><uni-icons type="arrow-left" size="25"></uni-icons></view>
+				<view @click="goBack" v-if="back" class="back"><uni-icons type="left" size="25"></uni-icons></view>
 				<view v-else class="logo">LOGO</view>
-				<view class="search">
+				<view class="title">
 					{{title}}
 				</view>
 			</view>
@@ -43,6 +43,10 @@
 		customFill:{
 			type:Boolean,
 			default:true,
+		},
+		logoLink:{
+			type:String,
+			default:""
 		}
 	})
 	const custumH = ref(custumHeiht()+props.topHeight);
@@ -56,7 +60,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .layout{
 	.navBar{
@@ -75,10 +79,9 @@
 			.back{
 				margin-left: 30rpx;
 			}
-			.search{
-				width: 350rpx;
+			.title{
+				width: 80%;
 				height: 50rpx;
-				margin-left:39rpx;
 				color:#999;
 				font-size: 33rpx;
 				text-align: center;
@@ -91,6 +94,7 @@
 	}
 	.fill{
 		width: 100%;
+		margin-top: 0;
 	}
 }
 </style>

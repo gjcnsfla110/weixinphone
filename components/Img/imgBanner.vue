@@ -1,19 +1,30 @@
 <template>
 	<view class="Banner">
-		<image class="BannerImg" :src="src" mode="aspectFill" :style="{height:height}"></image>
+		<image class="BannerImg" :src="itemData.img" mode="aspectFill" :style="{height:height}"></image>
 	</view>
 </template>
 
-<script setup>
-import {defineProps} from "vue"
-const props = defineProps({
-	src:{
-		default : "https://byline.network/wp-content/uploads/2024/09/iphone-16-event-94.jpg"
+<script>
+import { ref } from "vue";
+export default{
+	components:{
+		
 	},
-	height:{
-		default: "330rpx"
+	props:{
+		height:{
+			default: "330rpx"
+		},
+		itemData:{
+			type:Object,
+			default:{items:[]}
+		}
+	},
+	setup(props, context) {
+	},
+	methods:{
+		
 	}
-})
+}
 </script>
 <style lang="scss" scoped>
 	.Banner{

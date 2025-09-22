@@ -31,6 +31,10 @@ const _sfc_main = {
     customFill: {
       type: Boolean,
       default: true
+    },
+    logoLink: {
+      type: String,
+      default: ""
     }
   },
   setup(__props) {
@@ -55,7 +59,7 @@ const _sfc_main = {
         b: __props.back
       }, __props.back ? {
         c: common_vendor.p({
-          type: "arrow-left",
+          type: "left",
           size: "25"
         }),
         d: common_vendor.o(goBack)
@@ -71,5 +75,6 @@ const _sfc_main = {
     };
   }
 };
-wx.createComponent(_sfc_main);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-ca453c6d"]]);
+wx.createComponent(Component);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/components/custom-nav-bar/customNav.js.map

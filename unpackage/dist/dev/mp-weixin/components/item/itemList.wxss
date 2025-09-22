@@ -36,7 +36,7 @@
 .gr4content .gr4list .gr4Item.data-v-dcdb0659 {
   box-shadow: 3px 3px 3px 1px #f6f6f6;
   width: 100%;
-  height: 610rpx;
+  height: 710rpx;
   border-radius: 15rpx;
 }
 .gr4content .gr4list .gr4Item .gr4Top.data-v-dcdb0659 {
@@ -51,7 +51,7 @@
 }
 .gr4content .gr4list .gr4Item .gr4Bottom.data-v-dcdb0659 {
   width: 100%;
-  height: 200rpx;
+  height: 300rpx;
 }
 .gr4content .gr4list .gr4Item .gr4Bottom .gr4BtTitle.data-v-dcdb0659 {
   width: 100%;
@@ -72,45 +72,66 @@
   /* 2줄 높이 제한 (line-height에 따라 조정) */
   line-height: 1.5em;
   /* 한 줄의 높이 설정 */
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
 }
 .gr4content .gr4list .gr4Item .gr4Bottom .gr4BtContent.data-v-dcdb0659 {
   width: 100%;
-  height: 38rpx;
+  height: 60rpx;
   margin-top: 10rpx;
-  padding-left: 15rpx;
   display: flex;
 }
 .gr4content .gr4list .gr4Item .gr4Bottom .gr4BtContent .gr4BtContentTag.data-v-dcdb0659 {
-  font-size: 20rpx;
-  margin-right: 10rpx;
-  border-radius: 5rpx;
-  border: 1px solid #1FA2FA;
-  color: #1FA2FA;
+  width: 47%;
+  margin-left: 3%;
+  margin-right: 3%;
+  height: 60rpx;
+  font-size: 27rpx;
+  border-radius: 8rpx;
+  color: white;
   text-align: center;
-  line-height: 36rpx;
-  width: 63rpx;
-}
-.gr4content .gr4list .gr4Item .gr4Bottom .gr4BtContent .gr4BtContentPrice.data-v-dcdb0659 {
-  padding-left: 10rpx;
-  font-size: 20rpx;
-  line-height: 40rpx;
-  color: #FF9B03;
-}
-.gr4content .gr4list .gr4Item .gr4Bottom .gr4BtContent .gr4BtContentPrice .yuanjia.data-v-dcdb0659 {
-  display: inline-block;
-  font-size: 26rpx;
-  color: #c8c8c8;
-  text-decoration: line-through;
+  line-height: 60rpx;
 }
 .gr4content .gr4list .gr4Item .gr4Bottom .gr4BtPrice.data-v-dcdb0659 {
   width: 100%;
   padding-left: 15rpx;
-  margin-top: 11rpx;
-  font-size: 21rpx;
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  text-align: center;
+}
+.gr4content .gr4list .gr4Item .gr4Bottom .gr4BtPrice .gr4BtContentPrice.data-v-dcdb0659 {
+  padding-left: 10rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  color: red;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.gr4content .gr4list .gr4Item .gr4Bottom .gr4BtPrice .gr4BtContentPrice .yuanjia.data-v-dcdb0659 {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #646464;
+  text-decoration: line-through;
 }
 .gr4content .gr4list .gr4Item .gr4Bottom .gr4BtPrice .gr4BtPriceNumber.data-v-dcdb0659 {
   display: inline-block;
-  margin-left: 15rpx;
-  margin-right: 5rpx;
-  font-size: 26rpx;
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.gr4content .gr4list .gr4Item .gr4Bottom .gr4BtPrice .gr4BtPriceNumber .leftPrice.data-v-dcdb0659 {
+  font-size: 36rpx;
+  color: #ff8000;
+}
+.gr4content .gr4list .gr4Item .gr4Bottom .gr4BtPrice .gr4BtPriceNumber .rightPrice.data-v-dcdb0659 {
+  font-size: 20rpx;
+  color: #ff8000;
 }
