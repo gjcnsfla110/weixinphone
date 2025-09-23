@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
-import { serviceGet,servicePost } from "../utill/request";
-import { resultPage } from "../utill/common";
+import { serviceGet,servicePost } from "@/utill/request";
+import { resultPage,listTrees } from "@/utill/common";
+
 export const useMainStores = defineStore('mainData',{
 	state:()=>({
 		main:[],
@@ -8,6 +9,8 @@ export const useMainStores = defineStore('mainData',{
 		samsung:[],
 		subMenu:[],
 		goodsSpecs:[],
+		categoryMenu:[],
+		categorySubmenu :[],
 		isLoading: false,
         isDataReady: false
 	}),
@@ -23,6 +26,8 @@ export const useMainStores = defineStore('mainData',{
 				const newData = {
 				subMenu: res.subMenus || [],
 				goodsSpecs: res.goodsSpecs || [],
+				categoryMenu : res.categoryMenu || [],
+				categorySubmenu : res.categorySubmenu || [],
 				main: [],
 				iphone: [],
 				samsung: [],
@@ -45,6 +50,8 @@ export const useMainStores = defineStore('mainData',{
 				this.samsung = newData.samsung;
 				this.subMenu = newData.subMenu;
 				this.goodsSpecs = newData.goodsSpecs;
+				this.categoryMenu = listTrees(newData.categoryMenu,'category_id');
+				this.categorySubmenu = newData.categorySubmenu;
 				this.isDataReady = true;
 
 				// 캐시에 저장 (만료 시간: 24시간)
@@ -56,6 +63,8 @@ export const useMainStores = defineStore('mainData',{
 				samsung: this.samsung,
 				subMenu: this.subMenu,
 				goodsSpecs: this.goodsSpecs,
+				categoryMenu: this.categoryMenu,
+				categorySubmenu: this.categorySubmenu,
 				expiry,
 				});
 			} catch (error) {
@@ -67,6 +76,8 @@ export const useMainStores = defineStore('mainData',{
 				this.iphone = cachedData.iphone || [];
 				this.samsung = cachedData.samsung || [];
 				this.subMenu = cachedData.subMenu || [];
+				this.categoryMenu = cachedData.categoryMenu || [];
+				this.categorySubmenu = cachedData.categorySubmenu || [];
 				this.isDataReady = true;
 				}
 			} finally {
@@ -87,6 +98,8 @@ export const useMainStores = defineStore('mainData',{
                     this.samsung = cachedData.samsung || [];
                     this.subMenu = cachedData.subMenu || [];
 					this.goodsSpecs = cachedData.goodsSpecs || [];
+					this.categoryMenu = cachedData.categoryMenu || [];
+					this.categorySubmenu = cachedData.categorySubmenu || [];
                     this.isDataReady = true;
                     this.isLoading = false;
                     return;
@@ -95,6 +108,8 @@ export const useMainStores = defineStore('mainData',{
 				const res = await serviceGet('app/index/main');
 				const newData = {
 				subMenu: res.subMenus || [],
+				categoryMenu : res.categoryMenu || [],
+				categorySubmenu : res.categorySubmenu || [],
 				main: [],
 				iphone: [],
 				samsung: [],
@@ -117,6 +132,8 @@ export const useMainStores = defineStore('mainData',{
 				this.samsung = newData.samsung;
 				this.subMenu = newData.subMenu;
 				this.goodsSpecs = newData.goodsSpecs;
+				this.categoryMenu = listTrees(newData.categoryMenu,'category_id');
+				this.categorySubmenu = newData.categorySubmenu;
 				this.isDataReady = true;
 
                 // 캐시에 저장 (만료 시간: 24시간)
@@ -127,6 +144,8 @@ export const useMainStores = defineStore('mainData',{
                     samsung: this.samsung,
                     subMenu: this.subMenu,
 					goodsSpecs: this.goodsSpecs,
+					categoryMenu: this.categoryMenu,
+					categorySubmenu: this.categorySubmenu,
                     expiry
                 });
 				
@@ -144,6 +163,9 @@ export const useMainStores = defineStore('mainData',{
             this.iphone = [];
             this.samsung = [];
             this.subMenu = [];
+			this.goodsSpecs = [];
+			this.categoryMenu = [];
+			this.categorySubmenu = [];
             this.isDataReady = false;
         }
 	}

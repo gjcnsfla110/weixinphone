@@ -108,13 +108,13 @@ export default{
             await this.loadData();
 			this.menu = [
 							{
-								title : this.main[0].name,
+								title : this.main[0].name || "",
 							},
 							{
-								title : this.iphone[0].name
+								title : this.iphone[0].name || ""
 							},
 							{
-								title : this.samsung[0].name
+								title : this.samsung[0].name || ""
 							}
 						];
         } catch (error) {

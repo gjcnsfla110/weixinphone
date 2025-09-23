@@ -20,8 +20,9 @@
 
 <style lang="scss" scoped>
 	.topImg{
+		margin-top: 18rpx;
 		width: 100%;
-		height: 120rpx;
+		height: 260rpx;
 		border-radius: 10rpx;
 	}
 </style>

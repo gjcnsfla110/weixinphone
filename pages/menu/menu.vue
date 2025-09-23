@@ -3,177 +3,136 @@
 	<view class="menuContent" :style="{height:swiperHeight+'px'}">
 		<scroll-view class="menuLeft" :style="{height:swiperHeight+'px'}">
 			<view class="menuList" v-for="item in menuData">
-				<view v-if="item.menutitle" class="menuItem">
-					<view v-for="(sub,index) in item.child" >
-						<view v-if="index == 0" @click="subMenuTol(sub.id,item.id)" class="topText" 
-						:class="{'activeTollColor' : item.id == activeBk}" >
-							<TopTextTitle :color="item.id == activeBk ? item.color : 'black'">
-								{{item.title}}
-							</TopTextTitle>
-							<view class="leftMenutext" :class="{'activeBackgroundColor animate__pulse' : sub.id == activeMenu}">
-								{{sub.title}}
-								<view :class="{'bottomShow animate__slideInUp' : sub.id == activeMenu}" :style="{backgroundColor:item.color}"></view>
-							</view>
-						</view>
-						<view v-else @click="subMenuTol(sub.id,item.id)" class="leftMenutext" 
-						:class="{'activeTollColor' : item.id == activeBk,'activeBackgroundColor animate__pulse' : sub.id == activeMenu}">
-							{{sub.title}}
-							<view :class="{'bottomShow animate__slideInUp' : sub.id == activeMenu}" :style="{backgroundColor:item.color}"></view>
-						</view>
+				<view v-if="item.child.length < 1" class="menuItem">
+					<view @click="subMenu(item.id,item)" class="leftMenutext" 
+					:class="{'activeBackgroundColor animate__pulse' : item.id == activeMenu}">
+						{{item.name}} 
+						<view :class="{'bottomShow animate__slideInUp' : item.id == activeMenu}"></view>
 					</view>
 				</view>
 				<view v-else class="menuItem">
-					<view v-for="sub in item.child" @click="subMenu(sub.id)" class="leftMenutext" 
-					:class="{'activeBackgroundColor animate__pulse' : sub.id == activeMenu}">
-						{{sub.title}} 
-						<view :class="{'bottomShow animate__slideInUp' : sub.id == activeMenu}"></view>
+					<view v-for="(sub,index) in item.child" >
+						<view v-if="index == 0" @click="subMenuTol(sub.id,item.id,sub)" class="topText" 
+						:class="{'activeTollColor' : item.id == activeBk}" >
+							<TopTextTitle :color="item.id == activeBk ? item.color : 'black'">
+								{{item.name}}
+							</TopTextTitle>
+							<view class="leftMenutext" :class="{'activeBackgroundColor animate__pulse' : sub.id == activeMenu}">
+								{{sub.name}}
+								<view :class="{'bottomShow animate__slideInUp' : sub.id == activeMenu}" :style="{backgroundColor:item.color}"></view>
+							</view>
+						</view>
+						<view v-else @click="subMenuTol(sub.id,item.id,sub)" class="leftMenutext" 
+						:class="{'activeTollColor' : item.id == activeBk,'activeBackgroundColor animate__pulse' : sub.id == activeMenu}">
+							{{sub.name}}
+							<view :class="{'bottomShow animate__slideInUp' : sub.id == activeMenu}" :style="{backgroundColor:item.color}"></view>
+						</view>
 					</view>
 				</view>
 			</view>
 		</scroll-view>
 		<scroll-view class="menuRight" :style="{height:swiperHeight+'px'}" scroll-y="true">
 			<view class="rightMunu">
-				<TopImg src="/images/testImg/banner3.jpg"></TopImg>
-				<RightTitle>苹果手机</RightTitle>
-				<RigthItmeList></RigthItmeList>
+				<TopImg :src="categoryImg"></TopImg>
+				<RightTitle>{{categoryName}}</RightTitle>
+				<RightItemList></RightItemList>
 			</view>
 		</scroll-view>
 	</view>
 </template>
-<script setup>
+<script>
 import {getNaviBar,getOsPlatFrom} from "@/utill/systemData.js"
 import CustomNav from "@/components/custom-nav-bar/customNav.vue"
 import TopImg from "@/components/menu/rightTopImg.vue";
 import TopTextTitle from "@/components/menu/leftTopText.vue"
 import RightTitle from "@/components/menu/rightTopTitle.vue"
-import RigthItmeList from "@/components/menu/rightItemList.vue"
+import RightItemList from "@/components/menu/rightItemList.vue"
+import { useMainStores } from "@/stores/mainData";
 import {ref} from "vue";
-	const menuData = [
-			{
-				id:1,
-				menutitle: false,
-				title:"",
-				color:"",
-				child:[
-					{
-						id:1,
-						title:"推荐",
-					}
-				]
-			},
-			{
-				id:2,
-				menutitle: true,
-				title:"IPHONE",
-				color:"rgb(239,209,12)",
-				child:[
-					{
-						id:2,
-						title:"ProMax"
-					},
-					{
-						id:3,
-						title:"Pro"
-					},
-					{
-						id:4,
-						title:"数字系列"
-					},
-					{
-						id:5,
-						title:"二手"
-					}
-				]
-			},
-			{
-				id:3,
-				menutitle: true,
-				title:"SAMSUNG",
-				color:"#1296db",
-				child:[
-					{
-						id:6,
-						title:"S系列"
-					},
-					{
-						id:7,
-						title:"Fold"
-					},
-					{
-						id:8,
-						title:"A系列"
-					},
-					{
-						id:9,
-						title:"二手"
-					}
-				]
-			},
-			{
-				id:4,
-				menutitle: true,
-				title:"中国手机",
-				color:"rgb(202,27,0)",
-				child:[
-					{
-						id:10,
-						title:"韩版机"
-					},
-					{
-						id:11,
-						title:"国内机"
-					},
-					{
-						id:12,
-						title:"二手"
-					}
-				]
-			},
-			{
-				id:5,
-				menutitle: false,
-				title:"",
-				color:"",
-				child:[	
-					{
-						id:13,
-						title:"手机分期"
-					},
-					{
-						id:14,
-						title:"平板电脑"
-					},
-					{
-						id:15,
-						title:"手表"
-					},
-					{
-						id:16,
-						title:"手机配件"
-					},
-				]
+
+export default{
+	components:{
+		CustomNav,
+		TopImg,
+		TopTextTitle,
+		RightTitle,
+		RightItemList
+	},
+	props:{
+		
+	},
+	setup(props, context) {
+
+		//pinia 에서 값을 갖고오기
+		const mainStores = useMainStores();
+		const {categoryMenu,categorySubmenu} = mainStores;
+		//탑높이를 지정부분
+		const topHeight = getNaviBar().custumHeiht();
+		//탑 밑에 스크롤 높이를 지정 함수 
+		const swiperHeightr = ()=>getNaviBar().screen();
+		const swiperHeight = ref(swiperHeightr());
+		//이변수로 큰메뉴틀을 배경색상 및 큰메뉴글짜색상변경
+		const activeBk = ref(1);
+		//메뉴클릭시 효과변수
+		const activeMenu = ref(1);
+		console.log(categoryMenu,categorySubmenu)
+		//카테고리 메뉴
+		const menuData = ref(categoryMenu);
+		//카테고리 상품명 
+		const categoryName = ref("");
+		//카테고리 윗부분 이미지
+		const categoryImg = ref("");
+		return{
+			mainStores,
+			topHeight,
+			swiperHeight,
+			activeBk,
+			activeMenu,
+			menuData,
+			categoryName,
+			categoryImg
+		}
+	},
+	methods:{
+		//제목없는 메뉴클릭(예iphone값이툴없는 메뉴클릭)
+		subMenu(id,item){
+			this.activeMenu = id;
+			this.activeBk = -50;
+			this.categoryName = item.title;
+			this.categoryImg = item.img;
+		},
+		//제목있는 메뉴 클릭시 (예iphone값이툴있는 메뉴클릭)
+		subMenuTol(id,bkId,item){
+			this.activeMenu = id;
+			this.activeBk = bkId;
+			this.categoryName = item.title;
+			this.categoryImg = item.img;
+		},
+		// pinia 데이터를 받는 설정 부분
+		async loadData(){
+			if (!this.mainStores.isDataReady) {
+			    try {
+			        await this.mainStores.lodingMain();
+			    } catch (error) {
+			        console.error('Error reloading data:', error);
+			    }
 			}
-			
-		]
-	//탑높이를 지정부분	
-	const topHeight = getNaviBar().custumHeiht();
-	//탑 밑에 스크롤 높이를 지정 함수 
-	const swiperHeightr = ()=>getNaviBar().screen();
-	const swiperHeight = ref(swiperHeightr());
-	//이변수로 큰메뉴틀을 배경색상 및 큰메뉴글짜색상변경
-	const activeBk = ref(1);
-	//메뉴클릭시 효과변수
-	const activeMenu = ref(1);
-	//제목없는 메뉴클릭(예iphone값이툴없는 메뉴클릭)
-	const subMenu = (id)=>{
-		activeMenu.value = id;
-		activeBk.value = -50;
-	}
-	//제목있는 메뉴 클릭시 (예iphone값이툴있는 메뉴클릭)
-	const subMenuTol = (id,bkId)=>{
-		activeMenu.value = id;
-		activeBk.value = bkId;
-	}
+		},
+	},
+	async onLoad() {
+        try {
+            await this.loadData();
+			if (this.menuData.length > 0) {
+			  const firstMenu = this.menuData[0].id;
+			  const firstSub = this.menuData[0].child[0] ? this.menuData[0].child[0].id : 0;
+			  this.subMenuTol(firstSub,firstMenu, this.menuData[0].child[0] ? this.menuData[0].child[0] : {title:"商品",img:""})
+			}
+        } catch (error) {
+            console.error('Error in onLoad:', error);
+        }
+    }
+}
+	
 </script>
 
 <style lang="scss" scoped>
@@ -189,6 +148,7 @@ import {ref} from "vue";
 			display: flex;
 			flex-direction: row;
 			.menuLeft{
+				margin-top: 18rpx;
 				width: 150rpx;
 				background-color: rgb(248,248,248);
 				font-size: 23rpx;

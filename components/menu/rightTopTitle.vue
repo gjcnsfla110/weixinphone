@@ -22,17 +22,18 @@ const props = defineProps({
 <style lang="scss" scoped>
 	.topTitle{
 		width: 100%;
+		margin: 15rpx 0 15rpx 0;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
 		.titleLeft{
-			width: 30%;
+			width: 18%;
 			height: 1rpx;
 			margin-right: 20rpx;
 		}
 		.titleRight{
-			width: 30%;
+			width: 18%;
 			height: 1rpx;
 			margin-left: 20rpx;
 		}
