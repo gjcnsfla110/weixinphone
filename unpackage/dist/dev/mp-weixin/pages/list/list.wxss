@@ -26,3 +26,166 @@
 .listContainer.data-v-98a9e0b2 {
   width: 100%;
 }
+.listContainer .menuList.data-v-98a9e0b2 {
+  width: 100%;
+  height: 115px;
+  white-space: nowrap;
+}
+.listContainer .menuList .menubutton.data-v-98a9e0b2 {
+  width: 250rpx;
+  height: 100%;
+  display: inline-block;
+}
+.listContainer .menuList .menubutton .top.data-v-98a9e0b2 {
+  width: 250rpx;
+  height: 75px;
+  text-align: center;
+}
+.listContainer .menuList .menubutton .top image.data-v-98a9e0b2 {
+  width: 120rpx;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 8rpx;
+}
+.listContainer .menuList .menubutton .bottom.data-v-98a9e0b2 {
+  width: 250rpx;
+  line-height: 20px;
+  height: 30px;
+  text-align: center;
+  font-size: 26rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 */
+  position: relative;
+  margin-bottom: 5px;
+}
+.listContainer .menuList .menubutton .bottom .bottomShow.data-v-98a9e0b2 {
+  width: 130rpx;
+  height: 8rpx;
+  /* 굵은 줄의 두께 */
+  position: absolute;
+  bottom: 0;
+  /* 텍스트 아래로 5px 간격 */
+  left: 60rpx;
+  background-color: rgba(153, 0, 0, 0.8);
+  /* 줄의 기본 색상 */
+  border-radius: 10rpx;
+}
+.itemList.data-v-98a9e0b2 {
+  position: relative;
+}
+.itemList .listItem.data-v-98a9e0b2 {
+  width: 100%;
+  padding: 25rpx 25rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+.itemList .listItem .itemContent.data-v-98a9e0b2 {
+  width: 100%;
+  height: 550rpx;
+  background-color: white;
+  border-radius: 15rpx;
+}
+.itemList .listItem .itemContent .itemTop.data-v-98a9e0b2 {
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+}
+.itemList .listItem .itemContent .itemTop image.data-v-98a9e0b2 {
+  width: 75%;
+  height: 280rpx;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.itemList .listItem .itemContent .itemBottom.data-v-98a9e0b2 {
+  height: 250rpx;
+  width: 100%;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottomTitle.data-v-98a9e0b2 {
+  width: 100%;
+  height: 38rpx;
+  margin-top: 32rpx;
+  padding: 0 15rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 38rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom1.data-v-98a9e0b2 {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 20rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  border: 5rpx solid #ff3333;
+  border-radius: 10rpx;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom1 .itemBottom1Left.data-v-98a9e0b2 {
+  width: 48%;
+  height: 50rpx;
+  border-left: 5rpx solid #ff3333;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ff8000;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom1 .itemBottom1Right.data-v-98a9e0b2 {
+  width: 50%;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 30rpx;
+  color: #ff8000;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom2.data-v-98a9e0b2 {
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 20rpx;
+  color: #6666ff;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom2 .priceT.data-v-98a9e0b2 {
+  color: #ff3333;
+  font-size: 26rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom2 .price.data-v-98a9e0b2 {
+  font-size: 33rpx;
+  color: #505050;
+  letter-spacing: 4rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.itemList .loading.data-v-98a9e0b2 {
+  height: 80rpx;
+  width: 100%;
+}
+.itemList .hiddenLoading.data-v-98a9e0b2 {
+  height: 80rpx;
+  margin-bottom: 15rpx;
+}

@@ -14,7 +14,6 @@ const _sfc_main = {
   },
   setup(props, context) {
     const items = props.itemData.items;
-    common_vendor.index.__f__("log", "at components/item/itemContentTitle.vue:47", props.itemData);
     common_vendor.watch(
       () => props.itemData.items,
       (newItems) => {
@@ -51,7 +50,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         a: common_vendor.t(item.title),
         b: common_vendor.t(item.storage),
         c: common_vendor.t($setup.formattedPrice(item.price1)),
-        d: item.img
+        d: item.img,
+        e: common_vendor.o(($event) => $options.itemDetail(item.goods_id))
       };
     }),
     f: common_vendor.p({

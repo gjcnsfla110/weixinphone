@@ -25,12 +25,13 @@
 /* 文章场景相关 */
 .imgSwiper.data-v-026b385a {
   width: 100%;
-  height: 240rpx;
-  margin-top: 25rpx;
+  height: 330rpx;
+  margin-top: 8rpx;
+  margin-bottom: 26rpx;
 }
 .imgSwiper .imgSwiperItem.data-v-026b385a {
   width: 100%;
-  height: 240rpx;
+  height: 330rpx;
   background-color: #eee;
   border-radius: 15rpx;
 }

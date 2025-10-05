@@ -1,5 +1,5 @@
 <template>
-	<scroll-view  scroll-y :style="{height:screenHeight+'px'}" style="background-color: rgb(247, 247, 247);">
+	<scroll-view  scroll-y="true" :style="{height:screenHeight+'px'}" style="background-color: rgb(247, 247, 247);"  @scrolltolower="test()">
 		<view class="listItem">	
 				<view class="itemContent" v-for="i in 10">
 					<navigator url="/pages/listDetail/listDetail" hover-class="none">
@@ -13,13 +13,49 @@
 					</navigator>
 				</view>	
 		</view>
+		<view class="loading">
+			<uni-load-more :status="lodingStatus" :iconSize="30" iconType="circle" :content-text="contentText" :color="color"></uni-load-more>
+		</view>
 	</scroll-view>
 </template>
 
-<script setup>
+<script>
 	import {getNaviBar} from '@/utill/systemData.js'
 	import {ref} from 'vue'
-	const screenHeight = getNaviBar().noTabScreen()-100;
+	export default{
+		components:{
+			
+		},
+		props:{
+
+		},
+		setup(props, context) {
+			const screenHeight = getNaviBar().noTabScreen()-100;
+			const lodingStatus = ref('loading');
+			const color = ref('rgb(255, 128, 0)');
+			const activeSubMenuId = ref(0);
+
+			return{
+				screenHeight,
+				lodingStatus,
+				contentText: {
+					contentdown: '下拉可看更多商品~',
+					contentrefresh: '加载中',
+					contentnomore: '没有更多商品'
+				},
+				color,
+				activeSubMenuId
+			}
+		},
+		methods:{
+			test(){
+				console.log(1111);
+			}
+		},
+		async onLoad(op){
+			console.log('onload',op)
+		}
+	}
 </script>
 
 <style lang="scss" scoped>
@@ -57,5 +93,10 @@
 				}
 			}
 		}
+	}
+	.loading{
+		height: 110rpx;
+		margin-top: 15rpx;
+		margin-bottom: 15rpx;
 	}
 </style>

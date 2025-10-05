@@ -1,0 +1,248 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.uni-collapse-item__title-box.data-v-6236bcbc {
+  font-weight: bold;
+  color: #DA8C05;
+}
+.hoverPhone.data-v-6236bcbc {
+  color: royalblue;
+  font-weight: bold;
+}
+.custom-title.data-v-6236bcbc {
+  width: 100%;
+  height: 85rpx;
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #3c3c3c;
+  padding-left: 20rpx;
+  line-height: 85rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 3rpx 3rpx 6rpx rgba(50, 50, 50, 0.2);
+  /* 부드러운 그림자 */
+}
+.custom-title-active.data-v-6236bcbc {
+  color: #3399ff;
+  font-size: 29rpx;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 3rpx 3rpx 6rpx rgba(50, 50, 50, 0.2);
+  /* 부드러운 그림자 */
+}
+.shopContainer.data-v-6236bcbc {
+  width: 100%;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+.shopContainer .shopLeft.data-v-6236bcbc {
+  width: 230rpx;
+  height: 100%;
+}
+.shopContainer .shopLeft .shopBt.data-v-6236bcbc {
+  width: 100%;
+  height: 100rpx;
+  position: relative;
+}
+.shopContainer .shopLeft .shopBt .shopBtText.data-v-6236bcbc {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #787878;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 3rpx 3rpx 6rpx rgba(50, 50, 50, 0.2);
+  /* 부드러운 그림자 */
+}
+.shopContainer .shopLeft .shopBt .activeShopBt.data-v-6236bcbc {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ff6666;
+  background-color: #fafafa;
+  letter-spacing: 2rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 3rpx 3rpx 6rpx rgba(50, 50, 50, 0.2);
+  /* 부드러운 그림자 */
+}
+.shopContainer .shopLeft .shopBt .shopBtShow.data-v-6236bcbc {
+  width: 60%;
+  height: 8rpx;
+  /* 굵은 줄의 두께 */
+  position: absolute;
+  bottom: 10rpx;
+  /* 텍스트 아래로 5px 간격 */
+  left: 20%;
+  background-color: #3399ff;
+  /* 줄의 기본 색상 */
+  border-radius: 10rpx;
+}
+.shopContainer .shopRight.data-v-6236bcbc {
+  width: 520rpx;
+  height: 100%;
+  text-align: center;
+  padding-left: 20rpx;
+}
+.shopContainer .shopRight .itemContent.data-v-6236bcbc {
+  width: 480rpx;
+  height: 760rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background: linear-gradient(to bottom, whitesmoke, #fefefe);
+  margin-top: 20rpx;
+}
+.shopContainer .shopRight .itemContent .contentTop.data-v-6236bcbc {
+  width: 480rpx;
+  height: 280rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 10rpx 10rpx 30rpx;
+  display: flex;
+}
+.shopContainer .shopRight .itemContent .contentTop .itemImg.data-v-6236bcbc {
+  width: 200rpx;
+  height: 260rpx;
+}
+.shopContainer .shopRight .itemContent .contentTop .itemImg image.data-v-6236bcbc {
+  width: 200rpx;
+  height: 260rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.shopContainer .shopRight .itemContent .contentTop .itemInternetImg.data-v-6236bcbc {
+  width: 380rpx;
+  height: 260rpx;
+  margin-left: 20rpx;
+}
+.shopContainer .shopRight .itemContent .contentTop .itemInternetImg .itemInternetImgImage.data-v-6236bcbc {
+  width: 380rpx;
+  height: 260rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.shopContainer .shopRight .itemContent .contentTop .topText.data-v-6236bcbc {
+  width: 240rpx;
+  height: 260rpx;
+  padding-right: 20rpx;
+}
+.shopContainer .shopRight .itemContent .contentTop .topText .topText1.data-v-6236bcbc {
+  margin-top: 60rpx;
+  height: 60rpx;
+  width: 220rpx;
+  text-align: right;
+  font-size: 35rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 6rpx 6rpx 10rpx rgba(50, 50, 50, 0.2);
+  /* 부드러운 그림자 */
+}
+.shopContainer .shopRight .itemContent .contentTop .topText .topText2.data-v-6236bcbc {
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 220rpx;
+  font-size: 28rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  padding-left: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-content: flex-start;
+  text-align: center;
+  overflow: hidden;
+}
+.shopContainer .shopRight .itemContent .contentTitle.data-v-6236bcbc {
+  width: 480rpx;
+  height: 60rpx;
+  text-align: left;
+  font-size: 33rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  margin-bottom: 20rpx;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.shopContainer .shopRight .itemContent .contentBottom.data-v-6236bcbc {
+  width: 480rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  font-size: 28rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  line-height: 60rpx;
+}
+.shopContainer .shopRight .itemContent .contentBottom .monyText.data-v-6236bcbc {
+  font-size: 18rpx;
+  padding-left: 6rpx;
+}
+.shopContainer .shopRight .itemContent .contentBottom .contentBottomTextLeft.data-v-6236bcbc {
+  display: inline-block;
+  width: 220rpx;
+  height: 60rpx;
+  text-align: left;
+}
+.shopContainer .shopRight .itemContent .contentBottom .contentBottomRight.data-v-6236bcbc {
+  display: inline-block;
+  width: 220rpx;
+  height: 60rpx;
+  font-size: 30rpx;
+  text-align: right;
+}
+.shopContainer .shopRight .itemContent .contentBottom .price.data-v-6236bcbc {
+  margin-top: 15rpx;
+  width: 440rpx;
+  border-top: 3rpx solid #b4b4b4;
+  display: flex;
+  justify-content: space-between;
+}
+.shopContainer .shopRight .itemContent .contentBottom .price .priceLeft.data-v-6236bcbc {
+  margin-top: 15rpx;
+  width: 160rpx;
+  height: 60rpx;
+  text-align: left;
+}
+.shopContainer .shopRight .itemContent .contentBottom .price .priceRight.data-v-6236bcbc {
+  margin-top: 15rpx;
+  width: 280rpx;
+  height: 60rpx;
+  text-align: right;
+}
+.shopContainer .shopRight .itemContent .contentBottom .price .priceRight .priceCenter.data-v-6236bcbc {
+  font-size: 39rpx;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}

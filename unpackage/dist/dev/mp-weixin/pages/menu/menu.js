@@ -1,190 +1,162 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const utill_systemData = require("../../utill/systemData.js");
-if (!Math) {
-  (CustomNav + TopTextTitle + TopImg + RightTitle + RigthItmeList)();
-}
+const stores_mainData = require("../../stores/mainData.js");
 const CustomNav = () => "../../components/custom-nav-bar/customNav.js";
 const TopImg = () => "../../components/menu/rightTopImg.js";
 const TopTextTitle = () => "../../components/menu/leftTopText.js";
 const RightTitle = () => "../../components/menu/rightTopTitle.js";
-const RigthItmeList = () => "../../components/menu/rightItemList.js";
+const RightItemList = () => "../../components/menu/rightItemList.js";
 const _sfc_main = {
-  __name: "menu",
-  setup(__props) {
-    const menuData = [
-      {
-        id: 1,
-        menutitle: false,
-        title: "",
-        color: "",
-        child: [
-          {
-            id: 1,
-            title: "推荐"
-          }
-        ]
-      },
-      {
-        id: 2,
-        menutitle: true,
-        title: "IPHONE",
-        color: "rgb(239,209,12)",
-        child: [
-          {
-            id: 2,
-            title: "ProMax"
-          },
-          {
-            id: 3,
-            title: "Pro"
-          },
-          {
-            id: 4,
-            title: "数字系列"
-          },
-          {
-            id: 5,
-            title: "二手"
-          }
-        ]
-      },
-      {
-        id: 3,
-        menutitle: true,
-        title: "SAMSUNG",
-        color: "#1296db",
-        child: [
-          {
-            id: 6,
-            title: "S系列"
-          },
-          {
-            id: 7,
-            title: "Fold"
-          },
-          {
-            id: 8,
-            title: "A系列"
-          },
-          {
-            id: 9,
-            title: "二手"
-          }
-        ]
-      },
-      {
-        id: 4,
-        menutitle: true,
-        title: "中国手机",
-        color: "rgb(202,27,0)",
-        child: [
-          {
-            id: 10,
-            title: "韩版机"
-          },
-          {
-            id: 11,
-            title: "国内机"
-          },
-          {
-            id: 12,
-            title: "二手"
-          }
-        ]
-      },
-      {
-        id: 5,
-        menutitle: false,
-        title: "",
-        color: "",
-        child: [
-          {
-            id: 13,
-            title: "手机分期"
-          },
-          {
-            id: 14,
-            title: "平板电脑"
-          },
-          {
-            id: 15,
-            title: "手表"
-          },
-          {
-            id: 16,
-            title: "手机配件"
-          }
-        ]
-      }
-    ];
-    utill_systemData.getNaviBar().custumHeiht();
+  components: {
+    CustomNav,
+    TopImg,
+    TopTextTitle,
+    RightTitle,
+    RightItemList
+  },
+  props: {},
+  setup(props, context) {
+    const mainStores = stores_mainData.useMainStores();
+    const { categoryMenu, categorySubmenu } = mainStores;
+    const topHeight = utill_systemData.getNaviBar().custumHeiht();
     const swiperHeightr = () => utill_systemData.getNaviBar().screen();
     const swiperHeight = common_vendor.ref(swiperHeightr());
     const activeBk = common_vendor.ref(1);
     const activeMenu = common_vendor.ref(1);
-    const subMenu = (id) => {
-      activeMenu.value = id;
-      activeBk.value = -50;
+    const menuData = common_vendor.ref(categoryMenu);
+    const categoryName = common_vendor.ref("");
+    const categoryImg = common_vendor.ref("");
+    const rightSubMenu = common_vendor.ref([]);
+    return {
+      mainStores,
+      topHeight,
+      swiperHeight,
+      activeBk,
+      activeMenu,
+      menuData,
+      categoryName,
+      categoryImg,
+      categorySubmenu,
+      rightSubMenu
     };
-    const subMenuTol = (id, bkId) => {
-      activeMenu.value = id;
-      activeBk.value = bkId;
-    };
-    return (_ctx, _cache) => {
-      return {
-        a: common_vendor.p({
-          title: _ctx.商品分类
-        }),
-        b: common_vendor.f(menuData, (item, k0, i0) => {
-          return common_vendor.e({
-            a: item.menutitle
-          }, item.menutitle ? {
-            b: common_vendor.f(item.child, (sub, index, i1) => {
-              return common_vendor.e({
-                a: index == 0
-              }, index == 0 ? {
-                b: common_vendor.t(item.title),
-                c: "388b40d3-1-" + i0 + "-" + i1,
-                d: common_vendor.p({
-                  color: item.id == activeBk.value ? item.color : "black"
-                }),
-                e: common_vendor.t(sub.title),
-                f: sub.id == activeMenu.value ? 1 : "",
-                g: item.color,
-                h: sub.id == activeMenu.value ? 1 : "",
-                i: common_vendor.o(($event) => subMenuTol(sub.id, item.id)),
-                j: item.id == activeBk.value ? 1 : ""
-              } : {
-                k: common_vendor.t(sub.title),
-                l: sub.id == activeMenu.value ? 1 : "",
-                m: item.color,
-                n: common_vendor.o(($event) => subMenuTol(sub.id, item.id)),
-                o: item.id == activeBk.value ? 1 : "",
-                p: sub.id == activeMenu.value ? 1 : ""
-              });
-            })
-          } : {
-            c: common_vendor.f(item.child, (sub, k1, i1) => {
-              return {
-                a: common_vendor.t(sub.title),
-                b: sub.id == activeMenu.value ? 1 : "",
-                c: common_vendor.o(($event) => subMenu(sub.id)),
-                d: sub.id == activeMenu.value ? 1 : ""
-              };
-            })
-          });
-        }),
-        c: swiperHeight.value + "px",
-        d: common_vendor.p({
-          src: "/images/testImg/banner3.jpg"
-        }),
-        e: swiperHeight.value + "px",
-        f: swiperHeight.value + "px"
-      };
-    };
+  },
+  methods: {
+    //제목없는 메뉴클릭(예iphone값이툴없는 메뉴클릭)
+    subMenu(id, item) {
+      this.activeMenu = id;
+      this.activeBk = -50;
+      this.categoryName = item.title;
+      this.categoryImg = item.img;
+      this.rightSubMenu = this.changeRightSubmenu(item.id);
+    },
+    //제목있는 메뉴 클릭시 (예iphone값이툴있는 메뉴클릭)
+    subMenuTol(id, bkId, item) {
+      this.activeMenu = id;
+      this.activeBk = bkId;
+      this.categoryName = item.title;
+      this.categoryImg = item.img;
+      this.rightSubMenu = this.changeRightSubmenu(item.id);
+    },
+    //오른쪽 서브메뉴 데이터를 체인지 함수
+    changeRightSubmenu(id) {
+      return this.categorySubmenu.filter((item) => item.category_id == id);
+    },
+    // pinia 데이터를 받는 설정 부분
+    async loadData() {
+      if (!this.mainStores.isDataReady) {
+        try {
+          await this.mainStores.lodingMain();
+        } catch (error) {
+          common_vendor.index.__f__("error", "at pages/menu/menu.vue:137", "Error reloading data:", error);
+        }
+      }
+    },
+    //서브카테고리 리스트 쪽으로 넘어가기
+    subMenuList(id) {
+      common_vendor.index.setStorageSync("topSubMenu", JSON.stringify(this.rightSubMenu));
+      common_vendor.index.navigateTo({
+        url: `/pages/list/list?id=${id}`
+        // 이동할 페이지 경로
+      });
+    }
+  },
+  async onLoad() {
+    try {
+      await this.loadData();
+      if (this.menuData.length > 0) {
+        const firstMenu = this.menuData[0].id;
+        const firstSub = this.menuData[0].child[0] ? this.menuData[0].child[0].id : 0;
+        this.subMenuTol(firstSub, firstMenu, this.menuData[0].child[0] ? this.menuData[0].child[0] : { title: "商品", img: "" });
+      }
+    } catch (error) {
+      common_vendor.index.__f__("error", "at pages/menu/menu.vue:159", "Error in onLoad:", error);
+    }
   }
 };
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-388b40d3"]]);
+if (!Array) {
+  const _component_CustomNav = common_vendor.resolveComponent("CustomNav");
+  const _component_TopTextTitle = common_vendor.resolveComponent("TopTextTitle");
+  const _component_TopImg = common_vendor.resolveComponent("TopImg");
+  const _component_RightTitle = common_vendor.resolveComponent("RightTitle");
+  (_component_CustomNav + _component_TopTextTitle + _component_TopImg + _component_RightTitle)();
+}
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+  return {
+    a: common_vendor.p({
+      title: "商品分类"
+    }),
+    b: common_vendor.f($setup.menuData, (item, k0, i0) => {
+      return common_vendor.e({
+        a: item.child.length < 1
+      }, item.child.length < 1 ? {
+        b: common_vendor.t(item.name),
+        c: item.id == $setup.activeMenu ? 1 : "",
+        d: common_vendor.o(($event) => $options.subMenu(item.id, item)),
+        e: item.id == $setup.activeMenu ? 1 : ""
+      } : {
+        f: common_vendor.f(item.child, (sub, index, i1) => {
+          return common_vendor.e({
+            a: index == 0
+          }, index == 0 ? {
+            b: common_vendor.t(item.name),
+            c: "388b40d3-1-" + i0 + "-" + i1,
+            d: common_vendor.p({
+              color: item.id == $setup.activeBk ? item.color : item.color
+            }),
+            e: common_vendor.t(sub.name),
+            f: sub.id == $setup.activeMenu ? 1 : "",
+            g: item.color,
+            h: sub.id == $setup.activeMenu ? 1 : "",
+            i: common_vendor.o(($event) => $options.subMenuTol(sub.id, item.id, sub)),
+            j: item.id == $setup.activeBk ? 1 : ""
+          } : {
+            k: common_vendor.t(sub.name),
+            l: sub.id == $setup.activeMenu ? 1 : "",
+            m: item.color,
+            n: common_vendor.o(($event) => $options.subMenuTol(sub.id, item.id, sub)),
+            o: item.id == $setup.activeBk ? 1 : "",
+            p: sub.id == $setup.activeMenu ? 1 : ""
+          });
+        })
+      });
+    }),
+    c: $setup.swiperHeight + "px",
+    d: common_vendor.p({
+      src: $setup.categoryImg
+    }),
+    e: common_vendor.t($setup.categoryName),
+    f: common_vendor.f($setup.rightSubMenu, (item, k0, i0) => {
+      return {
+        a: item.img,
+        b: common_vendor.t(item.name),
+        c: common_vendor.o(($event) => $options.subMenuList(item.id))
+      };
+    }),
+    g: $setup.swiperHeight + "px",
+    h: $setup.swiperHeight + "px"
+  };
+}
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-388b40d3"]]);
 wx.createPage(MiniProgramPage);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/menu/menu.js.map

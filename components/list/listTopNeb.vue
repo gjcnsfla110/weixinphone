@@ -13,10 +13,26 @@
 	</CustomNav>
 </template>
 
-<script setup>
+<script>
 	import CustomNav from '@/components/custom-nav-bar/customNav.vue';
 	import {ref} from 'vue'
-	const activeMenu = ref(0)
+	export default{
+		components:{
+			
+		},
+		props:{
+			
+		},
+		setup(props, context) {
+			const activeMenu = ref(0)
+		},
+		methods:{
+			
+		},
+		onLoad(){
+			
+		}
+	}
 </script>
 
 <style lang="scss" scoped>

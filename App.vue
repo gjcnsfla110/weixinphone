@@ -30,7 +30,10 @@
 			// 백그라운드 진입 후 5분 뒤 캐시 삭제
 			this.cacheClearTimer = setTimeout(() => {
 				mainStores.clearCache();
-			}, 30 * 60 * 1000); // 30분
+				uni.removeStorageSync('topSubMenu');
+				uni.removeStorageSync('agreementCategory');
+				uni.removeStorageSync('agreementCategory');
+			}, 6 * 60 * 60 * 1000); //6시간
 		}
 	}
 </script>

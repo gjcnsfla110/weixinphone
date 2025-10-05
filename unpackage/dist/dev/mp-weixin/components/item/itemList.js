@@ -20,7 +20,7 @@ const _sfc_main = {
     }
   },
   setup(props, context) {
-    const items = props.itemData.items;
+    const items = common_vendor.ref(props.itemData.items);
     common_vendor.watch(
       () => props.itemData.items,
       (newItems) => {

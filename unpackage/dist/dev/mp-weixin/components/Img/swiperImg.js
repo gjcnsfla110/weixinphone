@@ -6,14 +6,32 @@ const _sfc_main = {
     Card
   },
   props: {
-    banner: {
-      type: Array,
-      default: []
+    itemData: {
+      type: Object,
+      default: { items: [] }
     }
   },
   setup(props, context) {
+    const items = common_vendor.ref(props.itemData.items);
+    common_vendor.watch(
+      () => props.itemData.items,
+      (newItems) => {
+        items.value = newItems;
+      },
+      { deep: true, immediate: true }
+    );
+    return {
+      items
+    };
   },
-  methods: {}
+  methods: {
+    itemDetail(id) {
+      common_vendor.index.navigateTo({
+        url: `/pages/itemPage/oldItemPage?id=${id}`
+        // 이동할 페이지 경로
+      });
+    }
+  }
 };
 if (!Array) {
   const _component_Card = common_vendor.resolveComponent("Card");
@@ -21,9 +39,10 @@ if (!Array) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.f($props.banner, (item, k0, i0) => {
+    a: common_vendor.f($setup.items, (item, k0, i0) => {
       return {
-        a: item
+        a: item.img,
+        b: common_vendor.o(($event) => $options.itemDetail(item.goods_id))
       };
     }),
     b: common_vendor.p({

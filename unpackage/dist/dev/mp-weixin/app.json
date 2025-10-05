@@ -8,7 +8,10 @@
     "pages/list/list",
     "pages/oldList/oldList",
     "pages/itemPage/oldItemPage",
-    "pages/itemPage/newItemPage"
+    "pages/itemPage/newItemPage",
+    "pages/agreementPage/index",
+    "pages/itemPage/agreementPhonePage",
+    "pages/itemPage/agreementInternetPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -33,7 +36,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/shop/shop",
+        "pagePath": "pages/agreementPage/index",
         "iconPath": "/static/tabBar/phone.png",
         "selectedIconPath": "/static/tabBar/phone1.png",
         "text": "合约手机"

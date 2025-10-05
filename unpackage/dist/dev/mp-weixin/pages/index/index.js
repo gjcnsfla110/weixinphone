@@ -41,14 +41,6 @@ const _sfc_main = {
     };
   },
   methods: {
-    //苹果 -》 下拉 加载
-    iphoneScrolltolower() {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:86", "22");
-    },
-    //三星 -》 下拉 加载
-    samsungScrolltolower() {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:90", "33");
-    },
     changeSwiper(e) {
       this.changeMenu(e.detail.current);
     },
@@ -65,7 +57,7 @@ const _sfc_main = {
         try {
           await this.mainStores.lodingMain();
         } catch (error) {
-          common_vendor.index.__f__("error", "at pages/index/index.vue:108", "Error reloading data:", error);
+          common_vendor.index.__f__("error", "at pages/index/index.vue:100", "Error reloading data:", error);
         }
       }
     }
@@ -75,17 +67,17 @@ const _sfc_main = {
       await this.loadData();
       this.menu = [
         {
-          title: this.main[0].name
+          title: this.main[0].name || ""
         },
         {
-          title: this.iphone[0].name
+          title: this.iphone[0].name || ""
         },
         {
-          title: this.samsung[0].name
+          title: this.samsung[0].name || ""
         }
       ];
     } catch (error) {
-      common_vendor.index.__f__("error", "at pages/index/index.vue:129", "Error in onLoad:", error);
+      common_vendor.index.__f__("error", "at pages/index/index.vue:121", "Error in onLoad:", error);
     }
   }
 };
@@ -118,16 +110,14 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       iphoneData: $setup.iphone
     }),
     e: $setup.swiperHeight + "px",
-    f: common_vendor.o((...args) => $options.iphoneScrolltolower && $options.iphoneScrolltolower(...args)),
-    g: common_vendor.p({
+    f: common_vendor.p({
       height: $setup.swiperHeight,
       samsungData: $setup.samsung
     }),
+    g: $setup.swiperHeight + "px",
     h: $setup.swiperHeight + "px",
-    i: common_vendor.o((...args) => $options.samsungScrolltolower && $options.samsungScrolltolower(...args)),
-    j: $setup.swiperHeight + "px",
-    k: common_vendor.o((...args) => $options.changeSwiper && $options.changeSwiper(...args)),
-    l: $setup.tabIndex
+    i: common_vendor.o((...args) => $options.changeSwiper && $options.changeSwiper(...args)),
+    j: $setup.tabIndex
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1cf27b2a"]]);

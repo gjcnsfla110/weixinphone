@@ -44,7 +44,7 @@
 			"path" : "pages/list/list",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "商品列表",
 				"navigationStyle": "custom"
 			}
 		},
@@ -71,6 +71,30 @@
 				"navigationBarTitleText" : "商品",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path" : "pages/agreementPage/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "合约商品",
+				"navigationStyle": "custom"
+			}	
+		},
+		{
+			"path" : "pages/itemPage/agreementPhonePage",
+			"style" : 
+			{
+				"navigationBarTitleText" : "合约手机",
+				"navigationStyle": "custom"
+			}	
+		},
+		{
+			"path" : "pages/itemPage/agreementInternetPage",
+			"style" : 
+			{
+				"navigationBarTitleText" : "合约网络",
+				"navigationStyle": "custom"
+			}	
 		}
 	],
 	"globalStyle": {
@@ -96,7 +120,7 @@
 				"text": "分类"
 			},
 			{
-				"pagePath": "pages/shop/shop",
+				"pagePath": "pages/agreementPage/index",
 				"iconPath": "/static/tabBar/phone.png",
 				"selectedIconPath": "/static/tabBar/phone1.png",
 				"text": "合约手机"

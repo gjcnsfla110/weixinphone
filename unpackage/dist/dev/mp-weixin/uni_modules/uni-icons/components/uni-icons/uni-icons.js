@@ -54,8 +54,8 @@ const _sfc_main = {
     }
   },
   methods: {
-    _onClick() {
-      this.$emit("click");
+    _onClick(e) {
+      this.$emit("click", e);
     }
   }
 };

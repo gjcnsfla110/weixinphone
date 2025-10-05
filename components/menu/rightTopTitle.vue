@@ -39,6 +39,8 @@ const props = defineProps({
 		}
 		.titleText{
 			font-size: 28rpx;
+			font-weight: bold;
+			letter-spacing: 3rpx; /* 글자 간격 넓게 */
 		}
 	}
 	

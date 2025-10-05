@@ -5,7 +5,6 @@
     "custom-nav": "../../components/custom-nav-bar/customNav",
     "top-img": "../../components/menu/rightTopImg",
     "top-text-title": "../../components/menu/leftTopText",
-    "right-title": "../../components/menu/rightTopTitle",
-    "rigth-itme-list": "../../components/menu/rightItemList"
+    "right-title": "../../components/menu/rightTopTitle"
   }
 }

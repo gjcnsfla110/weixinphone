@@ -1,8 +1,8 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "商品列表",
   "navigationStyle": "custom",
   "usingComponents": {
-    "top-nav": "../../components/list/listTopNeb",
-    "list-item": "../../components/list/listItem"
+    "custom-nav": "../../components/custom-nav-bar/customNav",
+    "uni-load-more": "../../uni_modules/uni-load-more/components/uni-load-more/uni-load-more"
   }
 }

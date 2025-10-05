@@ -21,6 +21,7 @@ export function resultPage(pages,components,componentItems,componentBanners){
  * @param {Object} price
  */
 export function formattedPrice(price){
+	
       return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
@@ -46,4 +47,15 @@ export function listTrees(data,field='pid',child='child',pid=0,callF=null){
     };
 
     return getList(pid, data);
+}
+
+/**
+ * 우선순위설정하는 방법
+ */
+export function rankingItem(items, order="ranking"){
+	items.list.map(item=>{
+	        item.child = item.child.sort((a, b) => b.order - a.order)
+	        return item;
+	});
+	return items;
 }

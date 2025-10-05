@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "合约手机",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "custom-nav": "../../components/custom-nav-bar/customNav",
+    "uni-swiper-dot": "../../uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot",
+    "uni-segmented-control": "../../uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control",
+    "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
+  }
+}

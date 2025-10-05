@@ -77,7 +77,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   }, $setup.banner.id ? {
     b: common_vendor.p({
       componentData: $setup.banner
-    }),
+    })
+  } : {}, {
     c: common_vendor.f($props.subMenu, (item, k0, i0) => {
       return {
         a: item.img,
@@ -169,7 +170,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         P: item.component == "ImgBanner"
       });
     })
-  } : {});
+  });
 }
 const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b080f363"]]);
 wx.createComponent(Component);
