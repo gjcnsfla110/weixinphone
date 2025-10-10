@@ -58,52 +58,62 @@
 								<view class="pickerName" style="width: 290rpx; color: rgb(204,102,0);">本店最高返现金</view>
 								<view class="pickerItem" style="background-color: white; width: 400rpx;"><text>{{formattedPrice(item.shopCashSupport)}}</text><text class="hanyuan">韩元</text></view>
 							</view>
-							<view class="picker">
-								<view class="pickerName">优惠</view>
-								<view class="pickerItem">
-									<picker @change="bindPickerChangeOne" :value="oneIndex" :range="saleType" range-key="name" mode=selector>
-										<view class="pickerItemTitle" v-if="oneIndex1!=1000">{{saleType[oneIndex].name}}</view>
-										<view v-else class="pickerItemTitle">点击选择优惠</view>
-									</picker>
+							<view class="installmentContent">
+								<view class="installmentTitle">选择分期期限</view>
+								<view class="installmentCheck">
+									<view :class="installment == item.value ? 'installmenText installmentActive' : 'installmenText' " @click="checkinstallment(item.value)" v-for="item in installmentList">{{item.name}}</view>
 								</view>
 							</view>
-							<view class="picker">
-								<view class="pickerName">套餐</view>
-								<view class="pickerItem">
-									<picker @change="bindPickerChangetwo" :value="twoIndex" :range="plans" range-key="title" mode=selector>
-										<view class="pickerItemTitle" v-if="twoIndex1!=1000">{{plans[twoIndex].title}}</view>
-										<view v-else class="pickerItemTitle">点击选择套餐</view>
-									</picker>
-								</view>
-							</view>
-							<view v-if="twoIndex1!=1000" class="pickerDetail">
-								<view class="pickerDetailTitle">요금제소개</view>
-								{{plans[twoIndex].detail ? plans[twoIndex].detail : "" }}
-							</view>
-							<view v-if="twoIndex1!=1000 && oneIndex1 != 1000 ">
-								<view class="picker" v-if="oneIndex">
-										<view class="pickerName">优惠金额</view>
-										<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(phoneSale)}}</text><text class="hanyuan">韩元</text></view>
-								</view>
-								<view v-else class="picker">
-									<view class="pickerName">优惠金额</view>
-									<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(feeSale)}}</text><text class="hanyuan">韩元</text></view>
-								</view>
-							</view>	
 							<view class="picker">
 								<view class="pickerName">信用卡优惠</view>
 								<view class="pickerItem">
-									<picker @change="bindPickerChangeThree" :value="threeIndex" :range="cards" range-key="card_company" mode=selector>
-										<view class="pickerItemTitle" v-if="threeIndex!=1000"><text>{{formattedPrice(creditCardSale * 24)}}</text><text>韩元</text></view>
-										<view v-else class="pickerItemTitle">查看信用卡优惠</view>
-									</picker>
+									<u-select v-model="cardShow" @confirm="changeCardSale" :list="cards" label-name="card_company" value-name="sale" mode="single-column">
+									</u-select>
+									<view class="pickerItemTitle" v-if="creditCardSale" @click="cardShow=true"><text>{{formattedPrice(creditCardSale)}}</text><text>韩元</text></view>
+									<view v-else class="pickerItemTitle" @click="cardShow=true">信用卡优惠</view>
 								</view>
 							</view>
+							<view class="picker">
+								<view class="pickerName">优惠方式</view>
+								<view class="pickerItem">
+									<u-select v-model="saleTypeShow" @confirm="changeSaleType" :list="saleType" label-name="name" value-name="type" mode="single-column">
+									</u-select>
+									<view class="pickerItemTitle" v-if="saleTypeVal" @click="saleTypeShow=true">{{saleTypeText}}</view>
+									<view v-else class="pickerItemTitle" @click="saleTypeShow=true">请选优惠方式</view>
+								</view>
+							</view>
+							<view class="picker">
+								<view class="pickerName">话费套餐</view>
+								<view class="pickerItem">
+									<u-select v-model="planShow" @confirm="changePlan" :list="plans" label-name="title" value-name="price" mode="single-column">
+									</u-select>
+									<view class="pickerItemTitle" v-if="planPrice" @click="planShow=true">{{planText}}</view>
+									<view v-else>
+										<view v-if="saleTypeVal" class="pickerItemTitle" @click="planShow=true">请选话费套餐</view>
+										<view v-else class="pickerItemTitle" @click="openAlertDialog">请选话费套餐</view>
+									</view>
+									
+								</view>
+							</view>					
+							<view>
+								<view class="picker">
+										<view class="pickerName">手机优惠</view>
+										<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(phoneSale)}}</text><text class="hanyuan">韩元</text></view>
+								</view>
+								<view class="picker">
+									<view class="pickerName">话费优惠</view>
+									<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(feeSale)}}</text><text class="hanyuan">韩元</text></view>
+								</view>
+							</view>
+							<view class="pickerDetail">
+								<view class="pickerDetailTitle">요금제소개</view>
+								{{planDetail}}
+							</view>	
 							<view class="hiddenBottom"></view>
 						</view>
 						<view class="detail" v-show="current === 1">
-							<view></view>
-							{{item.detail}}
+							<view>{{item.detail}}</view>
+							<view class="hiddenBottom"></view>
 						</view>
 					</view>
 				 </view>
@@ -112,8 +122,8 @@
 	<view class="agreementBottom">
 		<view class="monthTop">
 			<view class="monthTopleft">
-				<view class="monthTopleft1"><text class="leftText">手机价格</text> {{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></view>
-				<view class="monthTopleft2"><text class="leftText">每月费</text> 150,000<text class="hanyuan">韩元</text></view>
+				<view class="monthTopleft1"><text class="leftText">手机价格</text> {{formattedPrice(phonePrice)}}<text class="hanyuan">韩元</text></view>
+				<view class="monthTopleft2"><text class="leftText">话费套餐</text> 150,000<text class="hanyuan">韩元</text></view>
 			</view>
 			<view class="monthTopRight">
 				<view class="monthTopRight1">每月总话费</view>
@@ -129,10 +139,93 @@
 			</view>
 		</view>
 		<!-- 普通弹窗 -->
-		<uni-popup ref="popup" background-color="#fff" @change="">
-			<view class="popupContent">
-				<text class="text">popup 内容</text>
-			</view>
+		<uni-popup ref="popup" background-color="#fff">
+			<scroll-view scroll-y="true" class="popupContent">
+				<view class="popuptopHidden">
+				</view>
+				<view class="popupTop">
+					<view class="popupTitle">
+						<view class="title1">选项详细内容</view>
+						<view class="title2">{{item.title}}</view>
+					</view>
+					<view class="monthTop">
+						<view class="monthTopleft">
+							<view class="monthTopleft1"><text class="leftText">手机价格</text> {{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></view>
+							<view class="monthTopleft2"><text class="leftText">话费套餐</text> 150,000<text class="hanyuan">韩元</text></view>
+						</view>
+						<view class="monthTopRight">
+							<view class="monthTopRight1">每月总话费</view>
+							<view class="monthTopRight2">169000<text class="hanyuan">韩元</text></view>
+						</view>
+					</view>
+				</view>
+				<view class="popupCenter">
+					<view class="popupDetail">
+						<view class="detaiContent" style="margin-top: 18%;">
+							<view class="detailTitle">商品信息</view>
+							<view class="detailContent">
+								<view class="detailItem">
+									<text class="detailItemTextLeft">机型</text><text class="detailItemTextRight">{{item.title}}</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft">内存</text><text class="detailItemTextRight">{{item.store}}</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft">颜色</text><text class="detailItemTextRight">{{item.color}}</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft" style="color: rgb(255, 128, 0)">返现金</text><text class="detailItemTextRight">{{formattedPrice(item.shopCashSupport)}}<text class="hanyuan">韩元</text></text>
+								</view>
+							</view>
+						</view>
+						<view class="detaiContent">
+							<view class="detailTitle">选项信息</view>
+							<view class="detailContent">
+								<view class="detailItem">
+									<text class="detailItemTextLeft">手机价格</text><text class="detailItemTextRight">{{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft">分期期限</text><text class="detailItemTextRight">24个月</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft" style="width: 40%;">通信社话费优惠</text><text class="detailItemTextRight" style="width: 60%;">24个月</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft"style="width: 40%;">通信社手机优惠</text><text class="detailItemTextRight" style="width: 60%;">24个月</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft">每月手机费</text><text class="detailItemTextRight">24个月</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft">每月话费</text><text class="detailItemTextRight">24个月</text>
+								</view>
+								<view class="detailItem">
+									<text class="detailItemTextLeft">信用卡优惠</text><text class="detailItemTextRight">无</text>
+								</view>
+							</view>
+						</view>
+						<view class="detailMonthPrice">
+							<view class="detailMonthPriceLeft">每月费用</view>
+							<view class="detailMonthPriceRight">{{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></view>
+						</view>
+					</view>
+				</view>
+				<view class="popupbottomHidden"></view>
+				<view class="popupBottom">
+					<view class="popupHideButton">
+						联系客服商谈
+					</view>
+				</view>
+			</scroll-view>
+		</uni-popup>
+	</view>
+	<!--dialog 提示选项框 先选者上面-->
+	<view>
+		<!-- 提示窗示例 -->
+		<uni-popup ref="alertDialog" type="dialog">
+			<uni-popup-dialog type="error" cancelText="关闭" title="通知" confirmText="确认">
+				<view style="font-size: 28rpx;color:rgb(88, 88, 88); letter-spacing: 5rpx;">请先选择上面优惠方式!</view>
+			</uni-popup-dialog>
 		</uni-popup>
 	</view>
 </template>
@@ -140,13 +233,18 @@
 <script>
 	import CustomNav from "@/components/custom-nav-bar/customNav.vue";
 	import SwiperImg from '@/components/pageDetail/swiperImg.vue'
-	import { ref ,watch} from "vue";
+	import { ref ,watch,computed} from "vue";
 	import { servicePost } from "@/utill/request";
 	import {formattedPrice} from "@/utill/common.js";
 	export default{
 		components:{
 			CustomNav,
 			SwiperImg,
+		},
+		computed:{
+			monthSumPrice(){
+				 
+			}
 		},
 		props:{
 			
@@ -163,35 +261,45 @@
 			//下面内容
 			const items = ['每月话费', '详细内容',];
 			const current = ref(0)
+			//할부월수 표현
+			const installmentList = [{name:'24月分期',value:24},{name:'36月分期',value:36},{name:'48月分期',value:48}];
+			const installment = ref(24);
 			//요금제리스트
 			const plans = ref([])
 			//신용카드 리스트
 			const cards =ref([]);
-			//picker 인덱스 순서 - 선택약정/공시지원금 선택부분
-			const saleType = [{name:"话 费 优 惠 25%",type:0},{name:"手 机 价 格 优 惠",type:1}]
-			const oneIndex = ref(0);
-			const oneIndex1 = ref(1000);
-			//picker 인덱스 순서 - 요금제선택부분
-			const twoIndex = ref(0);
-			const twoIndex1 = ref(1000);
-			const checkPlanPrice = ref(0);
-			//picker 인덱스 순서 - 신용카드 할인부분
-			const threeIndex = ref(1000);
-			//공시지원금 / 요금할인총액 /신용카드할인
+			//picker - 선택약정/공시지원금 선택부분
+			const saleType = [{name:"选择优惠方式",type:0},{name:"话 费 优 惠 25%",type:1},{name:"手 机 价 格 优 惠",type:2}]
+			const saleTypeShow = ref(false);
+			const saleTypeVal = ref(0);
+			const saleTypeText = ref("")
+			//picker - 요금제선택부분
+			const planShow = ref(false);
+			const planPrice = ref(0)
+			const planText = ref("");
+			const planDetail = ref("无套餐信息，请先选择话费套餐!");
+			//picker - 신용카드 할인부분
+			const cardShow = ref(false)
+			const creditCardSale =ref(0);
+			//공시지원금 / 요금할인총액 /
 			const phoneSale = ref(0);
 			const feeSale = ref(0);
-			const creditCardSale =ref(0);
+			//월휴대폰 기기값, 월요금제 , 휴대폰 기기값
+			const monthPhonePrice = ref(0)
+			const monthFeePrice = ref(0)
+			const phonePrice = ref(0)
 			//할인타입 감시
-			watch([oneIndex,twoIndex],([newIndex,newIndex1])=>{
-				if(oneIndex.value){
-					checkPlanPrice.value = plans.value[twoIndex.value].price;
-				}else{
-					checkPlanPrice.value = plans.value[twoIndex.value].price * 0.75;
-				}
-				console.log(checkPlanPrice.value);
-			})
+			watch([saleTypeVal,planPrice, creditCardSale], ([newSaleTypeVal, newPlanPrice, newCreditCardSale]) => {
+				 if(saleTypeVal == 1){
+					 
+				 }else if(saleTypeVal == 2){
+					 
+				 }
+			});
 			//상세보기 팍업창 ref
 			const popup = ref("")
+			//할인종류 선택안했을시 생성되는 팍업창 ref
+			const alertDialog = ref("");
 			return{
 				item,
 				formattedPrice,
@@ -199,19 +307,25 @@
 				dotsStyles,
 				items,
 				current,
-				plans,
-				cards,
-				oneIndex,
-				oneIndex1,
-				twoIndex,
-				twoIndex1,
-				threeIndex,
+				popup,
 				saleType,
+				saleTypeShow,
+				saleTypeVal,
+				plans,
+				planShow,
+				planPrice,
+				planText,
+				planDetail,
+				cards,
+				cardShow,
+				creditCardSale,
+				monthPhonePrice,
+				monthFeePrice,
+				phonePrice,
 				phoneSale,
 				feeSale,
-				creditCardSale,
-				checkPlanPrice,
-				popup
+				installmentList,
+				installment,
 			}
 		},
 		methods:{
@@ -223,26 +337,40 @@
 			        this.current = e.currentIndex;
 			    }
 			},
-			bindPickerChangeOne(e){
-				this.oneIndex = e.detail.value;
-				this.oneIndex1 = e.detail.value;
+			changeSaleType(e){
+				this.saleTypeVal = e[0].value;
+				this.saleTypeText = e[0].label;
 			},
-			bindPickerChangetwo(e){
-				this.twoIndex = e.detail.value;
-				this.twoIndex1 = e.detail.value;
-				this.phoneSale = Number(this.plans[e.detail.value].phone_sale);
-				this.feeSale = this.plans[e.detail.value].price*0.25*24;
+			changePlan(e){
+				this.planPrice = e[0].value;
+				this.planText = e[0].label;
+				let item = this.plans.filter(item => item.price == e[0].value)[0];
+				this.planDetail = item.detail;
+				if(this.saleTypeVal == 1){
+					this.phoneSale = 0;
+					this.feeSale = e[0].value *0.25 * 24;
+				}else if(this.saleTypeVal == 2){
+					this.phoneSale = item.phone_sale;
+					this.feeSale = 0;
+				}else{
+					this.phoneSale = 0;
+					this.feeSale = 0;
+				}
 			},
-			bindPickerChangeThree(e){
-				this.threeIndex = e.detail.value;
-				this.creditCardSale = this.cards[e.detail.value].sale;
-				console.log(this.creditCardSale)
+			changeCardSale(e){
+				this.creditCardSale = Number(e[0].value);
 			},
 			openPopup(type){
 				this.$refs.popup.open(type)
 			},
 			closePopup(type){
 				this.$refs.popup.close()
+			},
+			checkinstallment(val) {
+				this.installment = val;
+            },
+			openAlertDialog(){
+				this.$refs.alertDialog.open()
 			}
 		},
 		async onLoad(op){
@@ -254,7 +382,7 @@
 				this.item = await servicePost('app/agreement/item/detail',{id:op.id});
 			}
 			const agreementList = await servicePost('app/agreement/plan/list',{id:op.id});
-			this.plans = agreementList.plans;
+			this.plans = [{title:"请选话费套餐",price:0,detail:"无套餐信息，请先选择话费套餐!"},...agreementList.plans];
 			if(agreement){
 				this.cards = agreement.cardSales.filter(item=>item.mobile = this.item.mobile);
 				this.cards = [{card_company:"无信用卡",sale:0},...this.cards];
@@ -264,6 +392,142 @@
 </script>
 
 <style lang="scss" scoped>
+	//팝부분입니다
+	.popupContent{
+		width: 100%;
+		height: 100vh;
+		.popuptopHidden{
+			width: 100%;
+			height: 180rpx;
+		}
+		.popupbottomHidden{
+			width: 100%;
+			height:210rpx;
+		}
+		.popupTop{
+			width: 100%;
+			height: 410rpx;
+			.popupTitle{
+				width: 100%;
+				height: 230rpx;
+				padding-left: 30rpx;
+				padding-right: 30rpx;
+				font-size: 36rpx;
+				color: rgb(50, 50, 50);
+				letter-spacing: 6rpx; /* 글자 간격 넓게 */
+				font-weight: bold;
+				.title1{
+					width: 100%;
+					height: 80rpx;
+					line-height: 80rpx;
+					text-align: center;
+					color:rgb(222, 11, 124);
+					margin-bottom: 30rpx;
+				}
+				.title2{
+					width: 100%;
+					height: 110rpx;
+					line-height: 1.5;
+				}
+			}
+		}
+		.popupCenter{
+			width: 100%;
+			background-color: rgb(245, 245, 245);
+			padding: 80rpx 50rpx 80rpx 50rpx ;
+			font-size: 27rpx;
+			.popupDetail{
+				width: 650rpx;
+				height: 1500rpx;
+				background: white;
+				padding: 30rpx;
+				clip-path: polygon(
+					/* 상단 톱니 */
+					0% 0%, 10% 5%, 20% 0%, 30% 5%, 40% 0%, 50% 5%, 60% 0%, 70% 5%, 80% 0%, 90% 5%, 100% 0%,
+					/* 오른쪽 직선 */
+					100% 100%,
+					/* 하단 톱니 */
+					90% 95%, 80% 100%, 70% 95%, 60% 100%, 50% 95%, 40% 100%, 30% 95%, 20% 100%, 10% 95%, 0% 100%
+				);
+				.detailTitle{
+					width: 100%;
+					height: 70rpx;
+					font-size: 30rpx;
+					line-height: 70rpx;
+					padding-left: 5rpx;
+					font-weight: bold;
+					color: rgb(80, 80, 80);
+					border-bottom:3rpx solid rgb(150,150,150) ;
+					letter-spacing: 10rpx; /* 글자 간격 넓게 */
+					margin-bottom: 27rpx;
+				}
+				.detailContent{
+					width: 100%;
+					padding:15rpx 0 15rpx 0;
+					.detailItem{
+						width: 100%;
+						height: 70rpx;
+						line-height: 70rpx;
+						letter-spacing: 5rpx; /* 글자 간격 넓게 */
+						.detailItemTextLeft{
+							display: inline-block;
+							width: 30%;
+							color: rgb(160, 160, 160);
+						}
+						.detailItemTextRight{
+							display: inline-block;
+							width: 70%;
+							text-align: right;
+							color: rgb(80, 80, 80);
+						}
+					}
+				}
+				.detailMonthPrice{
+					width: 590rpx;
+					height: 100rpx;
+					margin-top: 20rpx;
+					border-top:3rpx solid rgb(150,150,150) ;
+					display: flex;
+					line-height: 100rpx;
+					letter-spacing: 6rpx; /* 글자 간격 넓게 */
+					color: rgb(80, 80, 80);
+					.detailMonthPriceLeft{
+						width: 200rpx;
+					}
+					.detailMonthPriceRight{
+						width: 390rpx;
+						text-align: right;
+						font-size: 33rpx;
+						padding-right: 5rpx;
+					}
+				}
+			}
+		}
+		.popupBottom{
+			position: fixed;
+			width: 100%;
+			height: 220rpx;
+			left: 0;
+			bottom: 0;
+			background: white;
+			box-shadow:0 -5rpx 20rpx rgba(150, 150, 150, 0.2); /* 부드러운 외곽 그림자 */
+			.popupHideButton{
+				width: 80%;
+				height: 100rpx;
+				margin-left: 10%;
+				margin-top: 50rpx;
+				border-radius: 22rpx;
+				color: white;
+				text-align: center;
+				line-height: 100rpx;
+				background-color: rgb(222, 11, 124);
+				letter-spacing: 10rpx; /* 글자 간격 넓게 */
+			}
+		}
+
+	}
+	
+	
 	.topBanner{
 		width: 100%;
 		height: 500rpx;
@@ -310,6 +574,7 @@
 			height: 150rpx;
 			padding-left: 20rpx;
 			padding-right: 20rpx;
+			font-size: 27rpx;
 			.monthTopleft{
 				width: 60%;
 				color: rgb(50, 50, 50);
@@ -442,6 +707,40 @@
 							width: 750rpx;
 							padding: 50rpx 25rpx 0 25rpx;
 							position: relative;
+							.installmentContent{
+								width: 700rpx;
+								height: 200rpx;
+								text-align: center;
+								margin-bottom: 10rpx;
+								letter-spacing: 5rpx; /* 글자 간격 넓게 */
+								.installmentTitle{
+									width: 100%;
+									height: 70rpx;
+									font-size: 33rpx;
+									line-height: 70rpx;
+								}
+								.installmentCheck{
+									display: flex;
+									height: 130rpx;
+									align-items: center;
+									justify-content: space-between;
+									.installmenText{
+										width: 216rpx;
+										height: 90rpx;
+										line-height: 90rpx;
+										border-radius: 8rpx;
+										font-size: 26rpx;
+										border: 5rpx solid rgb(240, 240, 240);
+									}
+									.installmentActive{
+										border-radius: 12rpx;
+										border: 5rpx solid rgb(222, 11, 124);
+										color: rgb(222, 11, 124);
+										font-weight: bold;
+										font-size: 31rpx;
+									}
+								}
+							}
 							.picker{
 								text-align: center;
 								width: 700rpx;

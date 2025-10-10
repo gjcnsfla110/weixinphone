@@ -1,5 +1,5 @@
 <template>
-	<swiper class="pageSwiper" :circular="true">
+	<swiper class="pageSwiper" :circular="true" :indicator-dots="indicatorDots" :indicator-color="indicatorColor" :indicator-active-color="indicatorActiveColor">
 		<swiper-item class="swiperItem" v-for="item in banner" > 
 				<image class="img" :src="item" mode="aspectFill"></image>
 		</swiper-item>
@@ -14,6 +14,18 @@
 			banner:{
 				type:Array,
 				default:[]
+			},
+			indicatorDots:{
+				type:Boolean,
+				default:true
+			},
+			indicatorColor:{
+				type:String,
+				default:"rgba(255,255,255)"
+			},
+			indicatorActiveColor:{
+				type:String,
+				default:"rgba(255,153,51)"
 			}
 		},
 		setup(props, context) {

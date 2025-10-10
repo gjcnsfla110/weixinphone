@@ -4,7 +4,7 @@
 		 autoplay circular indicator-color="rgba(0, 0, 0, 0.2)" indicator-active-color="#ffffff">
 			<swiper-item v-for="item in componentData.items" class="hotBannerSwiperitem">
 				<view class="hotBannerSwiperitemImg">
-						<image class="bannerImg" :src="item.img" mode="aspectFill"></image>
+						<image class="bannerImg" :src="item.image" mode="aspectFill"></image>
 				</view>
 			</swiper-item>
 		</swiper>

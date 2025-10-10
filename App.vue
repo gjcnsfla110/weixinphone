@@ -42,6 +42,7 @@
 	/*每个页面公共css */
 	@import "/common/animate.css";
 	@import "/common/common-style.scss";
+	@import "uview-pro/index.scss";
 	/* animate 사용부분 */
 	:global(.animate__bounceInLeft) {
 	  animation-duration: 1.5s;

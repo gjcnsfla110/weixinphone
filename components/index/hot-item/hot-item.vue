@@ -1,7 +1,7 @@
 <template>	
 		<view class="swiper-content">
 			<view v-if="banner.id">
-				<swiperBanner :componentData="banner"></swiperBanner>
+				<u-swiper :list="banner.items" :effect3d="true"></u-swiper>
 			</view>	
 			<LoadingView>
 				<view class="subMenu">

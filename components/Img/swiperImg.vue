@@ -1,6 +1,6 @@
 <template>
 	<Card color="white" margin-top="0">
-		<swiper class="imgSwiper" indicator-dots autoplay>
+		<swiper class="imgSwiper" :indicator-dots="indicatorDots" :indicator-color="indicatorColor" :indicator-active-color="indicatorActiveColor" autoplay>
 			<swiper-item class="imgSwiperItem" v-for="item in items" @click="itemDetail(item.goods_id)">
 				<image :src="item.img" mode="aspectFill"></image>
 			</swiper-item>
@@ -20,6 +20,18 @@
 				type:Object,
 				default:{items:[]}
 			},
+			indicatorDots:{
+				type:Boolean,
+				default:true
+			},
+			indicatorColor:{
+				type:String,
+				default:"rgba(255,255,255)"
+			},
+			indicatorActiveColor:{
+				type:String,
+				default:"rgba(255,153,51)"
+			}
 		},
 		setup(props, context) {
 			const items = ref(props.itemData.items);

@@ -1,8 +1,25 @@
 {
-  "hash": "5f80206c",
+  "hash": "3664d917",
   "configHash": "3552a8ee",
-  "lockfileHash": "809273fe",
-  "browserHash": "b85fdf56",
-  "optimized": {},
-  "chunks": {}
+  "lockfileHash": "cdb506c4",
+  "browserHash": "4c81134d",
+  "optimized": {
+    "uview-ui": {
+      "src": "../../../../../node_modules/uview-ui/index.js",
+      "file": "uview-ui.js",
+      "fileHash": "0981709d",
+      "needsInterop": false
+    },
+    "uview-pro": {
+      "src": "../../../../../node_modules/uview-pro/index.ts",
+      "file": "uview-pro.js",
+      "fileHash": "6f8b31f0",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-LNEMQRCO": {
+      "file": "chunk-LNEMQRCO.js"
+    }
+  }
 }
