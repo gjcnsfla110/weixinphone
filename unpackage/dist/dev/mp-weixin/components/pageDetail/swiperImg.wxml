@@ -1,1 +1,1 @@
-<swiper class="pageSwiper data-v-bc138464" circular="{{true}}"><swiper-item wx:for="{{a}}" wx:for-item="item" class="swiperItem data-v-bc138464"><image class="img data-v-bc138464" src="{{item.a}}" mode="aspectFill"></image></swiper-item></swiper>
+<swiper class="pageSwiper data-v-bc138464" circular="{{true}}" indicator-dots="{{b}}" indicator-color="{{c}}" indicator-active-color="{{d}}"><swiper-item wx:for="{{a}}" wx:for-item="item" class="swiperItem data-v-bc138464"><image class="img data-v-bc138464" src="{{item.a}}" mode="aspectFill"></image></swiper-item></swiper>

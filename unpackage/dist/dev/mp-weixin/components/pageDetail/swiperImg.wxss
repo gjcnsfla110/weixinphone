@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .pageSwiper.data-v-bc138464 {
   width: 100%;
   height: 500rpx;

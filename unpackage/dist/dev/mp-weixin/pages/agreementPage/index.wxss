@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .uni-collapse-item__title-box.data-v-6236bcbc {
   font-weight: bold;
   color: #DA8C05;

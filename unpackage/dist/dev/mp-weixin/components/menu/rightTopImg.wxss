@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .topImg.data-v-9d521e1a {
   margin-top: 18rpx;
   width: 100%;

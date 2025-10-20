@@ -23,12 +23,12 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 /*下面轮播图的css*/
 .swiper-content.data-v-b080f363 {
   margin-top: 3rpx;
   width: 100vw;
 }
-
 /*小菜单css*/
 .subMenu.data-v-b080f363 {
   display: grid;

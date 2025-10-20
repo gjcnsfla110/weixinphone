@@ -56,7 +56,7 @@ const _sfc_main = {
   methods: {}
 };
 if (!Array) {
-  const _component_swiperBanner = common_vendor.resolveComponent("swiperBanner");
+  const _easycom_u_swiper2 = common_vendor.resolveComponent("u-swiper");
   const _component_ItemTitle = common_vendor.resolveComponent("ItemTitle");
   const _component_ItemNew = common_vendor.resolveComponent("ItemNew");
   const _component_ItemScrollView = common_vendor.resolveComponent("ItemScrollView");
@@ -69,14 +69,19 @@ if (!Array) {
   const _component_OneImg = common_vendor.resolveComponent("OneImg");
   const _component_ImgBanner = common_vendor.resolveComponent("ImgBanner");
   const _component_LoadingView = common_vendor.resolveComponent("LoadingView");
-  (_component_swiperBanner + _component_ItemTitle + _component_ItemNew + _component_ItemScrollView + _component_ItemContentList + _component_SwiperImg + _component_ItemContentOne + _component_ItemContentTitle + _component_ItemContentTwo + _component_ItemList + _component_OneImg + _component_ImgBanner + _component_LoadingView)();
+  (_easycom_u_swiper2 + _component_ItemTitle + _component_ItemNew + _component_ItemScrollView + _component_ItemContentList + _component_SwiperImg + _component_ItemContentOne + _component_ItemContentTitle + _component_ItemContentTwo + _component_ItemList + _component_OneImg + _component_ImgBanner + _component_LoadingView)();
+}
+const _easycom_u_swiper = () => "../../../node-modules/uview-pro/components/u-swiper/u-swiper.js";
+if (!Math) {
+  _easycom_u_swiper();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: $setup.banner.id
   }, $setup.banner.id ? {
     b: common_vendor.p({
-      componentData: $setup.banner
+      list: $setup.banner.items,
+      effect3d: true
     })
   } : {}, {
     c: common_vendor.f($props.subMenu, (item, k0, i0) => {

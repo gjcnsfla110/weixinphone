@@ -230,17 +230,16 @@ export default{
 							height: 60rpx;
 							display: flex;
 							align-items: center;
-							border: 5rpx solid rgb(255, 51, 51);
+							border: 4rpx solid rgb(180, 180, 180);
 							border-radius: 10rpx;
 							.itemBottom1Left{
 								width: 48%;
 								height: 50rpx;
-								border-left: 5rpx solid rgb(255, 51, 51);
+								border-left: 4rpx solid rgb(180, 180, 180);
 								line-height: 50rpx;
 								text-align: center;
-								font-size: 30rpx;
+								font-size: 27rpx;
 								color: rgb(255, 128, 0);
-								font-weight: bold;
 								letter-spacing: 5rpx; /* 글자 간격 넓게 */
 								text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 							}
@@ -249,9 +248,8 @@ export default{
 								height: 50rpx;
 								text-align: center;
 								line-height: 50rpx;
-								font-size: 30rpx;
+								font-size: 27rpx;
 								color: rgb(255, 128, 0);
-								font-weight: bold;
 								letter-spacing: 5rpx; /* 글자 간격 넓게 */
 								text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 							}

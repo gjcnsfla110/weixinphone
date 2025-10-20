@@ -1,0 +1,337 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* npm 方式 */
+.hanyuan.data-v-9900e39c {
+  font-size: 22rpx;
+  color: #6e646e;
+  margin-left: 5rpx;
+}
+.usimContaner.data-v-9900e39c {
+  width: 750rpx;
+  padding: 30rpx;
+}
+.usimContaner .header.data-v-9900e39c {
+  width: 690rpx;
+  height: 820rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+.usimContaner .header .headerTop.data-v-9900e39c {
+  width: 690rpx;
+  height: 80rpx;
+}
+.usimContaner .header .headerTop .usimTopLeft.data-v-9900e39c {
+  width: 310rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-radius: 50rpx;
+  padding-left: 20rpx;
+}
+.usimContaner .header .headerTop .usimTopLeft image.data-v-9900e39c {
+  width: 50rpx;
+  height: 50rpx;
+}
+.usimContaner .header .headerTop .usimTopLeft .usimTopLeftText.data-v-9900e39c {
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 65rpx;
+  font-size: 27rpx;
+  text-align: right;
+  padding-right: 15rpx;
+  letter-spacing: 3rpx;
+  color: #de0b7c;
+}
+.usimContaner .header .headerTitle.data-v-9900e39c {
+  width: 690prx;
+  height: 90rpx;
+  margin-top: 35rpx;
+  font-size: 32rpx;
+  color: #323232;
+  font-weight: bold;
+  letter-spacing: 8rpx;
+  /* 글자 간격 넓게 */
+  line-height: 60rpx;
+}
+.usimContaner .header .usimDetail.data-v-9900e39c {
+  margin-top: 10rpx;
+  height: 60rpx;
+  line-height: 50rpx;
+  margin-bottom: 30rpx;
+  font-size: 27rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  color: #969696;
+}
+.usimContaner .header .usimContent.data-v-9900e39c {
+  width: 690rpx;
+  display: flex;
+  height: 130rpx;
+  flex-wrap: wrap;
+}
+.usimContaner .header .usimContent .usimDt.data-v-9900e39c {
+  width: 190rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.usimContaner .header .usimContent .usimDt image.data-v-9900e39c {
+  width: 30rpx;
+  height: 30rpx;
+}
+.usimContaner .header .usimContent .usimDt .usimText.data-v-9900e39c {
+  display: inline-block;
+  width: 140rpx;
+  height: 40rpx;
+  font-size: 24rpx;
+  padding-left: 20rpx;
+  color: #969696;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  line-height: 45rpx;
+}
+.usimContaner .header .usimContent .usimCenterSolid.data-v-9900e39c {
+  width: 5rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+  margin-right: 50rpx;
+  background-color: #e6e6e6;
+}
+.usimContaner .header .usimCheck.data-v-9900e39c {
+  margin-top: 30rpx;
+  width: 640rpx;
+  height: 320rpx;
+  margin-left: 23rpx;
+  border: solid 2rpx #b4b4b4;
+  border-radius: 15rpx;
+  padding: 20rpx;
+}
+.usimContaner .header .usimCheck .usimCheckTop.data-v-9900e39c {
+  width: 600rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+.usimContaner .header .usimCheck .usimCheckTop image.data-v-9900e39c {
+  width: 40rpx;
+  height: 40rpx;
+}
+.usimContaner .header .usimCheck .usimCheckTop .usimCheckTopText.data-v-9900e39c {
+  width: 550rpx;
+  height: 60rpx;
+  font-size: 30rpx;
+  line-height: 65rpx;
+  padding-left: 30rpx;
+  color: #505050;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+}
+.usimContaner .header .usimCheck .usimCheckContent.data-v-9900e39c {
+  width: 525rpx;
+  margin-left: 70rpx;
+  font-size: 26rpx;
+  color: #b4b4b4;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  line-height: 40rpx;
+}
+.usimContaner .content.data-v-9900e39c {
+  width: 690rpx;
+  height: 1280rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  padding-top: 30rpx;
+}
+.usimContaner .content .contentTitle.data-v-9900e39c {
+  width: 690rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #6e6e6e;
+  line-height: 80rpx;
+  letter-spacing: 8rpx;
+  /* 글자 간격 넓게 */
+  font-weight: bold;
+}
+.usimContaner .content .contentDetail.data-v-9900e39c {
+  width: 690rpx;
+  height: 200rpx;
+  padding: 20rpx;
+  border: 3rpx solid gainsboro;
+  margin-bottom: 20rpx;
+  border-radius: 20rpx;
+  font-size: 27rpx;
+  letter-spacing: 2rpx;
+  color: #a0a0a0;
+}
+.usimContaner .content .itemData.data-v-9900e39c {
+  width: 660rpx;
+  height: 90rpx;
+  background-color: #f7f7f7;
+  border-radius: 18rpx;
+  margin: 25rpx 15rpx 25rpx 15rpx;
+  padding-left: 20rpx;
+  display: flex;
+}
+.usimContaner .content .itemData .itemData1.data-v-9900e39c {
+  width: 160rpx;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.usimContaner .content .itemData .itemData1 image.data-v-9900e39c {
+  width: 25rpx;
+  height: 25rpx;
+}
+.usimContaner .content .itemData .itemData1 .itemData1Text.data-v-9900e39c {
+  width: 125rpx;
+  height: 25rpx;
+  font-size: 22rpx;
+  letter-spacing: 1rpx;
+}
+.usimContaner .content .item.data-v-9900e39c {
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  font-size: 28rpx;
+}
+.usimContaner .content .item .itemLeft.data-v-9900e39c {
+  width: 290rpx;
+  height: 80rpx;
+  color: #6e6e6e;
+}
+.usimContaner .content .item .itemRight.data-v-9900e39c {
+  width: 400rpx;
+  height: 80rpx;
+  text-align: right;
+  color: #6666ff;
+}
+.usimContaner .content .item .itemRight1.data-v-9900e39c {
+  margin-top: 16rpx;
+  width: 400rpx;
+  height: 200rpx;
+  text-align: right;
+  color: #6666ff;
+  line-height: 45rpx;
+  padding: 15rpx;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 16rpx;
+  color: #6e6e6e;
+}
+.usimContaner .bottom.data-v-9900e39c {
+  width: 690rpx;
+  height: 480rpx;
+  padding-top: 30rpx;
+}
+.usimContaner .bottom .contentTitle.data-v-9900e39c {
+  width: 690rpx;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #6e6e6e;
+  line-height: 80rpx;
+  letter-spacing: 8rpx;
+  /* 글자 간격 넓게 */
+  font-weight: bold;
+}
+.usimContaner .bottom .peopleNeed.data-v-9900e39c {
+  padding-top: 15rpx;
+  width: 690rpx;
+  height: 350rpx;
+  font-size: 27rpx;
+  letter-spacing: 3rpx;
+  color: #a0a0a0;
+}
+.usimContaner .hiddenBottom.data-v-9900e39c {
+  width: 100%;
+  height: 180rpx;
+}
+.usimContaner .usimBottomFixed.data-v-9900e39c {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+  height: 180rpx;
+  background-color: white;
+  box-shadow: 10rpx 10rpx 30rpx rgba(0, 0, 0, 0.3);
+  padding: 15rpx;
+  display: flex;
+  align-items: center;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft.data-v-9900e39c {
+  width: 60%;
+  height: 150rpx;
+  padding-left: 30rpx;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft .monthTopRight.data-v-9900e39c {
+  width: 100%;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft .monthTopRight .monthTopRight1.data-v-9900e39c {
+  width: 100%;
+  height: 70rpx;
+  line-height: 80rpx;
+  color: #969696;
+  font-size: 30rpx;
+  letter-spacing: 6rpx;
+  /* 글자 간격 넓게 */
+  padding-left: 10rpx;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft .monthTopRight .monthTopRight2.data-v-9900e39c {
+  width: 100%;
+  font-size: 36rpx;
+  height: 70rpx;
+  font-weight: bold;
+  line-height: 70rpx;
+  color: #6666ff;
+  letter-spacing: 6rpx;
+  /* 글자 간격 넓게 */
+  display: flex;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft .monthTopRight .monthTopRight2 .monthTopRight2Img.data-v-9900e39c {
+  width: 70rpx;
+  height: 70rpx;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft .monthTopRight .monthTopRight2 .monthTopRight2Img image.data-v-9900e39c {
+  width: 46rpx;
+  height: 46rpx;
+  margin-top: 12rpx;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedLeft .monthTopRight .monthTopRight2 .monthTopRight2Text.data-v-9900e39c {
+  height: 70rpx;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedRight.data-v-9900e39c {
+  width: 40%;
+  height: 150rpx;
+}
+.usimContaner .usimBottomFixed .usimBottomFixedRight .usimAsbutton.data-v-9900e39c {
+  width: 100%;
+  height: 60rpx;
+  margin-top: 45rpx;
+}

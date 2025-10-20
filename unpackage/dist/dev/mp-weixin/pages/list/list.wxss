@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .listContainer.data-v-98a9e0b2 {
   width: 100%;
 }
@@ -126,18 +127,17 @@
   height: 60rpx;
   display: flex;
   align-items: center;
-  border: 5rpx solid #ff3333;
+  border: 4rpx solid #b4b4b4;
   border-radius: 10rpx;
 }
 .itemList .listItem .itemContent .itemBottom .itemBottom1 .itemBottom1Left.data-v-98a9e0b2 {
   width: 48%;
   height: 50rpx;
-  border-left: 5rpx solid #ff3333;
+  border-left: 4rpx solid #b4b4b4;
   line-height: 50rpx;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 27rpx;
   color: #ff8000;
-  font-weight: bold;
   letter-spacing: 5rpx;
   /* 글자 간격 넓게 */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -148,9 +148,8 @@
   height: 50rpx;
   text-align: center;
   line-height: 50rpx;
-  font-size: 30rpx;
+  font-size: 27rpx;
   color: #ff8000;
-  font-weight: bold;
   letter-spacing: 5rpx;
   /* 글자 간격 넓게 */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);

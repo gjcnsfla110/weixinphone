@@ -1,12 +1,12 @@
-{
+{  
 	"easycom": {
-	    "autoscan": true,
-	    "custom": {
-	        // npm 方式
-	        "^u-(.*)": "uview-pro/components/u-$1/u-$1.vue"
-	        // uni_modules 方式
-	        // "^u-(.*)": "@/uni_modules/uview-pro/components/u-$1/u-$1.vue"
-	    }
+		"autoscan": true,
+		"custom": {
+		  // npm 方式
+		  "^u-(.*)": "uview-pro/components/u-$1/u-$1.vue"
+		  // uni_modules 方式
+		  // "^u-(.*)": "@/uni_modules/uview-pro/components/u-$1/u-$1.vue"
+		}
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
@@ -21,14 +21,6 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "手机卡",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path" : "pages/myPage/myPage",
-			"style" : 
-			{
-				"navigationBarTitleText" : "我的页面",
 				"navigationStyle": "custom"
 			}
 		},
@@ -104,47 +96,65 @@
 				"navigationBarTitleText" : "合约网络",
 				"navigationStyle": "custom"
 			}	
+		},
+		{
+			"path": "pages/itemPage/usimItemPage",
+			"style" :
+			{
+				"navigationBarTitleText" : "手机卡",
+				"navigationStyle": "custom"
+			}	
+		},
+		{
+			"path": "pages/company/company",
+			"style": {
+				"navigationBarTitleText": "公司",
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"usingComponents": {} 
 	},
 	"tabBar": {
-		"color": "#bfbfbf",
-		"selectedColor": "#1296db",
+		"color": "#515151",
+		"selectedColor": "#d4237a",
+		"backgroundColor": "#FCFCFC",
+		"borderStyle": "white",
 		"list": [
 			{
 				"pagePath": "pages/index/index",
-				"iconPath": "static/tabBar/main.png",
-				"selectedIconPath": "static/tabBar/main1.png",
+				"iconPath": "/static/tabBar/home.png",
+				"selectedIconPath": "/static/tabBar/home1.png",
 				"text": "商城"
 			},
 			{
 				"pagePath": "pages/menu/menu",
-				"iconPath": "static/tabBar/menu.png",
-				"selectedIconPath": "static/tabBar/menu1.png",
+				"iconPath": "/static/tabBar/menu11.png",
+				"selectedIconPath": "/static/tabBar/menu111.png",
 				"text": "分类"
 			},
 			{
 				"pagePath": "pages/agreementPage/index",
-				"iconPath": "/static/tabBar/phone.png",
-				"selectedIconPath": "/static/tabBar/phone1.png",
+				"iconPath": "/static/tabBar/phone11.png",
+				"selectedIconPath": "/static/tabBar/phone111.png",
 				"text": "合约手机"
 			},
 			{
 				"pagePath": "pages/simCard/simCard",
-				"iconPath": "static/tabBar/simCard.png",
-				"selectedIconPath": "static/tabBar/simCard1.png",
+				"iconPath": "/static/tabBar/usim.png",
+				"selectedIconPath": "/static/tabBar/usim1.png",
 				"text": "手机卡"
 			},
 			{
-				"pagePath": "pages/myPage/myPage",
-				"iconPath": "static/tabBar/me.png",
-				"selectedIconPath": "static/tabBar/me1.png",
-				"text": "我的"
+				"pagePath": "pages/company/company",
+				"iconPath": "/static/tabBar/shop.png",
+				"selectedIconPath": "/static/tabBar/shop1.png",
+				"text": "小韩公司"
 			}
 		]
 	},

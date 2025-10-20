@@ -5,6 +5,8 @@
     "custom-nav": "../../components/custom-nav-bar/customNav",
     "uni-swiper-dot": "../../uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot",
     "uni-segmented-control": "../../uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control",
-    "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
+    "u-select": "../../node-modules/uview-pro/components/u-select/u-select",
+    "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup",
+    "uni-popup-dialog": "../../uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog"
   }
 }

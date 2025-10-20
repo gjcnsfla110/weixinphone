@@ -65,6 +65,10 @@
 								</view>
 							</view>
 							<view class="picker">
+									<view class="pickerName">手机价格</view>
+									<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(item.price)}}</text><text class="hanyuan">韩元</text></view>
+							</view>
+							<view class="picker">
 								<view class="pickerName">信用卡优惠</view>
 								<view class="pickerItem">
 									<u-select v-model="cardShow" @confirm="changeCardSale" :list="cards" label-name="card_company" value-name="sale" mode="single-column">
@@ -87,47 +91,58 @@
 								<view class="pickerItem">
 									<u-select v-model="planShow" @confirm="changePlan" :list="plans" label-name="title" value-name="price" mode="single-column">
 									</u-select>
-									<view class="pickerItemTitle" v-if="planPrice" @click="planShow=true">{{planText}}</view>
+									<view class="pickerItemTitle" v-if="planPrice && saleTypeVal" @click="planShow=true">{{planText}}</view>
 									<view v-else>
 										<view v-if="saleTypeVal" class="pickerItemTitle" @click="planShow=true">请选话费套餐</view>
 										<view v-else class="pickerItemTitle" @click="openAlertDialog">请选话费套餐</view>
 									</view>
-									
 								</view>
 							</view>					
 							<view>
-								<view class="picker">
-										<view class="pickerName">手机优惠</view>
-										<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(phoneSale)}}</text><text class="hanyuan">韩元</text></view>
+								<view v-if="phoneSale">
+									<view class="picker">
+											<view class="pickerName" style="width: 40%;">通信社手机优惠</view>
+											<view class="pickerItem" style="background-color: white;width: 60%;"><text>{{formattedPrice(phoneSale)}}</text><text class="hanyuan">韩元</text></view>
+									</view>
+									<view class="picker">
+											<view class="pickerName" style="color: rgb(255, 128, 0);width: 40%;">优惠完后手机价</view>
+											<view class="pickerItem" style="background-color: white;width: 60%;"><text>{{formattedPrice(phonePrice)}}</text><text class="hanyuan">韩元</text></view>
+									</view>
 								</view>
-								<view class="picker">
-									<view class="pickerName">话费优惠</view>
-									<view class="pickerItem" style="background-color: white;"><text>{{formattedPrice(feeSale)}}</text><text class="hanyuan">韩元</text></view>
-								</view>
+								<view v-if="feeSale">
+									<view class="picker">
+										<view class="pickerName" style="width: 40%;">优惠完后话费</view>
+										<view class="pickerItem" style="background-color: white;width: 60%;"><text>{{formattedPrice(monthFeePrice)}}</text><text class="hanyuan">韩元</text></view>
+									</view>
+									<view class="picker">
+										<view class="pickerName" style="color: rgb(255, 128, 0);width: 40%;">话费总共优惠</view>
+										<view class="pickerItem" style="background-color: white;width: 60%;"><text>{{formattedPrice(feeSale)}}</text><text class="hanyuan">韩元</text></view>
+									</view>
+								</view>					
 							</view>
 							<view class="pickerDetail">
-								<view class="pickerDetailTitle">요금제소개</view>
+								<view class="pickerDetailTitle">话费套餐介绍</view>
 								{{planDetail}}
 							</view>	
-							<view class="hiddenBottom"></view>
+							<view class="hiddenBottom" v-if="saleTypeVal && planPrice"></view>
 						</view>
 						<view class="detail" v-show="current === 1">
 							<view>{{item.detail}}</view>
-							<view class="hiddenBottom"></view>
+							<view class="hiddenBottom" v-if="saleTypeVal && planPrice"></view>
 						</view>
 					</view>
 				 </view>
 		 </view>
 	</view>
-	<view class="agreementBottom">
+	<view class="agreementBottom" v-if="saleTypeVal && planPrice">
 		<view class="monthTop">
 			<view class="monthTopleft">
-				<view class="monthTopleft1"><text class="leftText">手机价格</text> {{formattedPrice(phonePrice)}}<text class="hanyuan">韩元</text></view>
-				<view class="monthTopleft2"><text class="leftText">话费套餐</text> 150,000<text class="hanyuan">韩元</text></view>
+				<view class="monthTopleft1"><text class="leftText">每月手机价格</text> {{formattedPrice(monthPhonePrice)}}<text class="hanyuan">韩元</text></view>
+				<view class="monthTopleft2"><text class="leftText">每月话费价格</text> {{formattedPrice(monthFeePrice)}}<text class="hanyuan">韩元</text></view>
 			</view>
 			<view class="monthTopRight">
 				<view class="monthTopRight1">每月总话费</view>
-				<view class="monthTopRight2">169000<text class="hanyuan">韩元</text></view>
+				<view class="monthTopRight2">{{formattedPrice(monthTotalPrice)}}<text class="hanyuan">韩元</text></view>
 			</view>
 		</view>
 		<view class="monthBottom">
@@ -150,12 +165,12 @@
 					</view>
 					<view class="monthTop">
 						<view class="monthTopleft">
-							<view class="monthTopleft1"><text class="leftText">手机价格</text> {{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></view>
-							<view class="monthTopleft2"><text class="leftText">话费套餐</text> 150,000<text class="hanyuan">韩元</text></view>
+							<view class="monthTopleft1"><text class="leftText">手机原价</text> <text style="font-size: 32rpx; color:rgb(222, 11, 124)">{{formattedPrice(item.price)}}</text><text class="hanyuan">韩元</text></view>
+							<view class="monthTopleft2" ><text class="leftText">话费套餐</text> {{formattedPrice(planPrice)}}<text class="hanyuan">韩元</text></view>
 						</view>
 						<view class="monthTopRight">
 							<view class="monthTopRight1">每月总话费</view>
-							<view class="monthTopRight2">169000<text class="hanyuan">韩元</text></view>
+							<view class="monthTopRight2">{{formattedPrice(monthTotalPrice)}}<text class="hanyuan">韩元</text></view>
 						</view>
 					</view>
 				</view>
@@ -174,7 +189,7 @@
 									<text class="detailItemTextLeft">颜色</text><text class="detailItemTextRight">{{item.color}}</text>
 								</view>
 								<view class="detailItem">
-									<text class="detailItemTextLeft" style="color: rgb(255, 128, 0)">返现金</text><text class="detailItemTextRight">{{formattedPrice(item.shopCashSupport)}}<text class="hanyuan">韩元</text></text>
+									<text class="detailItemTextLeft" style="color: rgb(255, 128, 0)">本店返现金</text><text class="detailItemTextRight">{{formattedPrice(item.shopCashSupport)}}<text class="hanyuan">韩元</text></text>
 								</view>
 							</view>
 						</view>
@@ -182,36 +197,50 @@
 							<view class="detailTitle">选项信息</view>
 							<view class="detailContent">
 								<view class="detailItem">
-									<text class="detailItemTextLeft">手机价格</text><text class="detailItemTextRight">{{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></text>
+									<text class="detailItemTextLeft">信用卡银行</text><text class="detailItemTextRight">{{formattedPrice(cardName)}}</text>
 								</view>
 								<view class="detailItem">
-									<text class="detailItemTextLeft">分期期限</text><text class="detailItemTextRight">24个月</text>
+									<text class="detailItemTextLeft">信用卡优惠</text><text class="detailItemTextRight">{{formattedPrice(creditCardSale)}}<text class="hanyuan">韩元</text></text>
 								</view>
 								<view class="detailItem">
-									<text class="detailItemTextLeft" style="width: 40%;">通信社话费优惠</text><text class="detailItemTextRight" style="width: 60%;">24个月</text>
+									<text class="detailItemTextLeft">分期期限</text><text class="detailItemTextRight">{{installment}}个月</text>
 								</view>
 								<view class="detailItem">
-									<text class="detailItemTextLeft"style="width: 40%;">通信社手机优惠</text><text class="detailItemTextRight" style="width: 60%;">24个月</text>
+									<text class="detailItemTextLeft">每月机器费</text><text class="detailItemTextRight">{{formattedPrice(monthPhonePrice)}}<text class="hanyuan">韩元</text></text>
 								</view>
 								<view class="detailItem">
-									<text class="detailItemTextLeft">每月手机费</text><text class="detailItemTextRight">24个月</text>
+									<text class="detailItemTextLeft">每月话费</text><text class="detailItemTextRight">{{formattedPrice(monthFeePrice)}}<text class="hanyuan">韩元</text></text>
 								</view>
-								<view class="detailItem">
-									<text class="detailItemTextLeft">每月话费</text><text class="detailItemTextRight">24个月</text>
+								<view class="detailItem" v-if="feeSale">
+									<text class="detailItemTextLeft" style="width: 40%;color: rgb(255, 128, 0)">话费总共优惠</text><text class="detailItemTextRight" style="width: 60%;">{{formattedPrice(feeSale)}}<text class="hanyuan">韩元</text></text>
 								</view>
-								<view class="detailItem">
-									<text class="detailItemTextLeft">信用卡优惠</text><text class="detailItemTextRight">无</text>
+								<view class="detailItem" v-if="phoneSale">
+									<text class="detailItemTextLeft"style="width: 40%;">通信社手机优惠</text><text class="detailItemTextRight" style="width: 60%;">{{formattedPrice(phoneSale)}}<text class="hanyuan">韩元</text></text>
+								</view>
+								<view class="detailItem" v-if="saleTypeVal == 2">
+									<text class="detailItemTextLeft" style="width: 40%;color: rgb(255, 128, 0)">优惠完后手机价</text><text class="detailItemTextRight" style="width: 60%;">{{formattedPrice(phonePrice)}}<text class="hanyuan">韩元</text></text>
+								</view>
+							</view>
+						</view>
+						<view class="detaiContent">
+							<view class="detailTitle">话费套餐介绍</view>
+							<view class="detailContent">
+								<view class="planDetailContent">
+									{{planDetail}}
 								</view>
 							</view>
 						</view>
 						<view class="detailMonthPrice">
 							<view class="detailMonthPriceLeft">每月费用</view>
-							<view class="detailMonthPriceRight">{{formattedPrice(item.price)}}<text class="hanyuan">韩元</text></view>
+							<view class="detailMonthPriceRight">{{formattedPrice(monthTotalPrice)}}<text class="hanyuan">韩元</text></view>
 						</view>
 					</view>
 				</view>
 				<view class="popupbottomHidden"></view>
 				<view class="popupBottom">
+					<view class="closePopup" @click="closePopup">
+						关闭
+					</view>
 					<view class="popupHideButton">
 						联系客服商谈
 					</view>
@@ -242,9 +271,7 @@
 			SwiperImg,
 		},
 		computed:{
-			monthSumPrice(){
-				 
-			}
+				
 		},
 		props:{
 			
@@ -262,7 +289,7 @@
 			const items = ['每月话费', '详细内容',];
 			const current = ref(0)
 			//할부월수 표현
-			const installmentList = [{name:'24月分期',value:24},{name:'36月分期',value:36},{name:'48月分期',value:48}];
+			const installmentList = [{name:'24个月',value:24},{name:'36个月',value:36},{name:'48个月',value:48}];
 			const installment = ref(24);
 			//요금제리스트
 			const plans = ref([])
@@ -278,22 +305,45 @@
 			const planPrice = ref(0)
 			const planText = ref("");
 			const planDetail = ref("无套餐信息，请先选择话费套餐!");
+			const checkPlan = ref({title:"请选话费套餐",price:0,phone_sale:0,detail:"无套餐信息，请先选择话费套餐!"})
 			//picker - 신용카드 할인부분
 			const cardShow = ref(false)
 			const creditCardSale =ref(0);
+			const cardName = ref("未选银行");
 			//공시지원금 / 요금할인총액 /
 			const phoneSale = ref(0);
 			const feeSale = ref(0);
 			//월휴대폰 기기값, 월요금제 , 휴대폰 기기값
 			const monthPhonePrice = ref(0)
 			const monthFeePrice = ref(0)
+			const monthTotalPrice = ref(0)
 			const phonePrice = ref(0)
 			//할인타입 감시
-			watch([saleTypeVal,planPrice, creditCardSale], ([newSaleTypeVal, newPlanPrice, newCreditCardSale]) => {
-				 if(saleTypeVal == 1){
-					 
-				 }else if(saleTypeVal == 2){
-					 
+			watch([saleTypeVal,planPrice, creditCardSale,installment], ([newSaleTypeVal, newPlanPrice, newCreditCardSale,newInstallment]) => {
+				 if(saleTypeVal.value == 1){
+					 planDetail.value = checkPlan.value.detail;
+					 phoneSale.value = 0;
+					 feeSale.value = planPrice.value *0.25 * 24;
+					 monthFeePrice.value = planPrice.value *0.75;
+					 monthPhonePrice.value =Math.round(Number(item.value.price - creditCardSale.value)/installment.value);
+					 phonePrice.value = item.value.price - creditCardSale.value;
+					 monthTotalPrice.value = Number(monthFeePrice.value) + Number(monthPhonePrice.value);
+				 }else if(saleTypeVal.value == 2){
+					 planDetail.value = checkPlan.value.detail;
+					 phoneSale.value = checkPlan.value.phone_sale;
+					 feeSale.value = 0;
+					 monthFeePrice.value = planPrice.value;
+					 monthPhonePrice.value = Math.round(Number(item.value.price - phoneSale.value - creditCardSale.value )/installment.value);
+					 phonePrice.value = item.value.price - phoneSale.value - creditCardSale.value;
+					 monthTotalPrice.value = Number(monthFeePrice.value) + Number(monthPhonePrice.value);
+				 }else{
+					 phoneSale.value = 0;
+					 feeSale.value = 0;
+					 monthFeePrice.value = 0;
+					 monthPhonePrice.value = 0;
+					 phonePrice.value = item.value.price;
+					 checkPlan.value = {id:0,agreement_id:0,title:"请选话费套餐",price:0,phone_sale:0,detail:"无套餐信息，请先选择话费套餐!",ranking:50};
+					 monthTotalPrice.value = 0;
 				 }
 			});
 			//상세보기 팍업창 ref
@@ -311,14 +361,17 @@
 				saleType,
 				saleTypeShow,
 				saleTypeVal,
+				saleTypeText,
 				plans,
 				planShow,
 				planPrice,
 				planText,
 				planDetail,
+				checkPlan,
 				cards,
 				cardShow,
 				creditCardSale,
+				cardName,
 				monthPhonePrice,
 				monthFeePrice,
 				phonePrice,
@@ -326,6 +379,7 @@
 				feeSale,
 				installmentList,
 				installment,
+				monthTotalPrice
 			}
 		},
 		methods:{
@@ -344,21 +398,12 @@
 			changePlan(e){
 				this.planPrice = e[0].value;
 				this.planText = e[0].label;
-				let item = this.plans.filter(item => item.price == e[0].value)[0];
-				this.planDetail = item.detail;
-				if(this.saleTypeVal == 1){
-					this.phoneSale = 0;
-					this.feeSale = e[0].value *0.25 * 24;
-				}else if(this.saleTypeVal == 2){
-					this.phoneSale = item.phone_sale;
-					this.feeSale = 0;
-				}else{
-					this.phoneSale = 0;
-					this.feeSale = 0;
-				}
+				this.checkPlan = this.plans.filter(item => item.price == e[0].value)[0];
+
 			},
 			changeCardSale(e){
 				this.creditCardSale = Number(e[0].value);
+				this.cardName = e[0].label;
 			},
 			openPopup(type){
 				this.$refs.popup.open(type)
@@ -378,11 +423,13 @@
 			const agreement = uni.getStorageSync('agreementCategory')
 			if(storegeItem){
 				this.item = storegeItem.agreement;
+				this.phonePrice = this.item.price;
 			}else{
 				this.item = await servicePost('app/agreement/item/detail',{id:op.id});
+				this.phonePrice = this.item.price;
 			}
-			const agreementList = await servicePost('app/agreement/plan/list',{id:op.id});
-			this.plans = [{title:"请选话费套餐",price:0,detail:"无套餐信息，请先选择话费套餐!"},...agreementList.plans];
+			const planList = await servicePost('app/agreement/plan/list',{id:op.id});
+			this.plans = [{id:0,agreement_id:0,title:"请选话费套餐",price:0,phone_sale:0,detail:"无套餐信息，请先选择话费套餐!",ranking:50},...planList.plans];
 			if(agreement){
 				this.cards = agreement.cardSales.filter(item=>item.mobile = this.item.mobile);
 				this.cards = [{card_company:"无信用卡",sale:0},...this.cards];
@@ -438,7 +485,7 @@
 			font-size: 27rpx;
 			.popupDetail{
 				width: 650rpx;
-				height: 1500rpx;
+				height: 1800rpx;
 				background: white;
 				padding: 30rpx;
 				clip-path: polygon(
@@ -481,6 +528,9 @@
 							color: rgb(80, 80, 80);
 						}
 					}
+					.planDetailContent{
+						color: rgb(160, 160, 160);
+					}
 				}
 				.detailMonthPrice{
 					width: 590rpx;
@@ -493,6 +543,7 @@
 					color: rgb(80, 80, 80);
 					.detailMonthPriceLeft{
 						width: 200rpx;
+						color: rgb(160, 160, 160);
 					}
 					.detailMonthPriceRight{
 						width: 390rpx;
@@ -511,10 +562,24 @@
 			bottom: 0;
 			background: white;
 			box-shadow:0 -5rpx 20rpx rgba(150, 150, 150, 0.2); /* 부드러운 외곽 그림자 */
-			.popupHideButton{
-				width: 80%;
+			display: flex;
+			font-size: 32rpx;
+			.closePopup{
+				width: 30%;
 				height: 100rpx;
-				margin-left: 10%;
+				margin-top: 50rpx;
+				border-radius: 22rpx;
+				border: 5rpx solid rgb(150, 150, 150);
+				color: rgb(88, 88, 88);
+				text-align: center;
+				line-height: 100rpx ;
+				letter-spacing: 10rpx; /* 글자 간격 넓게 */
+				margin-left: 8%;
+				margin-right: 4%;
+			}
+			.popupHideButton{
+				width: 50%;
+				height: 100rpx;
 				margin-top: 50rpx;
 				border-radius: 22rpx;
 				color: white;
@@ -773,7 +838,7 @@
 							.pickerDetail{
 								width: 700rpx;
 								padding: 30rpx;
-								text-align: left;
+								text-align: center;
 								border-radius: 10rpx;
 								margin-top: 20rpx;
 								border: 5rpx solid rgb(240, 240, 240);
@@ -781,7 +846,6 @@
 								color: rgb(130, 130, 130);
 								margin-bottom: 20rpx;
 								.pickerDetailTitle{
-									text-align: center;
 									margin-bottom: 20rpx;
 									color: rgb(222, 11, 124,0.6);
 									font-weight: bold;

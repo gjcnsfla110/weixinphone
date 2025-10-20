@@ -9,6 +9,18 @@ const _sfc_main = {
     itemData: {
       type: Object,
       default: { items: [] }
+    },
+    indicatorDots: {
+      type: Boolean,
+      default: true
+    },
+    indicatorColor: {
+      type: String,
+      default: "rgba(255,255,255)"
+    },
+    indicatorActiveColor: {
+      type: String,
+      default: "rgba(255,153,51)"
     }
   },
   setup(props, context) {
@@ -45,7 +57,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: common_vendor.o(($event) => $options.itemDetail(item.goods_id))
       };
     }),
-    b: common_vendor.p({
+    b: $props.indicatorDots,
+    c: $props.indicatorColor,
+    d: $props.indicatorActiveColor,
+    e: common_vendor.p({
       color: "white",
       ["margin-top"]: "0"
     })

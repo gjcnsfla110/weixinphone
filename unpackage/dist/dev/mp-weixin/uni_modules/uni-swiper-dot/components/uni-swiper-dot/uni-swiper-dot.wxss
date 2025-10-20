@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .uni-swiper__warp.data-v-0667e3db {
   display: flex;
   flex: 1;

@@ -4,5 +4,11 @@
     "pinia": "^2.3.0",
     "uni-ajax": "^2.6.0",
     "uview-pro": "^0.2.4"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.6",
+    "postcss-import": "^16.1.1",
+    "sass": "^1.77.8",
+    "sass-loader": "^13.0.0"
   }
 }

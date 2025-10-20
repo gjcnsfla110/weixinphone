@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .bottom.data-v-04715b51 {
   position: fixed;
   bottom: 0;

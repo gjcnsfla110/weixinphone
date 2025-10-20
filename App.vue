@@ -38,7 +38,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	/*每个页面公共css */
 	@import "/common/animate.css";
 	@import "/common/common-style.scss";
@@ -59,7 +59,9 @@
 	:global(.animate__pulse){
 	  animation-duration: 1s;
 	}
-	
+	:global(.animate__backInUp){
+	  animation-duration: 1s;
+	}
 	/*hot인덱스 위에3개메뉴바를위한 css*/
 	 .hotSubmenu{
 			height: 50px;
@@ -82,6 +84,7 @@
 				  position: absolute;
 				  bottom: -3rpx; /* 텍스트 아래로 5px 간격 */
 				  left: 40%;
-				  background-color: #1296db; /* 줄의 기본 색상 */
+				  background-color: #d4237a; /* 줄의 기본 색상 */
+				  border-radius: 8rpx;
 	}
 </style>

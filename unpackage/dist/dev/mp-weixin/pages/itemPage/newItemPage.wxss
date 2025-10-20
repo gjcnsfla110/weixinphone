@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .height-765.data-v-edb82754 {
   height: 765rpx;
 }
@@ -47,7 +48,7 @@
   width: 100%;
   border-radius: 15rpx 15rpx 0 0;
   height: 110rpx;
-  background-color: #00cc00;
+  background-color: #9999ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,12 +71,12 @@
 }
 .newItem .content .goodsTop .price .priceLeft .priceT.data-v-edb82754 {
   font-size: 26rpx;
-  color: red;
+  color: #ff3399;
   margin-right: 10rpx;
 }
 .newItem .content .goodsTop .price .priceRight .priceT.data-v-edb82754 {
   font-size: 26rpx;
-  color: #ff8000;
+  color: #ffff33;
   margin-right: 10rpx;
 }
 .newItem .content .goodsTop .price .priceY.data-v-edb82754 {
@@ -303,7 +304,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   /* 부드러운 그림자 */
 }
-
 /**
  * 서비스 밑에서 올라오는 창 
  */
@@ -349,7 +349,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
   /* 부드러운 그림자 */
 }
-
 /**
  * 스팩부분 밑에서 올라오는창
  */
@@ -369,7 +368,6 @@
   font-size: 39rpx;
   color: red;
 }
-
 /**
  * 화면내용부분
  */

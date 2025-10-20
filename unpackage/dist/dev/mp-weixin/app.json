@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/simCard/simCard",
-    "pages/myPage/myPage",
     "pages/shop/shop",
     "pages/menu/menu",
     "pages/list/list",
@@ -11,8 +10,11 @@
     "pages/itemPage/newItemPage",
     "pages/agreementPage/index",
     "pages/itemPage/agreementPhonePage",
-    "pages/itemPage/agreementInternetPage"
+    "pages/itemPage/agreementInternetPage",
+    "pages/itemPage/usimItemPage",
+    "pages/company/company"
   ],
+  "usingComponents": {},
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
@@ -20,40 +22,41 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#bfbfbf",
-    "selectedColor": "#1296db",
+    "color": "#515151",
+    "selectedColor": "#d4237a",
+    "backgroundColor": "#FCFCFC",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "static/tabBar/main.png",
-        "selectedIconPath": "static/tabBar/main1.png",
+        "iconPath": "/static/tabBar/home.png",
+        "selectedIconPath": "/static/tabBar/home1.png",
         "text": "商城"
       },
       {
         "pagePath": "pages/menu/menu",
-        "iconPath": "static/tabBar/menu.png",
-        "selectedIconPath": "static/tabBar/menu1.png",
+        "iconPath": "/static/tabBar/menu11.png",
+        "selectedIconPath": "/static/tabBar/menu111.png",
         "text": "分类"
       },
       {
         "pagePath": "pages/agreementPage/index",
-        "iconPath": "/static/tabBar/phone.png",
-        "selectedIconPath": "/static/tabBar/phone1.png",
+        "iconPath": "/static/tabBar/phone11.png",
+        "selectedIconPath": "/static/tabBar/phone111.png",
         "text": "合约手机"
       },
       {
         "pagePath": "pages/simCard/simCard",
-        "iconPath": "static/tabBar/simCard.png",
-        "selectedIconPath": "static/tabBar/simCard1.png",
+        "iconPath": "/static/tabBar/usim.png",
+        "selectedIconPath": "/static/tabBar/usim1.png",
         "text": "手机卡"
       },
       {
-        "pagePath": "pages/myPage/myPage",
-        "iconPath": "static/tabBar/me.png",
-        "selectedIconPath": "static/tabBar/me1.png",
-        "text": "我的"
+        "pagePath": "pages/company/company",
+        "iconPath": "/static/tabBar/shop.png",
+        "selectedIconPath": "/static/tabBar/shop1.png",
+        "text": "小韩公司"
       }
     ]
-  },
-  "usingComponents": {}
+  }
 }

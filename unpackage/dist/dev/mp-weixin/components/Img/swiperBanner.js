@@ -19,7 +19,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.f($props.componentData.items, (item, k0, i0) => {
       return {
-        a: item.img
+        a: item.image
       };
     })
   };

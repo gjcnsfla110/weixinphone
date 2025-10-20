@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .itemTcontent.data-v-fecb4b61 {
   width: 100v;
   position: relative;

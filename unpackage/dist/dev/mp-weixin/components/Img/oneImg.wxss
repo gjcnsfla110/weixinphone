@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .oneImgContent.data-v-5d174ab6 {
   width: 100vw;
   padding: 0 20rpx;

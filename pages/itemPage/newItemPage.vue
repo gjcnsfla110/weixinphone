@@ -193,7 +193,7 @@
 					width: 100%;
 					border-radius: 15rpx 15rpx 0 0;
 					height: 110rpx;
-					background-color: rgb(0, 204, 0);
+					background-color: rgb(153, 153, 255);
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
@@ -209,14 +209,14 @@
 						text-decoration-thickness: 2rpx; /* 선 두께 */
 					   .priceT{
 					   	font-size: 26rpx;
-					   	color: rgb(255, 0, 0);
+					   	color: rgb(255, 51, 153);
 					   	margin-right: 10rpx;
 					   }
 					}
 					.priceRight{
 						.priceT{
 							font-size: 26rpx;
-							color: rgb(255, 128, 0);
+							color: rgb(255, 255, 51);
 							margin-right: 10rpx;
 						}
 					}

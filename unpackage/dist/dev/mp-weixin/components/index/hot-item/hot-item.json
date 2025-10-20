@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "loading-view": "../../../utill/LoadingView",
-    "swiper-banner": "../../Img/swiperBanner",
     "item-content-list": "../../item/itemContentList",
     "item-content-one": "../../item/itemContentOne",
     "item-content-title": "../../item/itemContentTitle",
@@ -13,6 +12,7 @@
     "item-title": "../../item/itemTitle",
     "img-banner": "../../Img/imgBanner",
     "one-img": "../../Img/oneImg",
-    "swiper-img": "../../Img/swiperImg"
+    "swiper-img": "../../Img/swiperImg",
+    "u-swiper": "../../../node-modules/uview-pro/components/u-swiper/u-swiper"
   }
 }

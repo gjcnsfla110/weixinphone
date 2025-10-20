@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "手机卡",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "custom-nav": "../../components/custom-nav-bar/customNav"
+  }
+}

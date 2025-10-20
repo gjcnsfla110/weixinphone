@@ -37,6 +37,7 @@
 				<view class="contentBottom" v-else>
 					<view><text class="contentBottomTextLeft">赠-现金/商品</text><text class="contentBottomRight">{{formattedPrice(item.shopCashSupport)}}<text class="monyText">韩元</text></text></view>
 					<view class="price"><view class="priceLeft">最低每月</view><view class="priceRight">月<text class="priceCenter">{{formattedPrice(item.month_price)}}</text>韩元</view></view>
+					<view class="price"><view class="priceLeft">签约时间</view><view class="priceRight"><text class="priceCenter" style="color: rgb(255,102,102);">36</text>个月</view></view>
 				</view>
 			</view>
 		</scroll-view>
@@ -131,7 +132,7 @@
 							this.categoryActive(this.categorys[0].id,this.categorys[0].child[0].id);
 						}
 					}
-				}
+				} 
 				return
 			}
 			let list = await servicePost('app/agreement/list');

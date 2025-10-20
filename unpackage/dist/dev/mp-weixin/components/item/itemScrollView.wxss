@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .scrollX.data-v-e6f32a5d {
   height: 380rpx;
   width: 700rpx;

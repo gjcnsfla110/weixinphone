@@ -5,7 +5,6 @@ const stores_mainData = require("./stores/mainData.js");
 if (!Math) {
   "./pages/index/index.js";
   "./pages/simCard/simCard.js";
-  "./pages/myPage/myPage.js";
   "./pages/shop/shop.js";
   "./pages/menu/menu.js";
   "./pages/list/list.js";
@@ -15,6 +14,8 @@ if (!Math) {
   "./pages/agreementPage/index.js";
   "./pages/itemPage/agreementPhonePage.js";
   "./pages/itemPage/agreementInternetPage.js";
+  "./pages/itemPage/usimItemPage.js";
+  "./pages/company/company.js";
 }
 const _sfc_main = {
   async onLaunch() {
@@ -53,6 +54,8 @@ function createApp() {
   const app = common_vendor.createSSRApp(_sfc_main);
   const pinia = common_vendor.createPinia();
   app.use(pinia);
+  app.use(common_vendor.uViewPro);
+  common_vendor.index.$u.config.unit = "rpx";
   return {
     app
   };

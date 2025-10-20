@@ -23,6 +23,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+/* npm 方式 */
 .layout .navBar.data-v-ca453c6d {
   position: fixed;
   top: 0;
