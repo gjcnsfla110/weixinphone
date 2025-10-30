@@ -33,6 +33,13 @@
 			}
 		},
 		{
+			"path": "pages/itemPage/shopPage",
+			"style": {
+				"navigationBarTitleText" : "门店详细",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path" : "pages/menu/menu",
 			"style" : 
 			{
@@ -111,6 +118,27 @@
 				"navigationBarTitleText": "公司",
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/accessories/accessories",
+			"style": {
+				"navigationBarTitleText": "手机壳/配件",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/list/accessoriesList",
+			"style": {
+				"navigationBarTitleText": "手机壳/配件-列表",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/itemPage/accessoriesPage",
+			"style": {
+				"navigationBarTitleText": "商品详细",
+				"navigationStyle": "custom"
+			}
 		}
 	],
 	"globalStyle": {
@@ -134,14 +162,14 @@
 			},
 			{
 				"pagePath": "pages/menu/menu",
-				"iconPath": "/static/tabBar/menu11.png",
-				"selectedIconPath": "/static/tabBar/menu111.png",
-				"text": "分类"
+				"iconPath": "/static/tabBar/phone.png",
+				"selectedIconPath": "/static/tabBar/phone1.png",
+				"text": "手机"
 			},
 			{
 				"pagePath": "pages/agreementPage/index",
-				"iconPath": "/static/tabBar/phone11.png",
-				"selectedIconPath": "/static/tabBar/phone111.png",
+				"iconPath": "/static/tabBar/contract.png",
+				"selectedIconPath": "/static/tabBar/contract1.png",
 				"text": "合约手机"
 			},
 			{
@@ -151,10 +179,10 @@
 				"text": "手机卡"
 			},
 			{
-				"pagePath": "pages/company/company",
-				"iconPath": "/static/tabBar/shop.png",
-				"selectedIconPath": "/static/tabBar/shop1.png",
-				"text": "小韩公司"
+				"pagePath": "pages/accessories/accessories",
+				"iconPath": "/static/tabBar/case.png",
+				"selectedIconPath": "/static/tabBar/case1.png",
+				"text": "手机壳/配件"
 			}
 		]
 	},

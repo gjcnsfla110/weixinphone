@@ -1,14 +1,14 @@
 <template>
-	<Custom></Custom>
+	<Custom :back="true"></Custom>
 	<view class="shopContainer" :style="{height:screenHeight+'px'}">
 		<view class="shopLeft">
 			<uni-collapse accordion>
-				<uni-collapse-item :show-arrow="false" border="false" show-animation v-for="item in data" :open="item.id == cutturn">
+				<uni-collapse-item :show-arrow="false" :border="false" show-animation v-for="item in menu" :open="item.id == cutturn">
 					<template v-slot:title>
-					        <view class="custom-title" :class="{'custom-title-active animate__pulse': item.id == cutturn}">{{item.title}}</view>
+					        <view class="custom-title" :class="{'custom-title-active animate__pulse': item.id == cutturn}">{{item.name}}</view>
 					</template>
 					<view @click="cityActive(item.id,zone.id)" class="shopBt" v-for="zone in item.child">
-						<view class="shopBtText" :class="{'activeShopBt animate__pulse': item.id === cutturn && zone.id === cutturnCity }">{{zone.title}}</view>
+						<view class="shopBtText" :class="{'activeShopBt animate__pulse': item.id === cutturn && zone.id === cutturnCity }">{{zone.name}}</view>
 						<view :class="{'shopBtShow animate__slideInUp': item.id === cutturn && zone.id === cutturnCity}"></view>
 					</view>
 				</uni-collapse-item>
@@ -16,17 +16,17 @@
 		</view>
 		<scroll-view class="shopRight" scroll-y>
 			<view class="shopRightContainer">
-				 <view class="shopContent" v-for="i in 10"> 
+				 <view class="shopContent" v-for="item in datalist" @click="clickShop(item)"> 
 					 <view class="shopImg">
-						 <image src="/images/testImg/shop.jpg" mode="aspectFill"></image>
-						 <view class="shopTitle">首尔-南九老店</view>
+						 <image :src="item.mainImg" mode="aspectFill"></image>
+						 <view class="shopTitle">{{item.name}}</view>
 					 </view>
 					 <view class="shopDetil">
-						 <view class="explanation"><view class="ShopDate">营业时间：</view>10:00-20:00</view>
-						 <text class="address">서울시 구로구 가리봉동123-3 3楼 301号 서울시 구로구 가리봉동123-3 </text>
+						 <view class="explanation"><view class="ShopDate">营业时间：</view>{{item.hours}}</view>
+						 <text class="address">{{item.address}}</text>
 						 <view class="shopfooter">
-							<view class="bottomLeft"><image src='/static/weixin.png'></image><view class="weixin">xcl1224</view></view>
-							<view hover-class="hoverPhone" class="bottomRight" @click="callNumber('01056786555')"><image src='/static/phone_06.png'></image><view class="shopPhone">010-5678-6555</view></view>
+							<view class="bottomLeft"><image src='/static/weixin.png'></image><view class="weixin">{{item.wechat}}</view></view>
+							<view hover-class="hoverPhone" class="bottomRight" @click="callNumber('01056786555')"><image src='/static/phone_06.png'></image><view class="shopPhone">{{item.phone}}</view></view>
 						 </view>
 					 </view>					 
 				 </view>
@@ -35,137 +35,103 @@
 	</view>
 </template>
 
-<script setup>
+<script>
 	import Custom from '@/components/custom-nav-bar/customNav.vue'
 	import {getNaviBar} from '@/utill/systemData.js'
+	import { servicePost } from '@/utill/request'
 	import {ref} from 'vue'
-	//클릭된 지역카테고리
-	const cutturn = ref(0)
-	//클릭된 도시
-	const cutturnCity = ref(1)
-	//도시를 클릭시 이벤트부분
-	const cityActive = (cutturnId,cutturnCityId)=>{
-		cutturn.value = cutturnId;
-		cutturnCity.value = cutturnCityId;
-	}
-	//아래부분 높이
-	const screenHeight = ref(getNaviBar().screen());
-	const data = [
-		{
-			id:6,
-			title:"首尔市",
-			child:[
-				{
-					id:0,
-					title:"全部",
-				}
-			]
-		},
-		{
-			id:0,
-			title:"广域市",
-			child:[
-				{
-					id:0,
-					title:"仁川市",
-				},
-				{
-					id:5,
-					title:"釜山市",
-				},
-				{
-					id:1,
-					title:"大邱市",
-				}
-				,
-				{
-					id:2,
-					title:"大田市",
-				}
-				,
-				{
-					id:3,
-					title:"蔚山市",
-				}
-				,
-				{
-					id:4,
-					title:"光州市",
-				},
-			]
-		},
-		{
-			id:1,
-			title:"京畿道",
-			child:[
-				{
-					id:0,
-					title:"全部",
-				}
-			]
-		},
-		{
-			id:2,
-			title:"江原道",
-			child:[
-				{
-					id:0,
-					title:"全部",
-				}
-			]
-		},
-		{
-			id:3,
-			title:"忠清道",
-			child:[
-				{
-					id:0,
-					title:"全部",
-				}
-			]
-		},
-		{
-			id:4,
-			title:"全罗道",
-			child:[
-				{
-					id:0,
-					title:"全部",
-				}
-			]
-		},
-		{
-			id:5,
-			title:"庆尚道",
-			child:[
-				{
-					id:0,
-					title:"全部",
-				}
-			]
-		}
-	]
+	import { listTrees } from '@/utill/common'
 	
-	//가계번호 클릭하면 폰다이어리에 나타나기
-	const callNumber = (number)=>{
-		uni.showModal({
-			title:"商店电话",
-			content:"确认直接拨通电话",
-			success:function(res){
-				if(res.confirm){
-					if(!number){
-						return false;
-					}
-					uni.makePhoneCall({
-					        phoneNumber : number,
-					});
-				}else if(res.cancel){
-					
-				}
+	export default{
+		components:{
+			Custom
+		},
+		props:{
+			
+		},
+		setup(props, context) {
+			//클릭된 지역카테고리
+			const cutturn = ref(0)
+			//클릭된 도시
+			const cutturnCity = ref(0)
+			//아래부분 높이
+			const screenHeight = ref(getNaviBar().noTabScreen());
+			const list = ref([]);
+			const menu = ref([]);
+			const datalist = ref([]);
+			return {
+				cutturn,
+				cutturnCity,
+				screenHeight,
+				list,
+				menu,
+				datalist
 			}
-		})
-		
+		},
+		methods:{
+			//가계번호 클릭하면 폰다이어리에 나타나기
+			callNumber(number){
+				uni.showModal({
+					title:"商店电话",
+					content:"确认直接拨通电话",
+					success:function(res){
+						if(res.confirm){
+							if(!number){
+								return false;
+							}
+							uni.makePhoneCall({
+							        phoneNumber : number,
+							});
+						}
+					}
+				})
+			},
+			//클릭시 데이터 리스트 변경
+			changeList(id){
+				this.datalist = this.list.filter(item=>item.category_id == id);
+			},
+			//도시를 클릭시 이벤트부분
+			cityActive(cutturnId,cutturnCityId){
+				this.cutturn = cutturnId;
+				this.cutturnCity = cutturnCityId;
+				this.changeList(this.cutturnCity)
+			},
+			//点击商店
+			clickShop(item){
+				uni.setStorageSync('shopItem',{
+					 shopItem:item
+				})
+				uni.navigateTo({
+				        url: `/pages/itemPage/shopPage?id=${item.id}` // 이동할 페이지 경로
+				});
+			}
+		},
+		async onLoad(){
+			 let shopData = uni.getStorageSync('shop');
+			 if(shopData){
+				 this.list = shopData.list;
+				 this.menu = shopData.menu;
+				 this.cutturn = this.menu[0] ? this.menu[0].id : 0;
+				 this.cutturnCity = this.menu[0].child[0] ? this.menu[0].child[0].id : 0;
+				 this.changeList(this.cutturnCity);
+			 }else{
+				 let data = await servicePost('app/shop/list');
+				 this.list = data.list;
+				 this.list.forEach((item)=>{
+					 item.shopImg = JSON.parse(item.shopImg);
+				 })
+				 this.menu = listTrees(data.category);
+				 uni.setStorageSync('shop',{
+					 list:this.list,
+					 menu:this.menu
+				 })
+				 this.cutturn = this.menu[0] ? this.menu[0].id : 0;
+				 this.cutturnCity = this.menu[0].child[0] ? this.menu[0].child[0].id : 0;
+				 this.changeList(this.cutturnCity);
+			 }	 
+		}
 	}
+
 </script>
 
 <style lang="scss" scoped>
@@ -196,7 +162,7 @@
 		display: flex;
 		flex-direction: row;
 		.shopLeft{
-			width: 160rpx;
+			width: 190rpx;
 			height: 100%;
 			.shopBt{
 				width: 100%;
@@ -228,10 +194,11 @@
 			}
 		}
 		.shopRight{
-			width: 590rpx;
+			width: 560rpx;
 			height: 100%;		
 			.shopRightContainer{
 				width: 100%;
+				height: 100%;
 				padding: 20rpx 15rpx;
 				background-color: rgb(246, 246, 246);
 				display: grid;
@@ -240,7 +207,7 @@
 				color: rgb(150, 150, 150);
 				.shopContent{
 					width: 100%;
-					height: 500rpx;
+					height: 530rpx;
 					background-color: white;
 					border-radius: 15rpx;
 					.shopImg{
@@ -248,27 +215,28 @@
 						position: relative;
 						image{
 							width: 100%;
-							height: 220rpx;
+							height: 250rpx;
 							border-top-right-radius: 15rpx;
 							border-top-left-radius: 15rpx;
 						}
 						.shopTitle{
 							position: absolute;
-							left: 20rpx;
+							right: 20rpx;
 							top: 25rpx;
 							color: white;
-							background-color: rgb(0, 0, 0,0.7);
-							padding: 0 10rpx;
-							height: 45rpx;
-							font-size: 25rpx;
-							line-height: 45rpx;
+							background-color: rgb(50, 50, 50,0.5);
+							padding: 10rpx;
+							height: 55rpx;
+							font-size: 28rpx;
 							border-radius: 15rpx;
+							font-weight: bold;
+							letter-spacing: 3rpx;
 						}
 					}
 					.shopDetil{
 						padding:0 15rpx;
 						width: 100%;
-						height: 230rpx;
+						height: 240rpx;
 						.explanation{
 							width: 100%;
 							height:45rpx ;
@@ -280,13 +248,17 @@
 								font-size: 26rpx;
 								font-weight: bold;
 								color:rgb(218, 0, 109);;
+								margin-right: 10rpx;
 							}
 						}
 						.address{
+							margin-top: 10rpx;
+							display: inline-block;
 							height: 50rpx;
 							width: 100%;
-							font-size: 26rpx;	
+							font-size: 27rpx;	
 							margin-top: 15rpx;
+							letter-spacing: 2rpx;
 						}
 						.shopfooter{
 							width: 100%;
@@ -298,7 +270,7 @@
 							justify-content: space-between;
 							border-top: 2rpx solid rgb(240, 240, 240);
 							.bottomLeft{
-								width: 50%;
+								width: 45%;
 								height: 80rpx;
 								display: flex;
 								flex-direction: row;
@@ -309,13 +281,15 @@
 								}
 								.weixin{
 									height: 80rpx;
-									line-height: 80rpx;
+									line-height: 90rpx;
 									padding-left: 10rpx;
-									font-size: 26rpx;								
+									font-size: 26rpx;
+									letter-spacing: 3rpx;
+									overflow: hidden;
 								}
 							}
 							.bottomRight{
-								width: 50%;
+								width: 55%;
 								height: 80rpx;
 								display: flex;
 								flex-direction: row;
@@ -326,9 +300,10 @@
 								}
 								.shopPhone{
 									height: 80rpx;
-									line-height: 80rpx;
+									line-height: 90rpx;
 									padding-left: 10rpx;
 									font-size: 26rpx;
+									letter-spacing: 2rpx;
 								}
 							}
 						}

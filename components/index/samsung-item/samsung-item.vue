@@ -45,7 +45,7 @@
 	</view>
 </template>
 <script>
-import { ref } from 'vue';
+import { ref,watch } from 'vue';
 	import LoadingView from '@/utill/LoadingView.vue'
 	import SwiperBanner from '@/components/Img/swiperBanner.vue';
 	import ItemContentList from '@/components/item/itemContentList.vue';
@@ -85,24 +85,37 @@ import { ref } from 'vue';
 			height:{
 				type:Number,
 				default:0
-			},
-			subMenu:{
-				type:Array,
-				default:[]
-			}
-			
+			},			
 		},
 		emits:[
 			
 		],
 		setup(props, context) {
-			const banner = ref({});
-			banner.value = props.samsungData[0].components.filter(item=>item.component == 'SwiperBanner')[0] ? props.samsungData[0].components.filter(item=>item.component == 'SwiperBanner')[0] : {id:0};
-			const componentData = ref(props.samsungData[0].components.filter(item=>item.id !== banner.value.id))
+			const banner = ref({ id: 0 });
+			const componentData = ref([]);
+			watch(
+			      () => props.samsungData,
+			      (newSamsungData) => {
+			        if (newSamsungData && newSamsungData.length > 0 && newSamsungData[0].components) {
+			          const swiperBanner = newSamsungData[0].components.find(
+			            (item) => item.component === 'SwiperBanner'
+			          );
+			          banner.value = swiperBanner || { id: 0 };
+			          componentData.value = newSamsungData[0].components.filter(
+			            (item) => item.id !== banner.value.id
+			          );
+			        } else {
+			          banner.value = { id: 0 };
+			          componentData.value = [];
+			        }
+
+			      },
+			      { immediate: true, deep: true } // 즉시 실행 및 깊은 감지 설정
+			);
 			return{
 				banner,
-				componentData
-			}	
+				componentData,
+			}
 		},
 		methods:{
 			

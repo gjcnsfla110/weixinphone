@@ -1,6 +1,6 @@
 <template>
 	<view class="cardItme" :style="{padding:pading}">
-		<view class="cardItme_pd" :style="{backgroundColor:color,marginTop:marginTop}">
+		<view class="cardItme_pd" :style="{backgroundColor:color}">
 		<slot></slot>
 		</view>
 	</view>
@@ -12,9 +12,6 @@
 	  {
 		  color:{
 			  default:"#F6FCFF"
-		  },
-		  marginTop:{
-			  default:"0"
 		  },
 		  pading :{
 			  default:"0 25rpx"

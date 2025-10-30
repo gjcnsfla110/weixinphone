@@ -2,6 +2,7 @@
   "navigationBarTitleText": "公司",
   "navigationStyle": "custom",
   "usingComponents": {
-    "custom-nav": "../../components/custom-nav-bar/customNav"
+    "custom-nav": "../../components/custom-nav-bar/customNav",
+    "u-subsection": "../../node-modules/uview-pro/components/u-subsection/u-subsection"
   }
 }

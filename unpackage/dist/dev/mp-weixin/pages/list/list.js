@@ -110,7 +110,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     b: common_vendor.p({
-      back: "true",
+      back: true,
       topHeight: 110
     }),
     c: common_vendor.f($setup.itemList, (item, k0, i0) => {

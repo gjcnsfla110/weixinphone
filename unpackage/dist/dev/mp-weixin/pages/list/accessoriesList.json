@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "手机壳/配件-列表",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "custom-nav": "../../components/custom-nav-bar/customNav",
+    "uni-load-more": "../../uni_modules/uni-load-more/components/uni-load-more/uni-load-more"
+  }
+}

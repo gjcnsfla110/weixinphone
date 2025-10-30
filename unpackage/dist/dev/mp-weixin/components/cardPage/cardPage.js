@@ -5,9 +5,6 @@ const _sfc_main = {
     color: {
       default: "#F6FCFF"
     },
-    marginTop: {
-      default: "0"
-    },
     pading: {
       default: "0 25rpx"
     }
@@ -16,8 +13,7 @@ const _sfc_main = {
     return (_ctx, _cache) => {
       return {
         a: __props.color,
-        b: __props.marginTop,
-        c: __props.pading
+        b: __props.pading
       };
     };
   }

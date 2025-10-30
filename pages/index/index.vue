@@ -31,10 +31,12 @@
 			</scroll-view>
 		</swiper-item>
 	</swiper>
+	<FixContainer></FixContainer>
 </template>
 
 <script>
-import {ref } from "vue";
+import {ref,watch } from "vue";
+import { storeToRefs } from "pinia";
 import { useMainStores } from "../../stores/mainData";
 import { serviceGet } from "@/utill/request";
 import { getNaviBar } from "@/utill/systemData.js";
@@ -43,6 +45,7 @@ import hotItem from "@/components/index/hot-item/hot-item.vue";
 import samsungItem from "@/components/index/samsung-item/samsung-item.vue";
 import iphoneItem from "@/components/index/iphone-item/iphone-item.vue";
 import LodingItem from "@/components/item/itemList.vue";
+import FixContainer from "@/components/fixContent/fixContainer.vue"
 
 
 export default{
@@ -52,7 +55,8 @@ export default{
 		hotItem,
 		samsungItem,
 		iphoneItem,
-		LodingItem
+		LodingItem,
+		FixContainer
 	},
 	setup(props, context) {
 		const mainStores = useMainStores();
@@ -65,10 +69,29 @@ export default{
 			return screenHeight - getNaviBar().fillHeight()-51;	
 		}
 		const swiperHeight = ref(swiperHeightf());
-		const {main,iphone,samsung,subMenu} = mainStores;
+		const {main,iphone,samsung,subMenu,isDataReady} = storeToRefs(mainStores);
 		const menu = ref([]);
+		// main, iphone, samsung 데이터 감지
+		watch(
+		  () => [main.value, iphone.value, samsung.value],
+		  ([newMain, newIphone, newSamsung]) => {
+			menu.value = [
+			  {
+				title: newMain.length > 0 && newMain[0]?.name ? newMain[0].name : '핫 아이템',
+			  },
+			  {
+				title: newIphone.length > 0 && newIphone[0]?.name ? newIphone[0].name : '아이폰',
+			  },
+			  {
+				title: newSamsung.length > 0 && newSamsung[0]?.name ? newSamsung[0].name : '삼성',
+			  },
+			];
+		  },
+		  { immediate: true, deep: true }
+		);
+		
 		return {
-			mainStores,
+			isDataReady,
 			tabIndex,
 			scrollInto,
 			swiperHeight,
@@ -93,32 +116,27 @@ export default{
 		},
 		// pinia 데이터를 받는 설정 부분
 		async loadData(){
-			if (!this.mainStores.isDataReady) {
+			if (!this.isDataReady) {
 			    try {
 			        await this.mainStores.lodingMain();
 			    } catch (error) {
-			        console.error('Error reloading data:', error);
-			    }
+				  console.log('Error reloading data:', error);
+				  // 에러 시 기본 메뉴 설정
+				  this.menu = [
+					{ title: '핫 아이템' },
+					{ title: '아이폰' },
+					{ title: '삼성' },
+				  ];
+			    }	
 			}
 		},
 		
 	},
 	async onLoad() {
         try {
-            await this.loadData();
-			this.menu = [
-							{
-								title : this.main[0].name || "",
-							},
-							{
-								title : this.iphone[0].name || ""
-							},
-							{
-								title : this.samsung[0].name || ""
-							}
-						];
+            await this.loadData();			
         } catch (error) {
-            console.error('Error in onLoad:', error);
+            console.log('Error in onLoad:', error);
         }
     }
 }

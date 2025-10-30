@@ -23,7 +23,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         b: _ctx.activeMenu == index ? "black" : "rgb(180, 180, 180)"
       };
     }),
-    b: common_assets._imports_0$4,
+    b: common_assets._imports_0$8,
     c: common_vendor.p({
       back: "true",
       topHeight: 100

@@ -12,7 +12,10 @@
     "pages/itemPage/agreementPhonePage",
     "pages/itemPage/agreementInternetPage",
     "pages/itemPage/usimItemPage",
-    "pages/company/company"
+    "pages/company/company",
+    "pages/accessories/accessories",
+    "pages/list/accessoriesList",
+    "pages/itemPage/accessoriesPage"
   ],
   "usingComponents": {},
   "window": {
@@ -35,14 +38,14 @@
       },
       {
         "pagePath": "pages/menu/menu",
-        "iconPath": "/static/tabBar/menu11.png",
-        "selectedIconPath": "/static/tabBar/menu111.png",
-        "text": "分类"
+        "iconPath": "/static/tabBar/phone.png",
+        "selectedIconPath": "/static/tabBar/phone1.png",
+        "text": "手机"
       },
       {
         "pagePath": "pages/agreementPage/index",
-        "iconPath": "/static/tabBar/phone11.png",
-        "selectedIconPath": "/static/tabBar/phone111.png",
+        "iconPath": "/static/tabBar/contract.png",
+        "selectedIconPath": "/static/tabBar/contract1.png",
         "text": "合约手机"
       },
       {
@@ -52,10 +55,10 @@
         "text": "手机卡"
       },
       {
-        "pagePath": "pages/company/company",
-        "iconPath": "/static/tabBar/shop.png",
-        "selectedIconPath": "/static/tabBar/shop1.png",
-        "text": "小韩公司"
+        "pagePath": "pages/accessories/accessories",
+        "iconPath": "/static/tabBar/case.png",
+        "selectedIconPath": "/static/tabBar/case1.png",
+        "text": "手机壳/配件"
       }
     ]
   }

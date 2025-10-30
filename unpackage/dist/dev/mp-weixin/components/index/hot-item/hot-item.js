@@ -43,14 +43,34 @@ const _sfc_main = {
       default: []
     }
   },
-  emits: [],
   setup(props, context) {
-    const banner = common_vendor.ref({});
-    banner.value = props.mainData[0].components.filter((item) => item.component == "SwiperBanner")[0] ? props.mainData[0].components.filter((item) => item.component == "SwiperBanner")[0] : { id: 0 };
-    const componentData = common_vendor.ref(props.mainData[0].components.filter((item) => item.id !== banner.value.id));
+    const banner = common_vendor.ref({ id: 0 });
+    const componentData = common_vendor.ref([]);
+    const computedSubMenu = common_vendor.ref(props.subMenu);
+    common_vendor.watch(
+      () => [props.mainData, props.subMenu],
+      ([newMainData, newSubMenu]) => {
+        if (newMainData && newMainData.length > 0 && newMainData[0].components) {
+          const swiperBanner = newMainData[0].components.find(
+            (item) => item.component === "SwiperBanner"
+          );
+          banner.value = swiperBanner || { id: 0 };
+          componentData.value = newMainData[0].components.filter(
+            (item) => item.id !== banner.value.id
+          );
+        } else {
+          banner.value = { id: 0 };
+          componentData.value = [];
+        }
+        computedSubMenu.value = newSubMenu || [];
+      },
+      { immediate: true, deep: true }
+      // 즉시 실행 및 깊은 감지
+    );
     return {
       banner,
-      componentData
+      componentData,
+      computedSubMenu
     };
   },
   methods: {}
@@ -84,7 +104,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       effect3d: true
     })
   } : {}, {
-    c: common_vendor.f($props.subMenu, (item, k0, i0) => {
+    c: common_vendor.f($setup.computedSubMenu, (item, k0, i0) => {
       return {
         a: item.img,
         b: common_vendor.t(item.name)

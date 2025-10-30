@@ -104,7 +104,7 @@ if (!Array) {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.p({
-      title: "商品分类"
+      title: "手机分类"
     }),
     b: common_vendor.f($setup.menuData, (item, k0, i0) => {
       return common_vendor.e({

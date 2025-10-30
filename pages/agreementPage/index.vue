@@ -1,5 +1,5 @@
 <template>
-	<Custom></Custom>
+	<Custom title="合约商品"></Custom>
 	<view class="shopContainer" :style="{height:screenHeight+'px'}">
 		<view class="shopLeft">
 			<uni-collapse accordion>
@@ -54,7 +54,7 @@
 	
 	export default{
 		components:{
-			Custom
+			Custom,
 		},
 		props:{
 			

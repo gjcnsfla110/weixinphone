@@ -24,11 +24,29 @@
 /* 透明度 */
 /* 文章场景相关 */
 /* npm 方式 */
-.height-765.data-v-edb82754 {
-  height: 765rpx;
+.itemNumber.data-v-edb82754 {
+  width: 100%;
+  margin-top: 30rpx;
+  height: 50rpx;
+  text-align: right;
+  line-height: 50rpx;
+  padding-right: 30rpx;
+  letter-spacing: 5rpx;
+  color: #505050;
+  font-size: 29rpx;
 }
-.height-460.data-v-edb82754 {
-  height: 460rpx;
+.itemNumber .itemNumberLeft.data-v-edb82754 {
+  color: #ff9933;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+  letter-spacing: 8rpx;
+  font-size: 33rpx;
+}
+.height-815.data-v-edb82754 {
+  height: 815rpx;
+}
+.height-510.data-v-edb82754 {
+  height: 510rpx;
 }
 .newItem.data-v-edb82754 {
   width: 100%;
@@ -41,7 +59,6 @@
   height: 270rpx;
   background-color: #f9f9f9;
   margin-left: 15rpx;
-  margin-top: 26rpx;
   border-radius: 10rpx;
 }
 .newItem .content .goodsTop .price.data-v-edb82754 {
@@ -140,7 +157,7 @@
 .newItem .content .itemService .serviceLeft2 .specTitle .topAll.data-v-edb82754 {
   position: absolute;
   top: 0;
-  right: 20rpx;
+  right: 0;
 }
 .newItem .content .itemService .serviceLeft2 .spec.data-v-edb82754 {
   width: 670rpx;
@@ -178,7 +195,7 @@
 }
 .newItem .content .itemService .serviceLeft3.data-v-edb82754 {
   width: 680rpx;
-  height: 300rpx;
+  height: 350rpx;
   line-height: 100rpx;
   margin-top: 8rpx;
   margin-left: 20rpx;
@@ -196,11 +213,11 @@
 .newItem .content .itemService .serviceLeft3 .serviceTitle .topAll.data-v-edb82754 {
   position: absolute;
   top: 0;
-  right: 20rpx;
+  right: 0;
 }
 .newItem .content .itemService .serviceLeft3 .serviceCotent.data-v-edb82754 {
   width: 100%;
-  height: 210rpx;
+  height: 260rpx;
   padding-left: 10rpx;
   padding-right: 10rpx;
   font-size: 28rpx;
@@ -208,23 +225,27 @@
   /* 글자 간격 넓게 */
   overflow: hidden;
 }
-.newItem .content .itemService .serviceLeft3 .serviceCotent .serviceCotentItem.data-v-edb82754 {
+.newItem .content .itemService .serviceLeft3 .serviceCotent .serviceItem.data-v-edb82754 {
   width: 100%;
-  height: 65rpx;
-  overflow: hidden;
-  /* 넘친 부분 숨김 */
-  white-space: nowrap;
-  /* 줄바꿈 방지 */
-  text-overflow: ellipsis;
-  /* ... 표시 */
+  height: 100rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.newItem .content .itemService .serviceLeft3 .serviceCotent .serviceCotentItem .serviceText.data-v-edb82754 {
-  color: #ff9933;
-  font-size: 35rpx;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+.newItem .content .itemService .serviceLeft3 .serviceCotent .serviceItem image.data-v-edb82754 {
+  width: 80rpx;
+  height: 80rpx;
+}
+.newItem .content .itemService .serviceLeft3 .serviceCotent .serviceItem .serviceItemText.data-v-edb82754 {
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 90rpx;
+  letter-spacing: 3rpx;
+  font-size: 30rpx;
+  text-shadow: 2rpx 2rpx 3rpx rgba(0, 0, 0, 0.1);
   /* 부드러운 그림자 */
-  margin-right: 10rpx;
+  color: #969696;
 }
 .newItem .content .Accessories.data-v-edb82754 {
   background-color: #f9f9f9;
@@ -320,34 +341,41 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   /* 부드러운 그림자 */
 }
-.servicePopupText.data-v-edb82754 {
+.popupServiceContent.data-v-edb82754 {
   width: 100%;
-  height: 120rpx;
-  line-height: 120rpx;
-  font-size: 28rpx;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  border-bottom: 1rpx solid #eee;
+  height: 310rpx;
+  padding-left: 35rpx;
+  padding-right: 35rpx;
 }
-.servicePopupText .servicePopupTextL.data-v-edb82754 {
+.popupServiceContent .popupServiceTitle.data-v-edb82754 {
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.popupServiceContent .popupServiceTitle image.data-v-edb82754 {
+  width: 80rpx;
   height: 80rpx;
-  background-color: rgba(255, 229, 204, 0.3);
-  padding: 10rpx 20rpx 10rpx 20rpx;
-  color: #ff9933;
-  font-size: 30rpx;
-  border-radius: 8rpx;
-  letter-spacing: 2rpx;
-  /* 글자 간격 넓게 */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  /* 부드러운 그림자 */
-  margin-right: 30rpx;
 }
-.servicePopupText .servicePopupTextR.data-v-edb82754 {
-  color: #323232;
-  letter-spacing: 2rpx;
-  /* 글자 간격 넓게 */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+.popupServiceContent .popupServiceTitle .popupServiceTitleText.data-v-edb82754 {
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 90rpx;
+  letter-spacing: 3rpx;
+  font-size: 30rpx;
+  color: #ff9933;
+  text-shadow: 2rpx 2rpx 3rpx rgba(0, 0, 0, 0.1);
   /* 부드러운 그림자 */
+}
+.popupServiceContent .popupServiceDetail.data-v-edb82754 {
+  width: 100%;
+  height: 210rpx;
+  font-size: 28rpx;
+  color: #969696;
+  letter-spacing: 3rpx;
+  padding-top: 10rpx;
 }
 /**
  * 스팩부분 밑에서 올라오는창

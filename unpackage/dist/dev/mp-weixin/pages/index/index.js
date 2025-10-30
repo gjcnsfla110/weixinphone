@@ -8,13 +8,15 @@ const hotItem = () => "../../components/index/hot-item/hot-item.js";
 const samsungItem = () => "../../components/index/samsung-item/samsung-item.js";
 const iphoneItem = () => "../../components/index/iphone-item/iphone-item.js";
 const LodingItem = () => "../../components/item/itemList.js";
+const FixContainer = () => "../../components/fixContent/fixContainer.js";
 const _sfc_main = {
   components: {
     customNavBar,
     hotItem,
     samsungItem,
     iphoneItem,
-    LodingItem
+    LodingItem,
+    FixContainer
   },
   setup(props, context) {
     const mainStores = stores_mainData.useMainStores();
@@ -25,10 +27,28 @@ const _sfc_main = {
       return screenHeight - utill_systemData.getNaviBar().fillHeight() - 51;
     };
     const swiperHeight = common_vendor.ref(swiperHeightf());
-    const { main, iphone, samsung, subMenu } = mainStores;
+    const { main, iphone, samsung, subMenu, isDataReady } = common_vendor.storeToRefs(mainStores);
     const menu = common_vendor.ref([]);
+    common_vendor.watch(
+      () => [main.value, iphone.value, samsung.value],
+      ([newMain, newIphone, newSamsung]) => {
+        var _a, _b, _c;
+        menu.value = [
+          {
+            title: newMain.length > 0 && ((_a = newMain[0]) == null ? void 0 : _a.name) ? newMain[0].name : "핫 아이템"
+          },
+          {
+            title: newIphone.length > 0 && ((_b = newIphone[0]) == null ? void 0 : _b.name) ? newIphone[0].name : "아이폰"
+          },
+          {
+            title: newSamsung.length > 0 && ((_c = newSamsung[0]) == null ? void 0 : _c.name) ? newSamsung[0].name : "삼성"
+          }
+        ];
+      },
+      { immediate: true, deep: true }
+    );
     return {
-      mainStores,
+      isDataReady,
       tabIndex,
       scrollInto,
       swiperHeight,
@@ -53,11 +73,16 @@ const _sfc_main = {
     },
     // pinia 데이터를 받는 설정 부분
     async loadData() {
-      if (!this.mainStores.isDataReady) {
+      if (!this.isDataReady) {
         try {
           await this.mainStores.lodingMain();
         } catch (error) {
-          common_vendor.index.__f__("error", "at pages/index/index.vue:100", "Error reloading data:", error);
+          common_vendor.index.__f__("log", "at pages/index/index.vue:123", "Error reloading data:", error);
+          this.menu = [
+            { title: "핫 아이템" },
+            { title: "아이폰" },
+            { title: "삼성" }
+          ];
         }
       }
     }
@@ -65,19 +90,8 @@ const _sfc_main = {
   async onLoad() {
     try {
       await this.loadData();
-      this.menu = [
-        {
-          title: this.main[0].name || ""
-        },
-        {
-          title: this.iphone[0].name || ""
-        },
-        {
-          title: this.samsung[0].name || ""
-        }
-      ];
     } catch (error) {
-      common_vendor.index.__f__("error", "at pages/index/index.vue:121", "Error in onLoad:", error);
+      common_vendor.index.__f__("log", "at pages/index/index.vue:139", "Error in onLoad:", error);
     }
   }
 };
@@ -86,7 +100,8 @@ if (!Array) {
   const _component_hotItem = common_vendor.resolveComponent("hotItem");
   const _component_iphoneItem = common_vendor.resolveComponent("iphoneItem");
   const _component_samsungItem = common_vendor.resolveComponent("samsungItem");
-  (_component_customNavBar + _component_hotItem + _component_iphoneItem + _component_samsungItem)();
+  const _component_FixContainer = common_vendor.resolveComponent("FixContainer");
+  (_component_customNavBar + _component_hotItem + _component_iphoneItem + _component_samsungItem + _component_FixContainer)();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {

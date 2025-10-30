@@ -445,7 +445,7 @@
 		height: 100vh;
 		.popuptopHidden{
 			width: 100%;
-			height: 180rpx;
+			height: 260rpx;
 		}
 		.popupbottomHidden{
 			width: 100%;

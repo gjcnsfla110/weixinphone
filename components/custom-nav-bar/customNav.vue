@@ -4,7 +4,7 @@
 			<view class="statuBar" :style="{height:statuBarHeight()+'px'}"></view>
 			<view class="titleBar" :style="{height:titleBarheight()+'px'}">
 				<view @click="goBack" v-if="back" class="back"><uni-icons type="left" size="25"></uni-icons></view>
-				<view v-else class="logo">LOGO</view>
+				<view v-else class="logo"><image src="/static/navLog.png"></image></view>
 				<view class="title">
 					{{title}}
 				</view>
@@ -75,6 +75,10 @@
 			.logo{
 				margin-left: 30rpx;
 				font-size: 38rpx;
+				image{
+					width: 140rpx;
+					height: 50rpx;
+				}
 			}
 			.back{
 				margin-left: 30rpx;

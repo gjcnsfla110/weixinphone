@@ -1,19 +1,19 @@
 <template>
-	<Card color="white" margin-top="0">
+	<CardPage color="white">
 		<swiper class="imgSwiper" :indicator-dots="indicatorDots" :indicator-color="indicatorColor" :indicator-active-color="indicatorActiveColor" autoplay>
 			<swiper-item class="imgSwiperItem" v-for="item in items" @click="itemDetail(item.goods_id)">
 				<image :src="item.img" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
-	</Card>
+	</CardPage>
 </template>
 
 <script>
-	import Card from "@/components/cardPage/cardPage.vue"
+	import CardPage from "@/components/cardPage/cardPage.vue"
 	import { watch,ref } from "vue";
 	export default{
-		comments:{
-			Card
+		components:{
+			CardPage
 		},
 		props:{
 			itemData:{

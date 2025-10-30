@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const common_assets = require("../../common/assets.js");
 const utill_systemData = require("../../utill/systemData.js");
 if (!Array) {
   const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
@@ -63,14 +64,16 @@ const _sfc_main = {
           size: "25"
         }),
         d: common_vendor.o(goBack)
-      } : {}, {
-        e: common_vendor.t(__props.title),
-        f: common_vendor.unref(titleBarheight)() + "px",
-        g: custumH.value + "px",
-        h: __props.bgColor,
-        i: __props.customFill
+      } : {
+        e: common_assets._imports_0$6
+      }, {
+        f: common_vendor.t(__props.title),
+        g: common_vendor.unref(titleBarheight)() + "px",
+        h: custumH.value + "px",
+        i: __props.bgColor,
+        j: __props.customFill
       }, __props.customFill ? {
-        j: custumH.value + "px"
+        k: custumH.value + "px"
       } : {});
     };
   }

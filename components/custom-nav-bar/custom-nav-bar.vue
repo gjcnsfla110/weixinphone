@@ -3,7 +3,7 @@
 		<view class="navBar" :style="{height:fillHeight()+'px'}">
 			<view class="statuBar" :style="{height:statuBarHeight()+'px'}"></view>
 			<view class="titleBar" :style="{height:titleBarheight()+'px'}">
-				<view class="logo">小韩手机</view>
+				<view class="logo"><image src="/static/navLog.png"></image></view>
 			</view>
 			<slot name="index"></slot>
 		</view>
@@ -35,9 +35,13 @@
 		.titleBar{
 			display: flex;
 			align-items: center;
+			justify-content: center;
+			width: 100%;
 			.logo{
-				margin-left: 30rpx;
-				font-size: 38rpx;
+				image{
+					width: 200rpx;
+					height: 70rpx;
+				}
 			}
 		}
 	}

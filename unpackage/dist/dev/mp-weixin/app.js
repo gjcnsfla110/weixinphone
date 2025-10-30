@@ -16,6 +16,9 @@ if (!Math) {
   "./pages/itemPage/agreementInternetPage.js";
   "./pages/itemPage/usimItemPage.js";
   "./pages/company/company.js";
+  "./pages/accessories/accessories.js";
+  "./pages/list/accessoriesList.js";
+  "./pages/itemPage/accessoriesPage.js";
 }
 const _sfc_main = {
   async onLaunch() {
@@ -46,7 +49,12 @@ const _sfc_main = {
       mainStores.clearCache();
       common_vendor.index.removeStorageSync("topSubMenu");
       common_vendor.index.removeStorageSync("agreementCategory");
+      common_vendor.index.removeStorageSync("accessoriesItem");
+      common_vendor.index.removeStorageSync("agreementItem");
+      common_vendor.index.removeStorageSync("usimItem");
+      common_vendor.index.removeStorageSync("accessoriesTopSubMenu");
       common_vendor.index.removeStorageSync("agreementCategory");
+      common_vendor.index.removeStorageSync("usimListData");
     }, 6 * 60 * 60 * 1e3);
   }
 };

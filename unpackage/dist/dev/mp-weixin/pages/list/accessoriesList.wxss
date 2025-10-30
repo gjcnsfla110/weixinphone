@@ -1,0 +1,184 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* npm 方式 */
+.listContainer.data-v-98ffd525 {
+  width: 100%;
+}
+.listContainer .menuList.data-v-98ffd525 {
+  width: 100%;
+  height: 115px;
+  white-space: nowrap;
+}
+.listContainer .menuList .menubutton.data-v-98ffd525 {
+  width: 250rpx;
+  height: 100%;
+  display: inline-block;
+}
+.listContainer .menuList .menubutton .top.data-v-98ffd525 {
+  width: 250rpx;
+  height: 75px;
+  text-align: center;
+}
+.listContainer .menuList .menubutton .top image.data-v-98ffd525 {
+  width: 120rpx;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 8rpx;
+}
+.listContainer .menuList .menubutton .bottom.data-v-98ffd525 {
+  width: 250rpx;
+  line-height: 20px;
+  height: 30px;
+  text-align: center;
+  font-size: 26rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  /* 부드러운 그림자 */
+  position: relative;
+  margin-bottom: 5px;
+}
+.listContainer .menuList .menubutton .bottom .bottomShow.data-v-98ffd525 {
+  width: 60rpx;
+  height: 10rpx;
+  /* 굵은 줄의 두께 */
+  position: absolute;
+  bottom: 0;
+  /* 텍스트 아래로 5px 간격 */
+  left: 95rpx;
+  background-color: rgba(153, 0, 0, 0.8);
+  /* 줄의 기본 색상 */
+  border-radius: 10rpx;
+}
+.itemList.data-v-98ffd525 {
+  position: relative;
+}
+.itemList .listItem.data-v-98ffd525 {
+  width: 100%;
+  padding: 25rpx 25rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+.itemList .listItem .itemContent.data-v-98ffd525 {
+  width: 100%;
+  height: 690rpx;
+  background-color: white;
+  border-radius: 15rpx;
+}
+.itemList .listItem .itemContent .itemTop.data-v-98ffd525 {
+  width: 100%;
+  height: 300rpx;
+  text-align: center;
+}
+.itemList .listItem .itemContent .itemTop image.data-v-98ffd525 {
+  width: 75%;
+  height: 280rpx;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.itemList .listItem .itemContent .itemBottom.data-v-98ffd525 {
+  height: 350rpx;
+  width: 100%;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottomTitle.data-v-98ffd525 {
+  width: 100%;
+  height: 75rpx;
+  margin-top: 32rpx;
+  padding: 0 15rpx;
+  font-size: 30rpx;
+  line-height: 38rpx;
+  letter-spacing: 3rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottomMaterial.data-v-98ffd525 {
+  width: 100%;
+  height: 50rpx;
+  padding: 0 15rpx;
+  font-size: 28rpx;
+  letter-spacing: 3rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #b4b4b4;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottomMaterial .materialCenter.data-v-98ffd525 {
+  width: 5rpx;
+  height: 25rpx;
+  background-color: #b4b4b4;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottomMaterial .materialContent.data-v-98ffd525 {
+  overflow: hidden;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom1.data-v-98ffd525 {
+  text-align: center;
+  letter-spacing: 5rpx;
+  color: #323232;
+  font-size: 27rpx;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom2.data-v-98ffd525 {
+  width: 100%;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 20rpx;
+  color: #6666ff;
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom2 .priceT.data-v-98ffd525 {
+  color: #ff3333;
+  font-size: 26rpx;
+  font-weight: bold;
+  letter-spacing: 5rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.itemList .listItem .itemContent .itemBottom .itemBottom2 .price.data-v-98ffd525 {
+  font-size: 35rpx;
+  color: #505050;
+  letter-spacing: 4rpx;
+  /* 글자 간격 넓게 */
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+  /* 부드러운 그림자 */
+}
+.itemList .loading.data-v-98ffd525 {
+  height: 80rpx;
+  width: 100%;
+}
+.itemList .hiddenLoading.data-v-98ffd525 {
+  height: 80rpx;
+  margin-bottom: 15rpx;
+}

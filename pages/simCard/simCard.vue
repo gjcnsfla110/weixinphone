@@ -1,5 +1,5 @@
 <template>
-	<CustomNav></CustomNav>
+	<CustomNav title="手机卡"></CustomNav>
 	<view class="shopContainer" :style="{height:screenHeight+'px'}">
 		<view class="shopLeft">
 			<uni-collapse accordion>
@@ -44,7 +44,7 @@ import {formattedPrice} from "@/utill/common.js";
 import { listTrees } from '@/utill/common';
 export default{
 	components:{
-		CustomNav
+		CustomNav,
 	},
 	props:{
 		

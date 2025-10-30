@@ -1,5 +1,5 @@
 <template>
-	<CustomNav title="商品分类"></CustomNav>
+	<CustomNav title="手机分类"></CustomNav>
 	<view class="menuContent" :style="{height:swiperHeight+'px'}">
 		<scroll-view class="menuLeft" :style="{height:swiperHeight+'px'}">
 			<view class="menuList" v-for="item in menuData">
@@ -67,7 +67,7 @@ export default{
 		TopImg,
 		TopTextTitle,
 		RightTitle,
-		RightItemList
+		RightItemList,
 	},
 	props:{
 		

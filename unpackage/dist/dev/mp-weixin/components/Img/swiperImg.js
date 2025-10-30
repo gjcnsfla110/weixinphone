@@ -1,9 +1,9 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
-const Card = () => "../cardPage/cardPage.js";
+const CardPage = () => "../cardPage/cardPage.js";
 const _sfc_main = {
-  comments: {
-    Card
+  components: {
+    CardPage
   },
   props: {
     itemData: {
@@ -46,8 +46,8 @@ const _sfc_main = {
   }
 };
 if (!Array) {
-  const _component_Card = common_vendor.resolveComponent("Card");
-  _component_Card();
+  const _component_CardPage = common_vendor.resolveComponent("CardPage");
+  _component_CardPage();
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
@@ -61,8 +61,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: $props.indicatorColor,
     d: $props.indicatorActiveColor,
     e: common_vendor.p({
-      color: "white",
-      ["margin-top"]: "0"
+      color: "white"
     })
   };
 }

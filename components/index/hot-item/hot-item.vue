@@ -5,7 +5,7 @@
 			</view>	
 			<LoadingView>
 				<view class="subMenu">
-					<view v-for="item in subMenu" class="subMenuItem">
+					<view v-for="item in computedSubMenu" class="subMenuItem">
 						<image class="subMenuImg" :src="item.img"></image>
 						<view class="subMenuText">{{item.name}}</view>
 					</view>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-	import { ref } from 'vue';
+	import { ref,watch } from 'vue';
 	import LoadingView from '@/utill/LoadingView.vue'
 	import SwiperBanner from '@/components/Img/swiperBanner.vue';
 	import ItemContentList from '@/components/item/itemContentList.vue';
@@ -99,16 +99,37 @@
 			}
 			
 		},
-		emits:[
-			
-		],
 		setup(props, context) {
-			const banner = ref({});
-			banner.value = props.mainData[0].components.filter(item=>item.component == 'SwiperBanner')[0] ? props.mainData[0].components.filter(item=>item.component == 'SwiperBanner')[0] : {id:0};
-			const componentData = ref(props.mainData[0].components.filter(item=>item.id !== banner.value.id))
+			const banner = ref({ id: 0 });
+			const componentData = ref([]);
+			const computedSubMenu = ref(props.subMenu); // subMenu를 반응형으로 관리
+			watch(
+			      () => [props.mainData, props.subMenu],
+			      ([newMainData, newSubMenu]) => {
+			        // mainData 처리
+			        if (newMainData && newMainData.length > 0 && newMainData[0].components) {
+			          const swiperBanner = newMainData[0].components.find(
+			            (item) => item.component === 'SwiperBanner'
+			          );
+			          banner.value = swiperBanner || { id: 0 };
+			          componentData.value = newMainData[0].components.filter(
+			            (item) => item.id !== banner.value.id
+			          );
+			        } else {
+			          banner.value = { id: 0 };
+			          componentData.value = [];
+			        }
+			
+			        // subMenu 처리
+			        computedSubMenu.value = newSubMenu || [];
+			      },
+			      { immediate: true, deep: true } // 즉시 실행 및 깊은 감지
+			);
+			
 			return{
 				banner,
-				componentData
+				componentData,
+				computedSubMenu
 			}	
 		},
 		methods:{

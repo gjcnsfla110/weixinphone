@@ -7369,9 +7369,9 @@ function isConsoleWritable() {
   return isWritable;
 }
 function initRuntimeSocketService() {
-  const hosts = "127.0.0.1,112.171.110.30";
+  const hosts = "127.0.0.1,175.197.67.134";
   const port = "8090";
-  const id = "mp-weixin_tAEqje";
+  const id = "mp-weixin_6A3es2";
   const lazy = typeof swan !== "undefined";
   let restoreError = lazy ? () => {
   } : initOnError();
@@ -8911,6 +8911,20 @@ This will fail in production.`);
   useStore.$id = id;
   return useStore;
 }
+function storeToRefs(store) {
+  {
+    store = toRaw(store);
+    const refs = {};
+    for (const key in store) {
+      const value = store[key];
+      if (isRef(value) || isReactive(value)) {
+        refs[key] = // ---
+        toRef(store, key);
+      }
+    }
+    return refs;
+  }
+}
 function queryParams(data = {}, isPrefix = true, arrayFormat = "brackets") {
   const prefix = isPrefix ? "?" : "";
   const _result = [];
@@ -10436,6 +10450,32 @@ const SelectProps = {
   /** 确认按钮的文字 */
   confirmText: { type: String, default: "确认" }
 };
+const SubsectionProps = {
+  /** tab的数据 */
+  list: { type: Array, default: () => [] },
+  /** 当前活动的tab的index */
+  current: { type: [Number, String], default: 0 },
+  /** 激活的颜色 */
+  activeColor: { type: String, default: "#303133" },
+  /** 未激活的颜色 */
+  inactiveColor: { type: String, default: "#606266" },
+  /** 模式选择，mode=button为按钮形式，mode=subsection时为分段模式 */
+  mode: { type: String, default: "button" },
+  /** 字体大小，单位rpx */
+  fontSize: { type: [Number, String], default: 28 },
+  /** 是否开启动画效果 */
+  animation: { type: Boolean, default: true },
+  /** 组件的高度，单位rpx */
+  height: { type: [Number, String], default: 70 },
+  /** 激活tab的字体是否加粗 */
+  bold: { type: Boolean, default: true },
+  /** mode=button时，组件背景颜色 */
+  bgColor: { type: String, default: "#eeeeef" },
+  /** mode = button时，滑块背景颜色 */
+  buttonColor: { type: String, default: "#ffffff" },
+  /** 在切换分段器的时候，是否让设备震一下 */
+  vibrateShort: { type: Boolean, default: false }
+};
 const SwiperProps = {
   /** 轮播数据列表，数组对象 */
   list: { type: Array, default: () => [] },
@@ -10624,6 +10664,7 @@ exports.IconProps = IconProps;
 exports.MaskProps = MaskProps;
 exports.PopupProps = PopupProps;
 exports.SelectProps = SelectProps;
+exports.SubsectionProps = SubsectionProps;
 exports.SwiperProps = SwiperProps;
 exports._export_sfc = _export_sfc;
 exports.computed = computed;
@@ -10633,6 +10674,7 @@ exports.defineComponent = defineComponent;
 exports.defineStore = defineStore;
 exports.e = e;
 exports.f = f;
+exports.getCurrentInstance = getCurrentInstance;
 exports.index = index;
 exports.initVueI18n = initVueI18n;
 exports.n = n;
@@ -10643,6 +10685,7 @@ exports.ref = ref;
 exports.resolveComponent = resolveComponent;
 exports.s = s;
 exports.sr = sr;
+exports.storeToRefs = storeToRefs;
 exports.t = t;
 exports.uViewPro = uViewPro;
 exports.unref = unref;

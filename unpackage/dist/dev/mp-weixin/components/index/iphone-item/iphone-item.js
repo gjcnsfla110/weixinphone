@@ -36,9 +36,27 @@ const _sfc_main = {
     }
   },
   setup(props, context) {
-    const banner = common_vendor.ref({});
-    banner.value = props.iphoneData[0].components.filter((item) => item.component == "SwiperBanner")[0] ? props.iphoneData[0].components.filter((item) => item.component == "SwiperBanner")[0] : { id: 0 };
-    const componentData = common_vendor.ref(props.iphoneData[0].components.filter((item) => item.id !== banner.value.id));
+    const banner = common_vendor.ref({ id: 0 });
+    const componentData = common_vendor.ref([]);
+    common_vendor.watch(
+      () => props.iphoneData,
+      (newIphoneData) => {
+        if (newIphoneData && newIphoneData.length > 0 && newIphoneData[0].components) {
+          const swiperBanner = newIphoneData[0].components.find(
+            (item) => item.component === "SwiperBanner"
+          );
+          banner.value = swiperBanner || { id: 0 };
+          componentData.value = newIphoneData[0].components.filter(
+            (item) => item.id !== banner.value.id
+          );
+        } else {
+          banner.value = { id: 0 };
+          componentData.value = [];
+        }
+      },
+      { immediate: true, deep: true }
+      // 즉시 실행 및 깊은 감지 설정
+    );
     return {
       banner,
       componentData

@@ -3,6 +3,7 @@
 		<CustomNav back="true"></CustomNav>
 		<view class="content">
 			<SwiperImg :banner="item.banner"></SwiperImg>
+			<view class="itemNumber"><text class="itemNumberLeft">No.</text>{{item.item_number}}</view>
 			<view class="goodsTop">
 				<view class="price">
 					<view class="priceLeft"><text class="priceT">原价  </text>{{formattedPrice(item.price)}}<text class="priceY">  韩元</text></view>
@@ -15,20 +16,19 @@
 			<view class="itemService">
 				<view class="serviceLeft1" style="display: flex; justify-content: space-between;"><p>商品归属</p><p style="color: rgb(255, 153, 51);">{{item.isShop}}</p></view>
 				<view class="serviceLeft3">
-					<view class="serviceTitle">公司服务 <span class="topAll" @click="servicePopupToggle('bottom')">查看全部</span></view>
+					<view class="serviceTitle">公司服务 <span class="topAll" @click="servicePopupToggle('bottom')">点击查看详细</span></view>
 					<view class="serviceCotent">
-						 <view v-for="(i,index) in item.service" class="serviceCotentItem">
-							  <text class="serviceText">No{{index+1}}.</text> {{i.title}}
-						 </view>
+						<view class="serviceItem"><image src="/static/company/kuaidiyuan.png"></image><view class="serviceItemText">当日免费送到门！</view></view>
+						<view class="serviceItem"><image src="/static/company/paisong.png"></image><view class="serviceItemText">邮费免费，全部包邮。</view></view>
 					</view>
 				</view>
 			</view>
 			<view class="Accessories">
 				<view class="AccessoriesContent">
-					<view class="AccessoriesTitle"><text class="AccessoriesTitleLeft">添加！！</text> 40,000 韩币</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/me/free.png"></image> 1. 赠送 高品质蓝牙耳机</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/me/free.png"></image> 2. 赠送 精品手机壳</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/me/free.png"></image> 3. 赠送 高速充电头 + 60w棉制精品数据线</view>
+					<view class="AccessoriesTitle"><text class="AccessoriesTitleLeft">添加</text> 40,000 韩币</view>
+					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/shopping/one.png"></image>  赠送 高品质蓝牙耳机</view>
+					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/shopping/two.png"></image>  赠送 精品手机壳</view>
+					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/shopping/three.png"></image>  赠送 高速充电头 + 60w棉制精品数据线</view>
 				</view>		
 			</view>
 			<view class="itemContent">
@@ -42,13 +42,21 @@
 			<uni-popup ref="servicePopup" style="z-index: 500; overflow: hidden;">
 				<view class="popupBottom">
 					<view class="servicePopupTitle">购买商品提供服务。</view>
-					<view class="servicePopupText" v-for="i in item.service">
-							<text class="servicePopupTextL">{{JSON.parse(i.description).title ? JSON.parse(i.description).title : ""}}</text><text class="servicePopupTextR">{{JSON.parse(i.description).description ? JSON.parse(i.description).description : ""}}</text>
+					<view class="popupServiceContent">
+						<view class="popupServiceTitle"><image src="/static/company/kuaidiyuan.png"></image><view class="popupServiceTitleText">当日免费送到门！</view></view>
+						<view class="popupServiceDetail">
+							购买手机，手机配件 购满5万韩元 加里峰，南九老，九老，大林，秃山，加山数码团地 地区的客户 您告诉我们地址 当天免费配送。一般30分钟内送达！
+						</view>
+					</view>
+					<view class="popupServiceContent">
+						<view class="popupServiceTitle"><image src="/static/company/paisong.png"></image><view class="popupServiceTitleText">邮费免费，全部包邮。</view></view>
+						<view class="popupServiceDetail">
+							购买 满10万韩元商品 当天免费邮寄。 您不需要担心邮寄过程手机会损坏，我们用 多层泡沫 精致包装，发货之前整个过程都给您拍视频，无需担心。
+						</view>
 					</view>
 				</view>
 			</uni-popup>
 		</view>
-		<Bottom></Bottom>
 	</view>
 </template>
 
@@ -63,8 +71,7 @@ import { ref } from "vue";
 export default{
 	components:{
 		CustomNav,
-		SwiperImg,
-		Bottom
+		SwiperImg
 	},
 	props:{
 
@@ -96,6 +103,24 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+	.itemNumber{
+		width: 100%;
+		margin-top: 30rpx;
+		height: 50rpx;
+		text-align: right;
+		line-height: 50rpx;
+		padding-right: 30rpx;
+		letter-spacing: 5rpx;
+		color: rgb(80, 80, 80);
+		font-size: 29rpx;
+		.itemNumberLeft{
+			color: rgb(255, 153, 51);
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
+			letter-spacing: 8rpx;
+			font-size: 33rpx;
+		}
+	}
+	
 	.oldItem{
 		width: 100%;
 		.content{
@@ -201,12 +226,11 @@ export default{
 						line-height: 80rpx;
 						text-align: center;
 						color: rgb(255, 153, 51);
-						font-size: 35rpx;
-						font-weight: bold;
-						text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 부드러운 그림자 */
-						letter-spacing: 2rpx; /* 글자 간격 넓게 */
+						font-size: 30rpx;
+						text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+						letter-spacing: 5rpx; /* 글자 간격 넓게 */
 						.AccessoriesTitleLeft{
-							font-size: 40rpx;
+							font-size: 30rpx;
 							color: rgb(255, 0, 0);
 							letter-spacing: 3rpx; /* 글자 간격 넓게 */
 						}
@@ -236,7 +260,7 @@ export default{
 	.itemService{
 				background-color: rgb(249,249,249);
 				width: 720rpx;
-				height: 455rpx;
+				height: 510rpx;
 				margin-left: 15rpx;
 				margin-top: 26rpx;
 				border-radius: 10rpx;
@@ -255,7 +279,7 @@ export default{
 				}
 				.serviceLeft3{
 					width: 680rpx;
-					height: 300rpx;
+					height: 350rpx;
 					line-height: 100rpx;
 					margin-top: 8rpx;
 					margin-left: 20rpx;
@@ -271,32 +295,38 @@ export default{
 						.topAll{
 							position: absolute;
 							top: 0;
-							right: 20rpx;
+							right: 0;
 						}
 					}
 					.serviceCotent{
 						width: 100%;
-						height: 210rpx;
+						height: 260rpx;
 						padding-left: 10rpx;
 						padding-right: 10rpx;
 						font-size: 28rpx;
 						letter-spacing: 2rpx; /* 글자 간격 넓게 */
 						overflow: hidden;
-						.serviceCotentItem{
+						.serviceItem{
 							width: 100%;
-							height: 65rpx;
-							overflow: hidden;  /* 넘친 부분 숨김 */
-						    white-space: nowrap;  /* 줄바꿈 방지 */
-						    text-overflow: ellipsis;  /* ... 표시 */
-							.serviceText{
-								color: rgb(255, 153, 51);
-								font-size: 35rpx;
-								font-weight: bold;
-								text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
-								margin-right: 10rpx;
+							height: 100rpx;
+							margin-top: 20rpx;
+							display: flex;
+							align-items: center;
+							justify-content: space-between;
+							image{
+								width: 80rpx;
+								height: 80rpx;
 							}
-						}
-						
+							.serviceItemText{
+								width: 500rpx;
+								height: 80rpx;
+								line-height: 90rpx;
+								letter-spacing: 3rpx;
+								font-size: 30rpx;
+								text-shadow: 2rpx 2rpx 3rpx rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+								color: rgb(150, 150, 150);
+							}
+						}		
 					}
 				}
 			}
@@ -342,29 +372,39 @@ export default{
 			letter-spacing: 2rpx; /* 글자 간격 넓게 */
 			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 		}
-		.servicePopupText{
+		.popupServiceContent{
 			width: 100%;
-			height: 120rpx;
-			line-height: 120rpx;
-			font-size: 28rpx;
-			padding-left: 20rpx;
-			padding-right: 20rpx;
-			border-bottom: 1rpx solid #eee;
-			.servicePopupTextL{
-				height: 80rpx;
-				background-color: rgb(255, 229, 204,0.3);
-				padding: 10rpx 20rpx 10rpx 20rpx;
-				color: rgb(255, 153, 51);
-				font-size: 30rpx;
-				border-radius: 8rpx;
-				letter-spacing: 2rpx; /* 글자 간격 넓게 */
-				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
-				margin-right: 30rpx;
+			height: 310rpx;
+			padding-left: 35rpx;
+			padding-right: 35rpx;
+			.popupServiceTitle{
+				width: 100%;
+				height: 100rpx;
+				margin-top: 20rpx;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				image{
+					width: 80rpx;
+					height: 80rpx;
+				}
+				.popupServiceTitleText{
+					width: 500rpx;
+					height: 80rpx;
+					line-height: 90rpx;
+					letter-spacing: 3rpx;
+					font-size: 30rpx;
+					color: rgb(255, 153, 51);
+					text-shadow: 2rpx 2rpx 3rpx rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+				}
 			}
-			.servicePopupTextR{
-				color: rgb(50, 50, 50);
-				letter-spacing: 2rpx; /* 글자 간격 넓게 */
-				text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
+			.popupServiceDetail{
+				width: 100%;
+				height: 210rpx;
+				font-size: 28rpx;
+				color: rgb(150, 150, 150);
+				letter-spacing: 3rpx;
+				padding-top: 10rpx;
 			}
 		}
 	

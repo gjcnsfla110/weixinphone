@@ -1,6 +1,6 @@
 <template>
 	<view class="listContainer">
-		<CustomNav back="true" :topHeight="110">
+		<CustomNav :back="true" :topHeight="110">
 			<scroll-view scroll-x class="menuList">
 				<view class="menubutton" v-for="item in subMenus" @click="changeSubMenu(item.id)">
 					<view class="top">
@@ -169,11 +169,11 @@ export default{
 					position: relative;
 					margin-bottom: 5px;
 					.bottomShow{
-						width: 130rpx;
-						height: 8rpx; /* 굵은 줄의 두께 */
+						width: 60rpx;
+						height: 10rpx; /* 굵은 줄의 두께 */
 						position: absolute;
 						bottom: 0; /* 텍스트 아래로 5px 간격 */
-						left: 60rpx;
+						left: 95rpx;
 						background-color: rgb(153, 0, 0,0.8); /* 줄의 기본 색상 */
 						border-radius: 10rpx;
 					}
@@ -270,7 +270,7 @@ export default{
 							}
 							.price{
 								font-size: 33rpx;
-								color: rgb(80, 80, 80);
+								color: rgb(80, 80, 80);                                                                                                                                                                                   
 								letter-spacing: 4rpx; /* 글자 간격 넓게 */
 								text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
 							}

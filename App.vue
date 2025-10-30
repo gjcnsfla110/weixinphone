@@ -32,7 +32,14 @@
 				mainStores.clearCache();
 				uni.removeStorageSync('topSubMenu');
 				uni.removeStorageSync('agreementCategory');
+				uni.removeStorageSync('accessoriesItem');
+				uni.removeStorageSync('agreementItem');
+				uni.removeStorageSync('usimItem');
+				uni.removeStorageSync('accessoriesTopSubMenu');
 				uni.removeStorageSync('agreementCategory');
+				uni.removeStorageSync('usimListData');
+				uni.removeStorageSync('shop');
+				uni.removeStorageSync('shopItem');
 			}, 6 * 60 * 60 * 1000); //6시간
 		}
 	}

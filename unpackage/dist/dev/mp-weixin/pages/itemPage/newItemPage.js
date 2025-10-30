@@ -6,12 +6,10 @@ const utill_common = require("../../utill/common.js");
 const common_assets = require("../../common/assets.js");
 const CustomNav = () => "../../components/custom-nav-bar/customNav.js";
 const SwiperImg = () => "../../components/pageDetail/swiperImg.js";
-const Bottom = () => "../../components/pageDetail/itemBottom.js";
 const _sfc_main = {
   components: {
     CustomNav,
-    SwiperImg,
-    Bottom
+    SwiperImg
   },
   props: {},
   setup(props, context) {
@@ -31,7 +29,7 @@ const _sfc_main = {
       return this.spec && Object.keys(this.spec).length > 0;
     },
     heightClass() {
-      return this.hasSpec ? "height-765" : "height-460";
+      return this.hasSpec ? "height-815" : "height-510";
     }
   },
   methods: {
@@ -52,7 +50,7 @@ const _sfc_main = {
       this.item.delivery = this.item.delivery ? JSON.parse(this.item.delivery) : [];
       this.spec = this.goodsSpecs.filter((item1) => item1.id == this.item.spec_id)[0] || {};
     } catch (error) {
-      common_vendor.index.__f__("error", "at pages/itemPage/newItemPage.vue:168", "onLoad 에러:", error);
+      common_vendor.index.__f__("error", "at pages/itemPage/newItemPage.vue:174", "onLoad 에러:", error);
     }
   }
 };
@@ -60,8 +58,7 @@ if (!Array) {
   const _component_CustomNav = common_vendor.resolveComponent("CustomNav");
   const _component_SwiperImg = common_vendor.resolveComponent("SwiperImg");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
-  const _component_Bottom = common_vendor.resolveComponent("Bottom");
-  (_component_CustomNav + _component_SwiperImg + _easycom_uni_popup2 + _component_Bottom)();
+  (_component_CustomNav + _component_SwiperImg + _easycom_uni_popup2)();
 }
 const _easycom_uni_popup = () => "../../uni_modules/uni-popup/components/uni-popup/uni-popup.js";
 if (!Math) {
@@ -75,62 +72,55 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.p({
       banner: $setup.item.banner
     }),
-    c: common_vendor.t($setup.formattedPrice($setup.item.price)),
-    d: common_vendor.t($setup.formattedPrice($setup.item.price1)),
-    e: common_vendor.t($setup.item.title1),
-    f: common_vendor.t($setup.item.isShop),
-    g: $options.hasSpec
+    c: common_vendor.t($setup.item.item_number),
+    d: common_vendor.t($setup.formattedPrice($setup.item.price)),
+    e: common_vendor.t($setup.formattedPrice($setup.item.price1)),
+    f: common_vendor.t($setup.item.title1),
+    g: common_vendor.t($setup.item.isShop),
+    h: $options.hasSpec
   }, $options.hasSpec ? {
-    h: common_vendor.o(($event) => $options.specPopupToggle("bottom")),
-    i: common_vendor.t($setup.spec.cpu),
-    j: common_vendor.t($setup.spec.battery),
-    k: common_vendor.t($setup.spec.camera),
-    l: common_vendor.t($setup.spec.display),
-    m: common_vendor.t($setup.spec.color)
+    i: common_vendor.o(($event) => $options.specPopupToggle("bottom")),
+    j: common_vendor.t($setup.spec.cpu),
+    k: common_vendor.t($setup.spec.battery),
+    l: common_vendor.t($setup.spec.camera),
+    m: common_vendor.t($setup.spec.display),
+    n: common_vendor.t($setup.spec.color)
   } : {}, {
-    n: common_vendor.o(($event) => $options.servicePopupToggle("bottom")),
-    o: common_vendor.f($setup.item.service, (i, index, i0) => {
-      return {
-        a: common_vendor.t(index + 1),
-        b: common_vendor.t(i.title)
-      };
-    }),
-    p: common_vendor.n($options.heightClass),
-    q: common_assets._imports_0$2,
-    r: common_assets._imports_0$2,
-    s: common_assets._imports_0$2,
-    t: common_vendor.f($setup.item.content, (i, k0, i0) => {
+    o: common_vendor.o(($event) => $options.servicePopupToggle("bottom")),
+    p: common_assets._imports_0$2,
+    q: common_assets._imports_7,
+    r: common_vendor.n($options.heightClass),
+    s: common_assets._imports_2$3,
+    t: common_assets._imports_2$3,
+    v: common_assets._imports_2$3,
+    w: common_vendor.f($setup.item.content, (i, k0, i0) => {
       return {
         a: i
       };
     }),
-    v: common_vendor.t($setup.spec.model),
-    w: common_vendor.t($setup.spec.cpu),
-    x: common_vendor.t($setup.spec.camera),
-    y: common_vendor.f(JSON.parse($setup.spec.ram), (i, k0, i0) => {
+    x: common_vendor.t($setup.spec.model),
+    y: common_vendor.t($setup.spec.cpu),
+    z: common_vendor.t($setup.spec.camera),
+    A: common_vendor.f(JSON.parse($setup.spec.ram), (i, k0, i0) => {
       return {
         a: common_vendor.t(i)
       };
     }),
-    z: common_vendor.f(JSON.parse($setup.spec.storage), (i, k0, i0) => {
+    B: common_vendor.f(JSON.parse($setup.spec.storage), (i, k0, i0) => {
       return {
         a: common_vendor.t(i)
       };
     }),
-    A: common_vendor.t($setup.spec.display),
-    B: common_vendor.t($setup.spec.battery),
-    C: common_vendor.t($setup.spec.water),
-    D: common_vendor.t($setup.spec.weight),
-    E: common_vendor.t($setup.spec.type),
-    F: common_vendor.t($setup.spec.color),
-    G: common_vendor.sr("specPopup", "edb82754-2"),
-    H: common_vendor.f($setup.item.service, (i, k0, i0) => {
-      return {
-        a: common_vendor.t(JSON.parse(i.description).title ? JSON.parse(i.description).title : ""),
-        b: common_vendor.t(JSON.parse(i.description).description ? JSON.parse(i.description).description : "")
-      };
-    }),
-    I: common_vendor.sr("servicePopup", "edb82754-3")
+    C: common_vendor.t($setup.spec.display),
+    D: common_vendor.t($setup.spec.battery),
+    E: common_vendor.t($setup.spec.water),
+    F: common_vendor.t($setup.spec.weight),
+    G: common_vendor.t($setup.spec.type),
+    H: common_vendor.t($setup.spec.color),
+    I: common_vendor.sr("specPopup", "edb82754-2"),
+    J: common_assets._imports_0$2,
+    K: common_assets._imports_7,
+    L: common_vendor.sr("servicePopup", "edb82754-3")
   });
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-edb82754"]]);

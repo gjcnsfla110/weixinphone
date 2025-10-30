@@ -5,12 +5,10 @@ const utill_request = require("../../utill/request.js");
 const common_assets = require("../../common/assets.js");
 const CustomNav = () => "../../components/custom-nav-bar/customNav.js";
 const SwiperImg = () => "../../components/pageDetail/swiperImg.js";
-const Bottom = () => "../../components/pageDetail/itemBottom.js";
 const _sfc_main = {
   components: {
     CustomNav,
-    SwiperImg,
-    Bottom
+    SwiperImg
   },
   props: {},
   setup(props, context) {
@@ -32,7 +30,7 @@ const _sfc_main = {
       this.item.banner = this.item.banner ? JSON.parse(this.item.banner) : [];
       this.item.service = this.item.service ? JSON.parse(this.item.service) : [];
     } catch (error) {
-      common_vendor.index.__f__("error", "at pages/itemPage/oldItemPage.vue:91", "onLoad 에러:", error);
+      common_vendor.index.__f__("error", "at pages/itemPage/oldItemPage.vue:98", "onLoad 에러:", error);
     }
   }
 };
@@ -40,8 +38,7 @@ if (!Array) {
   const _component_CustomNav = common_vendor.resolveComponent("CustomNav");
   const _component_SwiperImg = common_vendor.resolveComponent("SwiperImg");
   const _easycom_uni_popup2 = common_vendor.resolveComponent("uni-popup");
-  const _component_Bottom = common_vendor.resolveComponent("Bottom");
-  (_component_CustomNav + _component_SwiperImg + _easycom_uni_popup2 + _component_Bottom)();
+  (_component_CustomNav + _component_SwiperImg + _easycom_uni_popup2)();
 }
 const _easycom_uni_popup = () => "../../uni_modules/uni-popup/components/uni-popup/uni-popup.js";
 if (!Math) {
@@ -55,28 +52,21 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     b: common_vendor.p({
       banner: $setup.item.banner
     }),
-    c: common_vendor.t($setup.formattedPrice($setup.item.price)),
-    d: common_vendor.t($setup.formattedPrice($setup.item.price2)),
-    e: common_vendor.t($setup.item.title1),
-    f: common_vendor.t($setup.item.isShop),
-    g: common_vendor.o(($event) => $options.servicePopupToggle("bottom")),
-    h: common_vendor.f($setup.item.service, (i, index, i0) => {
-      return {
-        a: common_vendor.t(index + 1),
-        b: common_vendor.t(i.title)
-      };
-    }),
+    c: common_vendor.t($setup.item.item_number),
+    d: common_vendor.t($setup.formattedPrice($setup.item.price)),
+    e: common_vendor.t($setup.formattedPrice($setup.item.price2)),
+    f: common_vendor.t($setup.item.title1),
+    g: common_vendor.t($setup.item.isShop),
+    h: common_vendor.o(($event) => $options.servicePopupToggle("bottom")),
     i: common_assets._imports_0$2,
-    j: common_assets._imports_0$2,
-    k: common_assets._imports_0$2,
-    l: common_vendor.t($setup.item.phone_detail),
-    m: common_vendor.f($setup.item.service, (i, k0, i0) => {
-      return {
-        a: common_vendor.t(JSON.parse(i.description).title ? JSON.parse(i.description).title : ""),
-        b: common_vendor.t(JSON.parse(i.description).description ? JSON.parse(i.description).description : "")
-      };
-    }),
-    n: common_vendor.sr("servicePopup", "9572ed5d-2")
+    j: common_assets._imports_7,
+    k: common_assets._imports_2$2,
+    l: common_assets._imports_3$1,
+    m: common_assets._imports_4$1,
+    n: common_vendor.t($setup.item.phone_detail),
+    o: common_assets._imports_0$2,
+    p: common_assets._imports_7,
+    q: common_vendor.sr("servicePopup", "9572ed5d-2")
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-9572ed5d"]]);

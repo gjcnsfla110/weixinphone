@@ -35,10 +35,12 @@
 .layout .navBar .titleBar {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
-.layout .navBar .titleBar .logo {
-  margin-left: 30rpx;
-  font-size: 38rpx;
+.layout .navBar .titleBar .logo image {
+  width: 200rpx;
+  height: 70rpx;
 }
 .layout .fill {
   margin-bottom: 30rpx;

@@ -39,6 +39,10 @@
   margin-left: 30rpx;
   font-size: 38rpx;
 }
+.layout .navBar .titleBar .logo image.data-v-ca453c6d {
+  width: 140rpx;
+  height: 50rpx;
+}
 .layout .navBar .titleBar .back.data-v-ca453c6d {
   margin-left: 30rpx;
 }

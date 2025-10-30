@@ -30,11 +30,11 @@
 						{{item.title}}
 					</view>
 					<view class="star">
-						<image style="margin-left: 0;" src="/static/me/star.png"></image>
-						<image src="/static/me/star.png"></image>
-						<image src="/static/me/star.png"></image>
-						<image src="/static/me/star.png"></image>
-						<image src="/static/me/star.png"></image>
+						<image style="margin-left: 0;" src="/static/usim/star.png"></image>
+						<image src="/static/usim/star.png"></image>
+						<image src="/static/usim/star.png"></image>
+						<image src="/static/usim/star.png"></image>
+						<image src="/static/usim/star.png"></image>
 					</view>
 			</view>
 		</view>

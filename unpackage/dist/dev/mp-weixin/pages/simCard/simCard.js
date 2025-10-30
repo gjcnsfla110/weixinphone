@@ -105,7 +105,10 @@ if (!Math) {
 }
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
-    a: common_vendor.f($setup.categorys, (item, k0, i0) => {
+    a: common_vendor.p({
+      title: "手机卡"
+    }),
+    b: common_vendor.f($setup.categorys, (item, k0, i0) => {
       return {
         a: common_vendor.t(item.name),
         b: item.id == $setup.cutturn ? 1 : "",
@@ -126,10 +129,10 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       };
     }),
-    b: common_vendor.p({
+    c: common_vendor.p({
       accordion: true
     }),
-    c: common_vendor.f($setup.activeUsimList, (item, k0, i0) => {
+    d: common_vendor.f($setup.activeUsimList, (item, k0, i0) => {
       return {
         a: common_vendor.t(item.mobile_name),
         b: common_vendor.t(item.title),
@@ -141,13 +144,13 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         h: common_vendor.o(($event) => $options.clickUsimDetail(item))
       };
     }),
-    d: common_assets._imports_0,
-    e: common_assets._imports_1,
-    f: common_assets._imports_2,
-    g: common_assets._imports_3,
-    h: common_assets._imports_4,
-    i: common_assets._imports_5,
-    j: $setup.screenHeight + "px"
+    e: common_assets._imports_0,
+    f: common_assets._imports_1,
+    g: common_assets._imports_2,
+    h: common_assets._imports_3,
+    i: common_assets._imports_4,
+    j: common_assets._imports_5,
+    k: $setup.screenHeight + "px"
   };
 }
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-715a7735"]]);
