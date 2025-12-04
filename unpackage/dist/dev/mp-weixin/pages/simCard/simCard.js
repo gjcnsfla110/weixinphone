@@ -73,7 +73,7 @@ const _sfc_main = {
     }
     let list = await utill_request.servicePost("app/usim/list");
     let category = utill_common.listTrees(list.category);
-    const expiry = now + 24 * 60 * 60 * 1e3;
+    const expiry = now + 60 * 60 * 1e3;
     common_vendor.index.setStorageSync("usimListData", {
       category,
       usimList: list.usims,

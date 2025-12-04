@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "门店详细",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "custom": "../../components/custom-nav-bar/customNav"
+  }
+}

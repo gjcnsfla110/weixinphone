@@ -30,17 +30,58 @@
 					</view>
 				</view>
 			</view>
-			<view class="Accessories">
-				<view class="AccessoriesContent">
-					<view class="AccessoriesTitle"><text class="AccessoriesTitleLeft">添加！！</text> 40,000 韩币</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/me/free.png"></image> 1. 赠送 高品质蓝牙耳机</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/me/free.png"></image> 2. 赠送 精品手机壳</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/me/free.png"></image> 3. 赠送 高速充电头 + 60w棉制精品数据线</view>
-				</view>		
+			<view class="itemNav">
+				<u-subsection :list="list" :current="0" @change="itemContentClick"></u-subsection>
 			</view>
-			<view class="content">
-				<view class="contentItem" v-for="i in item.content">
-					<image class="contentItemImg" :src="i"></image>
+			<view class="itemCurrentContent">
+				<view v-if="current == 0">
+					<!-- #ifdef APP-PLUS -->
+					<view class="videoTitle">手机详细视频</view>
+					<view class="itemVideo">
+						<iframe 
+						  width="100%" 
+						  height="380" 
+						  src="https://www.youtube.com/embed/CRJqRxzDNa4?mute=1&playsinline=1&rel=0"
+						  allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						  allowfullscreen>
+						</iframe>
+					</view>
+					<!-- #endif -->
+					<view class="content">
+						<view class="contentItem" v-for="i in item.content">
+							<image class="contentItemImg" :src="i"></image>
+						</view>
+					</view>
+				</view>
+				<view v-if="current == 1">
+					<OtherGoods></OtherGoods>
+				</view>
+				<view class="client" v-if="current == 2">
+					<view class="clientItem" v-for="review in reviewData">
+						<view class="clientTitle">{{review.title}}</view>
+						<view class="clientContent">
+							<view class="imgContainer" v-if="review.type == 1">
+								<view class="image" v-for="img in review.img">
+									<image :src="img"></image>
+								</view>
+							</view>
+							<view class="itemVideo" v-if="review.type == 2">
+								<iframe 
+								  width="100%" 
+								  height="380" 
+								  :src="review.video"
+								  allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								  allowfullscreen>
+								</iframe>
+							</view>
+						</view>
+						<view class="clientBottom">
+							<view class="date">{{review.date}}</view>
+						</view>
+					</view>
+					<view class="pagi">
+						<uni-pagination :total="total" :current="currentPage" prev-text="前一页" next-text="后一页" @change="paginationClick" />
+					</view>
 				</view>
 			</view>
 			<view class="hiddenView">
@@ -103,13 +144,13 @@
 					<view class="popupServiceContent">
 						<view class="popupServiceTitle"><image src="/static/company/kuaidiyuan.png"></image><view class="popupServiceTitleText">当日免费送到门！</view></view>
 						<view class="popupServiceDetail">
-							购买手机，手机配件 购满5万韩元 加里峰，南九老，九老，大林，秃山，加山数码团地 地区的客户 您告诉我们地址 当天免费配送。一般30分钟内送达！
+							满5万韩元! 购买手机，手机配件 加里峰，南九老，九老，大林，秃山，加山数码团地 地区的客户 您告诉我们地址 当天免费配送。一般30分钟内送达！
 						</view>
 					</view>
 					<view class="popupServiceContent">
 						<view class="popupServiceTitle"><image src="/static/company/paisong.png"></image><view class="popupServiceTitleText">邮费免费，全部包邮。</view></view>
 						<view class="popupServiceDetail">
-							购买 满10万韩元商品 当天免费邮寄。 您不需要担心邮寄过程手机会损坏，我们用 多层泡沫 精致包装，发货之前整个过程都给您拍视频，无需担心。
+							购买 满5万韩元商品 当天免费邮寄。 您不需要担心邮寄过程手机会损坏，我们用 多层泡沫 精致包装，发货之前整个过程都给您拍视频，无需担心。
 						</view>
 					</view>
 				</view>
@@ -125,10 +166,12 @@
 	import { ref } from "vue";
 	import {useMainStores } from "@/stores/mainData";
 	import {formattedPrice} from "@/utill/common.js";
+	import OtherGoods from "@/components/pageDetail/otherGoods.vue";
 	export default{
 		components:{
 			CustomNav,
 			SwiperImg,
+			OtherGoods
 		},
 		props:{
 
@@ -138,11 +181,35 @@
 			const useData = useMainStores();
 			const {goodsSpecs} = useData;
 			const spec = ref({});
+			const list = ref([
+				{
+					name: '商品信息'
+				}, 
+				{
+					name: '购买礼包'
+				},
+				{
+					name:'客户评价'
+				}
+			])
+			
+			// 定义当前选中索引
+			const current = ref(0)
+			
+			//리뷰페이지코드
+			const currentPage = ref(1);
+			const total = ref(0);
+			const reviewData = ref([]);
 			return {
 				item,
 				goodsSpecs,
 				spec,
-				formattedPrice
+				formattedPrice,
+				list,
+				current,
+				currentPage,
+				total,
+				reviewData
 			}
 		},
 		computed: {
@@ -160,16 +227,18 @@
 			servicePopupToggle(type) {
 				this.$refs.servicePopup.open(type)
 			},
+			itemContentClick(i){
+				this.current = i;
+			}
 		},
 		async onLoad(op){
 			try{
-				const res = await servicePost('app/goods/item',{id:op.id});
-				this.item = res;
+				const res = await servicePost('app/goods/item',{id:op.id,page:this.currentPage});
+				this.item = res.item;
 				this.item.banner = this.item.banner ? JSON.parse(this.item.banner):[];
 				this.item.content = this.item.content ? JSON.parse(this.item.content):[];
-				this.item.service = this.item.service ? JSON.parse(this.item.service):[];
-				this.item.delivery = this.item.delivery ? JSON.parse(this.item.delivery):[];
 				this.spec = this.goodsSpecs.filter(item1=>item1.id == this.item.spec_id)[0] || {};
+				this.reviewData = res.review;
 			}catch(error){
 				console.error('onLoad 에러:', error);
 			}
@@ -178,6 +247,75 @@
 </script>
 
 <style lang="scss" scoped>
+	//리뷰부분
+	.client{
+		width: 750rpx;
+		.clientItem{
+			width: 750rpx;
+			padding: 20rpx 25rpx;
+			.clientTitle{
+				width: 700rpx;
+				height: 100rpx;
+				line-height: 100rpx;
+				font-size: 30rpx;
+				letter-spacing: 3rpx;
+				padding-left: 30rpx;
+				color: rgb(150, 150, 150);
+			}
+			.imgContainer{
+				display: grid;
+				gap: 8rpx;
+				width: 700rpx;
+				grid-template-columns: repeat(4, 1fr);
+				background-color: rgb(250, 250, 250);
+				padding: 30rpx;
+				border-radius: 20rpx;
+				.image{
+					height: 160rpx;
+					image{
+						width: 100%;
+						height: 160rpx;
+					}
+				}
+			}
+			.clientBottom{
+				width: 700rpx;
+				height: 80rpx;
+				border-bottom: 1rpx solid rgb(220, 220, 220);
+				.date{
+					width: 700rpx;
+					height: 80rpx;
+					line-height: 80rpx;
+					text-align: right;
+					padding-right: 20rpx;
+					font-size: 28rpx;
+					letter-spacing: 3rpx;
+					color: rgb(150, 150, 150);
+				}
+			}
+		}
+	}
+	.pagi{
+		width: 550rpx;
+		height: 150rpx;
+		margin-left: 100rpx;
+		padding-top: 30rpx;
+	}
+	.videoTitle{
+		width: 750rpx;
+		height: 100rpx;
+		line-height: 100rpx;
+		font-size: 33rpx;
+		color: rgb(120, 120, 120);
+		padding-left: 25rpx;
+	}
+	.itemVideo{
+		width: 650rpx;
+		margin-left: 25rpx;
+		border-radius: 30rpx;
+		overflow: hidden;
+		transition: transform 0.3s;
+	}
 	.itemNumber{
 		width: 100%;
 		margin-top: 30rpx;
@@ -205,6 +343,11 @@
 		width: 100%;
 		.content{
 			width: 100%;
+			.itemNav{
+				width: 720rpx;
+				margin-left: 15rpx;
+				margin-top: 30rpx;
+			}
 			.goodsTop{
 				width: 720rpx;
 				height: 270rpx;
@@ -390,54 +533,7 @@
 					}
 				}
 			}
-			.Accessories{
-				background-color: rgb(249,249,249);
-				width: 720rpx;
-				height: 340rpx;
-				margin-left: 15rpx;
-				margin-top: 26rpx;
-				border-radius: 10rpx;
-				padding: 15rpx;
-				.AccessoriesContent{
-					width: 100%;
-					height: 310rpx;
-					background-color: white;
-					border-radius: 8rpx;
-					padding-top: 15rpx;
-					.AccessoriesTitle{
-						width: 100%;
-						height: 80rpx;
-						line-height: 80rpx;
-						text-align: center;
-						color: rgb(255, 153, 51);
-						font-size: 35rpx;
-						font-weight: bold;
-						text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 부드러운 그림자 */
-						letter-spacing: 2rpx; /* 글자 간격 넓게 */
-						.AccessoriesTitleLeft{
-							font-size: 40rpx;
-							color: rgb(255, 0, 0);
-							letter-spacing: 3rpx; /* 글자 간격 넓게 */
-						}
-					}
-					.AccessoriesText{
-						width: 100%;
-						height: 70rpx;
-						font-size: 28rpx;
-						color: rgb(50, 50, 50);
-						letter-spacing: 2rpx; /* 글자 간격 넓게 */
-						text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
-						display: flex;
-						align-items: center;
-						.AccessoriesImg{
-							width: 50rpx;
-							height: 50rpx;
-							margin-left: 26rpx;
-							margin-right: 20rpx;
-						}
-					}
-				}	
-			}
+			
 		}
 	}
 	.popupBottom{

@@ -6,6 +6,7 @@ if (!Math) {
   "./pages/index/index.js";
   "./pages/simCard/simCard.js";
   "./pages/shop/shop.js";
+  "./pages/itemPage/shopPage.js";
   "./pages/menu/menu.js";
   "./pages/list/list.js";
   "./pages/oldList/oldList.js";
@@ -55,6 +56,8 @@ const _sfc_main = {
       common_vendor.index.removeStorageSync("accessoriesTopSubMenu");
       common_vendor.index.removeStorageSync("agreementCategory");
       common_vendor.index.removeStorageSync("usimListData");
+      common_vendor.index.removeStorageSync("shop");
+      common_vendor.index.removeStorageSync("shopItem");
     }, 6 * 60 * 60 * 1e3);
   }
 };

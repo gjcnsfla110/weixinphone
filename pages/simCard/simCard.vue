@@ -119,7 +119,7 @@ export default{
 		let list = await servicePost('app/usim/list');
 		let category = listTrees(list.category);
 		 // 캐시에 저장 (만료 시간: 24시간)
-		const expiry = now + 24 * 60 * 60 * 1000; // 24시간 후
+		const expiry = now + 60 * 60 * 1000; // 24시간 후
 		uni.setStorageSync('usimListData', {
 		    category: category,
 			usimList : list.usims,

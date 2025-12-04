@@ -4,6 +4,7 @@
   "usingComponents": {
     "custom-nav": "../../components/custom-nav-bar/customNav",
     "swiper-img": "../../components/pageDetail/swiperImg",
+    "other-goods": "../../components/pageDetail/otherGoods",
     "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
   }
 }

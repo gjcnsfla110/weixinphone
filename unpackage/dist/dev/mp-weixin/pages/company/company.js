@@ -44,8 +44,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     b: common_assets._imports_0$5,
     c: common_assets._imports_1$5,
-    d: common_assets._imports_2$6,
-    e: common_assets._imports_3$4,
+    d: common_assets._imports_2$3,
+    e: common_assets._imports_3$3,
     f: common_vendor.o($options.sectionChange),
     g: common_vendor.p({
       ["active-color"]: "#FF8000",
@@ -65,7 +65,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     h: 0 == $setup.cutrrunIndex
   }, 0 == $setup.cutrrunIndex ? {
-    i: common_assets._imports_4$3
+    i: common_assets._imports_4$2
   } : 1 == $setup.cutrrunIndex ? {
     k: common_assets._imports_5$2
   } : 2 == $setup.cutrrunIndex ? {

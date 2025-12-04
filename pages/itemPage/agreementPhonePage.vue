@@ -130,6 +130,33 @@
 							<view>{{item.detail}}</view>
 							<view class="hiddenBottom" v-if="saleTypeVal && planPrice"></view>
 						</view>
+						<view class="client" v-show="current === 2">
+							<view class="clientItem" v-for="review in reviewData">
+								<view class="clientTitle">{{review.title}}</view>
+								<view class="clientContent">
+									<view class="imgContainer" v-if="review.type == 1">
+										<view class="image" v-for="img in review.img">
+											<image :src="img"></image>
+										</view>
+									</view>
+									<view class="itemVideo" v-if="review.type == 2">
+										<iframe 
+										  width="100%" 
+										  height="380" 
+										  :src="review.video"
+										  allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										  allowfullscreen>
+										</iframe>
+									</view>
+								</view>
+								<view class="clientBottom">
+									<view class="date">{{review.date}}</view>
+								</view>
+							</view>
+							<view class="pagi">
+								<uni-pagination :total="total" :current="currentPage" prev-text="前一页" next-text="后一页" @change="paginationClick" />
+							</view>
+						</view>
 					</view>
 				 </view>
 		 </view>
@@ -286,7 +313,7 @@
 				 selectedBorder: '1rpx rgba(120, 120, 120) solid',
 			}
 			//下面内容
-			const items = ['每月话费', '详细内容',];
+			const items = ['每月话费', '详细内容','购买客户'];
 			const current = ref(0)
 			//할부월수 표현
 			const installmentList = [{name:'24个月',value:24},{name:'36个月',value:36},{name:'48个月',value:48}];
@@ -350,6 +377,13 @@
 			const popup = ref("")
 			//할인종류 선택안했을시 생성되는 팍업창 ref
 			const alertDialog = ref("");
+			//---------------------------댓글부분-----------------------//
+			//리뷰데이터 
+			const reviewData = ref([]);
+			//리뷰 페이지
+			const currentPage = ref(1);
+			//리뷰 총수
+			const total = ref(0);
 			return{
 				item,
 				formattedPrice,
@@ -379,7 +413,10 @@
 				feeSale,
 				installmentList,
 				installment,
-				monthTotalPrice
+				monthTotalPrice,
+				reviewData,
+				currentPage,
+				total
 			}
 		},
 		methods:{
@@ -416,6 +453,9 @@
             },
 			openAlertDialog(){
 				this.$refs.alertDialog.open()
+			},
+			paginationClick({type,current}){
+				this.currentPage = current;
 			}
 		},
 		async onLoad(op){
@@ -434,11 +474,79 @@
 				this.cards = agreement.cardSales.filter(item=>item.mobile = this.item.mobile);
 				this.cards = [{card_company:"无信用卡",sale:0},...this.cards];
 			}
+			const reviewList = await servicePost('app/agreement/review/list',{id:op.id,page:this.currentPage});
+			this.reviewData = reviewList.reviews;
+			this.total = reviewList.total;
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.pagi{
+		width: 550rpx;
+		height: 150rpx;
+		margin-left: 100rpx;
+		padding-top: 30rpx;
+	}
+
+	//고객후기 부분
+	.itemVideo{
+		width: 600rpx;
+		margin-left: 50rpx;
+		margin-top: 30rpx;
+		border-radius: 30rpx;
+		overflow: hidden;
+		transition: transform 0.3s;
+	}
+	//리뷰부분
+	.client{
+		width: 750rpx;
+		.clientItem{
+			width: 750rpx;
+			padding: 20rpx 25rpx;
+			.clientTitle{
+				width: 700rpx;
+				height: 100rpx;
+				line-height: 100rpx;
+				font-size: 30rpx;
+				letter-spacing: 3rpx;
+				padding-left: 30rpx;
+				color: rgb(150, 150, 150);
+			}
+			.imgContainer{
+				display: grid;
+				gap: 8rpx;
+				width: 700rpx;
+				grid-template-columns: repeat(4, 1fr);
+				background-color: rgb(250, 250, 250);
+				padding: 30rpx;
+				border-radius: 20rpx;
+				.image{
+					height: 160rpx;
+					image{
+						width: 100%;
+						height: 160rpx;
+					}
+				}
+			}
+			.clientBottom{
+				width: 700rpx;
+				height: 80rpx;
+				border-bottom: 1rpx solid rgb(220, 220, 220);
+				.date{
+					width: 700rpx;
+					height: 80rpx;
+					line-height: 80rpx;
+					text-align: right;
+					padding-right: 20rpx;
+					font-size: 28rpx;
+					letter-spacing: 3rpx;
+					color: rgb(150, 150, 150);
+				}
+			}
+		}
+	}
+	
 	//팝부분입니다
 	.popupContent{
 		width: 100%;

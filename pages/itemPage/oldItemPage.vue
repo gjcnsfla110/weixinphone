@@ -23,16 +23,28 @@
 					</view>
 				</view>
 			</view>
-			<view class="Accessories">
-				<view class="AccessoriesContent">
-					<view class="AccessoriesTitle"><text class="AccessoriesTitleLeft">添加</text> 40,000 韩币</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/shopping/one.png"></image>  赠送 高品质蓝牙耳机</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/shopping/two.png"></image>  赠送 精品手机壳</view>
-					<view class="AccessoriesText"><image class="AccessoriesImg" src="/static/shopping/three.png"></image>  赠送 高速充电头 + 60w棉制精品数据线</view>
-				</view>		
+			<view class="itemNav">
+				<u-subsection :list="list" :current="0" @change="itemContentClick"></u-subsection>
 			</view>
-			<view class="itemContent">
-				{{item.phone_detail}}
+			<view class="itemCurrentContent">
+				<view v-if="current == 0">
+					<view class="videoTitle">手机详细视频</view>
+					<view class="itemVideo">
+						<iframe 
+						  width="100%" 
+						  height="380" 
+						  src="https://www.youtube.com/embed/CRJqRxzDNa4?mute=1&playsinline=1&rel=0"
+						  allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						  allowfullscreen>
+						</iframe>
+					</view>
+					<view class="itemContent">
+						{{item.phone_detail}}
+					</view>
+				</view>
+				<view v-if="current == 1">
+					<OtherGoods></OtherGoods>
+				</view>
 			</view>
 			<view class="hiddenView">
 			</view>
@@ -45,13 +57,13 @@
 					<view class="popupServiceContent">
 						<view class="popupServiceTitle"><image src="/static/company/kuaidiyuan.png"></image><view class="popupServiceTitleText">当日免费送到门！</view></view>
 						<view class="popupServiceDetail">
-							购买手机，手机配件 购满5万韩元 加里峰，南九老，九老，大林，秃山，加山数码团地 地区的客户 您告诉我们地址 当天免费配送。一般30分钟内送达！
+							满5万韩元! 购买手机，手机配件 加里峰，南九老，九老，大林，秃山，加山数码团地 地区的客户 您告诉我们地址 当天免费配送。一般30分钟内送达！
 						</view>
 					</view>
 					<view class="popupServiceContent">
 						<view class="popupServiceTitle"><image src="/static/company/paisong.png"></image><view class="popupServiceTitleText">邮费免费，全部包邮。</view></view>
 						<view class="popupServiceDetail">
-							购买 满10万韩元商品 当天免费邮寄。 您不需要担心邮寄过程手机会损坏，我们用 多层泡沫 精致包装，发货之前整个过程都给您拍视频，无需担心。
+							购买 满5万韩元商品 当天免费邮寄。 您不需要担心邮寄过程手机会损坏，我们用 多层泡沫 精致包装，发货之前整个过程都给您拍视频，无需担心
 						</view>
 					</view>
 				</view>
@@ -64,6 +76,7 @@
 import CustomNav from '@/components/custom-nav-bar/customNav.vue'
 import SwiperImg from '@/components/pageDetail/swiperImg.vue'
 import Bottom from '@/components/pageDetail/itemBottom.vue'
+import OtherGoods from '@/components/pageDetail/otherGoods.vue';
 import {formattedPrice} from "@/utill/common.js";
 import { servicePost } from "@/utill/request";
 import { ref } from "vue";
@@ -71,27 +84,45 @@ import { ref } from "vue";
 export default{
 	components:{
 		CustomNav,
-		SwiperImg
+		SwiperImg,
+		OtherGoods
 	},
 	props:{
 
 	},
 	setup(props, context) {
 		const item = ref({});
+		const list = ref([
+			{
+				name: '详细信息'
+			}, 
+			{
+				name: '购买礼包'
+			}
+		])
+		
+		// 定义当前选中索引
+		const current = ref(0)
 		return{
 			item,
-			formattedPrice
+			formattedPrice,
+			current,
+			list
 		}
+		
 	},
 	methods:{
 		servicePopupToggle(type) {
 			this.$refs.servicePopup.open(type)
 		},
+		itemContentClick(i){
+			this.current = i;
+		}
 	},
 	async onLoad(op){
 			try{
-				const res = await servicePost('app/goods/item',{id:op.id});
-				this.item = res;
+				const res = await servicePost('app/goods/item',{id:op.id,page:1,type:8});
+				this.item = res.item;
 				this.item.banner = this.item.banner ? JSON.parse(this.item.banner):[];
 				this.item.service = this.item.service ? JSON.parse(this.item.service):[];
 			}catch(error){
@@ -103,6 +134,21 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+	.videoTitle{
+		width: 750rpx;
+		height: 100rpx;
+		line-height: 100rpx;
+		font-size: 33rpx;
+		color: rgb(120, 120, 120);
+		padding-left: 25rpx;
+	}
+	.itemVideo{
+		width: 700rpx;
+		margin-left: 25rpx;
+		border-radius: 30rpx;
+		overflow: hidden;
+		transition: transform 0.3s;
+	}
 	.itemNumber{
 		width: 100%;
 		margin-top: 30rpx;
@@ -125,6 +171,12 @@ export default{
 		width: 100%;
 		.content{
 			width: 100%;
+			.itemNav{
+				width: 720rpx;
+				margin-left: 15rpx;
+				margin-top: 30rpx;
+			}
+			
 			/**
 			 * 중고폰 내용부분
 			 */
@@ -203,56 +255,7 @@ export default{
 					text-overflow: ellipsis;  /* ... 표시 */
 				}
 			}
-			/**
-			 * 악세사리부분
-			 */
-			.Accessories{
-				background-color: rgb(249,249,249);
-				width: 720rpx;
-				height: 340rpx;
-				margin-left: 15rpx;
-				margin-top: 26rpx;
-				border-radius: 10rpx;
-				padding: 15rpx;
-				.AccessoriesContent{
-					width: 100%;
-					height: 310rpx;
-					background-color: white;
-					border-radius: 8rpx;
-					padding-top: 15rpx;
-					.AccessoriesTitle{
-						width: 100%;
-						height: 80rpx;
-						line-height: 80rpx;
-						text-align: center;
-						color: rgb(255, 153, 51);
-						font-size: 30rpx;
-						text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
-						letter-spacing: 5rpx; /* 글자 간격 넓게 */
-						.AccessoriesTitleLeft{
-							font-size: 30rpx;
-							color: rgb(255, 0, 0);
-							letter-spacing: 3rpx; /* 글자 간격 넓게 */
-						}
-					}
-					.AccessoriesText{
-						width: 100%;
-						height: 70rpx;
-						font-size: 28rpx;
-						color: rgb(50, 50, 50);
-						letter-spacing: 2rpx; /* 글자 간격 넓게 */
-						text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
-						display: flex;
-						align-items: center;
-						.AccessoriesImg{
-							width: 50rpx;
-							height: 50rpx;
-							margin-left: 26rpx;
-							margin-right: 20rpx;
-						}
-					}
-				}	
-			}
+			
 			
 				/**
 	 * 서비스 및 회사혹은개인 소유부분

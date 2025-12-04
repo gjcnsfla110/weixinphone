@@ -4,6 +4,8 @@
   "usingComponents": {
     "custom-nav": "../../components/custom-nav-bar/customNav",
     "swiper-img": "../../components/pageDetail/swiperImg",
+    "other-goods": "../../components/pageDetail/otherGoods",
+    "u-subsection": "../../node-modules/uview-pro/components/u-subsection/u-subsection",
     "uni-popup": "../../uni_modules/uni-popup/components/uni-popup/uni-popup"
   }
 }

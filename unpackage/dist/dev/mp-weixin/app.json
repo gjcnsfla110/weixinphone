@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/simCard/simCard",
     "pages/shop/shop",
+    "pages/itemPage/shopPage",
     "pages/menu/menu",
     "pages/list/list",
     "pages/oldList/oldList",

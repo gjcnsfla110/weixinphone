@@ -54,11 +54,13 @@
    * 내용 타이틀 부분
    */
   /**
-   * 악세사리부분
-   */
-  /**
   * 서비스 및 회사혹은개인 소유부분
   */
+}
+.oldItem .content .itemNav.data-v-9572ed5d {
+  width: 720rpx;
+  margin-left: 15rpx;
+  margin-top: 30rpx;
 }
 .oldItem .content .itemContent.data-v-9572ed5d {
   width: 720rpx;
@@ -147,58 +149,6 @@
   /* 넘친 부분 숨김 */
   text-overflow: ellipsis;
   /* ... 표시 */
-}
-.oldItem .content .Accessories.data-v-9572ed5d {
-  background-color: #f9f9f9;
-  width: 720rpx;
-  height: 340rpx;
-  margin-left: 15rpx;
-  margin-top: 26rpx;
-  border-radius: 10rpx;
-  padding: 15rpx;
-}
-.oldItem .content .Accessories .AccessoriesContent.data-v-9572ed5d {
-  width: 100%;
-  height: 310rpx;
-  background-color: white;
-  border-radius: 8rpx;
-  padding-top: 15rpx;
-}
-.oldItem .content .Accessories .AccessoriesContent .AccessoriesTitle.data-v-9572ed5d {
-  width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  color: #ff9933;
-  font-size: 30rpx;
-  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.1);
-  /* 부드러운 그림자 */
-  letter-spacing: 5rpx;
-  /* 글자 간격 넓게 */
-}
-.oldItem .content .Accessories .AccessoriesContent .AccessoriesTitle .AccessoriesTitleLeft.data-v-9572ed5d {
-  font-size: 30rpx;
-  color: red;
-  letter-spacing: 3rpx;
-  /* 글자 간격 넓게 */
-}
-.oldItem .content .Accessories .AccessoriesContent .AccessoriesText.data-v-9572ed5d {
-  width: 100%;
-  height: 70rpx;
-  font-size: 28rpx;
-  color: #323232;
-  letter-spacing: 2rpx;
-  /* 글자 간격 넓게 */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-  /* 부드러운 그림자 */
-  display: flex;
-  align-items: center;
-}
-.oldItem .content .Accessories .AccessoriesContent .AccessoriesText .AccessoriesImg.data-v-9572ed5d {
-  width: 50rpx;
-  height: 50rpx;
-  margin-left: 26rpx;
-  margin-right: 20rpx;
 }
 .oldItem .content .itemService.data-v-9572ed5d {
   background-color: #f9f9f9;

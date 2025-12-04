@@ -612,7 +612,8 @@ const MINI_PROGRAM_PAGE_RUNTIME_HOOKS = /* @__PURE__ */ (() => {
   return {
     onPageScroll: 1,
     onShareAppMessage: 1 << 1,
-    onShareTimeline: 1 << 2
+    onShareTimeline: 1 << 2,
+    onShareChat: 1 << 3
   };
 })();
 function isUniLifecycleHook(name, value, checkType = true) {
@@ -6476,9 +6477,9 @@ function populateParameters(fromRes, toRes) {
     appVersion: "1.0.0",
     appVersionCode: "100",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "4.76",
-    uniCompilerVersion: "4.76",
-    uniRuntimeVersion: "4.76",
+    uniCompileVersion: "4.85",
+    uniCompilerVersion: "4.85",
+    uniRuntimeVersion: "4.85",
     uniPlatform: "mp-weixin",
     deviceBrand,
     deviceModel: model,
@@ -6627,9 +6628,9 @@ const getAppBaseInfo = {
       appLanguage: getAppLanguage(hostLanguage),
       isUniAppX: false,
       uniPlatform: "mp-weixin",
-      uniCompileVersion: "4.76",
-      uniCompilerVersion: "4.76",
-      uniRuntimeVersion: "4.76"
+      uniCompileVersion: "4.85",
+      uniCompilerVersion: "4.85",
+      uniRuntimeVersion: "4.85"
     };
     extend(toRes, parameters);
   }
@@ -6980,18 +6981,22 @@ function initOnError() {
       originalConsole$1.error(err);
     }
   }
-  if (typeof index.onError === "function") {
-    index.onError(onError2);
-  }
-  if (typeof index.onUnhandledRejection === "function") {
-    index.onUnhandledRejection(onError2);
+  if (typeof index !== "undefined") {
+    if (typeof index.onError === "function") {
+      index.onError(onError2);
+    }
+    if (typeof index.onUnhandledRejection === "function") {
+      index.onUnhandledRejection(onError2);
+    }
   }
   return function offError2() {
-    if (typeof index.offError === "function") {
-      index.offError(onError2);
-    }
-    if (typeof index.offUnhandledRejection === "function") {
-      index.offUnhandledRejection(onError2);
+    if (typeof index !== "undefined") {
+      if (typeof index.offError === "function") {
+        index.offError(onError2);
+      }
+      if (typeof index.offUnhandledRejection === "function") {
+        index.offUnhandledRejection(onError2);
+      }
     }
   };
 }
@@ -7369,9 +7374,9 @@ function isConsoleWritable() {
   return isWritable;
 }
 function initRuntimeSocketService() {
-  const hosts = "127.0.0.1,175.197.67.134";
+  const hosts = "127.0.0.1,112.171.110.5";
   const port = "8090";
-  const id = "mp-weixin_6A3es2";
+  const id = "mp-weixin_TD1-fL";
   const lazy = typeof swan !== "undefined";
   let restoreError = lazy ? () => {
   } : initOnError();
@@ -10416,6 +10421,32 @@ const install = (app, options) => {
 const uViewPro = {
   install
 };
+const SubsectionProps = {
+  /** tab的数据 */
+  list: { type: Array, default: () => [] },
+  /** 当前活动的tab的index */
+  current: { type: [Number, String], default: 0 },
+  /** 激活的颜色 */
+  activeColor: { type: String, default: "#303133" },
+  /** 未激活的颜色 */
+  inactiveColor: { type: String, default: "#606266" },
+  /** 模式选择，mode=button为按钮形式，mode=subsection时为分段模式 */
+  mode: { type: String, default: "button" },
+  /** 字体大小，单位rpx */
+  fontSize: { type: [Number, String], default: 28 },
+  /** 是否开启动画效果 */
+  animation: { type: Boolean, default: true },
+  /** 组件的高度，单位rpx */
+  height: { type: [Number, String], default: 70 },
+  /** 激活tab的字体是否加粗 */
+  bold: { type: Boolean, default: true },
+  /** mode=button时，组件背景颜色 */
+  bgColor: { type: String, default: "#eeeeef" },
+  /** mode = button时，滑块背景颜色 */
+  buttonColor: { type: String, default: "#ffffff" },
+  /** 在切换分段器的时候，是否让设备震一下 */
+  vibrateShort: { type: Boolean, default: false }
+};
 const SelectProps = {
   /** 列数据 */
   list: { type: Array, default: () => [] },
@@ -10449,32 +10480,6 @@ const SelectProps = {
   cancelText: { type: String, default: "取消" },
   /** 确认按钮的文字 */
   confirmText: { type: String, default: "确认" }
-};
-const SubsectionProps = {
-  /** tab的数据 */
-  list: { type: Array, default: () => [] },
-  /** 当前活动的tab的index */
-  current: { type: [Number, String], default: 0 },
-  /** 激活的颜色 */
-  activeColor: { type: String, default: "#303133" },
-  /** 未激活的颜色 */
-  inactiveColor: { type: String, default: "#606266" },
-  /** 模式选择，mode=button为按钮形式，mode=subsection时为分段模式 */
-  mode: { type: String, default: "button" },
-  /** 字体大小，单位rpx */
-  fontSize: { type: [Number, String], default: 28 },
-  /** 是否开启动画效果 */
-  animation: { type: Boolean, default: true },
-  /** 组件的高度，单位rpx */
-  height: { type: [Number, String], default: 70 },
-  /** 激活tab的字体是否加粗 */
-  bold: { type: Boolean, default: true },
-  /** mode=button时，组件背景颜色 */
-  bgColor: { type: String, default: "#eeeeef" },
-  /** mode = button时，滑块背景颜色 */
-  buttonColor: { type: String, default: "#ffffff" },
-  /** 在切换分段器的时候，是否让设备震一下 */
-  vibrateShort: { type: Boolean, default: false }
 };
 const SwiperProps = {
   /** 轮播数据列表，数组对象 */
